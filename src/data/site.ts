@@ -1,0 +1,40 @@
+import dentixLogoMark from "@/assets/dentix-logo-mark.png";
+
+export const site = {
+  name: "DENTIX",
+  tagline: "Стоматологічна клініка",
+  logo: dentixLogoMark,
+  contactDataReady: false,
+  bookingFormReady: false,
+  phonePrimary: "Телефон буде додано",
+  phonePrimaryHref: "",
+  phoneSecondary: "Другий номер буде додано",
+  phoneSecondaryHref: "",
+  address: "Адреса буде додана",
+  city: "Місто буде додано",
+  schedule: "Графік буде додано",
+  scheduleNote: "Дані очікують підтвердження",
+  instagram: "Instagram буде додано",
+  instagramHref: "#",
+  mapEmbed: "",
+  mapLink: "",
+  nav: [
+    { label: "Послуги", to: "/#services" },
+    { label: "Про клініку", to: "/#about" },
+    { label: "Сертифікати", to: "/#certificates" },
+    { label: "Кейси", to: "/#cases" },
+    { label: "Ціни", to: "/price.html" },
+    { label: "Контакти", to: "/#contact-info" },
+  ],
+  stats: [
+    { num: "—", label: "контакти готуються" },
+    { num: "6", label: "напрямків лікування" },
+    { num: "—", label: "графік буде додано" },
+  ],
+  infoCards: [
+    { title: "Відкритий прайс", text: "Основні послуги та ціни на окремій сторінці." },
+    { title: "Запис телефоном", text: "Контактні номери будуть додані після підтвердження." },
+    { title: "Ортодонтія", text: "Консультація, брекет-системи та апарати." },
+    { title: "Адреса", text: "Адреса та карта будуть додані після підтвердження." },
+  ],
+};
