@@ -378,7 +378,7 @@ function CreateAppointmentModal({ onClose, onCreate }: { onClose: () => void; on
           <label><span>Пацієнт</span><input required value={patient} onChange={(event) => setPatient(event.target.value)} /></label>
           <label><span>Послуга</span><select value={service} onChange={(event) => setService(event.target.value)}><option>DEMO Послуга 01 · Професійна гігієна</option><option>DEMO Послуга 02 · Консультація терапевта</option><option>DEMO Послуга 03 · Консультація ортодонта</option></select></label>
           <label><span>Лікар</span><select value={doctor} onChange={(event) => setDoctor(event.target.value)}><option>DEMO Dentist 01</option><option>DEMO Dentist 02</option></select></label>
-          <label><span>Дата і час</span><input type="datetime-local" required value={startsAt} onChange={(event) => setStartsAt(event.target.value)} /></label>
+          <label><span>Дата і час</span><input type="datetime-local" required value={startsAt} onInput={(event) => setStartsAt(event.currentTarget.value)} onChange={(event) => setStartsAt(event.target.value)} /></label>
           <p className="crm-modal-note"><CircleAlert size={15} /> Дані не надсилаються та зникнуть після оновлення сторінки.</p>
           <div className="crm-modal-actions"><button type="button" onClick={onClose}>Скасувати</button><button className="crm-primary">Створити demo</button></div>
         </form>
@@ -395,7 +395,7 @@ function AppointmentDetailModal({ appointment, onClose, onReschedule, onCancel }
       <section className="crm-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
         <header><div><p className="crm-login-kicker">{appointment.id}</p><h2 id="detail-title">Деталі демо-запису</h2></div><button aria-label="Закрити" onClick={onClose}><X /></button></header>
         <dl className="crm-modal-summary"><div><dt>Пацієнт</dt><dd>{appointment.patient}</dd></div><div><dt>Телефон</dt><dd>{appointment.phone}</dd></div><div><dt>Послуга</dt><dd>{appointment.service}</dd></div><div><dt>Лікар</dt><dd>{appointment.doctor}</dd></div><div><dt>Статус</dt><dd>{appointment.status}</dd></div><div><dt>Google</dt><dd>NOT_CONNECTED · DEMO</dd></div></dl>
-        <label className="crm-modal-field"><span>Перенести дату / час</span><input type="datetime-local" value={startsAt} onChange={(event) => setStartsAt(event.target.value)} /></label>
+        <label className="crm-modal-field"><span>Перенести дату / час</span><input type="datetime-local" value={startsAt} onInput={(event) => setStartsAt(event.currentTarget.value)} onChange={(event) => setStartsAt(event.target.value)} /></label>
         <p className="crm-modal-note"><CircleAlert size={15} /> Зміни існують лише в пам’яті цієї сторінки.</p>
         <div className="crm-modal-actions split"><button className="crm-danger" disabled={appointment.status === "CANCELLED"} onClick={onCancel}>Скасувати запис</button><button className="crm-primary" onClick={() => onReschedule(startsAt)}>Перенести</button></div>
       </section>
