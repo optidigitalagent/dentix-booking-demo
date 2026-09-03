@@ -14,15 +14,25 @@ export function TeamSection() {
         />
         <div className="team-grid">
           {doctors.map((d, i) => (
-            <Reveal key={`${d.name}-${i}`} className="doc" delay={i * 80}>
+            <Reveal as="article" key={d.name} className="doc" delay={i * 80}>
               <div className="doc-ring">
-                <img className="doc-avatar" src={d.photo} alt={`${d.role} клініки DENTIX`} loading="lazy" />
+                <img
+                  className="doc-avatar"
+                  src={d.photo}
+                  alt={d.alt}
+                  width={960}
+                  height={1280}
+                  loading="lazy"
+                  style={{ objectPosition: d.objectPosition }}
+                />
               </div>
-              <h3>{d.name}</h3>
-              <p className="doc-role">{d.role}</p>
-              <BookingButton className="doc-booking" doctorId={`demo-doctor-${i === 0 ? "a" : "b"}`}>
-                Обрати лікаря
-              </BookingButton>
+              <div className="doc-copy">
+                <h3>{d.name}</h3>
+                <p className="doc-role">{d.role}</p>
+                <BookingButton className="doc-booking">
+                  Обрати лікаря
+                </BookingButton>
+              </div>
             </Reveal>
           ))}
         </div>

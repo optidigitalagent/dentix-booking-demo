@@ -15,6 +15,8 @@ export function ContactInfoSection() {
                 {site.address}
                 <br />
                 {site.city}
+                <br />
+                {site.addressNote}
               </p>
             </div>
             <div className="info-block">
@@ -42,15 +44,15 @@ export function ContactInfoSection() {
               </p>
             </div>
             <div className="info-block">
-              <h3>Instagram</h3>
+              <h3>Зв’язок онлайн</h3>
               <p>
-                {site.contactDataReady ? (
-                  <a href={site.instagramHref} target="_blank" rel="noreferrer">
-                    {site.instagram}
-                  </a>
-                ) : (
-                  site.instagram
-                )}
+                <a href={site.instagramHref} target="_blank" rel="noreferrer">
+                  Instagram: {site.instagram}
+                </a>
+                <br />
+                <a href={site.viberHref}>{site.viber}</a>
+                <br />
+                <a href={site.emailHref}>{site.email}</a>
               </p>
             </div>
           </Reveal>

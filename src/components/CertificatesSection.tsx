@@ -10,7 +10,10 @@ export function CertificatesSection() {
   const scrollBy = (dir: number) => {
     const el = trackRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir * Math.max(280, el.clientWidth * 0.8), behavior: "smooth" });
+    el.scrollBy({
+      left: dir * Math.max(280, el.clientWidth * 0.8),
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -31,13 +34,13 @@ export function CertificatesSection() {
         <SectionHeading
           kicker="Сертифікати"
           title="Навчання та кваліфікація"
-          lede="Демонстраційні сертифікати — замініть реальними документами лікарів DENTIX."
+          lede="Сертифікати та професійне навчання команди DENTIX."
         />
         <div className="cert-wrap">
           <div className="cert-track" ref={trackRef}>
             {certificates.map((c, i) => (
               <button
-                key={i}
+                key={c.id}
                 className="cert-card"
                 onClick={() => setOpen(i)}
                 aria-label={`Відкрити ${c.alt}`}
@@ -47,10 +50,16 @@ export function CertificatesSection() {
             ))}
           </div>
           <div className="cert-arrows">
-            <button aria-label="Прокрутити ліворуч" onClick={() => scrollBy(-1)}>
+            <button
+              aria-label="Прокрутити ліворуч"
+              onClick={() => scrollBy(-1)}
+            >
               ‹
             </button>
-            <button aria-label="Прокрутити праворуч" onClick={() => scrollBy(1)}>
+            <button
+              aria-label="Прокрутити праворуч"
+              onClick={() => scrollBy(1)}
+            >
               ›
             </button>
           </div>

@@ -4,10 +4,10 @@ import { SectionHeading } from "./SectionHeading";
 import { BookingButton } from "./booking/BookingContext";
 
 const contactSlots = [
-  { label: "Телефон", value: site.phonePrimary },
-  { label: "Адреса", value: `${site.address}, ${site.city}` },
-  { label: "Графік", value: site.schedule },
-  { label: "Соціальні мережі", value: site.instagram },
+  { label: "Телефони", value: `${site.phonePrimary} · ${site.phoneSecondary}` },
+  { label: "Адреса", value: `${site.city}, ${site.address}` },
+  { label: "Графік", value: `${site.schedule} · ${site.scheduleNote}` },
+  { label: "Instagram", value: site.instagram, href: site.instagramHref },
 ];
 
 export function ContactSection() {
@@ -17,7 +17,7 @@ export function ContactSection() {
         <SectionHeading
           kicker="Запис"
           title="Заплануйте візит до DENTIX"
-          lede="Структура запису вже готова. Підтверджені контакти та канал доставки форми будуть підключені окремо — без вигаданих даних і хибних повідомлень про успіх."
+          lede="Зв’яжіться з клінікою телефоном, в Instagram або у Viber. Адресу, графік і карту зібрано нижче."
           center={false}
         />
 
@@ -29,22 +29,29 @@ export function ContactSection() {
             <p className="contact-rail-kicker">Швидкий зв’язок</p>
             <h3>Усе потрібне для запису — в одному місці</h3>
             <p className="contact-rail-copy">
-              Після підтвердження даних тут з’являться робочі номери, адреса, графік і посилання на
-              соціальні мережі.
+              Робочі номери, адреса, графік і офіційний Instagram.
             </p>
 
-            <div className="contact-slots" aria-label="Контактні дані готуються">
+            <div className="contact-slots" aria-label="Контактні дані DENTIX">
               {contactSlots.map((item) => (
                 <div className="contact-slot" key={item.label}>
                   <span>{item.label}</span>
-                  <strong>{item.value}</strong>
+                  <strong>
+                    {item.href ? (
+                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined}>
+                        {item.value}
+                      </a>
+                    ) : (
+                      item.value
+                    )}
+                  </strong>
                 </div>
               ))}
             </div>
 
             <div className="contact-data-state" role="status">
               <span className="contact-state-dot" aria-hidden="true" />
-              Дані очікують підтвердження власника
+              Контакти звірено з офіційними джерелами
             </div>
           </Reveal>
 

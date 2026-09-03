@@ -1,5 +1,6 @@
 import { AboutSection } from "@/components/AboutSection";
 import { CasesSection } from "@/components/CasesSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { CertificatesSection } from "@/components/CertificatesSection";
 import { ContactInfoSection } from "@/components/ContactInfoSection";
 import { ContactSection } from "@/components/ContactSection";
@@ -19,6 +20,7 @@ export function PatientDemo() {
       <TeamSection />
       <CertificatesSection />
       <CasesSection />
+      <ReviewsSection />
       <ContactSection />
       <ContactInfoSection />
     </SiteLayout>

@@ -1,59 +1,47 @@
-import { useState } from "react";
-import { casesRowOne, casesRowTwo, casesDisclaimer, type CaseShot } from "@/data/cases";
-import { Lightbox } from "./Lightbox";
+import {
+  casesDisclaimer,
+  casesPublicationState,
+  unclassifiedClinicalMedia,
+} from "@/data/cases";
 import { SectionHeading } from "./SectionHeading";
 
-const rows = [casesRowOne, casesRowTwo];
-const allShots: CaseShot[] = rows.flat().flatMap((c) => c.shots);
-
 export function CasesSection() {
-  const [open, setOpen] = useState<number | null>(null);
-  let counter = -1;
+  const isDevelopment = import.meta.env.DEV;
 
   return (
     <section className="section cases" id="cases">
       <div className="wrap">
         <SectionHeading
           kicker="Клінічні кейси"
-          title="Результати лікування"
-          lede="Приклади робіт у форматі «до / проміжний етап / після»."
+          title="Клінічні матеріали DENTIX"
+          lede="Кейси з’являться після підтвердження групування, опису та дозволів на публікацію."
         />
 
-        {rows.map((row, r) => (
-          <div className="case-track" key={r}>
-            {row.map((c) => (
-              <article className="case-card" key={c.id}>
-                <div className={`case-sequence${c.shots.length > 2 ? " triple" : ""}`}>
-                  {c.shots.map((s) => {
-                    counter += 1;
-                    const idx = counter;
-                    return (
-                      <button
-                        className="case-shot"
-                        key={`${c.id}-${s.label}`}
-                        onClick={() => setOpen(idx)}
-                        aria-label={`${s.label} — збільшити`}
-                      >
-                        <img src={s.src} alt={`Клінічний випадок ${c.id}: ${s.label}`} loading="lazy" />
-                        <span className="case-ribbon">{s.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </article>
-            ))}
+        {isDevelopment ? (
+          <div className="case-review-panel" role="status">
+            <span className="case-review-kicker">Development preview</span>
+            <h3>
+              {unclassifiedClinicalMedia.length} клінічних файлів імпортовано
+            </h3>
+            <p>
+              Зображення збережені як <code>unclassified</code> і не показуються
+              як окремі кейси або «до / після».
+            </p>
+            <dl>
+              <div>
+                <dt>Статус</dt>
+                <dd>{casesPublicationState.status}</dd>
+              </div>
+              <div>
+                <dt>Публікація</dt>
+                <dd>Заблокована</dd>
+              </div>
+            </dl>
           </div>
-        ))}
+        ) : null}
 
         <p className="cases-disclaimer">{casesDisclaimer}</p>
       </div>
-
-      <Lightbox
-        items={allShots.map((s) => ({ src: s.src, label: s.label }))}
-        index={open}
-        onIndex={setOpen}
-        onClose={() => setOpen(null)}
-      />
     </section>
   );
 }
