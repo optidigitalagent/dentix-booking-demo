@@ -9,11 +9,24 @@ export function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % heroSlides.length);
-    }, 6000);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: number | undefined;
 
-    return () => window.clearInterval(timer);
+    const syncRotation = () => {
+      if (timer) window.clearInterval(timer);
+      timer = undefined;
+      if (reducedMotion.matches) return;
+      timer = window.setInterval(() => {
+        setActiveSlide((current) => (current + 1) % heroSlides.length);
+      }, 4800);
+    };
+
+    syncRotation();
+    reducedMotion.addEventListener("change", syncRotation);
+    return () => {
+      if (timer) window.clearInterval(timer);
+      reducedMotion.removeEventListener("change", syncRotation);
+    };
   }, []);
 
   return (

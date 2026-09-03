@@ -9,21 +9,25 @@ import certificate08 from "@/assets/dentix-content/certificates/web/certificate-
 import certificate09 from "@/assets/dentix-content/certificates/web/certificate-09.webp";
 import certificate10 from "@/assets/dentix-content/certificates/web/certificate-10.webp";
 
-export type Certificate = { id: string; src: string; alt: string };
+export type Certificate = { id: string; src: string; alt: string; width: number; height: number };
 
-export const certificates: Certificate[] = [
-  certificate01,
-  certificate02,
-  certificate03,
-  certificate04,
-  certificate05,
-  certificate06,
-  certificate07,
-  certificate08,
-  certificate09,
-  certificate10,
-].map((src, index) => ({
+const sources = [
+  { src: certificate01, width: 1890, height: 2600 },
+  { src: certificate02, width: 1890, height: 2600 },
+  { src: certificate03, width: 1890, height: 2600 },
+  { src: certificate04, width: 1890, height: 2600 },
+  { src: certificate05, width: 1890, height: 2600 },
+  { src: certificate06, width: 2600, height: 1890 },
+  { src: certificate07, width: 1890, height: 2600 },
+  { src: certificate08, width: 1890, height: 2600 },
+  { src: certificate09, width: 1890, height: 2600 },
+  { src: certificate10, width: 1890, height: 2600 },
+] as const;
+
+export const certificates: Certificate[] = sources.map(({ src, width, height }, index) => ({
   id: `certificate-${String(index + 1).padStart(2, "0")}`,
   src,
   alt: `Сертифікат про професійне навчання команди DENTIX — документ ${index + 1}`,
+  width,
+  height,
 }));

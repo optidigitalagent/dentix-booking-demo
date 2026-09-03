@@ -1,4 +1,4 @@
-export type PriceRow = { name: string; cost: string };
+export type PriceRow = { name: string; cost: string; note?: string };
 export type PriceBlock = {
   id: string;
   num: string | null;

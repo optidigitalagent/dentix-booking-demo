@@ -94,10 +94,10 @@ export const aboutSlides: AboutSlide[] = [
 ];
 
 const heroSlideIds = new Set([
-  "drive-clinic-room",
-  "drive-reception",
+  "team-at-work-02",
   "team-at-work-03",
   "team-at-work-04",
+  "team-at-work-07",
 ]);
 
 export const heroSlides = aboutSlides.filter((slide) => heroSlideIds.has(slide.id));

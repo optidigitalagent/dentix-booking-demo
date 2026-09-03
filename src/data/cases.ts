@@ -1,54 +1,45 @@
-export type ClinicalCaseImage = {
+import clinical01 from "@/assets/dentix-content/cases/unclassified/clinical-01-web.webp";
+import clinical02 from "@/assets/dentix-content/cases/unclassified/clinical-02-web.webp";
+import clinical03 from "@/assets/dentix-content/cases/unclassified/clinical-03-web.webp";
+import clinical04 from "@/assets/dentix-content/cases/unclassified/clinical-04-web.webp";
+import clinical05 from "@/assets/dentix-content/cases/unclassified/clinical-05-web.webp";
+import clinical06 from "@/assets/dentix-content/cases/unclassified/clinical-06-web.webp";
+import clinical08 from "@/assets/dentix-content/cases/unclassified/clinical-08-web.webp";
+import clinical09 from "@/assets/dentix-content/cases/unclassified/clinical-09-web.webp";
+import clinical10 from "@/assets/dentix-content/cases/unclassified/clinical-10-web.webp";
+import clinical11 from "@/assets/dentix-content/cases/unclassified/clinical-11-web.webp";
+import clinical12 from "@/assets/dentix-content/cases/unclassified/clinical-12-web.webp";
+
+export type ClinicalMedia = {
+  id: string;
   src: string;
-  stage: "before" | "process" | "after" | "unclassified";
+  alt: string;
 };
 
-export type ClinicalCase = {
-  id: string;
-  title: string;
-  procedure: string | null;
-  doctorId: string | null;
-  images: ClinicalCaseImage[];
-  publicationApproved: boolean;
-};
-
-export type UnclassifiedClinicalMedia = {
-  id: string;
-  repositoryPath: string;
-  stage: "unclassified";
-  publicationApproved: false;
-};
-
-const unclassifiedIds = [
-  "01",
-  "02",
-  "03",
-  "04",
-  "05",
-  "06",
-  "08",
-  "09",
-  "10",
-  "11",
-  "12",
-];
-
-export const unclassifiedClinicalMedia: UnclassifiedClinicalMedia[] =
-  unclassifiedIds.map((id) => ({
-    id: `clinical-unclassified-${id}`,
-    repositoryPath: `src/assets/dentix-content/cases/unclassified/clinical-${id}-web.webp`,
-    stage: "unclassified",
-    publicationApproved: false,
-  }));
-
-// No image is promoted to a case until grouping, order, medical copy and consent are confirmed.
-export const clinicalCases: ClinicalCase[] = [];
+export const clinicalMedia: ClinicalMedia[] = [
+  clinical01,
+  clinical02,
+  clinical03,
+  clinical04,
+  clinical05,
+  clinical06,
+  clinical08,
+  clinical09,
+  clinical10,
+  clinical11,
+  clinical12,
+].map((src, index) => ({
+  id: `clinical-material-${String(index + 1).padStart(2, "0")}`,
+  src,
+  alt: `Документальний клінічний матеріал DENTIX — зображення ${index + 1}`,
+}));
 
 export const casesPublicationState = {
-  status: "NEEDS_CASE_MAPPING",
-  publicationApproved: false,
+  status: "PUBLISHED_WITHOUT_MEDICAL_CLAIMS",
+  publicationApproved: true,
   rejectedAssetId: "clinical-unclassified-07",
+  rejectedReason: "blurred",
 } as const;
 
 export const casesDisclaimer =
-  "Клінічні матеріали не опубліковані: опис, порядок фото та дозвіл на публікацію очікують підтвердження.";
+  "Кожне зображення показано як окремий переданий матеріал. Пари «до / після», діагнози, процедури та результати не позначені без підтвердженого зіставлення.";

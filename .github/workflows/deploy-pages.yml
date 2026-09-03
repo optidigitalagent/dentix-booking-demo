@@ -33,6 +33,9 @@ jobs:
 
       - name: Build static demo
         run: npm run build
+        env:
+          VITE_DENTIX_CONTENT_API_URL: ${{ vars.VITE_DENTIX_CONTENT_API_URL }}
+          VITE_DENTIX_CONTENT_TIMEOUT_MS: "4000"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

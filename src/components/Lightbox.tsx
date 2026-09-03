@@ -1,4 +1,5 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 export type LightboxItem = { src: string; label?: string };
 
@@ -14,6 +15,7 @@ export function Lightbox({
   onIndex: (i: number) => void;
 }) {
   const open = index !== null;
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const step = useCallback(
     (dir: number) => {
@@ -25,6 +27,8 @@ export function Lightbox({
 
   useEffect(() => {
     if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowRight") step(1);
@@ -32,9 +36,11 @@ export function Lightbox({
     };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
     };
   }, [open, onClose, step]);
 
@@ -43,9 +49,24 @@ export function Lightbox({
   if (!item) return null;
 
 
-  return (
-    <div className="lightbox open" role="dialog" aria-modal="true" onClick={onClose}>
-      <button className="lightbox-close" aria-label="Закрити" onClick={onClose}>
+  return createPortal(
+    <div
+      className="lightbox open"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Перегляд зображення"
+      onClick={onClose}
+    >
+      <button
+        ref={closeButtonRef}
+        type="button"
+        className="lightbox-close"
+        aria-label="Закрити"
+        onClick={(event) => {
+          event.stopPropagation();
+          onClose();
+        }}
+      >
         ×
       </button>
       <button
@@ -72,6 +93,7 @@ export function Lightbox({
       >
         ›
       </button>
-    </div>
+    </div>,
+    document.body,
   );
 }

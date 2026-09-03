@@ -5,7 +5,8 @@ import { siteHref } from "@/lib/site-href";
 import { BookingButton } from "./booking/BookingContext";
 
 export function Header() {
-  const isPricePage = false;
+  const isPricePage =
+    typeof window !== "undefined" && /\/price\.html\/?$/.test(window.location.pathname);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
