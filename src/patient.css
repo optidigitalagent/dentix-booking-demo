@@ -522,7 +522,9 @@ h3 {
 }
 .svc-card {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  align-content: start;
   gap: 22px;
   background: var(--sunken-bg);
   border: 1px solid var(--line);
@@ -577,8 +579,10 @@ h3 {
   max-width: 40ch;
 }
 .svc-link {
+  grid-column: 1 / -1;
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   margin-top: 16px;
   padding-top: 14px;
@@ -2134,6 +2138,7 @@ h3 {
   cursor: pointer;
 }
 .svc-booking-link {
+  grid-column: 1 / -1;
   margin-top: -8px;
 }
 .doc-booking {
@@ -4176,6 +4181,16 @@ body::before,
 }
 
 @media (max-width: 767px) {
+  .svc-card {
+    gap: 18px 16px;
+    padding: 28px 24px;
+  }
+  .svc-link {
+    margin-top: 4px;
+  }
+  .svc-booking-link {
+    margin-top: -4px;
+  }
   .price-hero {
     background-image:
       linear-gradient(90deg, rgba(21, 16, 11, 0.92), rgba(31, 26, 22, 0.68)),
