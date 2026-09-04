@@ -4637,3 +4637,24 @@ body::before,
     height: 236px;
   }
 }
+/* Lead intake: inherits the approved DENTIX contact-panel composition. */
+.lead-form { display: grid; gap: 16px; }
+.lead-test-banner { display: grid; gap: 3px; padding: 11px 13px; color: #61451d; border: 1px solid rgba(190, 146, 77, .45); background: rgba(190, 146, 77, .12); font-size: 11px; }
+.lead-test-banner strong { letter-spacing: .08em; text-transform: uppercase; }
+.lead-test-banner span { opacity: .78; }
+.lead-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+.lead-fields label { display: grid; gap: 7px; }
+.lead-fields label > span { color: var(--brown, #473429); font-size: 11px; font-weight: 700; }
+.lead-field-wide { grid-column: 1 / -1; }
+.lead-fields input, .lead-fields select, .lead-fields textarea { width: 100%; min-height: 48px; padding: 11px 13px; color: #211914; border: 1px solid rgba(99, 73, 52, .23); border-radius: 0; background: rgba(255,255,255,.86); font: inherit; font-size: 13px; }
+.lead-fields textarea { min-height: 92px; resize: vertical; }
+.lead-fields input:focus, .lead-fields select:focus, .lead-fields textarea:focus { outline: 2px solid rgba(190, 146, 77, .7); outline-offset: 1px; }
+.lead-consent { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; color: #625348; font-size: 10px; line-height: 1.5; }
+.lead-consent input { width: 16px; height: 16px; margin-top: 1px; accent-color: #a97935; }
+.lead-consent a { color: inherit; text-underline-offset: 2px; }
+.lead-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.lead-form-state { padding: 10px 12px; font-size: 11px; line-height: 1.45; }
+.lead-form-state.success { color: #315a3d; border: 1px solid #b8d0bf; background: #edf6ef; }
+.lead-form-state.error { color: #793d35; border: 1px solid #dcc1bb; background: #fff0ed; }
+.lead-form .btn:disabled { opacity: .52; cursor: not-allowed; }
+@media (max-width: 520px) { .lead-fields { grid-template-columns: 1fr; } .lead-field-wide { grid-column: auto; } }

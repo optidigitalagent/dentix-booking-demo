@@ -36,6 +36,9 @@ jobs:
         env:
           VITE_DENTIX_CONTENT_API_URL: ${{ vars.VITE_DENTIX_CONTENT_API_URL }}
           VITE_DENTIX_CONTENT_TIMEOUT_MS: "4000"
+          VITE_DENTIX_LEADS_API_URL: ${{ vars.VITE_DENTIX_LEADS_API_URL }}
+          VITE_DENTIX_LEAD_TEST_MODE: "true"
+          VITE_DENTIX_LEAD_CONTACT_METHODS: "PHONE,TELEGRAM,VIBER,WHATSAPP"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

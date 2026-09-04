@@ -1,7 +1,7 @@
 import { site } from "@/data/site";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { BookingButton } from "./booking/BookingContext";
+import { LeadForm } from "./LeadForm";
 
 const contactSlots = [
   { label: "Телефони", value: `${site.phonePrimary} · ${site.phoneSecondary}` },
@@ -58,17 +58,12 @@ export function ContactSection() {
           <Reveal as="div" className="contact-panel" delay={90}>
             <div className="contact-panel-head">
               <div>
-                <p className="contact-panel-kicker">Calm Booking Assistant</p>
-                <h3>Записатися онлайн</h3>
+                <p className="contact-panel-kicker">Зворотний зв’язок</p>
+                <h3>Залишити заявку</h3>
               </div>
-              <span className="contact-panel-status">6 коротких кроків</span>
+              <span className="contact-panel-status">без медичних даних</span>
             </div>
-            <div className="contact-booking-launch">
-              <p>Оберіть послугу, лікаря та реальний доступний час. Ім’я й телефон запитуються лише перед перевіркою запису.</p>
-              <ul><li>Без медичних документів</li><li>Час перевіряється повторно на submit</li><li>Підтвердження тільки після відповіді API</li></ul>
-              <BookingButton className="btn btn-block">Записатися онлайн</BookingButton>
-              <p className="booking-note">У development preview використовуються лише явно позначені DEMO-дані.</p>
-            </div>
+            <LeadForm sourceSite="PUBLIC_DEMO" />
           </Reveal>
         </div>
       </div>
