@@ -39,6 +39,8 @@ jobs:
           VITE_DENTIX_LEADS_API_URL: ${{ vars.VITE_DENTIX_LEADS_API_URL }}
           VITE_DENTIX_LEAD_TEST_MODE: "true"
           VITE_DENTIX_LEAD_CONTACT_METHODS: "PHONE,TELEGRAM,VIBER,WHATSAPP"
+          VITE_DENTIX_BOOKING_API_URL: "https://dentix-app-production.up.railway.app/api/public/booking"
+          VITE_DENTIX_BOOKING_ENABLED: "true"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

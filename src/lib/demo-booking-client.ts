@@ -1,73 +1,29 @@
-import type {
-  AvailabilityDay,
-  BookingCatalog,
-  BookingConfirmation,
-  CreateBookingInput,
-} from "./booking-types";
+import type { AvailabilityDay, BookingCatalog, BookingConfirmation, CreateBookingInput } from "./booking-types";
+import { BookingApiError } from "./booking-types";
 
-const catalog: BookingCatalog = {
-  clinicTimezone: "Europe/Kyiv",
-  environment: "development",
-  services: [
-    { id: "demo-hygiene", name: "DEMO Послуга 01 · Професійна гігієна", category: "Демонстраційні дані", durationMinutes: 60, demo: true },
-    { id: "demo-therapy", name: "DEMO Послуга 02 · Консультація терапевта", category: "Демонстраційні дані", durationMinutes: 45, demo: true },
-    { id: "demo-ortho", name: "DEMO Послуга 03 · Консультація ортодонта", category: "Демонстраційні дані", durationMinutes: 45, demo: true },
-  ],
-  doctors: [
-    { id: "demo-doctor-a", name: "DEMO Лікар 01", role: "Стоматолог-терапевт", serviceIds: ["demo-hygiene", "demo-therapy"], demo: true },
-    { id: "demo-doctor-b", name: "DEMO Лікар 02", role: "Лікар-ортодонт", serviceIds: ["demo-hygiene", "demo-ortho"], demo: true },
-  ],
-};
+const apiUrl = (import.meta.env["VITE_DENTIX_BOOKING_API_URL"] as string | undefined)?.replace(/\/$/, "") ?? "";
+const enabled = import.meta.env["VITE_DENTIX_BOOKING_ENABLED"] === "true" && Boolean(apiUrl);
 
-function makeAvailability(): AvailabilityDay[] {
-  const formatter = new Intl.DateTimeFormat("uk-UA", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    timeZone: "Europe/Kyiv",
-  });
-  const days: AvailabilityDay[] = [];
-  const cursor = new Date();
-
-  for (let offset = 1; days.length < 4 && offset < 10; offset += 1) {
-    const day = new Date(cursor);
-    day.setDate(cursor.getDate() + offset);
-    if (day.getDay() === 0 || day.getDay() === 6) continue;
-    const date = day.toISOString().slice(0, 10);
-    const slots = ["09:30", "11:00", "14:30", "16:00"].map((time) => {
-      const startsAt = new Date(`${date}T${time}:00+03:00`).toISOString();
-      return { startsAt, label: time };
-    });
-    days.push({ date, label: formatter.format(day), slots });
-  }
-
-  return days;
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  if (!enabled) throw new BookingApiError("BOOKING_BACKEND_NOT_CONFIGURED", "Запити на час ще не підключено.", 503);
+  const response = await fetch(`${apiUrl}${path}`, { ...init, headers: { Accept: "application/json", ...(init?.body ? { "Content-Type": "application/json" } : {}), ...init?.headers } });
+  const payload = await response.json().catch(() => ({})) as { data?: T; error?: { code?: string; message?: string } };
+  if (!response.ok || !payload.data) throw new BookingApiError(payload.error?.code ?? "BOOKING_API_ERROR", payload.error?.message ?? "Не вдалося виконати запит.", response.status);
+  return payload.data;
 }
 
 export const bookingClient = {
-  enabled: true,
-  mode: "demo" as const,
+  enabled,
+  mode: enabled ? "test-ready" as const : "disabled" as const,
   async getCatalog() {
-    return structuredClone(catalog);
+    const data = await request<{ mode: "TEST_READY" | "LIVE_REQUESTS_READY"; testOnly: boolean; timezone: string; requestDurationMinutes: number; minDate: string; maxDate: string; consentVersion: string; doctors: Array<{ id: string; name: string; role_label: string }>; services: Array<{ id: string; name: string; category: string }>; doctorServices: Array<{ doctor_id: string; service_id: string }> }>("/catalog");
+    return { clinicTimezone: data.timezone, environment: data.testOnly ? "test-ready" : "production", mode: data.mode, testOnly: data.testOnly, requestDurationMinutes: data.requestDurationMinutes, minDate: data.minDate, maxDate: data.maxDate, consentVersion: data.consentVersion, services: data.services.map((item) => ({ id: item.id, name: item.name, category: item.category, durationMinutes: data.requestDurationMinutes, demo: data.testOnly })), doctors: data.doctors.map((item) => ({ id: item.id, name: item.name, role: item.role_label, serviceIds: data.doctorServices.filter((link) => link.doctor_id === item.id).map((link) => link.service_id), demo: data.testOnly })) } satisfies BookingCatalog;
   },
-  async getAvailability(_serviceId: string, _doctorId: string) {
-    return makeAvailability();
+  async getAvailability(serviceId: string, doctorId: string, date: string) {
+    const data = await request<{ date: string; slots: Array<{ startsAt: string; endsAt: string; localStart: string; localEnd: string }> }>(`/availability?service_id=${encodeURIComponent(serviceId)}&doctor_id=${encodeURIComponent(doctorId)}&date=${encodeURIComponent(date)}`);
+    return [{ date: data.date, label: new Intl.DateTimeFormat("uk-UA", { dateStyle: "full", timeZone: "UTC" }).format(new Date(`${data.date}T12:00:00Z`)), slots: data.slots.map((slot) => ({ startsAt: slot.startsAt, endsAt: slot.endsAt, label: `${slot.localStart}–${slot.localEnd}` })) }] satisfies AvailabilityDay[];
   },
-  async createAppointment(input: CreateBookingInput): Promise<BookingConfirmation> {
-    const service = catalog.services.find((item) => item.id === input.serviceId);
-    const doctor = catalog.doctors.find((item) => item.id === input.doctorId);
-    if (!service || !doctor) throw new Error("DEMO_FIXTURE_NOT_FOUND");
-
-    return {
-      appointmentId: `demo-${Date.now()}`,
-      reference: `DEMO-${Math.random().toString(36).slice(2, 7).toUpperCase()}`,
-      status: "CONFIRMED",
-      calendarSyncStatus: "NOT_CONNECTED",
-      service: service.name,
-      doctor: doctor.name,
-      startsAt: input.startsAt,
-      clinicTimezone: catalog.clinicTimezone,
-      environment: "development",
-    };
+  createAppointment(input: CreateBookingInput) {
+    return request<BookingConfirmation>("/requests", { method: "POST", headers: { "Idempotency-Key": input.idempotencyKey }, body: JSON.stringify({ service_id: input.serviceId, doctor_id: input.doctorId, starts_at: input.startsAt, name: input.name, phone: input.phone, preferred_contact: "PHONE", consent_version: "booking-request-test-v1", test_submission: input.testSubmission, idempotency_key: input.idempotencyKey }) });
   },
 };

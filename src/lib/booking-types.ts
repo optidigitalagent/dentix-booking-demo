@@ -17,12 +17,18 @@ export type BookingDoctor = {
 export type AvailabilityDay = {
   date: string;
   label: string;
-  slots: Array<{ startsAt: string; label: string }>;
+  slots: Array<{ startsAt: string; endsAt: string; label: string }>;
 };
 
 export type BookingCatalog = {
   clinicTimezone: string;
-  environment: "development" | "production";
+  environment: "test-ready" | "production";
+  mode: "TEST_READY" | "LIVE_REQUESTS_READY";
+  testOnly: boolean;
+  requestDurationMinutes: number;
+  minDate: string;
+  maxDate: string;
+  consentVersion: string;
   services: BookingService[];
   doctors: BookingDoctor[];
 };
@@ -35,18 +41,17 @@ export type CreateBookingInput = {
   phone: string;
   consent: true;
   idempotencyKey: string;
+  testSubmission: boolean;
 };
 
 export type BookingConfirmation = {
   appointmentId: string;
   reference: string;
-  status: "CONFIRMED";
-  calendarSyncStatus: "PENDING" | "SYNCED" | "RETRYING" | "NOT_CONNECTED";
-  service: string;
-  doctor: string;
+  status: "AWAITING_CALLBACK";
+  revision: number;
+  message: string;
   startsAt: string;
-  clinicTimezone: string;
-  environment: "development" | "production";
+  endsAt: string;
 };
 
 export class BookingApiError extends Error {
