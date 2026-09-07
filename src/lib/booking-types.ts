@@ -23,7 +23,7 @@ export type AvailabilityDay = {
 export type BookingCatalog = {
   clinicTimezone: string;
   environment: "test-ready" | "production";
-  mode: "TEST_READY" | "LIVE_REQUESTS_READY";
+  mode: "TEST_READY" | "LIVE_REQUESTS_READY" | "UNAVAILABLE";
   testOnly: boolean;
   requestDurationMinutes: number;
   minDate: string;
@@ -41,7 +41,7 @@ export type CreateBookingInput = {
   phone: string;
   consent: true;
   idempotencyKey: string;
-  testSubmission: boolean;
+  consentVersion: string;
 };
 
 export type BookingConfirmation = {

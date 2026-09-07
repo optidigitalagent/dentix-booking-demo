@@ -1,7 +1,17 @@
 import { site } from "@/data/site";
 import { siteHref } from "@/lib/site-href";
+import { useEffect, useState } from "react";
 
 export function StickyCallButton() {
+  const [footerVisible, setFooterVisible] = useState(false);
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(([entry]) => setFooterVisible(Boolean(entry?.isIntersecting)));
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+  if (footerVisible) return null;
   if (!site.contactDataReady) {
     return (
       <a className="mobile-call-bar" href={siteHref("/#contact")}>

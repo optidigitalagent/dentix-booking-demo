@@ -4675,3 +4675,26 @@ body::before,
 .lead-form-state.error { color: #793d35; border: 1px solid #dcc1bb; background: #fff0ed; }
 .lead-form .btn:disabled { opacity: .52; cursor: not-allowed; }
 @media (max-width: 520px) { .lead-fields { grid-template-columns: 1fr; } .lead-field-wide { grid-column: auto; } }
+/* Input size is set before focus, including default-type inputs and native date controls. */
+.booking-drawer { display: flex; flex-direction: column; min-width: 0; }
+.booking-head, .booking-footer, .booking-progress { flex-shrink: 0; }
+.booking-body { flex: 1 1 auto; min-width: 0; -webkit-overflow-scrolling: touch; }
+.booking-summary dd, .booking-option span, .lead-fields label { min-width: 0; overflow-wrap: anywhere; }
+.booking-form input:not([type]), .booking-form input[type="text"], .booking-form input[type="tel"] { width: 100%; min-height: 48px; padding: 11px 13px; border: 1px solid var(--border); background: var(--surface); font: inherit; }
+.booking-fallback > p { margin-bottom: 16px; }
+body:has(.booking-layer) .mobile-call-bar,
+body:has(.lead-form :is(input, select, textarea):focus) .mobile-call-bar { display: none; }
+@media (max-width: 900px), (pointer: coarse) {
+  .lead-fields :is(input, select, textarea),
+  .booking-drawer :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) { font-size: max(16px, 1rem); min-width: 0; max-width: 100%; }
+  .booking-layer { top: var(--booking-visible-top, 0px); bottom: auto; height: var(--booking-visible-height, 100dvh); }
+  .booking-drawer { max-height: 100%; height: min(94dvh, var(--booking-visible-height, 100dvh)); }
+  .booking-body { scroll-padding-block: 20px; }
+}
+@media (max-height: 480px) {
+  .booking-head { padding-block: 8px; }
+  .booking-head h2 { font-size: 24px; }
+  .booking-kicker { font-size: 9px; }
+  .booking-footer { padding-block: 8px; }
+  .booking-body { padding-block: 14px; }
+}

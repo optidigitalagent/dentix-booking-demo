@@ -7,6 +7,9 @@ import type {
   BookingCatalog,
   BookingConfirmation,
 } from "@/lib/booking-types";
+import { LeadForm } from "../LeadForm";
+import { getIntakeStatus, type IntakeStatus } from "@/lib/intake-status";
+import { useBookingViewport } from "./useBookingViewport";
 import { useBooking } from "./BookingContext";
 
 const stepLabels = ["Послуга", "Лікар", "Дата і час", "Ваші дані", "Перевірка"];
@@ -16,6 +19,8 @@ export function BookingDrawer() {
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const [step, setStep] = useState(0);
+  const [readiness, setReadiness] = useState<IntakeStatus | null>(null);
+  useBookingViewport(isOpen, panelRef);
   const [catalog, setCatalog] = useState<BookingCatalog | null>(null);
   const [availability, setAvailability] = useState<AvailabilityDay[]>([]);
   const [serviceId, setServiceId] = useState("");
@@ -32,8 +37,16 @@ export function BookingDrawer() {
 
   useEffect(() => {
     if (!isOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const body = document.body;
+    const scroll = { x: window.scrollX, y: window.scrollY };
+    const ownedStyles = { overflow: "hidden", position: "fixed", top: `-${scroll.y}px`, left: `-${scroll.x}px`, width: "100%" };
+    const previousStyles = Object.fromEntries(Object.keys(ownedStyles).map((key) => [key, body.style.getPropertyValue(key)]));
+    for (const [key, value] of Object.entries(ownedStyles)) body.style.setProperty(key, value);
+    const appliedStyles = Object.fromEntries(Object.keys(ownedStyles).map((key) => [key, body.style.getPropertyValue(key)]));
+    let active = true;
+    setCatalog(null);
+    setReadiness(null);
     setStep(seed.serviceId || seed.doctorId ? 0 : 0);
     setServiceId(seed.serviceId ?? "");
     setDoctorId(seed.doctorId ?? "");
@@ -44,21 +57,32 @@ export function BookingDrawer() {
     setPhone("");
     setConsent(false);
     setConfirmation(null);
+    setConsent(false);
     setError("");
     setLoading(true);
-    bookingClient
-      .getCatalog()
-      .then(setCatalog)
-      .catch((reason: unknown) =>
-        setError(reason instanceof Error ? reason.message : "Онлайн-запис тимчасово недоступний."),
-      )
-      .finally(() => setLoading(false));
-    const timer = window.setTimeout(() => closeRef.current?.focus(), 60);
+    getIntakeStatus()
+      .then(async (status) => {
+        if (!active) return;
+        setReadiness(status);
+        if (status.timed.enabled && status.timed.policyUrl) {
+          const value = await bookingClient.getCatalog();
+          const linkedServices = value.services.filter((service) => value.doctors.some((doctor) => doctor.serviceIds.includes(service.id)));
+          const linkedDoctors = value.doctors.filter((doctor) => linkedServices.some((service) => doctor.serviceIds.includes(service.id)));
+          if (active && !value.testOnly && value.mode === "LIVE_REQUESTS_READY" && linkedServices.length && linkedDoctors.length) {
+            setCatalog({ ...value, services: linkedServices, doctors: linkedDoctors });
+          }
+        }
+      })
+      .catch((reason: unknown) => {
+        if (active) setError(reason instanceof Error && !(reason instanceof TypeError) ? reason.message : "Онлайн-запис тимчасово недоступний.");
+      })
+      .finally(() => { if (active) setLoading(false); });
+    const timer = window.setTimeout(() => closeRef.current?.focus({ preventScroll: true }), 60);
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeBooking();
       if (event.key !== "Tab" || !panelRef.current) return;
       const focusable = [...panelRef.current.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), input:not([disabled]), a[href]'
+        'button:not([disabled]), input:not([disabled]):not([tabindex="-1"]), select:not([disabled]), textarea:not([disabled]), a[href]'
       )];
       const first = focusable[0];
       const last = focusable.at(-1);
@@ -72,7 +96,13 @@ export function BookingDrawer() {
     };
     document.addEventListener("keydown", onKeyDown);
     return () => {
-      document.body.style.overflow = previousOverflow;
+      active = false;
+      for (const [key, value] of Object.entries(appliedStyles)) {
+        if (body.style.getPropertyValue(key) === value) body.style.setProperty(key, previousStyles[key] ?? "");
+      }
+      // Restore the page location captured on open; never reset the user's zoom.
+      if (body.style.position !== "fixed") window.scrollTo({ left: scroll.x, top: scroll.y, behavior: "instant" });
+      previousFocus?.focus({ preventScroll: true });
       document.removeEventListener("keydown", onKeyDown);
       window.clearTimeout(timer);
     };
@@ -81,19 +111,21 @@ export function BookingDrawer() {
   useEffect(() => {
     if (!serviceId || !doctorId || !selectedDate || !isOpen) return;
     setLoading(true);
+    let active = true;
+    setError("");
     setAvailability([]);
     setStartsAt("");
     bookingClient
       .getAvailability(serviceId, doctorId, selectedDate)
-      .then(setAvailability)
-      .catch((reason: unknown) =>
-        setError(reason instanceof Error ? reason.message : "Не вдалося завантажити час."),
-      )
-      .finally(() => setLoading(false));
-    const refresh = () => bookingClient.getAvailability(serviceId, doctorId, selectedDate).then(setAvailability).catch(() => undefined);
+      .then((value) => { if (active) setAvailability(value); })
+      .catch((reason: unknown) => {
+        if (active) setError(reason instanceof Error && !(reason instanceof TypeError) ? reason.message : "Не вдалося завантажити час.");
+      })
+      .finally(() => { if (active) setLoading(false); });
+    const refresh = () => bookingClient.getAvailability(serviceId, doctorId, selectedDate).then((value) => { if (active) setAvailability(value); }).catch(() => undefined);
     const timer = window.setInterval(refresh, 30_000);
     window.addEventListener("focus", refresh);
-    return () => { window.clearInterval(timer); window.removeEventListener("focus", refresh); };
+    return () => { active = false; window.clearInterval(timer); window.removeEventListener("focus", refresh); };
   }, [doctorId, isOpen, selectedDate, serviceId]);
 
   const doctors = useMemo(
@@ -105,14 +137,14 @@ export function BookingDrawer() {
   const selectedSlot = availability.flatMap((day) => day.slots).find((slot) => slot.startsAt === startsAt);
 
   const canContinue =
-    (step === 0 && Boolean(serviceId)) ||
-    (step === 1 && Boolean(doctorId)) ||
+    (step === 0 && Boolean(service)) ||
+    (step === 1 && doctors.some((item) => item.id === doctorId)) ||
     (step === 2 && Boolean(startsAt)) ||
     (step === 3 && isPatientBookingDetailsValid({ name, phone, consent })) ||
     step === 4;
 
   async function submit() {
-    if (!service || !doctor || !startsAt || !consent) return;
+    if (!service || !doctor || !startsAt || !consent || !readiness?.timed.enabled || !readiness.timed.policyUrl) return;
     setLoading(true);
     setError("");
     try {
@@ -124,13 +156,14 @@ export function BookingDrawer() {
         phone: phone.trim(),
         consent: true,
         idempotencyKey: idempotencyRef.current,
-        testSubmission: catalog?.testOnly ?? false,
+        consentVersion: readiness?.timed.consentVersion ?? "",
       });
       setConfirmation(result);
     } catch (reason) {
       if (reason instanceof Error && "code" in reason && (reason as { code?: string }).code === "SLOT_NO_LONGER_AVAILABLE") {
         setStartsAt("");
-        if (selectedDate) void bookingClient.getAvailability(serviceId, doctorId, selectedDate).then(setAvailability);
+        setStep(2);
+        if (selectedDate) void bookingClient.getAvailability(serviceId, doctorId, selectedDate).then(setAvailability).catch(() => undefined);
       }
       setError(reason instanceof Error ? reason.message : "Не вдалося створити запис.");
     } finally {
@@ -153,20 +186,15 @@ export function BookingDrawer() {
         <header className="booking-head">
           <div>
             <p className="booking-kicker">DENTIX · запит на запис</p>
-            <h2 id="booking-title">{confirmation ? "Запит отримано" : stepLabels[step]}</h2>
+            <h2 id="booking-title">{confirmation ? "Запит отримано" : !catalog && !loading ? "Залишити заявку" : stepLabels[step]}</h2>
           </div>
           <button ref={closeRef} className="booking-icon-button" onClick={closeBooking} aria-label="Закрити">
             <X size={20} />
           </button>
         </header>
 
-        {catalog?.environment === "test-ready" ? (
-          <div className="booking-demo-flag" role="status">
-            TEST_READY · тестові ресурси та графік, 60 хв · це не production онлайн-запис
-          </div>
-        ) : null}
 
-        {!confirmation ? (
+        {!confirmation && catalog ? (
           <div className="booking-progress" aria-label={`Крок ${step + 1} з ${stepLabels.length}`}>
             <span style={{ width: `${((step + 1) / stepLabels.length) * 100}%` }} />
           </div>
@@ -176,19 +204,20 @@ export function BookingDrawer() {
           {loading && !catalog ? <p className="booking-state">Завантажуємо безпечний запис…</p> : null}
           {error ? <div className="booking-error" role="alert">{error}</div> : null}
 
+          {!loading && !catalog ? <section className="booking-fallback"><p>Залиште заявку — адміністратор уточнить послугу та зручний час.</p><p className="booking-privacy-note">Заявка не резервує час прийому.</p><LeadForm sourceSite="PUBLIC_DEMO" /></section> : null}
           {confirmation ? (
             <section className="booking-confirmation">
               <span className="booking-success-mark"><Check size={28} /></span>
-              <p className="booking-kicker">TEST · очікує дзвінка</p>
+              <p className="booking-kicker">Очікує дзвінка</p>
               <h3>{confirmation.reference}</h3>
               <p>{confirmation.message}</p>
               <dl className="booking-summary">
                 <div><dt>Послуга</dt><dd>{service?.name}</dd></div>
                 <div><dt>Лікар</dt><dd>{doctor?.name}</dd></div>
                 <div><dt>Інтервал</dt><dd>{formatDateTime(confirmation.startsAt)}–{formatTime(confirmation.endsAt)}</dd></div>
-                <div><dt>Статус</dt><dd>{confirmation.status}</dd></div>
+                <div><dt>Статус</dt><dd>Очікує дзвінка</dd></div>
               </dl>
-              <p className="booking-privacy-note">Інтервал зарезервовано у TEST-контурі до дзвінка адміністратора. Email і SMS не надсилаються.</p>
+              <p className="booking-privacy-note">Адміністратор DENTIX зателефонує, щоб уточнити та підтвердити деталі.</p>
               <button className="booking-primary" onClick={closeBooking}>Готово</button>
             </section>
           ) : null}
@@ -202,7 +231,7 @@ export function BookingDrawer() {
                   onClick={() => { setServiceId(item.id); setDoctorId(""); }}
                 >
                   <span><strong>{item.name}</strong><small>{item.category}</small></span>
-                  <em>{catalog.testOnly ? "TEST" : `${item.durationMinutes} хв`}</em>
+                  <em>{`${item.durationMinutes} хв`}</em>
                 </button>
               ))}
             </div>
@@ -217,7 +246,6 @@ export function BookingDrawer() {
                   onClick={() => setDoctorId(item.id)}
                 >
                   <span><strong>{item.name}</strong><small>{item.role}</small></span>
-                  {item.demo ? <em>DEMO</em> : null}
                 </button>
               ))}
             </div>
@@ -226,7 +254,7 @@ export function BookingDrawer() {
           {!confirmation && catalog && step === 2 ? (
             <div className="booking-calendar-list">
               <label className="booking-date-field"><span>Дата (Europe/Kyiv)</span><input type="date" min={catalog.minDate} max={catalog.maxDate} value={selectedDate} onChange={(event) => { setSelectedDate(event.target.value); setStartsAt(""); }} /></label>
-              <p className="booking-privacy-note">Тестовий інтервал запиту: {catalog.requestDurationMinutes} хв. Доступність оновлюється кожні 30 секунд.</p>
+              <p className="booking-privacy-note">Попередній інтервал запиту: {catalog.requestDurationMinutes} хв. Доступність оновлюється кожні 30 секунд.</p>
               {loading ? <p className="booking-state">Перевіряємо доступність…</p> : null}
               {!loading && selectedDate && availability.every((day) => day.slots.length === 0) ? <p className="booking-state">На цю дату немає доступних інтервалів.</p> : null}
               {availability.map((day) => (
@@ -250,11 +278,11 @@ export function BookingDrawer() {
 
           {!confirmation && catalog && step === 3 ? (
             <div className="booking-form">
-              <label><span>Ім’я *</span><input value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" placeholder="Ваше ім’я" /></label>
-              <label><span>Телефон *</span><input value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="tel" inputMode="tel" placeholder="+380 __ ___ __ __" /></label>
+              <label><span>Ім’я *</span><input type="text" required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" placeholder="Ваше ім’я" /></label>
+              <label><span>Телефон *</span><input type="tel" required maxLength={30} value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="tel" inputMode="tel" placeholder="+380 __ ___ __ __" /></label>
               <label className="booking-consent">
                 <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-                <span>Погоджуюся на обробку контактних даних для створення та адміністрування запису.</span>
+                <span>Погоджуюся на обробку контактних даних для створення та адміністрування запису. {readiness?.timed.policyUrl ? <a href={readiness.timed.policyUrl} target="_blank" rel="noreferrer">Політика конфіденційності</a> : null}</span>
               </label>
               <p className="booking-privacy-note"><LockKeyhole size={14} /> Діагноз, медична історія й документи тут не збираються.</p>
             </div>
@@ -262,7 +290,7 @@ export function BookingDrawer() {
 
           {!confirmation && catalog && step === 4 ? (
             <section className="booking-review">
-              <p>Перевірте дані перед надсиланням TEST-запиту.</p>
+              <p>Перевірте дані перед надсиланням запиту.</p>
               <dl className="booking-summary">
                 <div><dt>Послуга</dt><dd>{service?.name}</dd></div>
                 <div><dt>Лікар</dt><dd>{doctor?.name}</dd></div>
@@ -291,7 +319,6 @@ export function BookingDrawer() {
     </div>
   );
 }
-function formatTime(value: string) { return new Intl.DateTimeFormat("uk-UA", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: "Europe/Kyiv" }).format(new Date(value)); }
 
 function formatDateTime(value: string) {
   return new Intl.DateTimeFormat("uk-UA", {
@@ -300,3 +327,4 @@ function formatDateTime(value: string) {
     timeZone: "Europe/Kyiv",
   }).format(new Date(value));
 }
+function formatTime(value: string) { return new Intl.DateTimeFormat("uk-UA", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: "Europe/Kyiv" }).format(new Date(value)); }
