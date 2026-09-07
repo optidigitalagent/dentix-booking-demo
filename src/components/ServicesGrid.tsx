@@ -4,11 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 import { siteHref } from "@/lib/site-href";
 import { BookingButton } from "./booking/BookingContext";
 
-const demoBookingMap: Record<string, string> = {
-  "Профілактика": "demo-hygiene",
-  "Терапія": "demo-therapy",
-  "Ортодонтія": "demo-ortho",
-};
+const bookingDirections = ["Профілактика", "Терапія", "Ортодонтія"];
 
 export function ServicesGrid() {
   return (
@@ -30,8 +26,8 @@ export function ServicesGrid() {
               <a className="svc-link" href={siteHref(s.href)}>
                 {s.linkLabel} <span aria-hidden="true">→</span>
               </a>
-              {demoBookingMap[s.title] ? (
-                <BookingButton className="svc-booking-link" serviceId={demoBookingMap[s.title]}>
+              {bookingDirections.includes(s.title) ? (
+                <BookingButton className="svc-booking-link" requestedInterest={s.title}>
                   Записатися онлайн
                 </BookingButton>
               ) : null}

@@ -1,8 +1,21 @@
+export type BookingMode = "DIRECT_SLOT" | "CONSULTATION_SLOT" | "CALLBACK_ONLY";
+export type BookingMapping = {
+  doctor_id: string;
+  service_id: string;
+  active: boolean;
+  public_bookable: boolean;
+  booking_mode: BookingMode;
+  reservation_duration_minutes: number | null;
+  buffer_before_minutes: number;
+  buffer_after_minutes: number;
+  consultation_service_id: string | null;
+  scheduled_service_id: string | null;
+  scheduled_service_name: string | null;
+};
 export type BookingService = {
   id: string;
   name: string;
   category: string;
-  durationMinutes: number;
   demo?: boolean;
 };
 
@@ -31,6 +44,7 @@ export type BookingCatalog = {
   consentVersion: string;
   services: BookingService[];
   doctors: BookingDoctor[];
+  doctorServices: BookingMapping[];
 };
 
 export type CreateBookingInput = {
@@ -52,6 +66,9 @@ export type BookingConfirmation = {
   message: string;
   startsAt: string;
   endsAt: string;
+  bookingMode: BookingMode;
+  requestedServiceName: string;
+  scheduledServiceName: string;
 };
 
 export class BookingApiError extends Error {

@@ -78,15 +78,7 @@ export function PriceDemo() {
               {(["profilaktyka", "terapiya", "ortodontiya"] as string[]).includes(block.id) ? (
                 <BookingButton
                   className="price-booking-link"
-                  serviceId={
-                    (
-                      {
-                        profilaktyka: "demo-hygiene",
-                        terapiya: "demo-therapy",
-                        ortodontiya: "demo-ortho",
-                      } as Record<string, string>
-                    )[block.id]
-                  }
+                  requestedInterest={block.kicker}
                 >
                   Записатися за напрямком
                 </BookingButton>

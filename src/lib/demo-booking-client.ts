@@ -2,6 +2,7 @@ import type {
   AvailabilityDay,
   BookingCatalog,
   BookingConfirmation,
+  BookingMapping,
   CreateBookingInput,
 } from "./booking-types";
 import { BookingApiError } from "./booking-types";
@@ -44,7 +45,7 @@ export const bookingClient = {
       minDate: string; maxDate: string; consentVersion: string;
       doctors: Array<{ id: string; name: string; role_label: string }>;
       services: Array<{ id: string; name: string; category: string }>;
-      doctorServices: Array<{ doctor_id: string; service_id: string }>;
+      doctorServices: BookingMapping[];
     }>("/catalog");
     return {
       clinicTimezone: data.timezone,
@@ -55,8 +56,9 @@ export const bookingClient = {
       minDate: data.minDate,
       maxDate: data.maxDate,
       consentVersion: data.consentVersion,
-      services: data.services.map((item) => ({ id: item.id, name: item.name, category: item.category, durationMinutes: data.requestDurationMinutes, demo: data.testOnly })),
+      services: data.services.map((item) => ({ id: item.id, name: item.name, category: item.category, demo: data.testOnly })),
       doctors: data.doctors.map((item) => ({ id: item.id, name: item.name, role: item.role_label, serviceIds: data.doctorServices.filter((link) => link.doctor_id === item.id).map((link) => link.service_id), demo: data.testOnly })),
+      doctorServices: data.doctorServices ?? [],
     } satisfies BookingCatalog;
   },
   async getAvailability(serviceId: string, doctorId: string, date: string) {

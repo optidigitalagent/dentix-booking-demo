@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
-type BookingSeed = { serviceId?: string | undefined; doctorId?: string | undefined };
+type BookingSeed = { serviceId?: string | undefined; doctorId?: string | undefined; requestedInterest?: string | undefined };
 
 type BookingContextValue = {
   isOpen: boolean;
@@ -37,17 +37,19 @@ export function BookingButton({
   children = "Записатися онлайн",
   serviceId,
   doctorId,
+  requestedInterest,
   onClick,
 }: {
   className?: string;
   children?: React.ReactNode;
   serviceId?: string | undefined;
   doctorId?: string | undefined;
+  requestedInterest?: string | undefined;
   onClick?: () => void;
 }) {
   const { openBooking } = useBooking();
   return (
-    <button className={className} type="button" onClick={() => { onClick?.(); openBooking({ serviceId, doctorId }); }}>
+    <button className={className} type="button" onClick={() => { onClick?.(); openBooking({ serviceId, doctorId, requestedInterest }); }}>
       {children}
     </button>
   );

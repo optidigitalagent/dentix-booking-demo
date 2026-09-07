@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getIntakeStatus, type IntakeStatus } from "@/lib/intake-status";
 
 type ContactMethod = "PHONE" | "TELEGRAM" | "VIBER" | "WHATSAPP";
-type LeadFormProps = { sourceSite: "CANONICAL_CANDIDATE" | "PUBLIC_DEMO" };
+type LeadFormProps = { sourceSite: "CANONICAL_CANDIDATE" | "PUBLIC_DEMO"; requestedInterest?: string | undefined };
 
 const labels: Record<ContactMethod, string> = {
   PHONE: "Телефонний дзвінок",
@@ -16,12 +16,12 @@ const endpoint = import.meta.env.VITE_DENTIX_LEADS_API_URL?.trim() ?? "";
 const configuredMethods = (import.meta.env.VITE_DENTIX_LEAD_CONTACT_METHODS ?? "PHONE,TELEGRAM,VIBER,WHATSAPP")
   .split(",").map((value) => value.trim()).filter((value): value is ContactMethod => value in labels);
 
-export function LeadForm({ sourceSite }: LeadFormProps) {
+export function LeadForm({ sourceSite, requestedInterest }: LeadFormProps) {
   const methods = useMemo(() => configuredMethods.length ? configuredMethods : ["PHONE"] as ContactMethod[], []);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [preferredContact, setPreferredContact] = useState<ContactMethod>(methods[0]!);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState(() => requestedInterest ? `Цікавить: ${requestedInterest}. Прошу зателефонувати, без резервування часу.` : "");
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState("");
   const [idempotencyKey, setIdempotencyKey] = useState(() => crypto.randomUUID());
