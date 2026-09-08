@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, LockKeyhole, X } from "lucide-react";
 import { bookingClient } from "@/lib/demo-booking-client";
 import { isPatientBookingDetailsValid } from "@/lib/booking-validation";
-import { hasServiceDuration } from "@/lib/booking-duration";
 import type {
   AvailabilityDay,
   BookingCatalog,
@@ -55,10 +54,10 @@ export function BookingDrawer() {
     setDoctorId(seed.doctorId ?? "");
     setStartsAt("");
     setSelectedDate("");
-    idempotencyRef.current = crypto.randomUUID();
-    setConfirmation(null);
     setName("");
     setPhone("");
+    idempotencyRef.current = crypto.randomUUID();
+    setConfirmation(null);
     setConsent(false);
     setError("");
     setLoading(true);
@@ -135,7 +134,7 @@ export function BookingDrawer() {
   const service = catalog?.services.find((item) => item.id === serviceId);
   const doctor = catalog?.doctors.find((item) => item.id === doctorId);
   const mapping = catalog?.doctorServices.find((item) => item.service_id === serviceId && item.doctor_id === doctorId && item.active);
-  const configuredService = Boolean(service && hasServiceDuration(service.durationMinutes) && doctors.length);
+  const configuredService = Boolean(service && doctors.length);
   const callbackView = leadFallback;
   const selectedSlot = availability.flatMap((day) => day.slots).find((slot) => slot.startsAt === startsAt);
   useEffect(() => {
@@ -153,7 +152,7 @@ export function BookingDrawer() {
     (step === 4 && Boolean(mapping && selectedSlot));
 
   async function submit() {
-    if (!service || !hasServiceDuration(service.durationMinutes) || !doctor || !mapping || !selectedSlot || !startsAt || !consent || !readiness?.timed.enabled || !readiness.timed.policyUrl) return;
+    if (!service || !doctor || !mapping || !selectedSlot || !startsAt || !consent || !readiness?.timed.enabled || !readiness.timed.policyUrl) return;
     setLoading(true);
     setError("");
     try {
@@ -218,16 +217,16 @@ export function BookingDrawer() {
           {confirmation ? (
             <section className="booking-confirmation">
               <span className="booking-success-mark"><Check size={28} /></span>
-              <p className="booking-kicker">Очікує дзвінка</p>
+              <p className="booking-kicker">{confirmationStatus(confirmation.status)}</p>
               <h3>{confirmation.reference}</h3>
-              <p>{confirmation.message}</p>
+              <p>{confirmation.status === "AWAITING_CALLBACK" ? confirmation.message : "Цей запит уже було збережено. Нижче вказано його поточний статус та початково обраний час."}</p>
               <dl className="booking-summary">
                 <div><dt>Послуга</dt><dd>{confirmation.serviceName || service?.name}</dd></div>
                 <div><dt>Лікар</dt><dd>{doctor?.name}</dd></div>
-                <div><dt>Інтервал</dt><dd>{formatDateTime(confirmation.startsAt)}–{formatTime(confirmation.endsAt)}</dd></div>
-                <div><dt>Статус</dt><dd>Очікує дзвінка</dd></div>
+                <div><dt>Бажаний час</dt><dd>{formatDateTime(confirmation.startsAt)}</dd></div>
+                <div><dt>Статус</dt><dd>{confirmationStatus(confirmation.status)}</dd></div>
               </dl>
-              <p className="booking-privacy-note">Інтервал тимчасово утримується до узгодження з адміністратором. Прийом ще не підтверджено. Адміністратор DENTIX зателефонує, щоб уточнити деталі.</p>
+              <p className="booking-privacy-note">{confirmation.status === "AWAITING_CALLBACK" ? "Обраний час попередньо збережено на 30 хвилин. Це не тривалість лікування. Прийом ще не підтверджено — адміністратор DENTIX зателефонує, щоб узгодити деталі та фактичний час." : confirmation.status === "CANCELLED" ? "Запит скасовано. Ця відповідь не створює нового запису та не резервує час." : "Фактичний час прийому може відрізнятися від початкового запиту. Орієнтуйтеся на домовленість з адміністратором."}</p>
               <button className="booking-primary" onClick={closeBooking}>Готово</button>
             </section>
           ) : null}
@@ -241,7 +240,6 @@ export function BookingDrawer() {
                   onClick={() => { setServiceId(item.id); setDoctorId(""); }}
                 >
                   <span><strong>{item.name}</strong><small>{item.category}</small></span>
-                  <em>{hasServiceDuration(item.durationMinutes) ? `${item.durationMinutes} хв` : "Час уточнюється"}</em>
                 </button>
               ))}
             </div>
@@ -266,7 +264,7 @@ export function BookingDrawer() {
           {!confirmation && catalog && step === 2 ? (
             <div className="booking-calendar-list">
               <label className="booking-date-field"><span>Дата (Europe/Kyiv)</span><input type="date" min={catalog.minDate} max={catalog.maxDate} value={selectedDate} onChange={(event) => { setSelectedDate(event.target.value); setStartsAt(""); }} /></label>
-              <p className="booking-privacy-note">Оберіть бажаний час. Послуга: {service?.name}. Тривалість: {availability[0]?.durationMinutes ?? service?.durationMinutes} хв. Доступність оновлюється кожні 30 секунд.</p>
+              <p className="booking-privacy-note">Оберіть бажаний початок. Час попередньо зберігається на 30 хвилин; фактичний час прийому адміністратор узгодить із вами телефоном. Доступність оновлюється кожні 30 секунд.</p>
               {loading ? <p className="booking-state">Перевіряємо доступність…</p> : null}
               {!loading && selectedDate && availability.every((day) => day.slots.length === 0) ? <p className="booking-state">На цю дату немає доступних інтервалів.</p> : null}
               {availability.map((day) => (
@@ -302,11 +300,11 @@ export function BookingDrawer() {
 
           {!confirmation && catalog && step === 4 ? (
             <section className="booking-review">
-              <p>Перевірте дані перед надсиланням запиту.</p>
+              <p>Перевірте дані перед надсиланням запиту. Адміністратор зателефонує, щоб узгодити фактичний час прийому.</p>
               <dl className="booking-summary">
                 <div><dt>Послуга</dt><dd>{service?.name}</dd></div>
                 <div><dt>Лікар</dt><dd>{doctor?.name}</dd></div>
-                <div><dt>Інтервал</dt><dd>{selectedSlot ? `${formatDateTime(selectedSlot.startsAt)}–${formatTime(selectedSlot.endsAt)}` : "—"}</dd></div>
+                <div><dt>Бажаний час</dt><dd>{selectedSlot ? formatDateTime(selectedSlot.startsAt) : "—"}</dd></div>
                 <div><dt>Ім’я</dt><dd>{name}</dd></div>
                 <div><dt>Телефон</dt><dd>{phone}</dd></div>
                 <div><dt>Часовий пояс</dt><dd>{catalog.clinicTimezone}</dd></div>
@@ -339,4 +337,4 @@ function formatDateTime(value: string) {
     timeZone: "Europe/Kyiv",
   }).format(new Date(value));
 }
-function formatTime(value: string) { return new Intl.DateTimeFormat("uk-UA", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: "Europe/Kyiv" }).format(new Date(value)); }
+function confirmationStatus(status: BookingConfirmation["status"]) { return { AWAITING_CALLBACK: "Очікує дзвінка", CONFIRMED: "Підтверджено", CANCELLED: "Скасовано", COMPLETED: "Візит завершено", NO_SHOW: "Візит не відбувся" }[status]; }

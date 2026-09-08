@@ -44,7 +44,7 @@ export const bookingClient = {
       mode: "TEST_READY" | "LIVE_REQUESTS_READY" | "UNAVAILABLE"; testOnly: boolean; timezone: string;
       minDate: string; maxDate: string; consentVersion: string;
       doctors: Array<{ id: string; name: string; role_label: string }>;
-      services: Array<{ id: string; name: string; category: string; duration_minutes: number | null }>;
+      services: Array<{ id: string; name: string; category: string }>;
       doctorServices: DoctorServiceLink[];
     }>("/catalog");
     return {
@@ -55,16 +55,16 @@ export const bookingClient = {
       minDate: data.minDate,
       maxDate: data.maxDate,
       consentVersion: data.consentVersion,
-      services: data.services.map((item) => ({ id: item.id, name: item.name, category: item.category, durationMinutes: item.duration_minutes, demo: data.testOnly })),
+      services: data.services.map((item) => ({ id: item.id, name: item.name, category: item.category, demo: data.testOnly })),
       doctors: data.doctors.map((item) => ({ id: item.id, name: item.name, role: item.role_label, serviceIds: data.doctorServices.filter((link) => link.doctor_id === item.id).map((link) => link.service_id), demo: data.testOnly })),
       doctorServices: data.doctorServices ?? [],
     } satisfies BookingCatalog;
   },
   async getAvailability(serviceId: string, doctorId: string, date: string) {
-    const data = await request<{ date: string; durationMinutes: number; slots: Array<{ startsAt: string; endsAt: string; localStart: string; localEnd: string }> }>(
+    const data = await request<{ date: string; slots: Array<{ startsAt: string; endsAt: string; localStart: string; localEnd: string }> }>(
       `/availability?service_id=${encodeURIComponent(serviceId)}&doctor_id=${encodeURIComponent(doctorId)}&date=${encodeURIComponent(date)}`,
     );
-    return [{ date: data.date, durationMinutes: data.durationMinutes, label: new Intl.DateTimeFormat("uk-UA", { dateStyle: "full", timeZone: "UTC" }).format(new Date(`${data.date}T12:00:00Z`)), slots: data.slots.map((slot) => ({ startsAt: slot.startsAt, endsAt: slot.endsAt, label: `${slot.localStart}–${slot.localEnd}` })) }] satisfies AvailabilityDay[];
+    return [{ date: data.date, label: new Intl.DateTimeFormat("uk-UA", { dateStyle: "full", timeZone: "UTC" }).format(new Date(`${data.date}T12:00:00Z`)), slots: data.slots.map((slot) => ({ startsAt: slot.startsAt, endsAt: slot.endsAt, label: slot.localStart })) }] satisfies AvailabilityDay[];
   },
   createAppointment: (input: CreateBookingInput) =>
     request<BookingConfirmation>("/requests", {

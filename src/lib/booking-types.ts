@@ -2,14 +2,11 @@ export type DoctorServiceLink = {
   doctor_id: string;
   service_id: string;
   active: boolean;
-  buffer_before_minutes?: number;
-  buffer_after_minutes?: number;
 };
 export type BookingService = {
   id: string;
   name: string;
   category: string;
-  durationMinutes: number | null;
   demo?: boolean;
 };
 
@@ -24,7 +21,6 @@ export type BookingDoctor = {
 export type AvailabilityDay = {
   date: string;
   label: string;
-  durationMinutes?: number;
   slots: Array<{ startsAt: string; endsAt: string; label: string }>;
 };
 
@@ -55,7 +51,7 @@ export type CreateBookingInput = {
 export type BookingConfirmation = {
   appointmentId: string;
   reference: string;
-  status: "AWAITING_CALLBACK";
+  status: "AWAITING_CALLBACK" | "CONFIRMED" | "CANCELLED" | "COMPLETED" | "NO_SHOW";
   revision: number;
   message: string;
   startsAt: string;
