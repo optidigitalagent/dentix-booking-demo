@@ -1,0 +1,17 @@
+{
+  "verified_at": "2026-09-08T11:33:58Z",
+  "robots_url": "https://dentix.ua/robots.txt",
+  "googlebot": {
+    "decision": "unchanged",
+    "rationale": "PR00 has no crawler-policy edit authority. Preview meta noindex retained. Production policy to verify separately; current preview robots.txt 404 does not authorize indexing."
+  },
+  "oai_searchbot": {
+    "decision": "unchanged",
+    "rationale": "Search discovery policy requires independent decision after production inspection; no citation guarantee."
+  },
+  "gptbot": {
+    "decision": "unchanged",
+    "rationale": "Training preference independent from search discovery; owner decision UNKNOWN; no edit authorized."
+  },
+  "authorized_by": "No crawler policy mutation authorized; DENTIX PR00 internal record only"
+}

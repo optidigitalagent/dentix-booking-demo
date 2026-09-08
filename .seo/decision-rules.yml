@@ -1,0 +1,29 @@
+{
+  "rules": [
+    {
+      "initiative_id": "PR-00-to-launch",
+      "hypothesis": "Evidence-led technical and content work may improve qualified demand; not yet tested",
+      "primary_kpi": "Real qualified leads and confirmed appointments from agreed channels",
+      "guardrails": [
+        "Preview remains noindex",
+        "No lost old service URLs on replacement",
+        "No unapproved claims, medical evidence or personal data in analytics",
+        "No false conversion from phone click, synthetic event or submit intent"
+      ],
+      "baseline_window": "T0 2026-09-08 UTC point-in-time technical/scope observations; no quantitative 28/90-day baseline or comparison dataset; named property, filters, devices and ownership pending",
+      "minimum_observation_window": "0–7 / 28 / 90 days after launch; adapt to volume with documented rule",
+      "success": "Only explicit bounded evidence-backed claims may establish results; no numeric target invented in PR00",
+      "failure": "Missing source data prevents outcome assessment; technical regression is a separate failure",
+      "rework_or_rollback": "Diagnose broken technical prerequisites or delivery first; revisit query intent/content when sufficient comparable data exists; external rollback requires separate authority",
+      "confounders": [
+        "Seasonality",
+        "Paid/brand activity",
+        "Tracking/consent changes",
+        "Same-domain migration",
+        "Unequal data windows",
+        "Device/location differences",
+        "Model/platform variation"
+      ]
+    }
+  ]
+}

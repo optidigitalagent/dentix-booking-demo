@@ -1,0 +1,164 @@
+{
+  "risks": [
+    {
+      "id": "R-001",
+      "area": "migration",
+      "description": "P0: Same-domain replacement previously described as cross-domain/no",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "Lock old and new URL to dentix.ua; PR-02 URL inventory before release",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-002",
+      "area": "state",
+      "description": "P1: Historical repository ambiguity and README contradiction",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "This mission selects dentix-booking-demo; correct stale README only in separately scoped work",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-003",
+      "area": "indexability",
+      "description": "P0: Preview noindex accidentally removed",
+      "likelihood": "risk",
+      "impact": "high",
+      "mitigation": "Keep preview permanently noindex; profile parity tests in PR-01",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-004",
+      "area": "indexability",
+      "description": "P0: Preview noindex accidentally carried into final production",
+      "likelihood": "risk",
+      "impact": "high",
+      "mitigation": "Explicit production domain/profile acceptance before launch",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-005",
+      "area": "migration",
+      "description": "P0: Old service URLs may be lost or return 404",
+      "likelihood": "risk",
+      "impact": "high",
+      "mitigation": "Inventory old URLs and later approve per-URL disposition in PR-02; no redirect decisions now",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-006",
+      "area": "facts",
+      "description": "P1: Old free consultation versus source 500 грн consultation",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Obtain dated owner-approved price source; do not choose a price in PR-00",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-007",
+      "area": "claims",
+      "description": "P1: Existing medical/commercial claims lack review and source evidence",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Keep claims pending; named qualified reviewer before new public wording",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-008",
+      "area": "rendering",
+      "description": "P0: Critical content absent from initial preview HTML",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "Static HTML/prerender in PR-01; compare source to DOM",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-009",
+      "area": "technical",
+      "description": "P0: New-site canonical/robots/sitemap/local Schema absent",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "Environment-aware production foundation in PR-01 using approved facts",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-010",
+      "area": "admin",
+      "description": "P1: Patient build creates /admin/ and imports AdminCrm",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Isolate admin before production; do not open private data or change backend",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-011",
+      "area": "conversion",
+      "description": "P1: Online CTA and unavailable intake can conflict with user expectations",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Phone-first CTA; verify delivery separately in PR-05",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-012",
+      "area": "measurement",
+      "description": "P1: GSC/GBP/GA4/Bing baseline unavailable",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Obtain separately authorized aggregate read-only exports; retain UNKNOWN",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-013",
+      "area": "medical",
+      "description": "P1: Full team/bios/licenses/case mapping/consent/reviewer incomplete",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Clinic evidence and review in PR-03/04; no inferred licenses, ratings or results",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-014",
+      "area": "navigation",
+      "description": "P1: Service link #parodontologiya has no current price target",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Resolve against approved content in PR-01; source and rendered anchor tests",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-015",
+      "area": "dynamic-content",
+      "description": "P1: Doctors/prices depend on public runtime source with JS-only fallback",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "Define source owner, refresh and drift; preserve static critical content in PR-01",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-016",
+      "area": "404",
+      "description": "P1: postbuild copies app shell into 404.html",
+      "likelihood": "confirmed",
+      "impact": "medium",
+      "mitigation": "PR-01 genuine not-found presentation; retain actual HTTP evidence separately",
+      "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
+      "status": "open"
+    }
+  ]
+}

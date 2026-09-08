@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "business_name": "DENTIX",
+  "domain": "https://dentix.ua/",
+  "market": "Ukraine / Dnipro",
+  "primary_language": "uk",
+  "site_type": "local-business",
+  "initialized_at": "2026-09-08T11:26:26Z",
+  "status": "PR-00 bootstrap / T0 controls / no public changes",
+  "secrets_policy": "Do not store credentials, tokens, private exports, personal data, or medical data in .seo"
+}

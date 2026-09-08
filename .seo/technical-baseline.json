@@ -1,0 +1,145 @@
+{
+  "captured_at": "2026-09-08T11:33:58Z",
+  "environment": "Source and GitHub Pages preview; old dentix.ua inspected separately; new production NOT_YET",
+  "source_sha": "f8431478b995031131fcdf4c12d89afdb6743067",
+  "production_url": "https://dentix.ua/",
+  "source_html_sample": [
+    {
+      "url": "https://optidigitalagent.github.io/dentix-booking-demo/",
+      "observed_at": "2026-09-08T11:28:45.759619+00:00",
+      "http_status": 200,
+      "sha256": "9200de42a13879c3ca62ba4281f38b1c52dd3ff7a86c8faa4c7f9e1c09cb1698",
+      "robots_meta": [
+        "<meta name=\"robots\" content=\"noindex,nofollow,noarchive\" />"
+      ],
+      "canonical": [],
+      "empty_root": true
+    },
+    {
+      "url": "https://optidigitalagent.github.io/dentix-booking-demo/price.html",
+      "observed_at": "2026-09-08T11:28:46.377113+00:00",
+      "http_status": 200,
+      "sha256": "9200de42a13879c3ca62ba4281f38b1c52dd3ff7a86c8faa4c7f9e1c09cb1698",
+      "robots_meta": [
+        "<meta name=\"robots\" content=\"noindex,nofollow,noarchive\" />"
+      ],
+      "canonical": [],
+      "empty_root": true
+    },
+    {
+      "url": "https://optidigitalagent.github.io/dentix-booking-demo/robots.txt",
+      "observed_at": "2026-09-08T11:28:46.637965+00:00",
+      "http_status": 404,
+      "sha256": "9200de42a13879c3ca62ba4281f38b1c52dd3ff7a86c8faa4c7f9e1c09cb1698",
+      "robots_meta": [
+        "<meta name=\"robots\" content=\"noindex,nofollow,noarchive\" />"
+      ],
+      "canonical": [],
+      "empty_root": true
+    },
+    {
+      "url": "https://optidigitalagent.github.io/dentix-booking-demo/sitemap.xml",
+      "observed_at": "2026-09-08T11:28:46.907169+00:00",
+      "http_status": 404,
+      "sha256": "9200de42a13879c3ca62ba4281f38b1c52dd3ff7a86c8faa4c7f9e1c09cb1698",
+      "robots_meta": [
+        "<meta name=\"robots\" content=\"noindex,nofollow,noarchive\" />"
+      ],
+      "canonical": [],
+      "empty_root": true
+    },
+    {
+      "url": "https://dentix.ua/",
+      "observed_at": "2026-09-08T11:28:47.173498+00:00",
+      "http_status": 200,
+      "sha256": "779a1db8b525264092030292b09caf3187fefdc9dcd44543f5372663cc36f7f4",
+      "robots_meta": [
+        "<meta name='robots' content='max-image-preview:large' />"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://dentix.ua/\" />"
+      ],
+      "empty_root": false
+    }
+  ],
+  "rendered_dom_sample": [
+    {
+      "url": "https://optidigitalagent.github.io/dentix-booking-demo/",
+      "status": 200,
+      "observed_at": "2026-09-08T11:29:53.234Z",
+      "viewport": "390x844",
+      "title": "DENTIX — patient booking demo",
+      "lang": "uk",
+      "h1": [
+        "СтоматологіяDENTIX"
+      ],
+      "canonical": [],
+      "robots": "noindex,nofollow,noarchive",
+      "parodontologiyaTarget": false,
+      "priceBlockIds": [],
+      "phoneLinks": [
+        "tel:+380679854050",
+        "tel:+380509124452"
+      ],
+      "formSubmitButtons": [
+        {
+          "text": "Залишити заявку",
+          "disabled": true
+        }
+      ],
+      "jsonldBlocks": 0,
+      "pageErrors": 0,
+      "limitations": "Read-only DOM sample; image/media requests blocked; no forms opened or submitted; not visual/mobile QA."
+    },
+    {
+      "url": "https://optidigitalagent.github.io/dentix-booking-demo/price.html",
+      "status": 200,
+      "observed_at": "2026-09-08T11:29:55.072Z",
+      "viewport": "390x844",
+      "title": "Ціни на стоматологічні послуги — DENTIX",
+      "lang": "uk",
+      "h1": [
+        "Ціни DENTIX"
+      ],
+      "canonical": [],
+      "robots": "noindex,nofollow,noarchive",
+      "parodontologiyaTarget": false,
+      "priceBlockIds": [
+        "zagalni",
+        "profilaktyka",
+        "estetyka",
+        "terapiya",
+        "ortodontiya",
+        "hirurgiya",
+        "ortopediya"
+      ],
+      "phoneLinks": [
+        "tel:+380679854050",
+        "tel:+380509124452"
+      ],
+      "formSubmitButtons": [
+        {
+          "text": "Залишити заявку",
+          "disabled": true
+        }
+      ],
+      "jsonldBlocks": 0,
+      "pageErrors": 0,
+      "limitations": "Read-only DOM sample; image/media requests blocked; no forms opened or submitted; not visual/mobile QA."
+    }
+  ],
+  "field_performance_source": null,
+  "lab_performance_source": null,
+  "known_gaps": [
+    "Production foundation absent; build is not an SEO outcome",
+    "Preview and source have no canonical or JSON-LD; preview robots/sitemap return HTTP 404",
+    "Initial HTML is an empty React root; rendered pages show content",
+    "price.html#parodontologiya missing in source and current rendered DOM",
+    "Public /admin/ artifact confirmed by source/build; admin UI not opened",
+    "404.html equals app shell; HTTP status and displayed not-found behavior need separate PR-01 tests",
+    "Intake status GET at 2026-09-08T11:28:48.271691+00:00: lead/timed UNAVAILABLE, disabled, no policy URL",
+    "Build profile includes Pages base with local content fallback; private runtime variables were not accessed",
+    "No five-viewport visual, performance, accessibility, full crawl or asset QA in PR00",
+    "Old-to-new URL disposition not authorized; old site remains WordPress"
+  ]
+}
