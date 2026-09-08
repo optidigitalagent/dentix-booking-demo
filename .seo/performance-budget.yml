@@ -1,0 +1,21 @@
+{
+  "field_data": {
+    "source": "ACCESS_BLOCKED: no CrUX/GSC field dataset",
+    "period": "UNKNOWN"
+  },
+  "lab_data": {
+    "tool": "NOT_RUN in PR00; build output is not CWV",
+    "profile": "UNKNOWN"
+  },
+  "budgets": {
+    "lcp_ms": null,
+    "inp_ms": null,
+    "cls": null,
+    "transferred_kb": null,
+    "javascript_kb": null,
+    "image_kb": null
+  },
+  "owners": [
+    "PR-06 owner TBD; numeric budgets require baseline and approval"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "sources": [
+    {
+      "id": "source",
+      "provider": "Git/source",
+      "property_or_scope": "optidigitalagent/dentix-booking-demo @ f8431478b995031131fcdf4c12d89afdb6743067",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "2026-09-08T11:33:58Z",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "read-only source",
+      "latency": "UNKNOWN",
+      "limitations": "Current source; not production or patient data"
+    },
+    {
+      "id": "preview",
+      "provider": "GitHub deployment",
+      "property_or_scope": "https://optidigitalagent.github.io/dentix-booking-demo/",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "2026-09-08T11:33:58Z",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "public-read",
+      "latency": "UNKNOWN",
+      "limitations": "Preview only; deployment id 6324604734; SHA f8431478b995031131fcdf4c12d89afdb6743067"
+    },
+    {
+      "id": "old-site",
+      "provider": "Public HTTP",
+      "property_or_scope": "https://dentix.ua/",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "2026-09-08T11:33:58Z",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "public-read",
+      "latency": "UNKNOWN",
+      "limitations": "Old site only; does not prove new-site launch"
+    },
+    {
+      "id": "gsc",
+      "provider": "Google Search Console",
+      "property_or_scope": "https://dentix.ua/",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "NOT_COLLECTED",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "ACCESS_BLOCKED",
+      "latency": "UNKNOWN",
+      "limitations": "No authorized export or property access"
+    },
+    {
+      "id": "gbp",
+      "provider": "Google Business Profile",
+      "property_or_scope": "DENTIX Dnipro profile UNKNOWN",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "NOT_COLLECTED",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "ACCESS_BLOCKED",
+      "latency": "UNKNOWN",
+      "limitations": "No profile performance baseline"
+    },
+    {
+      "id": "ga4",
+      "provider": "GA4/GTM",
+      "property_or_scope": "https://dentix.ua/",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "NOT_COLLECTED",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "ACCESS_BLOCKED",
+      "latency": "UNKNOWN",
+      "limitations": "No analytics export; no external account changes"
+    },
+    {
+      "id": "bing",
+      "provider": "Bing Webmaster / Places",
+      "property_or_scope": "https://dentix.ua/",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "NOT_COLLECTED",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "ACCESS_BLOCKED",
+      "latency": "UNKNOWN",
+      "limitations": "No export or authorized property access"
+    },
+    {
+      "id": "outcomes",
+      "provider": "Aggregate call/CRM outcomes",
+      "property_or_scope": "DENTIX real connected interactions",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "UNKNOWN",
+      "collected_at": "NOT_COLLECTED",
+      "owner": "DENTIX owner; named access owner UNKNOWN",
+      "access_level": "UNKNOWN",
+      "latency": "UNKNOWN",
+      "limitations": "No private records accessed; future sanitized aggregate evidence requires authorization"
+    }
+  ]
+}

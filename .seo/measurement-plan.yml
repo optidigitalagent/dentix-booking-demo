@@ -1,0 +1,91 @@
+{
+  "business_objective": "TARGET: qualified demand and appointments through stronger Google, Maps and AI discovery for DENTIX in Dnipro; no achieved rank or growth claim",
+  "visibility_metric": "Separate Google organic impressions/clicks, Maps samples and AI mentions/citations/referrals; numeric T0 UNKNOWN",
+  "intent_metric": "Phone click and submit intent only; do not count as delivered or connected interaction",
+  "connected_interaction_metric": "Answered/connected call or confirmed two-way business interaction; delivery alone does not prove connection",
+  "qualified_lead_metric": "Non-synthetic relevant inquiry confirmed by clinic under an approved qualification rule; definition owner/approval pending",
+  "outcome_metric": "Clinic-confirmed appointment, completed visit or revenue; request and delivery are separate stages",
+  "guardrail_kpis": [
+    "Preview remains noindex",
+    "No lost old service URLs on replacement",
+    "No unapproved claims, medical evidence or personal data in analytics",
+    "No false conversion from phone click, synthetic event or submit intent"
+  ],
+  "data_sources": [
+    "Git/source and public GET/DOM T0",
+    "GSC ACCESS_BLOCKED",
+    "GBP ACCESS_BLOCKED",
+    "GA4/GTM ACCESS_BLOCKED",
+    "Bing ACCESS_BLOCKED",
+    "Aggregate call/CRM/outcome UNKNOWN"
+  ],
+  "baseline_window": "T0 2026-09-08 UTC point-in-time technical/scope observations; no quantitative 28/90-day baseline or comparison dataset; named property, filters, devices and ownership pending",
+  "observation_windows": {
+    "technical": "0–7 days AFTER separately authorized production launch; availability/redirects/crawl/index discovery/delivery QA",
+    "discovery": "28 days AFTER launch; queries/impressions/clicks/Maps/AI samples and referrals",
+    "outcome": "90 days AFTER launch or documented business cycle; qualified leads/appointments/page decisions"
+  },
+  "attribution_limits": "Implementation -> publication -> availability -> indexation -> visibility -> visit -> intent -> delivery -> connected interaction -> qualified lead -> appointment -> completed visit/revenue are independent. Phone click is not call; submit is not delivery; synthetic record is not a real lead. Windows are reviews, not ranking deadlines. GSC Web traffic may include AI features and is not a classic-only segment.",
+  "decision_rule": "Resolve technical availability/crawl/redirect failures at 0–7 days. At 28 days compare only compatible dated query/page/device/market datasets; otherwise record data gap. At 90 days decide content and conversion work from real aggregate outcomes, confounders and approved definitions. Missing effect triggers scoped diagnosis, not a success claim.",
+  "privacy_rules": [
+    "Do not read/export patient records or secrets",
+    "No personal/medical fields in client analytics or .seo",
+    "Use separately authorized sanitized aggregates for future outcome evidence"
+  ],
+  "outcome_report": {
+    "channels": {
+      "technical": {
+        "status": "UNKNOWN",
+        "reason": "New production NOT_YET; source/build/preview evidence in baseline.md is not production readiness or an outcome",
+        "evidence_ids": []
+      },
+      "google_indexation": {
+        "status": "ACCESS_BLOCKED",
+        "reason": "No authorized DENTIX GSC URL Inspection evidence",
+        "evidence_ids": []
+      },
+      "google_organic": {
+        "status": "ACCESS_BLOCKED",
+        "reason": "No authorized DENTIX GSC performance dataset with date/query/device filters",
+        "evidence_ids": []
+      },
+      "google_maps": {
+        "status": "ACCESS_BLOCKED",
+        "reason": "No authorized GBP Performance export or geographic sample",
+        "evidence_ids": []
+      },
+      "ai_mention": {
+        "status": "UNKNOWN",
+        "reason": "No dated controlled AI response samples collected",
+        "evidence_ids": []
+      },
+      "ai_site_citation": {
+        "status": "UNKNOWN",
+        "reason": "No own-site AI citation sample collected",
+        "evidence_ids": []
+      },
+      "ai_third_party_citation": {
+        "status": "UNKNOWN",
+        "reason": "No third-party citation sample collected",
+        "evidence_ids": []
+      },
+      "ai_referral": {
+        "status": "ACCESS_BLOCKED",
+        "reason": "No authorized analytics referral dataset",
+        "evidence_ids": []
+      },
+      "conversion_delivery": {
+        "status": "UNKNOWN",
+        "reason": "Intake lead/timed UNAVAILABLE in read-only status check; no receipt or connected-call evidence",
+        "evidence_ids": []
+      },
+      "business_outcome": {
+        "status": "UNKNOWN",
+        "reason": "No real confirmed qualified-lead/booking/outcome aggregate evidence; no patient records accessed",
+        "evidence_ids": []
+      }
+    },
+    "evidence": [],
+    "claims": []
+  }
+}

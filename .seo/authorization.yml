@@ -1,0 +1,26 @@
+{
+  "granted_by": "User via DENTIX_AUTHORIZATION.txt and DENTIX_NEXT_AUTHORIZATION_COMMIT_PUSH_DRAFT_PR.txt supplied in this conversation",
+  "granted_at": "2026-09-08T12:52:58Z",
+  "expires_at": null,
+  "repository": "optidigitalagent/dentix-booking-demo",
+  "project_id": "dentix",
+  "scope": "DENTIX ONLY; optidigitalagent/dentix-booking-demo; PR-00 on seo/dentix-pr00-bootstrap-t0 into main. Reconcile Git/project state truthfully; git fetch and read-only GitHub/public URL inspection; safely fast-forward the local main ref; update only necessary .seo operational records; stage and commit accepted PR-00 .seo bootstrap; push the named branch; open a draft pull request into main; record its number/URL in .seo and commit/push bounded metadata follow-ups. Prior audit/edit permission remains limited to PR-00 .seo controls. implement=false; ready_for_review=false; merge=false; deploy=false; publish=false; release=false; release_close=false; sitemap_submit=false; indexing_request=false; external_action=false. No public pages, src/, public/, workflows, configs, dependencies, lockfiles, CRM, Railway, DNS, GSC, GBP, GA4/GTM, Bing or other external-system changes. No PR-01, messages, submissions, patient data, secrets or operator changes.",
+  "permissions": {
+    "audit": true,
+    "branch": true,
+    "edit": true,
+    "implement": false,
+    "commit": true,
+    "push": true,
+    "open_pr": true,
+    "draft_pr": true,
+    "ready_for_review": false,
+    "merge": false,
+    "deploy": false,
+    "publish": false,
+    "sitemap_submit": false,
+    "external_action": false,
+    "release": false,
+    "release_close": false
+  }
+}

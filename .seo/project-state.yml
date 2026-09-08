@@ -1,0 +1,27 @@
+{
+  "repository": "optidigitalagent/dentix-booking-demo",
+  "project_id": "dentix",
+  "default_branch": "main",
+  "production_url": "https://dentix.ua/",
+  "requested_action": "commit",
+  "authorization_level": "PR-00 .seo bootstrap: commit/push and draft PR into main; bounded operational metadata follow-up only",
+  "client_industry": "local healthcare service business / dental clinic",
+  "primary_market": "Ukraine / Dnipro",
+  "primary_language": "uk",
+  "verified_at": "2026-09-08T12:52:58Z",
+  "remote_main_sha": "f8431478b995031131fcdf4c12d89afdb6743067",
+  "local_main_sha": "f8431478b995031131fcdf4c12d89afdb6743067",
+  "deployed_sha": null,
+  "open_prs": [],
+  "recently_merged_prs": [],
+  "active_branches": [
+    "main",
+    "seo/dentix-pr00-bootstrap-t0"
+  ],
+  "handoff_sha": "f8431478b995031131fcdf4c12d89afdb6743067",
+  "handoff_matches_remote": true,
+  "overlapping_active_pr": false,
+  "production_matches_deploy": false,
+  "external_state_verified": true,
+  "worktree_clean": false
+}

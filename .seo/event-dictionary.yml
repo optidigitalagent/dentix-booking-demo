@@ -1,0 +1,130 @@
+{
+  "events": [
+    {
+      "name": "phone_click",
+      "stage": "conversion_intent",
+      "outcome_confirmed": false,
+      "allowed_parameters": [
+        "page_path",
+        "placement"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "diagnosis",
+        "treatment",
+        "form_field_values",
+        "patient_id"
+      ]
+    },
+    {
+      "name": "submit_intent",
+      "stage": "conversion_intent",
+      "outcome_confirmed": false,
+      "allowed_parameters": [
+        "page_path",
+        "placement"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "diagnosis",
+        "treatment",
+        "form_field_values",
+        "patient_id"
+      ]
+    },
+    {
+      "name": "delivered_form",
+      "stage": "conversion_delivery",
+      "outcome_confirmed": false,
+      "allowed_parameters": [
+        "page_path",
+        "placement"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "diagnosis",
+        "treatment",
+        "form_field_values",
+        "patient_id"
+      ]
+    },
+    {
+      "name": "connected_call",
+      "stage": "connected_interaction",
+      "outcome_confirmed": false,
+      "allowed_parameters": [
+        "page_path",
+        "placement"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "diagnosis",
+        "treatment",
+        "form_field_values",
+        "patient_id"
+      ]
+    },
+    {
+      "name": "qualified_lead",
+      "stage": "qualified_lead",
+      "outcome_confirmed": false,
+      "allowed_parameters": [
+        "page_path",
+        "placement"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "diagnosis",
+        "treatment",
+        "form_field_values",
+        "patient_id"
+      ]
+    },
+    {
+      "name": "confirmed_booking",
+      "stage": "appointment",
+      "outcome_confirmed": false,
+      "allowed_parameters": [
+        "page_path",
+        "placement"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "diagnosis",
+        "treatment",
+        "form_field_values",
+        "patient_id"
+      ]
+    },
+    {
+      "name": "completed_visit_revenue",
+      "stage": "business_outcome",
+      "outcome_confirmed": false,
+      "allowed_parameters": [
+        "page_path",
+        "placement"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "diagnosis",
+        "treatment",
+        "form_field_values",
+        "patient_id"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "selected_at": "2026-09-08T11:26:26Z",
+  "requested_mode": "audit",
+  "skills": [
+    {
+      "name": "seo-command-center",
+      "reason": "DENTIX scope, state, authorization and dependency control"
+    },
+    {
+      "name": "seo-market-intelligence",
+      "reason": "19 provisional therapy/surgery/implantation queries; research only"
+    },
+    {
+      "name": "seo-technical-engineer",
+      "reason": "Source/build/preview T0 and same-domain migration risks"
+    },
+    {
+      "name": "seo-content-architect",
+      "reason": "Facts, regulated claims and bounded future content gates"
+    },
+    {
+      "name": "seo-local-growth",
+      "reason": "One real Dnipro clinic; local facts and missing GBP baseline"
+    },
+    {
+      "name": "seo-ai-discovery",
+      "reason": "Independent AI mention/citation/referral and crawler policy records"
+    },
+    {
+      "name": "seo-authority-builder",
+      "reason": "Provenance and absence of approved outreach or backlink data"
+    },
+    {
+      "name": "seo-measurement-control",
+      "reason": "T0 funnel, data gaps and outcome evidence gate"
+    }
+  ],
+  "excluded_skills": [
+    "seo-ecommerce-growth",
+    "seo-international-architecture"
+  ]
+}

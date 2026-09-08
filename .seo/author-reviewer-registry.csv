@@ -1,0 +1,4 @@
+person_id,name,public_role,author_surfaces,reviewer_surfaces,qualification_source,approved_by,approved_at,expires_at,status
+laura-hrysiak,Грисяк Лаура Віталіївна,"Лікар-ортодонт, гнатолог",,,src/data/doctors.ts @ f8431478b995031131fcdf4c12d89afdb6743067; role text only; qualifications UNKNOWN,,,,pending
+albert-podolyansky,Подолянский Альберт Альбертович,"Лікар-терапевт, ендодонтист, мікроскопіст",,,src/data/doctors.ts @ f8431478b995031131fcdf4c12d89afdb6743067; role text only; qualifications UNKNOWN,,,,pending
+olena-hamaza,Гамаза Олена Анатоліївна,"Лікар-терапевт, гігієніст",,,src/data/doctors.ts @ f8431478b995031131fcdf4c12d89afdb6743067; role text only; qualifications UNKNOWN,,,,pending
