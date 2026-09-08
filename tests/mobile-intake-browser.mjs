@@ -6,7 +6,7 @@ const origin = process.env.DENTIX_PREVIEW_ORIGIN ?? 'http://127.0.0.1:4179/denti
 const sizes = process.env.DENTIX_QA_SIZES ? JSON.parse(process.env.DENTIX_QA_SIZES) : [[360,844],[375,812],[390,844],[393,852],[412,915],[430,932],[844,390],[768,900],[1024,900],[1440,900]];
 const output = process.env.DENTIX_QA_OUTPUT ?? 'docs/qa/mobile-intake-2026-09-07';
 const reports = [];
-const startsAt = '2026-10-01T10:00:00Z', endsAt = '2026-10-01T11:00:00Z';
+const startsAt = '2026-10-01T10:00:00Z', endsAt = '2026-10-01T10:30:00Z';
 for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([name]) => !process.env.DENTIX_QA_ENGINE || name === process.env.DENTIX_QA_ENGINE)) {
  const browser = await engine.launch();
  try {
@@ -18,7 +18,7 @@ for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([na
     const req = route.request(), url = new URL(req.url()); let data;
     if (url.pathname.endsWith('/intake-status')) data = {lead:{enabled:available,mode:available?'LIVE':'UNAVAILABLE',policyUrl:available?'https://example.org/approved-policy':null,consentVersion:'fixture-v1'},timed:{enabled:available,mode:available?'LIVE':'UNAVAILABLE',policyUrl:available?'https://example.org/approved-policy':null,consentVersion:'fixture-v1'}};
     else if (url.pathname.endsWith('/catalog')) data = {mode:'LIVE_REQUESTS_READY',testOnly:false,timezone:'Europe/Kyiv',requestDurationMinutes:60,minDate:'2026-10-01',maxDate:'2026-10-30',consentVersion:'fixture-v1',services:[{id:'service',name:'Ізольована послуга',category:'QA fixture',duration_minutes:60}],doctors:[{id:'doctor',name:'Ізольований лікар',role_label:'QA fixture'}],doctorServices:[{doctor_id:'doctor',service_id:'service',active:true,public_bookable:true,booking_mode:'DIRECT_SLOT',reservation_duration_minutes:60,buffer_before_minutes:0,buffer_after_minutes:0,consultation_service_id:null,scheduled_service_id:'service',scheduled_service_name:'Ізольована послуга'}]};
-    else if (url.pathname.endsWith('/availability')) data={date:'2026-10-01',durationMinutes:60,slots:[{startsAt,endsAt,localStart:'13:00',localEnd:'14:00'}]};
+    else if (url.pathname.endsWith('/availability')) data={date:'2026-10-01',provisionalMinutes:30,slots:[{startsAt,endsAt,localStart:'13:00',localEnd:'13:30'}]};
     else if (req.method()==='POST') {
      const body=req.postDataJSON(); sent.push(body); assert.equal(body.consent,true); assert.equal(body.test_submission,undefined); assert.equal(body.consent_version,'fixture-v1');
      const code=url.pathname.endsWith('/leads')?leadResult:bookingResult;
@@ -47,7 +47,7 @@ for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([na
    await trigger.scrollIntoViewIfNeeded(); const before=await page.evaluate(()=>({y:scrollY,style:document.body.getAttribute('style')}));
    await trigger.click(); const capturedY=await page.evaluate(()=>-parseFloat(document.body.style.top)); const dialog=page.getByRole('dialog'); await dialog.locator('.booking-options').getByText('Ізольована послуга',{exact:true}).click(); await next();
    await dialog.getByText('Ізольований лікар',{exact:true}).click();await next();
-   await checkFields(dialog,width); await dialog.locator('input[type=date]').fill('2026-10-01');await dialog.getByRole('button',{name:'13:00–14:00'}).click();await next();
+   await checkFields(dialog,width); await dialog.locator('input[type=date]').fill('2026-10-01');await dialog.getByRole('button',{name:'13:00',exact:true}).click();await next();
    await checkFields(dialog,width);
    if(width===390){
     const adapter=await page.evaluate(()=>{
@@ -65,7 +65,7 @@ for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([na
    }
    await dialog.getByLabel('Ім’я *',{exact:true}).fill('Олена');await dialog.getByLabel('Телефон *',{exact:true}).fill('+380000000001');await dialog.locator('input[type=checkbox]').check();if(width===390){await fs.mkdir(output,{recursive:true});await page.screenshot({path:`${output}/${engineName}-booking390.png`});}await next();
    await dialog.getByRole('button',{name:'Надіслати запит'}).click();await dialog.getByRole('alert').waitFor();assert.ok(await dialog.locator('input[type=date]').isVisible());
-   bookingResult=200;await dialog.getByRole('button',{name:'13:00–14:00'}).click();await next();await next();await dialog.getByRole('button',{name:'Надіслати запит'}).click();await dialog.getByText('FIXTURE',{exact:true}).waitFor();await dialog.getByRole('button',{name:'Готово'}).click();
+   bookingResult=200;await dialog.getByRole('button',{name:'13:00',exact:true}).click();await next();await next();await dialog.getByRole('button',{name:'Надіслати запит'}).click();await dialog.getByText('FIXTURE',{exact:true}).waitFor();await dialog.getByRole('button',{name:'Готово'}).click();
    const after=await page.evaluate(()=>({y:scrollY,style:document.body.getAttribute('style')}));assert.ok(Math.abs(capturedY-after.y)<2,`${engineName} scroll restore ${JSON.stringify({before,after})}`);assert.equal(after.style??'',before.style??'');
    await trigger.click();await dialog.locator('.booking-options').getByText('Ізольована послуга',{exact:true}).waitFor();await page.keyboard.press('Escape');assert.equal(await dialog.count(),0);
    available=false;await trigger.click();await dialog.getByText('Заявка не резервує час прийому.').waitFor();assert.equal(await dialog.getByRole('button',{name:'Залишити заявку'}).isDisabled(),true);assert.equal(await dialog.locator('.booking-options').getByText('Ізольована послуга',{exact:true}).count(),0);await checkFields(dialog,width);await dialog.getByRole('button',{name:'Закрити',exact:true}).click();
