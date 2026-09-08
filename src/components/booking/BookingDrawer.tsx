@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, LockKeyhole, X } from "lucide-react";
 import { bookingClient } from "@/lib/demo-booking-client";
 import { isPatientBookingDetailsValid } from "@/lib/booking-validation";
-import { bookingModeLabel, isExactMapping } from "@/lib/booking-modes";
+import { hasServiceDuration } from "@/lib/booking-duration";
 import type {
   AvailabilityDay,
   BookingCatalog,
@@ -20,6 +20,7 @@ export function BookingDrawer() {
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const [step, setStep] = useState(0);
+  const [leadFallback, setLeadFallback] = useState(false);
   const [readiness, setReadiness] = useState<IntakeStatus | null>(null);
   useBookingViewport(isOpen, panelRef);
   const [catalog, setCatalog] = useState<BookingCatalog | null>(null);
@@ -47,6 +48,7 @@ export function BookingDrawer() {
     const appliedStyles = Object.fromEntries(Object.keys(ownedStyles).map((key) => [key, body.style.getPropertyValue(key)]));
     let active = true;
     setCatalog(null);
+    setLeadFallback(false);
     setReadiness(null);
     setStep(seed.serviceId || seed.doctorId ? 0 : 0);
     setServiceId(seed.serviceId ?? "");
@@ -64,7 +66,7 @@ export function BookingDrawer() {
       .then(async (status) => {
         if (!active) return;
         setReadiness(status);
-        if (status.timed.enabled && status.timed.policyUrl && !seed.requestedInterest) {
+        if (status.timed.enabled && status.timed.policyUrl) {
           const value = await bookingClient.getCatalog();
           if (active && !value.testOnly && value.mode === "LIVE_REQUESTS_READY" && value.services.length) {
             setCatalog(value);
@@ -127,15 +129,14 @@ export function BookingDrawer() {
   }, [doctorId, isOpen, selectedDate, serviceId]);
 
   const doctors = useMemo(
-    () => catalog?.doctors.filter((doctor) => catalog.doctorServices.some((link) => link.service_id === serviceId && link.doctor_id === doctor.id && isExactMapping(link))) ?? [],
+    () => catalog?.doctors.filter((doctor) => catalog.doctorServices.some((link) => link.service_id === serviceId && link.doctor_id === doctor.id && link.active)) ?? [],
     [catalog, serviceId],
   );
   const service = catalog?.services.find((item) => item.id === serviceId);
   const doctor = catalog?.doctors.find((item) => item.id === doctorId);
-  const mapping = catalog?.doctorServices.find((item) => item.service_id === serviceId && item.doctor_id === doctorId && isExactMapping(item));
-  const callbackOnly = Boolean(service && doctors.length === 0);
-  const callbackView = callbackOnly && step > 0;
-  const consultation = mapping?.booking_mode === "CONSULTATION_SLOT";
+  const mapping = catalog?.doctorServices.find((item) => item.service_id === serviceId && item.doctor_id === doctorId && item.active);
+  const configuredService = Boolean(service && hasServiceDuration(service.durationMinutes) && doctors.length);
+  const callbackView = leadFallback;
   const selectedSlot = availability.flatMap((day) => day.slots).find((slot) => slot.startsAt === startsAt);
   useEffect(() => {
     if (!startsAt || selectedSlot || loading || confirmation) return;
@@ -145,14 +146,14 @@ export function BookingDrawer() {
   }, [startsAt, selectedSlot, loading, confirmation]);
 
   const canContinue =
-    (step === 0 && Boolean(service)) ||
+    (step === 0 && configuredService) ||
     (step === 1 && doctors.some((item) => item.id === doctorId)) ||
     (step === 2 && Boolean(selectedSlot && mapping)) ||
     (step === 3 && isPatientBookingDetailsValid({ name, phone, consent })) ||
     (step === 4 && Boolean(mapping && selectedSlot));
 
   async function submit() {
-    if (!service || !doctor || !mapping || !selectedSlot || !startsAt || !consent || !readiness?.timed.enabled || !readiness.timed.policyUrl) return;
+    if (!service || !hasServiceDuration(service.durationMinutes) || !doctor || !mapping || !selectedSlot || !startsAt || !consent || !readiness?.timed.enabled || !readiness.timed.policyUrl) return;
     setLoading(true);
     setError("");
     try {
@@ -193,7 +194,7 @@ export function BookingDrawer() {
       >
         <header className="booking-head">
           <div>
-            <p className="booking-kicker">DENTIX · {consultation ? "запит на консультацію" : "запит на запис"}</p>
+            <p className="booking-kicker">DENTIX · запит на запис</p>
             <h2 id="booking-title">{confirmation ? "Запит отримано" : callbackView || (!catalog && !loading) ? "Залишити заявку" : stepLabels[step]}</h2>
           </div>
           <button ref={closeRef} className="booking-icon-button" onClick={closeBooking} aria-label="Закрити">
@@ -213,7 +214,7 @@ export function BookingDrawer() {
           {error ? <div className="booking-error" role="alert">{error}</div> : null}
 
           {!loading && !catalog ? <section className="booking-fallback">{seed.requestedInterest ? <p>Цікавить: <strong>{seed.requestedInterest}</strong>.</p> : null}<p>Залиште заявку — адміністратор уточнить послугу та зручний час.</p><p className="booking-privacy-note">Заявка не резервує час прийому.</p><LeadForm key={seed.requestedInterest ?? "general"} sourceSite="PUBLIC_DEMO" requestedInterest={seed.requestedInterest} /></section> : null}
-          {!confirmation && callbackView ? <section className="booking-fallback"><p>Цікавить: <strong>{service?.name}</strong>.</p><p>Адміністратор зателефонує, щоб уточнити деталі. Заявка не резервує час і не підтверджує процедуру.</p><LeadForm key={serviceId} sourceSite="PUBLIC_DEMO" requestedInterest={service?.name} /><button className="booking-secondary" onClick={() => setStep(0)}><ChevronLeft size={18} /> До вибору послуги</button></section> : null}
+          {!confirmation && callbackView ? <section className="booking-fallback">{service ? <p>Цікавить: <strong>{service.name}</strong>.</p> : null}<p>Адміністратор зателефонує, щоб уточнити деталі. Заявка не резервує час і не підтверджує процедуру.</p><LeadForm key={serviceId} sourceSite="PUBLIC_DEMO" requestedInterest={service?.name} /><button className="booking-secondary" onClick={() => { setLeadFallback(false); setStep(0); }}><ChevronLeft size={18} /> До вибору послуги</button></section> : null}
           {confirmation ? (
             <section className="booking-confirmation">
               <span className="booking-success-mark"><Check size={28} /></span>
@@ -221,18 +222,17 @@ export function BookingDrawer() {
               <h3>{confirmation.reference}</h3>
               <p>{confirmation.message}</p>
               <dl className="booking-summary">
-                <div><dt>Цікавить</dt><dd>{confirmation.requestedServiceName || service?.name}</dd></div>
-                <div><dt>Тип прийому</dt><dd>{confirmation.scheduledServiceName || mapping?.scheduled_service_name || service?.name}</dd></div>
+                <div><dt>Послуга</dt><dd>{confirmation.serviceName || service?.name}</dd></div>
                 <div><dt>Лікар</dt><dd>{doctor?.name}</dd></div>
                 <div><dt>Інтервал</dt><dd>{formatDateTime(confirmation.startsAt)}–{formatTime(confirmation.endsAt)}</dd></div>
                 <div><dt>Статус</dt><dd>Очікує дзвінка</dd></div>
               </dl>
-              <p className="booking-privacy-note">Інтервал тимчасово утримується до узгодження з адміністратором. {consultation ? "Це запит на консультацію; лікування ще не заброньовано. " : "Прийом ще не підтверджено. "}Адміністратор DENTIX зателефонує, щоб уточнити деталі.</p>
+              <p className="booking-privacy-note">Інтервал тимчасово утримується до узгодження з адміністратором. Прийом ще не підтверджено. Адміністратор DENTIX зателефонує, щоб уточнити деталі.</p>
               <button className="booking-primary" onClick={closeBooking}>Готово</button>
             </section>
           ) : null}
 
-          {!confirmation && catalog && step === 0 ? (
+          {!confirmation && catalog && !callbackView && step === 0 ? (
             <div className="booking-options">
               {catalog.services.map((item) => (
                 <button
@@ -241,11 +241,13 @@ export function BookingDrawer() {
                   onClick={() => { setServiceId(item.id); setDoctorId(""); }}
                 >
                   <span><strong>{item.name}</strong><small>{item.category}</small></span>
-                  <em>{(() => { const modes = [...new Set(catalog.doctorServices.filter((link) => link.service_id === item.id && isExactMapping(link)).map((link) => link.booking_mode))]; return modes.length === 1 ? bookingModeLabel(modes[0]!) : modes.length ? "Тип прийому залежить від лікаря" : bookingModeLabel("CALLBACK_ONLY"); })()}</em>
+                  <em>{hasServiceDuration(item.durationMinutes) ? `${item.durationMinutes} хв` : "Час уточнюється"}</em>
                 </button>
               ))}
             </div>
           ) : null}
+
+          {!confirmation && catalog && !callbackView && step === 0 ? <section className="booking-fallback">{service && !configuredService ? <p className="booking-privacy-note">Точний час для цієї послуги ще не доступний. Оберіть іншу послугу або залиште окрему заявку без резервування часу.</p> : null}<button className="booking-secondary" onClick={() => setLeadFallback(true)}>Залишити окрему заявку без вибору часу</button></section> : null}
 
           {!confirmation && catalog && !callbackView && step === 1 ? (
             <div className="booking-options">
@@ -255,7 +257,7 @@ export function BookingDrawer() {
                   className={`booking-option${doctorId === item.id ? " selected" : ""}`}
                   onClick={() => setDoctorId(item.id)}
                 >
-                  <span><strong>{item.name}</strong><small>{item.role}</small><small>{catalog.doctorServices.find((link) => link.service_id === serviceId && link.doctor_id === item.id)?.scheduled_service_name}</small></span>
+                  <span><strong>{item.name}</strong><small>{item.role}</small></span>
                 </button>
               ))}
             </div>
@@ -264,7 +266,7 @@ export function BookingDrawer() {
           {!confirmation && catalog && step === 2 ? (
             <div className="booking-calendar-list">
               <label className="booking-date-field"><span>Дата (Europe/Kyiv)</span><input type="date" min={catalog.minDate} max={catalog.maxDate} value={selectedDate} onChange={(event) => { setSelectedDate(event.target.value); setStartsAt(""); }} /></label>
-              <p className="booking-privacy-note">{consultation ? "Оберіть бажаний час консультації. Це не запис на саму процедуру. " : "Оберіть бажаний час прийому. "}Тип прийому: {mapping?.scheduled_service_name}. Тривалість: {mapping?.reservation_duration_minutes} хв. Доступність оновлюється кожні 30 секунд.</p>
+              <p className="booking-privacy-note">Оберіть бажаний час. Послуга: {service?.name}. Тривалість: {availability[0]?.durationMinutes ?? service?.durationMinutes} хв. Доступність оновлюється кожні 30 секунд.</p>
               {loading ? <p className="booking-state">Перевіряємо доступність…</p> : null}
               {!loading && selectedDate && availability.every((day) => day.slots.length === 0) ? <p className="booking-state">На цю дату немає доступних інтервалів.</p> : null}
               {availability.map((day) => (
@@ -302,8 +304,7 @@ export function BookingDrawer() {
             <section className="booking-review">
               <p>Перевірте дані перед надсиланням запиту.</p>
               <dl className="booking-summary">
-                <div><dt>Цікавить</dt><dd>{service?.name}</dd></div>
-                <div><dt>Тип прийому</dt><dd>{mapping?.scheduled_service_name}</dd></div>
+                <div><dt>Послуга</dt><dd>{service?.name}</dd></div>
                 <div><dt>Лікар</dt><dd>{doctor?.name}</dd></div>
                 <div><dt>Інтервал</dt><dd>{selectedSlot ? `${formatDateTime(selectedSlot.startsAt)}–${formatTime(selectedSlot.endsAt)}` : "—"}</dd></div>
                 <div><dt>Ім’я</dt><dd>{name}</dd></div>

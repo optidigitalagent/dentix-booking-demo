@@ -1,21 +1,15 @@
-export type BookingMode = "DIRECT_SLOT" | "CONSULTATION_SLOT" | "CALLBACK_ONLY";
-export type BookingMapping = {
+export type DoctorServiceLink = {
   doctor_id: string;
   service_id: string;
   active: boolean;
-  public_bookable: boolean;
-  booking_mode: BookingMode;
-  reservation_duration_minutes: number | null;
-  buffer_before_minutes: number;
-  buffer_after_minutes: number;
-  consultation_service_id: string | null;
-  scheduled_service_id: string | null;
-  scheduled_service_name: string | null;
+  buffer_before_minutes?: number;
+  buffer_after_minutes?: number;
 };
 export type BookingService = {
   id: string;
   name: string;
   category: string;
+  durationMinutes: number | null;
   demo?: boolean;
 };
 
@@ -30,6 +24,7 @@ export type BookingDoctor = {
 export type AvailabilityDay = {
   date: string;
   label: string;
+  durationMinutes?: number;
   slots: Array<{ startsAt: string; endsAt: string; label: string }>;
 };
 
@@ -38,13 +33,12 @@ export type BookingCatalog = {
   environment: "test-ready" | "production";
   mode: "TEST_READY" | "LIVE_REQUESTS_READY" | "UNAVAILABLE";
   testOnly: boolean;
-  requestDurationMinutes: number;
   minDate: string;
   maxDate: string;
   consentVersion: string;
   services: BookingService[];
   doctors: BookingDoctor[];
-  doctorServices: BookingMapping[];
+  doctorServices: DoctorServiceLink[];
 };
 
 export type CreateBookingInput = {
@@ -66,9 +60,7 @@ export type BookingConfirmation = {
   message: string;
   startsAt: string;
   endsAt: string;
-  bookingMode: BookingMode;
-  requestedServiceName: string;
-  scheduledServiceName: string;
+  serviceName?: string;
 };
 
 export class BookingApiError extends Error {
