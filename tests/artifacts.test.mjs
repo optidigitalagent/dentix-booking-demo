@@ -20,10 +20,10 @@ const record = (group, row) => (results[group] ??= []).push(row);
 for (const target of ["preview", "production"]) {
   const profile = getBuildProfile(target);
   const production = target === "production";
-  for (const file of ["index.html", "price.html"]) {
+  for (const file of ["index.html", "likari/index.html", "kontakty/index.html", "price.html"]) {
     test(`${target} ${file}: initial HTML, route head, schema and source parity`, () => {
       const html = read(target, file), text = plain(html);
-      const url = profile.origin + profile.base + (file === "index.html" ? "" : file);
+      const url = profile.origin + profile.base + file.replace(/index\.html$/, "");
       assert.match(html, /<html lang="uk"/);
       assert.equal(tags(html, "h1").length, 1);
       // Removing tags must not invent whitespace: adjacent spans need a real separator.
@@ -64,10 +64,26 @@ for (const target of ["preview", "production"]) {
       assert.equal(ld.length, production ? 1 : 0);
       if (production) {
         assert.equal(ld[0]["@context"], "https://schema.org");
-        assert.deepEqual(ld[0]["@graph"].map((entry) => entry["@type"]), ["WebSite", "WebPage"]);
-        assert.equal(ld[0]["@graph"][1].url, url);
-        for (const entry of ld[0]["@graph"]) assert.equal(entry.inLanguage, "uk");
-        assert.doesNotMatch(JSON.stringify(ld), /AggregateRating|Review|SearchAction|Offer|Dentist|LocalBusiness|Person/);
+        const graph = ld[0]["@graph"];
+        const allowed = ["WebSite", "WebPage", "CollectionPage", "ContactPage", "Dentist", "Person", "BreadcrumbList"];
+        assert.ok(graph.every((node) => allowed.includes(node["@type"])));
+        assert.equal(new Set(graph.map((node) => node["@id"])).size, graph.length);
+        assert.equal(graph[1].url, url);
+        assert.equal(graph[1].inLanguage, "uk");
+        const clinic = graph.find((node) => node["@type"] === "Dentist");
+        assert.deepEqual(clinic.telephone, ["+380 67 985 40 50", "+380 50 912 44 52"]);
+        assert.deepEqual(clinic.address, { "@type": "PostalAddress", streetAddress: "вул. Калинова, 28", postalCode: "49000", addressLocality: "Дніпро", addressCountry: "UA" });
+        assert.deepEqual(clinic.openingHoursSpecification.map((day) => [day.opens, day.closes]), [["09:00", "20:00"], ["09:00", "18:00"], ["00:00", "00:00"]]);
+        const people = graph.filter((node) => node["@type"] === "Person");
+        assert.equal(people.length, ["index.html", "likari/index.html"].includes(file) ? 4 : 0);
+        for (const person of people) {
+          assert.ok(text.includes(person.name)); assert.ok(text.includes(person.jobTitle));
+          assert.deepEqual(Object.keys(person).sort(), ["@type", "@id", "name", "jobTitle", "worksFor", "image"].sort());
+          assert.ok(fs.existsSync(path.join(profile.outDir, new URL(person.image).pathname)));
+          assert.ok(html.includes(`src="${new URL(person.image).pathname}"`));
+        }
+        assert.doesNotMatch(JSON.stringify(ld), /AggregateRating|Review|SearchAction|Offer|legalName|alumniOf|award|experience|medicalSpecialty|geo"|priceRange|paymentAccepted/);
+
       }
       if (file === "price.html") {
         for (const block of priceBlocks) {
@@ -77,17 +93,34 @@ for (const target of ["preview", "production"]) {
             assert.ok(text.includes(row.cost), row.cost);
           }
         }
-      } else for (const service of services) assert.ok(text.includes(service.title), service.title);
+      } else if (file === "index.html") for (const service of services) assert.ok(text.includes(service.title), service.title);
       for (const button of tags(html, "button").filter((tag) => attr(tag, "type") === "submit")) assert.match(button, /disabled/);
       record("html_head_assertions", { target, file, url, title: html.match(/<title>(.*?)<\/title>/)[1], description: meta(html, "description")[0], canonical: canonicals(html), robots: meta(html, "robots"), pass: true });
       record("initial_html_assertions", { target, file, h1_count: 1, text_length: text.length, fallback_source_parity: true, phone_cta: true, pass: true });
       record("structured_data_assertions", { target, file, blocks: ld, pass: true });
     });
   }
-  test(`${target}: every initial internal link, fragment and asset resolves`, () => {
-    for (const file of ["index.html", "price.html", "404.html"]) {
+
+  test(`${target}: distinct entity pages, exact team/contact facts and route reachability`, () => {
+    const files = ["index.html", "likari/index.html", "kontakty/index.html", "price.html"];
+    const titles = files.map((file) => read(target, file).match(/<title>(.*?)<\/title>/)[1]);
+    const descriptions = files.map((file) => meta(read(target, file), "description")[0]);
+    assert.equal(new Set(titles).size, 4); assert.equal(new Set(descriptions).size, 4);
+    for (const file of files) {
       const html = read(target, file);
-      const current = new URL(profile.base + (file === "index.html" ? "" : file), profile.origin);
+      assert.equal((html.match(/aria-current="page"/g) ?? []).length, 1);
+      for (const route of ["", "likari/", "kontakty/", "price.html"]) assert.ok(html.includes(`href="${profile.base}${route}"`));
+    }
+    const doctors = read(target, "likari/index.html");
+    assert.equal((doctors.match(/class="doc-role"/g) ?? []).length, 4);
+    for (const name of ["Стасюк Станіслав Ігорович", "Грисяк Лаура Віталіївна", "Подолянский Альберт Альбертович", "Гамаза Олена Анатоліївна"]) assert.ok(plain(doctors).includes(name));
+    const contacts = plain(read(target, "kontakty/index.html"));
+    for (const fact of ["вул. Калинова, 28", "49000, м. Дніпро", "вхід з «червоної лінії»", "+380 67 985 40 50", "+380 50 912 44 52", "Пн–Пт 09:00–20:00", "Сб 09:00–18:00", "Нд зачинено", "dentix1@outlook.com", "@dentix_dp"]) assert.ok(contacts.includes(fact), fact);
+  });
+  test(`${target}: every initial internal link, fragment and asset resolves`, () => {
+    for (const file of ["index.html", "likari/index.html", "kontakty/index.html", "price.html", "404.html"]) {
+      const html = read(target, file);
+      const current = new URL(profile.base + file.replace(/index\.html$/, ""), profile.origin);
       let checked = 0;
       for (const tag of [...tags(html, "a"), ...tags(html, "img"), ...tags(html, "script"), ...tags(html, "link")]) {
         const value = attr(tag, "href") ?? attr(tag, "src");
@@ -96,7 +129,7 @@ for (const target of ["preview", "production"]) {
         if (url.origin !== profile.origin) continue;
         assert.ok(url.pathname.startsWith(profile.base), `${file}: wrong base ${url}`);
         const relative = url.pathname.slice(profile.base.length) || "index.html";
-        const local = path.join(profile.outDir, relative);
+        const local = path.join(profile.outDir, relative.endsWith("/") ? relative + "index.html" : relative);
         assert.ok(fs.existsSync(local), `${file}: missing ${value}`);
         if (url.hash) assert.ok(fs.readFileSync(local, "utf8").includes(`id="${decodeURIComponent(url.hash.slice(1))}"`), `${file}: missing fragment ${value}`);
         checked++;
@@ -126,7 +159,7 @@ for (const target of ["preview", "production"]) {
       assert.doesNotMatch(code, /AdminCrm|admin-shell|admin-sidebar|DEMO Пацієнт|DEMO Dentist|\/admin\//);
       const sitemap = read(target, "sitemap.xml");
       assert.match(sitemap, /<urlset xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9">/);
-      assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]), ["https://dentix.ua/", "https://dentix.ua/price.html"]);
+      assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]), ["https://dentix.ua/", "https://dentix.ua/likari/", "https://dentix.ua/kontakty/", "https://dentix.ua/price.html"]);
       assert.doesNotMatch(sitemap, /lastmod|admin|github|404/);
       assert.equal((robots.match(/Sitemap:/g) ?? []).length, 1);
       assert.match(robots, /Sitemap: https:\/\/dentix.ua\/sitemap.xml/);
@@ -138,7 +171,12 @@ for (const target of ["preview", "production"]) {
     }
     const { server, origin, base } = await serveArtifact(target);
     try {
-      for (const suffix of ["", "price.html"]) assert.equal((await fetch(origin + base + suffix)).status, 200);
+      for (const suffix of ["likari", "kontakty"]) {
+        const response = await fetch(origin + base + suffix, { redirect: "manual" });
+        assert.equal(response.status, 308);
+        assert.equal(response.headers.get("location"), base + suffix + "/");
+      }
+      for (const suffix of ["", "likari/", "likari/index.html", "kontakty/", "kontakty/index.html", "price.html", ...(!production ? ["admin/"] : [])]) assert.equal((await fetch(origin + base + suffix)).status, 200);
       for (const suffix of ["missing-pr01", "404.html", ...(production ? ["admin/", "admin/index.html"] : [])]) {
         const response = await fetch(origin + base + suffix);
         assert.equal(response.status, 404);
@@ -146,7 +184,7 @@ for (const target of ["preview", "production"]) {
       }
     } finally { await new Promise((resolve) => server.close(resolve)); }
     record("admin_isolation_assertions", { target, admin_entries: adminEntries, admin_artifact: !production, http_missing_status: 404, pass: true });
-    record("robots_sitemap_assertions", { target, robots, sitemap_urls: production ? ["https://dentix.ua/", "https://dentix.ua/price.html"] : [], pass: true });
+    record("robots_sitemap_assertions", { target, robots, sitemap_urls: production ? ["https://dentix.ua/", "https://dentix.ua/likari/", "https://dentix.ua/kontakty/", "https://dentix.ua/price.html"] : [], pass: true });
   });
 }
 

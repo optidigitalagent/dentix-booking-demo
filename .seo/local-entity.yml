@@ -1,17 +1,17 @@
 {
   "business_name": "DENTIX",
-  "real_world_name_source": "User-provided 01_CODEX_PROMPT_DENTIX_PR00_BOOTSTRAP_T0_RU.txt dated 2026-09-08",
+  "real_world_name_source": "DENTIX_ENTITY_FACT_LOCK_V1; facts-register.csv F-001",
   "primary_category": "UNKNOWN: dental clinic business type confirmed; GBP category not checked",
   "secondary_categories": [],
-  "address_or_service_area": "Ukraine / Dnipro; detailed NAP source observations pending approval in facts-register.csv",
-  "phone": "UNKNOWN: current code contacts recorded as pending in facts-register.csv",
+  "address_or_service_area": "facts-register.csv F-014: 49000, м. Дніпро, вул. Калинова, 28; вхід з «червоної лінії»",
+  "phone": "facts-register.csv F-012/F-013: +380 67 985 40 50; +380 50 912 44 52",
   "canonical_url": "https://dentix.ua/",
-  "hours": "UNKNOWN: source hours recorded as pending in facts-register.csv",
+  "hours": "facts-register.csv F-015: Пн–Пт 09:00–20:00; Сб 09:00–18:00; Нд зачинено",
   "languages": [
     "uk"
   ],
   "gbp_status": "ACCESS_BLOCKED: no authorized first-party baseline/export",
   "bing_places_status": "ACCESS_BLOCKED: no authorized baseline/export",
   "owner": "DENTIX owner; operational contact UNKNOWN",
-  "verified_at": "2026-09-08T11:33:58Z"
+  "verified_at": "2026-09-12T14:39:20.364016+00:00"
 }

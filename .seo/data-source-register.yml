@@ -103,6 +103,19 @@
       "access_level": "UNKNOWN",
       "latency": "UNKNOWN; confirm per export",
       "limitations": "No confirmed provider/configuration; Provider identity, connected-call definition, attribution and sanitized aggregate export"
+    },
+    {
+      "id": "DENTIX_ENTITY_FACT_LOCK_V1",
+      "provider": "DENTIX user-approved new-site source",
+      "property_or_scope": "src/data/site.ts blob 947768cd448cefaa1c31e2928850e87e9b554da2; src/data/doctors.ts blob 5f5ebdc56fb60cc7f140943a684ec1294fb35dc3; src/data/prices.ts blob 8a1be1f4256bac67dc938f1d7816f26c44b4d0ca; src/components/AboutSection.tsx blob 92dd12a3ed4342909efb0e338248ebe8dfbcf20c",
+      "market": "Ukraine / Dnipro",
+      "language": "uk",
+      "device": "source snapshot",
+      "collected_at": "2026-09-12T14:39:20.364016+00:00",
+      "owner": "DENTIX user",
+      "access_level": "AVAILABLE_READ_ONLY",
+      "latency": "Pinned source snapshot; runtime managed content follows existing contract",
+      "limitations": "Legacy WordPress does not override this approval. Credentials/legal entity/medical reviewer/photo documentary consent unknown and omitted; no account access or production publication."
     }
   ]
 }

@@ -56,9 +56,9 @@
       "description": "P1: Old free consultation versus source 500 грн consultation",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "Obtain dated owner-approved price source; do not choose a price in PR-00",
+      "mitigation": "DENTIX_ENTITY_FACT_LOCK_V1 approves current src/data/prices.ts snapshot; old free-consultation claim does not override it. No new price/inclusion claim.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "SOURCE_APPROVED_LEGACY_CONFLICT_RESOLVED_FOR_NEW_SITE"
     },
     {
       "id": "R-007",
@@ -66,7 +66,7 @@
       "description": "P1: Existing medical/commercial claims lack review and source evidence",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "Keep claims pending; named qualified reviewer before new public wording",
+      "mitigation": "Legacy claims in claims-register.csv remain pending/excluded. Current visible new-site facts/statements approved under DENTIX_ENTITY_FACT_LOCK_V1; no new medical guidance. Named reviewer/credentials/documentary consent still unknown and omitted.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
       "status": "open"
     },
@@ -146,9 +146,9 @@
       "description": "P1: Doctors/prices depend on public runtime source with JS-only fallback",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "Initial source fallback now prerendered and hydration parity verified locally. Runtime refresh unchanged; live source owner/approval/cadence and runtime drift remain unresolved before publication.",
+      "mitigation": "Current fallback doctors/prices approved by DENTIX_ENTITY_FACT_LOCK_V1. Initial HTML and hydration share fallback; runtime managed doctors and Person graph update together. Live endpoint/cadence verification remains a prelaunch task; no account change.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "LOCAL_PARITY_VERIFIED_LIVE_SOURCE_NOT_CHECKED"
     },
     {
       "id": "R-016",
@@ -186,9 +186,9 @@
       "description": "P1: address apartment suffix, hours and directory phone differ across public sources",
       "likelihood": "confirmed gap",
       "impact": "medium",
-      "mitigation": "Owner reconcile against approved facts before website/Profile changes; citation-audit.csv.",
+      "mitigation": "DENTIX_ENTITY_FACT_LOCK_V1 approves current new-source address/hours/phones; legacy/profile conflicts cannot override this source. External profile parity unresolved; no external changes authorized.",
       "owner": "DENTIX owner / assigned implementer; named owner pending",
-      "status": "open"
+      "status": "NEW_SITE_FACTS_APPROVED_EXTERNAL_PARITY_OPEN"
     },
     {
       "id": "R-020",

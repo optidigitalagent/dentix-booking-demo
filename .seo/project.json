@@ -6,6 +6,6 @@
   "primary_language": "uk",
   "site_type": "local-business",
   "initialized_at": "2026-09-08T11:26:26Z",
-  "status": "PR-02 PREPARED_FOR_DRAFT_PR; PR #2 merged and noindex Pages preview reconciled to ff675a1e4363d1c5e8d936b5273710bf5db89211; old dentix.ua remains production; React NOT_LAUNCHED; planning only; claims=[]",
+  "status": "PR03 IMPLEMENTED_LOCALLY_VALIDATED_FOR_DRAFT_PR; final Git receipt external. PR #3 merged 160804ce2fd0cd759788f2ec2961b1638f7dcda8; successful noindex preview. Production old WordPress; React NOT_LAUNCHED; T0 NOT_READY; claims=[]",
   "secrets_policy": "Do not store credentials, tokens, private exports, personal data, or medical data in .seo"
 }

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { patientNavigation } from "@/data/navigation";
+import { routeMetadata } from "../page-metadata";
 import { Brand } from "./Brand";
 import { site } from "@/data/site";
 import { siteHref } from "@/lib/site-href";
@@ -6,7 +8,8 @@ import { BookingButton } from "./booking/BookingContext";
 import { usePatientRoute } from "../route-context";
 
 export function Header() {
-  const isPricePage = usePatientRoute() === "price";
+  const route = usePatientRoute();
+  const currentPath = "/" + routeMetadata[route].path;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -76,8 +79,8 @@ export function Header() {
       <div className="wrap nav-inner">
         <Brand />
         <nav className="nav-links" aria-label="Головна навігація">
-          {site.nav.map((item) => (
-            <a key={item.label} href={siteHref(item.to)}>
+          {patientNavigation.map((item) => (
+            <a key={item.label} href={siteHref(item.to)} aria-current={!open && item.to === currentPath ? "page" : undefined}>
               {item.label}
             </a>
           ))}
@@ -105,13 +108,8 @@ export function Header() {
         aria-hidden={!open}
         inert={!open ? true : undefined}
       >
-        {isPricePage ? (
-          <a href={siteHref("/")} onClick={() => setOpen(false)}>
-            Головна
-          </a>
-        ) : null}
-        {site.nav.map((item) => (
-          <a key={item.label} href={siteHref(item.to)} onClick={() => setOpen(false)}>
+        {patientNavigation.map((item) => (
+          <a key={item.label} href={siteHref(item.to)} aria-current={open && item.to === currentPath ? "page" : undefined} onClick={() => setOpen(false)}>
             {item.label}
           </a>
         ))}

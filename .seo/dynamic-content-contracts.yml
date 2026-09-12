@@ -2,15 +2,15 @@
   "contracts": [
     {
       "name": "DENTIX public doctors and prices",
-      "source_of_truth": "Runtime public content endpoint takes precedence in code; data owner approval UNKNOWN",
+      "source_of_truth": "Existing runtime public-content precedence retained; local fallback approved by DENTIX_ENTITY_FACT_LOCK_V1",
       "source_url_or_id": "UNKNOWN: deployment variable not inspected; src/hooks/use-managed-content.ts and src/lib/google-sheets-content.ts @ f8431478b995031131fcdf4c12d89afdb6743067",
       "access_level": "public-read",
       "refresh_cadence": "Code fetch with cache no-store and _content_version; source publishing cadence UNKNOWN",
-      "static_fallback": "src/data/doctors.ts and src/data/prices.ts rendered into initial home/price HTML by existing React components; same fallback initializes hydration",
+      "static_fallback": "src/data/doctors.ts and src/data/prices.ts; home and doctors render shared team; price renders shared price blocks; production Person graph uses the same managed-content hook",
       "failure_behavior": "Use independent local doctor/price fallback on missing endpoint, network failure or invalid section",
-      "drift_check": "PR01 source/initial/rendered fallback parity PASS locally; existing malformed/unavailable data tests PASS. Rebuild after approved fallback edits; runtime public-source parity/owner approval pending before launch. No Sheets/account access.",
+      "drift_check": "PR03 fallback initial/hydrated parity and in-memory managed-team order/Person graph parity; no account access; unknown live publishing cadence remains",
       "owner": "DENTIX content owner UNKNOWN",
-      "approved_at": "UNKNOWN"
+      "approved_at": "2026-09-12T14:48:37.389890+00:00"
     }
   ]
 }

@@ -4741,3 +4741,16 @@ body:has(.lead-form :is(input, select, textarea):focus) .mobile-call-bar { displ
   .booking-footer { padding-block: 8px; }
   .booking-body { padding-block: 14px; }
 }
+
+/* Entity pages reuse the existing price hero and shared section layouts. */
+.entity-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 24px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (min-width: 1024px) {
+  .nav-links { gap: clamp(10px, 1.2vw, 18px); }
+}

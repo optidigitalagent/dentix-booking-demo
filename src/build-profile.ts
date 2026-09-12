@@ -13,10 +13,12 @@ export function getBuildProfile(target: string) {
   } as const;
 }
 
-export type PatientRoute = "home" | "price";
+export type PatientRoute = "home" | "price" | "doctors" | "contacts";
 
 export function patientRoute(pathname: string, base: string): PatientRoute | null {
   if (pathname === base || pathname === `${base}index.html`) return "home";
   if (pathname === `${base}price.html`) return "price";
+  if (pathname === `${base}likari/` || pathname === `${base}likari/index.html`) return "doctors";
+  if (pathname === `${base}kontakty/` || pathname === `${base}kontakty/index.html`) return "contacts";
   return null;
 }

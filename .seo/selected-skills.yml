@@ -1,38 +1,30 @@
 {
-  "selected_at": "2026-09-12T12:18:25.462402+00:00",
-  "requested_mode": "plan",
+  "selected_at": "2026-09-12T14:35:03.646806+00:00",
+  "requested_mode": "implement",
   "skills": [
     {
       "name": "seo-command-center",
-      "reason": "PR02 bounded command-center research and planning; no public implementation"
-    },
-    {
-      "name": "seo-market-intelligence",
-      "reason": "PR02 bounded market-intelligence research and planning; no public implementation"
+      "reason": "Bounded PR03 entity/local implementation and validation"
     },
     {
       "name": "seo-technical-engineer",
-      "reason": "PR02 bounded technical-engineer research and planning; no public implementation"
+      "reason": "Bounded PR03 entity/local implementation and validation"
     },
     {
       "name": "seo-content-architect",
-      "reason": "PR02 bounded content-architect research and planning; no public implementation"
+      "reason": "Bounded PR03 entity/local implementation and validation"
     },
     {
       "name": "seo-local-growth",
-      "reason": "PR02 bounded local-growth research and planning; no public implementation"
+      "reason": "Bounded PR03 entity/local implementation and validation"
     },
     {
       "name": "seo-ai-discovery",
-      "reason": "PR02 bounded ai-discovery research and planning; no public implementation"
-    },
-    {
-      "name": "seo-authority-builder",
-      "reason": "PR02 bounded authority-builder research and planning; no public implementation"
+      "reason": "Bounded PR03 entity/local implementation and validation"
     },
     {
       "name": "seo-measurement-control",
-      "reason": "PR02 bounded measurement-control research and planning; no public implementation"
+      "reason": "Bounded PR03 entity/local implementation and validation"
     }
   ],
   "excluded_skills": [

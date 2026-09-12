@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { siteHref } from "@/lib/site-href";
 import { heroSlides } from "@/data/about";
 import { site } from "@/data/site";
 import { Reveal } from "./Reveal";
@@ -83,6 +84,7 @@ export function Hero() {
               Наші послуги <span aria-hidden="true">→</span>
             </a>
           </Reveal>
+          <p className="hero-lede">{site.tagline} у Дніпрі. <a href={siteHref("/kontakty/")}>{site.address}</a>. <a href={siteHref("/likari/")}>Лікарі клініки</a>.</p>
           <StatsRow />
         </div>
       </div>

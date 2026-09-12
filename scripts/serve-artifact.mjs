@@ -19,7 +19,14 @@ export async function serveArtifact(target, port = 0) {
       if (relative.split("/").some((part) => part.startsWith(".")) || relative.includes("\\")) throw new Error("Private path");
       file = path.resolve(root, relative || "index.html");
       if (!file.startsWith(root + path.sep)) throw new Error("Outside artifact");
-      if ((await stat(file)).isDirectory()) file = path.join(file, "index.html");
+      if ((await stat(file)).isDirectory()) {
+        if (!pathname.endsWith("/")) {
+          const requestUrl = new URL(req.url, "http://localhost");
+          res.writeHead(308, { Location: requestUrl.pathname + "/" + requestUrl.search });
+          res.end(); return;
+        }
+        file = path.join(file, "index.html");
+      }
       if (!(await stat(file)).isFile()) throw new Error("Missing file");
       if (file === path.join(root, "404.html")) status = 404;
     } catch { file = path.join(root, "404.html"); status = 404; }
