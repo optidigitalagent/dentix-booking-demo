@@ -1,3 +1,4 @@
+import { patientNavigation } from "@/data/navigation";
 import { Brand } from "./Brand";
 import { site } from "@/data/site";
 import { siteHref } from "@/lib/site-href";
@@ -24,9 +25,7 @@ export function Footer() {
               </svg>
             </span>
             <span>
-              {site.address}
-              <br />
-              {site.city}
+              <a href={siteHref("/kontakty/")}>{site.address}<br />{site.city}</a>
             </span>
           </div>
           <div className="footer-contact-item">
@@ -66,7 +65,7 @@ export function Footer() {
       </div>
       <div className="wrap footer-mini">
         <nav className="footer-links" aria-label="Меню у підвалі">
-          {site.nav.map((item) => (
+          {patientNavigation.map((item) => (
             <a key={item.label} href={siteHref(item.to)}>
               {item.label}
             </a>

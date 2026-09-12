@@ -10,14 +10,14 @@ const contactSlots = [
   { label: "Instagram", value: site.instagram, href: site.instagramHref },
 ];
 
-export function ContactSection() {
+export function ContactSection({ lede = "Зв’яжіться з клінікою телефоном, в Instagram або у Viber. Адресу, графік і карту зібрано нижче." }: { lede?: string }) {
   return (
     <section className="section contact contact-stage" id="contact">
       <div className="wrap">
         <SectionHeading
           kicker="Запис"
           title="Заплануйте візит до DENTIX"
-          lede="Зв’яжіться з клінікою телефоном, в Instagram або у Viber. Адресу, графік і карту зібрано нижче."
+          lede={lede}
           center={false}
         />
 

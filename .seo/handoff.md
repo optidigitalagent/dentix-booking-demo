@@ -1,24 +1,14 @@
-# DENTIX PR02 handoff
+# DENTIX PR03 handoff
 
-SITE_ID DENTIX; repository optidigitalagent/dentix-booking-demo; branch seo/dentix-pr02-migration-demand-baseline; base ff675a1e4363d1c5e8d936b5273710bf5db89211. This is the pre-commit planning snapshot; final commit/push/Draft PR receipt and ZIP hashes are recorded in the external evidence pack and final report. No self-referential commit SHA is invented.
+PR03 adds /likari/ and /kontakty/, links all four patient routes, and adds a shared production-only entity graph derived from approved current sources. Existing layout, four doctors, contact details, prices, founder/video, runtime managed content and fail-closed intake remain intact. Person nodes appear only on pages displaying the team; supporting PostalAddress/OpeningHoursSpecification/ListItem objects carry approved values. No invented clinical, credential, review or legal claims.
 
-PR #2 is merged and successful noindex Pages preview deployment matches current main. Old WordPress dentix.ua remains production. New React NOT_LAUNCHED; no release closure. Prior Ready/merge/deploy grant is superseded for PR02; current authorization permits one planning commit/push/Draft PR only.
+DENTIX_ENTITY_FACT_LOCK_V1 is recorded in canonical facts-register.csv, entity-consistency.csv and data-source-register.yml. The four pinned source blobs remain unchanged. Legacy WordPress/profile differences do not override the new-source fact lock. PR04 and external profiles remain outside this stage.
 
-Review redirect-map.csv and crawl-report.csv: 61 discovered old URLs plus 3 explicit probes = 64 rows; 9 discovered HTML pages, 38 media URLs, 7 feeds and 7 controls. Recommendations include exact-URL rebuilds for home, implantation, prosthetics and microscope. HOLD rows are cutover blockers, not missing dispositions. Production/log/GSC-only orphan coverage remains unknown.
+Post-PR02 reconciliation: PR #3 merged at 160804ce2fd0cd759788f2ec2961b1638f7dcda8; successful noindex preview run 34695414098. Production is still old WordPress; React NOT_LAUNCHED. Migration map remains 64 rows / 49 HOLD. GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; numeric T0 NOT_READY.
 
-Review serp-sample.csv (20 observed queries, four retained unsampled RU seeds), maps-sample.csv (13 observations across local packs, panels and Maps detail), ai-sample-log.csv (three fully reviewed Google AI Overviews; other provider gaps). Samples are localized desktop observations, not stable ranks. See research-methodology.md for IP, source and completeness limits. Competitor evidence is third-party research, not DENTIX facts or medical advice.
+Fresh validation: 10 unit tests, both builds, 14 artifact tests, 40 hydrated and 40 no-JS Chromium route/viewport cases, 16 managed-content/lead-source cases, 40 safe Chromium/WebKit mobile cases, 16 founder/video cases; all PASS. Five widths: 360, 390, 768, 1024, 1440. No POST or appointment. Preview noindex/no canonical/no sitemap/no entity graph. Production artifact has four self-canonicals and four sitemap URLs; production admin and unknown paths return 404. Package and lockfile unchanged. Maps/fonts intercepted in browser lab; no field CWV, live endpoint validation or search/business result claimed.
 
-Review content-inventory.csv (12 exact page decisions), query-page-map.csv, bounded briefs and execution-plan.md. Sequence PR03 entity/doctor/local/price; PR04A therapy/caries/consolidated canals-microscope; PR04B surgery/extraction/wisdom; PR04C implantation plus legacy prosthetics preservation. All require later implementation authorization and approved first-party facts/clinical reviewers.
-
-Measurement: access-matrix.csv, data-source-register.yml, utm-taxonomy.csv + utm-rules.md, event-dictionary.yml and measurement-plan.yml. GSC blocked by connector subscription; GA4/GTM/GBP/Bing data blocked, hosting public read-only, CRM/calls unknown. Numeric T0 NOT_READY. Phone clicks and client submits are intent only. No private records read or events sent.
-
-Cutover remains blocked by HOLD decisions, unapproved target hosting/301/410 capability, missing replacement pages, owned facts/prices/clinical/asset evidence and baseline/access/QA/rollback prerequisites. Do not Ready, merge, deploy, change accounts, submit sitemap/indexing or start pages from this handoff. Next action: review this Draft PR; future steps need separately bounded authority.
-
-outcome_report.claims=[]; the schema-backed RECORD renderer output follows after validation. Record validity is not SEO/GEO or lead success.
-
-## Validation and record
-
-Client schemas, commit-state gate, operator bundle/skills validation, 170 trigger cases, 10 scenarios, 47 outcome-gate tests and 21 Python tests passed. The page-map validator expects one row per URL, so it validates the 12-row content-inventory.csv; query-page-map.csv retains the canonical one-row-per-query design and is checked separately for complete mapping. No source/build changes were made. Historical technical observations remain dated; PR02 reconciliation is authoritative for the current preview.
+This is the pre-commit snapshot. Final commit, push and Draft PR receipt are in the external evidence pack, avoiding a self-referential follow-up commit. One normal commit/push/Draft PR authorized; next action is review of that Draft PR. Ready/merge/deploy/production/accounts/indexing/release closure are unauthorized. Evidence directory: ~/Downloads/DENTIX_PR03_ENTITY_LOCAL_EVIDENCE_2026-09-12/. outcome_report.claims=[].
 
 # Outcome report
 
@@ -356,14 +346,3 @@ Record validation only; no aggregate SEO PASS. Claims are bounded to their suppl
 ```
 
 No claim establishes SEO causality, representative global visibility, or an actual client result from synthetic fixtures.
-
-
-## PR02-MERGE-01 authorization snapshot — 2026-09-12T13:00:43.239753+00:00
-
-Independent supplied evidence review: PASS. Evidence ZIP: 155182 bytes; SHA-256 `ee28ac6420ad5018f5c417e38bc316e2bba44c355f5e09e36bbd88b62c2982c2`; manifest 85/85 verified, no mismatches or undeclared files.
-
-Accepted planning baseline: 64 unique migration URLs (KEEP 3; REBUILD_SAME_URL 4; 301 7; 410 1; HOLD_FOR_CONFIRMATION 49), 12 planned destinations, 24 query-map entries, 20 sampled Google queries / 60 organic rows, 13 local observations, 3 observed AIO samples, 20 competitor pages / 13 domains, 7 external UTM examples, 13 event definitions. Numeric demand UNKNOWN; numeric T0 NOT_READY because required account data is ACCESS_BLOCKED. ChatGPT/Bing and GSC/GBP/GA4/GTM remain ACCESS_BLOCKED.
-
-Public-crawl coverage only; no GSC/log orphan coverage. IP locale Kyiv, no geo-grid. The 49 HOLD rows block cutover resolution, not content planning. No new research finding, migration disposition, source/public change, account action, production launch or SEO outcome is claimed. `outcome_report.claims=[]`.
-
-Time-bounded grant expires 2026-09-12T16:00:43.239753+00:00. Ready, normal merge and one automatic noindex Pages preview deployment are pending validation. Only PR #3 body may be updated externally. No manual dispatch, second deployment, branch deletion, production publish, indexing, release closure or PR03/04 implementation. Existing release-state identifiers describe completed PR #2; this stage's final identifiers belong in merged PR #3 body and external evidence, and must be reconciled in the next separately authorized stage. No post-merge repository commit.
