@@ -5,9 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "node ./node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4180",
-    "build": "node ./node_modules/typescript/bin/tsc --noEmit && node ./node_modules/vite/bin/vite.js build && node ./scripts/postbuild.mjs",
-    "preview": "node ./node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4181",
-    "test": "node --experimental-strip-types --test tests/*.test.ts"
+    "build": "npm run build:preview",
+    "build:preview": "node ./node_modules/typescript/bin/tsc --noEmit && node --experimental-strip-types ./scripts/build.mjs preview",
+    "build:production": "node ./node_modules/typescript/bin/tsc --noEmit && node --experimental-strip-types ./scripts/build.mjs production",
+    "preview": "node --experimental-strip-types ./scripts/serve-artifact.mjs preview 4181",
+    "preview:production": "node --experimental-strip-types ./scripts/serve-artifact.mjs production 4182",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:artifacts": "node --experimental-strip-types --test tests/artifacts.test.mjs",
+    "test:browser": "node --experimental-strip-types tests/technical-browser.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",

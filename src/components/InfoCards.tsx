@@ -10,7 +10,8 @@ const icons = [
 
 export function InfoCards() {
   return (
-    <section className="trust">
+    <section className="trust" aria-labelledby="clinic-info-heading">
+      <h2 className="sr-only" id="clinic-info-heading">Інформація для відвідувачів</h2>
       <div className="wrap trust-grid">
         {site.infoCards.map((card, i) => (
           <Reveal key={card.title} className="trust-item" delay={i * 70}>

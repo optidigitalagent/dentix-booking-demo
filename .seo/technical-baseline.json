@@ -141,5 +141,234 @@
     "Build profile includes Pages base with local content fallback; private runtime variables were not accessed",
     "No five-viewport visual, performance, accessibility, full crawl or asset QA in PR00",
     "Old-to-new URL disposition not authorized; old site remains WordPress"
-  ]
+  ],
+  "pr01_local_implementation": {
+    "captured_at": "2026-09-08T19:44:33.788945+00:00",
+    "base_sha": "7208e7cadda04273c27282a68171ea3853664510",
+    "branch": "seo/dentix-pr01-technical-foundation",
+    "implementation_status": "IMPLEMENTED_LOCALLY",
+    "publication_status": "NOT_PUBLISHED",
+    "new_production_launch": "NOT_YET",
+    "indexation_status": "NOT_INDEXED (this local artifact is unpublished; old domain indexation UNKNOWN)",
+    "visibility_status": "OUTCOME_UNKNOWN",
+    "preview_deployed_sha": "7208e7cadda04273c27282a68171ea3853664510",
+    "remote_preview_unchanged": true,
+    "production_unchanged": true,
+    "heads": [
+      {
+        "target": "preview",
+        "file": "index.html",
+        "url": "https://optidigitalagent.github.io/dentix-booking-demo/",
+        "title": "Стоматологія DENTIX у Дніпрі — послуги та контакти — попередній перегляд",
+        "description": "Попередній перегляд сайту DENTIX. Стоматологічна клініка DENTIX у Дніпрі: терапія, хірургія та імплантація. Перегляньте послуги й контакти та зателефонуйте для уточнення візиту.",
+        "canonical": [],
+        "robots": [
+          "noindex,nofollow,noarchive"
+        ],
+        "pass": true
+      },
+      {
+        "target": "preview",
+        "file": "price.html",
+        "url": "https://optidigitalagent.github.io/dentix-booking-demo/price.html",
+        "title": "Ціни на стоматологічні послуги у Дніпрі — DENTIX — попередній перегляд",
+        "description": "Попередній перегляд сайту DENTIX. Прайс DENTIX у Дніпрі за напрямками стоматології. Остаточну вартість та індивідуальний план підтверджує клініка. Уточніть деталі телефоном.",
+        "canonical": [],
+        "robots": [
+          "noindex,nofollow,noarchive"
+        ],
+        "pass": true
+      },
+      {
+        "target": "production",
+        "file": "index.html",
+        "url": "https://dentix.ua/",
+        "title": "Стоматологія DENTIX у Дніпрі — послуги та контакти",
+        "description": "Стоматологічна клініка DENTIX у Дніпрі: терапія, хірургія та імплантація. Перегляньте послуги й контакти та зателефонуйте для уточнення візиту.",
+        "canonical": [
+          "https://dentix.ua/"
+        ],
+        "robots": [
+          "index,follow"
+        ],
+        "pass": true
+      },
+      {
+        "target": "production",
+        "file": "price.html",
+        "url": "https://dentix.ua/price.html",
+        "title": "Ціни на стоматологічні послуги у Дніпрі — DENTIX",
+        "description": "Прайс DENTIX у Дніпрі за напрямками стоматології. Остаточну вартість та індивідуальний план підтверджує клініка. Уточніть деталі телефоном.",
+        "canonical": [
+          "https://dentix.ua/price.html"
+        ],
+        "robots": [
+          "index,follow"
+        ],
+        "pass": true
+      }
+    ],
+    "browser_matrix": [
+      {
+        "target": "preview",
+        "route": "home",
+        "width": 360,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "price.html",
+        "width": 360,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "home",
+        "width": 390,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "price.html",
+        "width": 390,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "home",
+        "width": 768,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "price.html",
+        "width": 768,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "home",
+        "width": 1024,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "price.html",
+        "width": 1024,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "home",
+        "width": 1440,
+        "pass_status": true
+      },
+      {
+        "target": "preview",
+        "route": "price.html",
+        "width": 1440,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "home",
+        "width": 360,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "price.html",
+        "width": 360,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "home",
+        "width": 390,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "price.html",
+        "width": 390,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "home",
+        "width": 768,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "price.html",
+        "width": 768,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "home",
+        "width": 1024,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "price.html",
+        "width": 1024,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "home",
+        "width": 1440,
+        "pass_status": true
+      },
+      {
+        "target": "production",
+        "route": "price.html",
+        "width": 1440,
+        "pass_status": true
+      }
+    ],
+    "no_javascript": [
+      {
+        "target": "preview",
+        "route": "home",
+        "visible_h1": true,
+        "primary_text_length": 751,
+        "pass": true
+      },
+      {
+        "target": "preview",
+        "route": "price.html",
+        "visible_h1": true,
+        "primary_text_length": 1312,
+        "pass": true
+      },
+      {
+        "target": "production",
+        "route": "home",
+        "visible_h1": true,
+        "primary_text_length": 751,
+        "pass": true
+      },
+      {
+        "target": "production",
+        "route": "price.html",
+        "visible_h1": true,
+        "primary_text_length": 1312,
+        "pass": true
+      }
+    ],
+    "admin_isolation": "PASS: no admin production artifact or bundle; missing paths HTTP 404 in local server",
+    "not_found": "standalone noindex/no canonical; local HTTP 404; future host behavior requires launch verification",
+    "evidence_root": "C:\\Users\\Admin\\Downloads\\DENTIX_PR01_TECHNICAL_FOUNDATION_REVIEW_2026-09-08",
+    "remaining_launch_gaps": [
+      "PR-02 old URL disposition",
+      "PR-03/04 pending facts/claims/entity approval",
+      "Production host and deployment not authorized",
+      "GSC/GBP/GA4/Bing baseline access unavailable",
+      "Field CWV and outcomes unknown"
+    ]
+  }
 }

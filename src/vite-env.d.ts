@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+declare const __DENTIX_LEAD_SOURCE__: "PUBLIC_DEMO" | "CANONICAL_CANDIDATE";
+
 interface ImportMetaEnv {
   readonly VITE_DENTIX_CONTENT_API_URL?: string;
   readonly VITE_DENTIX_CONTENT_TIMEOUT_MS?: string;

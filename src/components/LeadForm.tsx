@@ -77,7 +77,8 @@ export function LeadForm({ sourceSite, requestedInterest }: LeadFormProps) {
     }
   }
 
-  return <form className="lead-form" onSubmit={submit}>
+  // Non-personal diagnostic exposes the exact prop used by source_site in submit.
+  return <form className="lead-form" data-source-site={sourceSite} onSubmit={submit}>
     <div className="lead-fields">
       <label><span>Ім’я *</span><input required minLength={2} maxLength={120} autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} placeholder="Ваше ім’я" /></label>
       <label><span>Телефон *</span><input type="tel" required inputMode="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} placeholder="+380 XX XXX XX XX" /></label>

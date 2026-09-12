@@ -3,35 +3,49 @@
   "project_id": "dentix",
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
-  "requested_action": "audit",
-  "authorization_level": "PR-00 / PR #1 READY_FOR_REVIEW; time-bounded pre-merge metadata, normal merge and one automatic Pages preview deployment authorized; pre-merge snapshot; no production/PR-01/release closure",
+  "requested_action": "merge",
+  "authorization_level": "PR01-MERGE-01: independent Draft review PASS; bounded Ready/normal merge/one automatic noindex Pages preview deployment authorized until 2026-09-12T14:19:36.286412+00:00. Pre-merge action snapshot; Ready/merge/deploy pending. NO_SERVER_CI. Production NOT_LAUNCHED; claims=[]; no release closure.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-08T14:54:46.768105Z",
-  "remote_main_sha": "f8431478b995031131fcdf4c12d89afdb6743067",
-  "local_main_sha": "f8431478b995031131fcdf4c12d89afdb6743067",
+  "verified_at": "2026-09-12T11:19:36.286412+00:00",
+  "remote_main_sha": "16ee9d79d06476c88b5748cb87cf0edf0fcdc75c",
+  "local_main_sha": "16ee9d79d06476c88b5748cb87cf0edf0fcdc75c",
   "deployed_sha": null,
   "open_prs": [
     {
-      "baseRefName": "main",
-      "headRefName": "seo/dentix-pr00-bootstrap-t0",
-      "isDraft": false,
-      "number": 1,
+      "number": 2,
       "state": "OPEN",
-      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/1",
-      "baseRefOid": "f8431478b995031131fcdf4c12d89afdb6743067",
-      "headRefOid": "b42755eb5c783d3b4dd9ce3fb92d1a046c577e36",
-      "mergeable": "MERGEABLE",
-      "mergeStateStatus": "CLEAN"
+      "isDraft": true,
+      "baseRefName": "main",
+      "baseRefOid": "16ee9d79d06476c88b5748cb87cf0edf0fcdc75c",
+      "headRefName": "seo/dentix-pr01-technical-foundation",
+      "headRefOid": "ae6849c57a76d8338f434325f7dcbfdd49bde0e8",
+      "mergeStateStatus": "CLEAN",
+      "statusCheckRollup": [],
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/2"
     }
   ],
-  "recently_merged_prs": [],
+  "recently_merged_prs": [
+    {
+      "baseRefName": "main",
+      "headRefName": "seo/dentix-pr00-bootstrap-t0",
+      "headRefOid": "8babe170b52b5576cea4bacd1ef50b5b4c54db59",
+      "mergeCommit": {
+        "oid": "7208e7cadda04273c27282a68171ea3853664510"
+      },
+      "mergedAt": "2026-09-08T15:16:33Z",
+      "number": 1,
+      "state": "MERGED",
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/1"
+    }
+  ],
   "active_branches": [
     "main",
-    "seo/dentix-pr00-bootstrap-t0"
+    "seo/dentix-pr00-bootstrap-t0",
+    "seo/dentix-pr01-technical-foundation"
   ],
-  "handoff_sha": "f8431478b995031131fcdf4c12d89afdb6743067",
+  "handoff_sha": "16ee9d79d06476c88b5748cb87cf0edf0fcdc75c",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
   "production_matches_deploy": false,

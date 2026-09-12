@@ -1,10 +1,56 @@
-# DENTIX PR-00 brief
-As of 2026-09-08T11:33:58Z, repo optidigitalagent/dentix-booking-demo, source f8431478b995031131fcdf4c12d89afdb6743067.
+# DENTIX PR-01 brief
 
-The user selected this repository as the future patient-facing source. Preview: https://optidigitalagent.github.io/dentix-booking-demo/. Existing and target production: https://dentix.ua/. Migration: SAME_DOMAIN_REPLACEMENT. Current new production launch: NOT_YET. DENTIX is a dental clinic in Dnipro, Ukraine; approved new-page language is Ukrainian. Additional page languages are UNKNOWN / not approved.
-Business priorities are therapy, surgery and implantation. The objective is qualified demand and appointments; top positions are a TARGET, never an achieved claim. The current primary conversion is a phone call. A click is only intent. Public intake reports both lead and timed request UNAVAILABLE; delivery and real outcomes remain UNKNOWN.
-Only read/fetch/one branch/.seo control edits/local validation and an external sanitized review pack are authorized. No commit, push, PR, merge, deploy, DNS, indexing, external-account edits, messages or patient submissions. No redirect map or service pages are authorized.
-README still names historical repositories and describes a demo-only architecture. This dated source statement is contradicted by the user's current repository selection and newer runtime code. It is a reconciliation risk, not permission to access another repository. No foreign-tenant content files were found in the tracked path/instruction inventory; no other client was used as evidence.
-11 scope facts are approved for internal controls only; contacts/hours/3 doctor cards are source observations pending publication approval. Full team, biographies, licenses, case mappings/consent, legal entity/controller and medical reviewer are P1/UNKNOWN.
-The 19 query variants are RESEARCH_REQUIRED. Volume, position, difficulty and traffic are UNKNOWN. No SERPs/provider/rank/AI response samples were collected.
-Header-only tables mean no records collected or approved, not zero measured results. In particular, redirect-map.csv has no mappings; asset-manifest.csv has no approved assets; review/authority/medical-review/external-action logs have no invented records. Generated optional tables are retained as canonical controls for later bounded work.
+Selected working source: optidigitalagent/dentix-booking-demo. PR #1 merged at 7208e7cadda04273c27282a68171ea3853664510; same SHA deployed successfully to the noindex GitHub Pages preview. Old and future production https://dentix.ua/; SAME_DOMAIN_REPLACEMENT; new production launch NOT_YET.
+
+Current authority: local PR01-TECH-01 only under authorization.yml. No commit, push, PR, deployment, production or external actions. Existing visible source content is preserved for a local candidate; pending facts/claims are not approved for publication by prerendering. Detailed entity/medical/price approval remains PR-03/04 work.
+
+# QUERY_LOCK_DENTIX v1
+
+**Статус:** APPROVED
+**Дата:** 2026-09-08
+**Назначение:** рабочая приоритизация SEO/GEO; не дословная транскрипция
+клиентского аудио.
+
+## PRIORITY 1
+
+Терапия:
+
+- лечение кариеса;
+- лечение каналов;
+- лечение под микроскопом.
+
+## PRIORITY 2
+
+Хирургия:
+
+- удаление зубов;
+- удаление зубов мудрости.
+
+## PRIORITY 3
+
+Имплантация зубов.
+
+## География и язык
+
+- Primary city: Днепр.
+- Primary page language: украинский.
+- Russian queries: исследовать как дополнительный спрос.
+- Russian page version: не создавать автоматически.
+
+## Семантическая граница
+
+Query Lock подтверждает порядок бизнес-направлений. Он не подтверждает:
+
+- точный финальный список запросов;
+- search volume;
+- keyword difficulty;
+- текущие позиции;
+- прогноз трафика;
+- необходимость отдельной страницы для каждой формулировки;
+- гарантию Google/ChatGPT ranking;
+- медицинские claims;
+- цены, врачей или clinical evidence.
+
+До PR-04 запросы продолжают иметь статус `RESEARCH_REQUIRED`.
+
+T0 source/access gaps and outcome_report.claims=[] remain unchanged. Phone clicks do not prove connected calls; no forms are submitted.

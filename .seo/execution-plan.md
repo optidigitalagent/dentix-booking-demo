@@ -1,9 +1,11 @@
 # DENTIX execution plan
-Recorded 2026-09-08T11:33:58Z; source f8431478b995031131fcdf4c12d89afdb6743067. Only PR-00 .seo controls and the subsequently authorized commit/push/draft-PR and ready-for-review metadata stages are in scope. PR #1 was verified OPEN/isDraft=false at 2026-09-08T14:00:48.233Z; PR-00 status is READY_FOR_REVIEW. Merge/deploy require separate explicit authorization because main pushes trigger GitHub Pages.
-Order below is dependency-led planning, not authority to execute subsequent steps. Each public-content PR must be one bounded risk/topic cluster. No service page, redirect mapping or external action is implemented here.
 
-1. **PR-00** — Initialize .seo and preserve T0 evidence. Dependencies: none. Acceptance: Independent bootstrap rereview accepted; canonical/action/outcome checks pass; .seo-only diff; source unchanged; PR #1 OPEN and isDraft=false verified. Owner: DENTIX owner / assigned implementer TBD.
-2. **PR-01** — Production/preview profiles; initial HTML; metadata; canonical; robots; sitemap; approved Schema; real 404; admin isolation; anchors. Dependencies: PR-00 accepted + separate authorization. Acceptance: Environment/URL/source-render parity tests; noindex retained on preview; 360/390/768/1024/1440 browser QA. Owner: DENTIX owner / assigned implementer TBD.
+Observed 2026-09-08T19:44:33.788945+00:00. PR-00 merged as controls-only at 7208e7cadda04273c27282a68171ea3853664510 with successful noindex Pages preview deployment. PR-01 technical foundation IMPLEMENTED_LOCALLY, NOT_PUBLISHED; source changes remain uncommitted on seo/dentix-pr01-technical-foundation; no PR exists.
+
+QUERY_LOCK_DENTIX v1 approved: priority 1 therapy/caries/canals/microscope; priority 2 surgery/tooth/wisdom extraction; priority 3 implantation. Dnipro; Ukrainian pages; Russian queries research-only. Not an audio transcript or demand/ranking evidence; all query variants remain RESEARCH_REQUIRED.
+
+1. PR-00 — MERGED_CONTROLS_ONLY.
+2. PR-01 — Local implementation/tests/browser QA complete; independent review pending. Stop without staging/commit/push/PR/deploy. Later publication requires separate authorization.
 3. **PR-02** — Full old URL inventory and approved 301/410/keep disposition; preserve service URLs; crawl/media/internal-link contracts. Dependencies: PR-01 + separate authorization. Acceptance: Every old URL has owned disposition and bounded HTTP test; no redirect loops or silent loss. Owner: DENTIX owner / assigned implementer TBD.
 4. **PR-03** — Approve entity, hours, legal controller, founder/team identities and local Schema; phone-first CTA. Dependencies: PR-00 facts + PR-01 + separate authorization. Acceptance: Dated owner approval; no inferred credentials; public/site/GBP facts reconciled when authorized. Owner: DENTIX owner / assigned implementer TBD.
 5. **PR-04A** — Therapy/endodontics cluster; caries/canals/microscope only after business and medical evidence. Dependencies: PR-01 + PR-03 + SERP/fact review + separate authorization. Acceptance: One bounded topic cluster; useful distinct intent; reviewed content; no unproved microscope claim. Owner: DENTIX owner / assigned implementer TBD.
