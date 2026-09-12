@@ -1,6 +1,7 @@
 import albertPortrait from "@/assets/dentix-content/doctors/albert-podolyansky.webp";
 import lauraPortrait from "@/assets/dentix-content/doctors/laura-hrysiak.webp";
 import olenaPortrait from "@/assets/dentix-content/doctors/olena-hamaza.webp";
+import stanislavPortrait from "@/assets/dentix-content/doctors/stanislav-stasiuk.webp";
 
 export type Doctor = {
   id: string;
@@ -13,6 +14,14 @@ export type Doctor = {
 };
 
 export const doctors: Doctor[] = [
+  {
+    id: "stanislav-stasiuk",
+    name: "Стасюк Станіслав Ігорович",
+    role: "Засновник клініки та головний лікар",
+    photo: stanislavPortrait,
+    alt: "Стасюк Станіслав Ігорович, засновник клініки та головний лікар DENTIX",
+    objectPosition: "center top",
+  },
   {
     id: "laura-hrysiak",
     name: "Грисяк Лаура Віталіївна",

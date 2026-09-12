@@ -641,6 +641,38 @@ h3 {
   height: 100%;
   object-fit: cover;
 }
+/* Keep gallery navigation outside the native video controls without changing the photo layout. */
+.about-gallery.is-video {
+  background: var(--dark-surface);
+}
+.about-gallery .about-video {
+  height: calc(100% - 64px);
+  object-fit: contain;
+  background: var(--dark-surface);
+  transition: none;
+}
+.about-gallery .about-slide:not(.is-active) {
+  pointer-events: none;
+}
+.about-gallery .about-video[hidden] {
+  display: none;
+}
+.about-gallery.is-video .gallery-nav {
+  top: auto;
+  bottom: 10px;
+  transform: none;
+}
+.about-gallery.is-video .gallery-dots {
+  left: 64px;
+  right: 64px;
+  bottom: 29px;
+  flex-wrap: wrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-gallery .about-slide {
+    transition: none;
+  }
+}
 .gallery-nav {
   position: absolute;
   top: 50%;
