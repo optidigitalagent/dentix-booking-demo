@@ -9,24 +9,27 @@
     "Preview remains noindex",
     "No lost old service URLs on replacement",
     "No unapproved claims, medical evidence or personal data in analytics",
-    "No false conversion from phone click, synthetic event or submit intent"
+    "No false conversion from phone click, synthetic event or submit intent",
+    "All map HOLD rows resolved or explicit preservative solution approved before cutover",
+    "No drop in successful known old-URL responses; pre-release compare exact URL set",
+    "Every real business outcome requires source confirmation; no duplicate retries or synthetic outcomes"
   ],
   "data_sources": [
-    "Git/source and public GET/DOM T0",
-    "GSC ACCESS_BLOCKED",
-    "GBP ACCESS_BLOCKED",
-    "GA4/GTM ACCESS_BLOCKED",
-    "Bing ACCESS_BLOCKED",
-    "Aggregate call/CRM/outcome UNKNOWN"
+    "access-matrix.csv (DENTIX only)",
+    "data-source-register.yml",
+    "serp-sample.csv and maps-sample.csv (bounded desktop samples)",
+    "event-dictionary.yml (13 planned definitions)",
+    "utm-taxonomy.csv and utm-rules.md (not applied)",
+    "GSC/GA4/GTM/GBP/Bing ACCESS_BLOCKED; CRM/call tracking UNKNOWN"
   ],
-  "baseline_window": "T0 2026-09-08 UTC point-in-time technical/scope observations; no quantitative 28/90-day baseline or comparison dataset; named property, filters, devices and ownership pending",
+  "baseline_window": "T0 research 2026-09-12 UTC, Europe/Kyiv operational timezone. Pre-launch quantitative T0 NOT_READY: obtain 28/90 settled days and matching prior/year periods where available; record exact property, timezone, latency, brand/page/query/country/device filters, consent and attribution. Public SERP samples do not replace performance exports.",
   "observation_windows": {
     "technical": "0–7 days AFTER separately authorized production launch; availability/redirects/crawl/index discovery/delivery QA",
     "discovery": "28 days AFTER launch; queries/impressions/clicks/Maps/AI samples and referrals",
     "outcome": "90 days AFTER launch or documented business cycle; qualified leads/appointments/page decisions"
   },
   "attribution_limits": "Implementation -> publication -> availability -> indexation -> visibility -> visit -> intent -> delivery -> connected interaction -> qualified lead -> appointment -> completed visit/revenue are independent. Phone click is not call; submit is not delivery; synthetic record is not a real lead. Windows are reviews, not ranking deadlines. GSC Web traffic may include AI features and is not a classic-only segment.",
-  "decision_rule": "Resolve technical availability/crawl/redirect failures at 0–7 days. At 28 days compare only compatible dated query/page/device/market datasets; otherwise record data gap. At 90 days decide content and conversion work from real aggregate outcomes, confounders and approved definitions. Missing effect triggers scoped diagnosis, not a success claim.",
+  "decision_rule": "0–7 days: inspect 200/301/404/410, no loops, canonical/robots/noindex parity and approved delivery QA daily; any lost commercial URL, wrong canonical/noindex or form delivery failure requires immediate operator investigation and rollback decision. 28 days: compare same GSC query/page/device/country cohorts and GA4 source/landing segments only after settled windows; missing data means ACCESS_BLOCKED, not failure or success. 90 days: assess real aggregate qualified inquiries, connected calls, appointments and content overlap with owner-approved baseline/definitions; control for seasonality, paid/brand campaigns, consent/tracking changes and outages. No automatic ranking deadline. Owner: DENTIX SEO operator plus clinic outcome owner (name pending).",
   "privacy_rules": [
     "Do not read/export patient records or secrets",
     "No personal/medical fields in client analytics or .seo",
@@ -36,38 +39,49 @@
     "channels": {
       "technical": {
         "status": "UNKNOWN",
-        "reason": "New production NOT_YET; source/build/preview evidence in baseline.md is not production readiness or an outcome",
+        "reason": "PR01 preview reconciled and noindex observed; old WordPress remains production. New React production readiness NOT_ESTABLISHED.",
         "evidence_ids": []
       },
       "google_indexation": {
         "status": "ACCESS_BLOCKED",
-        "reason": "No authorized DENTIX GSC URL Inspection evidence",
+        "reason": "GSC URL Inspection unavailable; site search and SERP observations do not establish indexed URL inventory.",
         "evidence_ids": []
       },
       "google_organic": {
-        "status": "ACCESS_BLOCKED",
-        "reason": "No authorized DENTIX GSC performance dataset with date/query/device filters",
-        "evidence_ids": []
+        "status": "OBSERVED",
+        "reason": "Bounded public research observation only; performance and achieved outcomes not established.",
+        "evidence_ids": [
+          "organic-brand",
+          "organic-kalynova"
+        ]
       },
       "google_maps": {
-        "status": "ACCESS_BLOCKED",
-        "reason": "No authorized GBP Performance export or geographic sample",
-        "evidence_ids": []
+        "status": "OBSERVED",
+        "reason": "Bounded public research observation only; performance and achieved outcomes not established.",
+        "evidence_ids": [
+          "maps-brand"
+        ]
       },
       "ai_mention": {
-        "status": "UNKNOWN",
-        "reason": "No dated controlled AI response samples collected",
-        "evidence_ids": []
+        "status": "OBSERVED",
+        "reason": "Bounded public research observation only; performance and achieved outcomes not established.",
+        "evidence_ids": [
+          "ai-mention-therapy"
+        ]
       },
       "ai_site_citation": {
-        "status": "UNKNOWN",
-        "reason": "No own-site AI citation sample collected",
-        "evidence_ids": []
+        "status": "OBSERVED",
+        "reason": "Bounded public research observation only; performance and achieved outcomes not established.",
+        "evidence_ids": [
+          "ai-site-therapy"
+        ]
       },
       "ai_third_party_citation": {
-        "status": "UNKNOWN",
-        "reason": "No third-party citation sample collected",
-        "evidence_ids": []
+        "status": "OBSERVED",
+        "reason": "Bounded public research observation only; performance and achieved outcomes not established.",
+        "evidence_ids": [
+          "ai-third-party-therapy"
+        ]
       },
       "ai_referral": {
         "status": "ACCESS_BLOCKED",
@@ -85,7 +99,38 @@
         "evidence_ids": []
       }
     },
-    "evidence": [],
+    "evidence": [
+      {
+        "id": "organic-brand",
+        "path": "observations/organic-brand.json",
+        "sha256": "b48695d749b27f6024487c89476fc77d46f00382589d23e1a1923badedeec7e9"
+      },
+      {
+        "id": "organic-kalynova",
+        "path": "observations/organic-kalynova.json",
+        "sha256": "183171f8d4c71825a37b694ece4578d4d252ae9a9e7229ac51d17c71c9b6990f"
+      },
+      {
+        "id": "maps-brand",
+        "path": "observations/maps-brand.json",
+        "sha256": "a00ac6371d5f902020ef56952f6bf39ec3990951e00c99de1374ead687ddc82b"
+      },
+      {
+        "id": "ai-mention-therapy",
+        "path": "observations/ai-mention-therapy.json",
+        "sha256": "90fd1e8cb18fe53874c643fef4f306064e82fe67e5358de5e690c3a6ff4a187f"
+      },
+      {
+        "id": "ai-site-therapy",
+        "path": "observations/ai-site-therapy.json",
+        "sha256": "69c6fc60689de3e406e96b8a3ca6f73f80b648d2081c6f49caa0f1ccc4b16508"
+      },
+      {
+        "id": "ai-third-party-therapy",
+        "path": "observations/ai-third-party-therapy.json",
+        "sha256": "533ccc5c394a0800d01821e79d01a4fe7cc3e9df19852b21bf1fe1a507c27926"
+      }
+    ],
     "claims": []
   }
 }

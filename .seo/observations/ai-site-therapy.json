@@ -1,0 +1,46 @@
+{
+  "project_id": "dentix",
+  "repository": "optidigitalagent/dentix-booking-demo",
+  "production_url": "https://dentix.ua/",
+  "urls": [
+    "https://dentix.ua/"
+  ],
+  "channel": "ai_site_citation",
+  "source": {
+    "kind": "ai_response",
+    "id": "DENTIX-PR02-ai-site-therapy"
+  },
+  "measured_at": "2026-09-12T11:58:36.297Z",
+  "window": {
+    "start": "2026-09-12T11:58:36.297Z",
+    "end": "2026-09-12T11:58:36.297Z"
+  },
+  "scope": {
+    "query": "стоматолог терапевт Дніпро",
+    "filters": "hl=uk;gl=ua;pws=0;first visible page; no numeric ranking",
+    "market": "Ukraine / Dnipro query; IP locale Kyiv",
+    "language": "uk",
+    "device": "desktop Chrome"
+  },
+  "metric": "dentix_site_citations",
+  "unit": "count",
+  "value": 0,
+  "denominator": null,
+  "event_type": "research_sample",
+  "synthetic": false,
+  "limitations": "Single public snapshot for legacy dentix.ua; not new React launch, stable rank, performance baseline, growth, referral or business outcome. Research details in serp-sample.csv/maps-sample.csv/ai-sample-log.csv.",
+  "environment": "production",
+  "ai": {
+    "platform": "Google Search AI Overview",
+    "web_search": true,
+    "prompt": "стоматолог терапевт Дніпро",
+    "geography": "Ukraine / Dnipro query; IP locale Kyiv",
+    "personalization": "pws=0; sign-in link visible; personalization UNKNOWN",
+    "branded": false,
+    "sample_size": 1,
+    "rounds": 1,
+    "links": [
+      "https://www.google.com/goto?url=CAESTgHrOzAVTEkQy_oY0if779Njjk9RFAmVafuItCXIN9pTuyR52PXfU-L6Vg3mL0jIy5CDzweHrTYoUSJu7G_daaVjtSGXXr_5YaQLlag-ow"
+    ]
+  }
+}

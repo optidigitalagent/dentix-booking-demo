@@ -6,9 +6,9 @@
       "description": "P0: Same-domain replacement previously described as cross-domain/no",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "Lock old and new URL to dentix.ua; PR-02 URL inventory before release",
+      "mitigation": "Same-domain replacement; redirect-map.csv covers 64 inventory rows, 61 discovered + 3 probes. Resolve HOLD before cutover.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "planning_reconciled_cutover_blocked"
     },
     {
       "id": "R-002",
@@ -26,9 +26,9 @@
       "description": "P0: Preview noindex accidentally removed",
       "likelihood": "risk",
       "impact": "high",
-      "mitigation": "Keep preview permanently noindex; profile parity tests in PR-01; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
+      "mitigation": "2026-09-12 live GET has noindex,nofollow,noarchive; deployment SHA matches main. Preserve throughout later work.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "mitigated_locally_not_published"
+      "status": "preview_verified"
     },
     {
       "id": "R-004",
@@ -46,9 +46,9 @@
       "description": "P0: Old service URLs may be lost or return 404",
       "likelihood": "risk",
       "impact": "high",
-      "mitigation": "Inventory old URLs and later approve per-URL disposition in PR-02; no redirect decisions now",
+      "mitigation": "Preserve home + 3 legacy service URLs; map all observed controls/feeds/media. Prosthetics must exist before cutover even though outside growth priorities. GSC/log/backlink orphans unknown.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mapped_pending_owner_and_host_decisions"
     },
     {
       "id": "R-006",
@@ -76,9 +76,9 @@
       "description": "P0: Critical content absent from initial preview HTML",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "Static HTML/prerender in PR-01; compare source to DOM; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
+      "mitigation": "PR #2 merged and current noindex Pages preview responds with initial content. No new production launch; do not use historical source-shell issue as current preview diagnosis.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "mitigated_locally_not_published"
+      "status": "mitigated_on_preview_only"
     },
     {
       "id": "R-009",
@@ -159,6 +159,56 @@
       "mitigation": "PR-01 genuine not-found presentation; retain actual HTTP evidence separately; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
       "status": "mitigated_locally_not_published"
+    },
+    {
+      "id": "R-017",
+      "area": "hosting",
+      "description": "P0: redirect/410 capability and target production host unapproved",
+      "likelihood": "confirmed gap",
+      "impact": "high",
+      "mitigation": "Resolve hosting-decisions.md; demonstrate all map statuses on staging; no Pages-only assumption.",
+      "owner": "DENTIX owner / assigned implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-018",
+      "area": "research",
+      "description": "P1: IP-localized Kyiv sample is not Dnipro geo-grid; GSC subscription blocked",
+      "likelihood": "confirmed gap",
+      "impact": "medium",
+      "mitigation": "Keep rank/volume UNKNOWN; repeat localized samples; request scoped read-only exports later.",
+      "owner": "DENTIX owner / assigned implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-019",
+      "area": "local",
+      "description": "P1: address apartment suffix, hours and directory phone differ across public sources",
+      "likelihood": "confirmed gap",
+      "impact": "medium",
+      "mitigation": "Owner reconcile against approved facts before website/Profile changes; citation-audit.csv.",
+      "owner": "DENTIX owner / assigned implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-020",
+      "area": "migration",
+      "description": "P0: media, comments/feeds and default-looking post require provenance/disposition",
+      "likelihood": "confirmed gap",
+      "impact": "high",
+      "mitigation": "Hold 49 rows; private owner review without patient records in repo; preserve or approve exact retirement.",
+      "owner": "DENTIX owner / assigned implementer; named owner pending",
+      "status": "open"
+    },
+    {
+      "id": "R-021",
+      "area": "content",
+      "description": "P1: overlapping canal/microscope and complex/general extraction intents",
+      "likelihood": "confirmed gap",
+      "impact": "medium",
+      "mitigation": "One endodontic/microscope URL; complex extraction section initially; revisit only with SERP/GSC and original content evidence.",
+      "owner": "DENTIX owner / assigned implementer; named owner pending",
+      "status": "open"
     }
   ]
 }

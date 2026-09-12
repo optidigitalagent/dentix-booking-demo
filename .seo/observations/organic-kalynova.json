@@ -1,0 +1,33 @@
+{
+  "project_id": "dentix",
+  "repository": "optidigitalagent/dentix-booking-demo",
+  "production_url": "https://dentix.ua/",
+  "urls": [
+    "https://dentix.ua/"
+  ],
+  "channel": "google_organic",
+  "source": {
+    "kind": "google_serp_sample",
+    "id": "DENTIX-PR02-organic-kalynova"
+  },
+  "measured_at": "2026-09-12T12:04:26.428Z",
+  "window": {
+    "start": "2026-09-12T12:04:26.428Z",
+    "end": "2026-09-12T12:04:26.428Z"
+  },
+  "scope": {
+    "query": "стоматологія Калинова Дніпро",
+    "filters": "hl=uk;gl=ua;pws=0;first visible page; no numeric ranking",
+    "market": "Ukraine / Dnipro query; IP locale Kyiv",
+    "language": "uk",
+    "device": "desktop Chrome"
+  },
+  "metric": "site_presence_in_sample",
+  "unit": "count",
+  "value": 1,
+  "denominator": null,
+  "event_type": "research_sample",
+  "synthetic": false,
+  "limitations": "Single public snapshot for legacy dentix.ua; not new React launch, stable rank, performance baseline, growth, referral or business outcome. Research details in serp-sample.csv/maps-sample.csv/ai-sample-log.csv.",
+  "environment": "production"
+}
