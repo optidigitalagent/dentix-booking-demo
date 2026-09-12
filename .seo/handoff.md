@@ -1,3 +1,11 @@
+## PR-01 authorized pre-merge boundary — 2026-09-12T11:19:36.286412+00:00
+
+This current section supersedes prior permission/status prose below. User grant DENTIX_AUTHORIZATION_PR01_READY_MERGE_PREVIEW_DEPLOY expires 2026-09-12T14:19:36.286412+00:00. PR #2 OPEN/Draft/CLEAN at reviewed head `ae6849c57a76d8338f434325f7dcbfdd49bde0e8`, base `16ee9d79d06476c88b5748cb87cf0edf0fcdc75c`; 47 approved paths. Independent Draft review PASS; archive SHA-256 `b5343cbb555de82fc3f5412e668fecbac08873c39ea9e3f43267aea089d28b59`, 51,003,710 bytes, manifest 359/359 verified, no missing/mismatched/undeclared files or credential patterns. F-01–F-05 and 21-file semantic LF normalization accepted; founder/video preserved. Historical F-01 timing failure below remains retained. Reviews/checks empty: NO_SERVER_CI, not CI PASS.
+
+Exactly one bounded authorization metadata commit/push, one fresh final-head validation suite, Ready, normal merge and one automatic main-push Pages preview deployment are authorized and pending. External action is solely PR #2 body updates. No manual dispatch or second deployment. project-state worktree_clean describes the observed clean pre-edit boundary and required clean post-commit action boundary; containing commit SHA and final exact-head validation are recorded externally to avoid self-reference. The final merged/deployed identifiers belong in merged PR body and external evidence; no post-merge repository commit is authorized. Next separately authorized stage must reconcile those identifiers.
+
+Production remains NOT_LAUNCHED; release-state remains open. publish/sitemap_submit/release/release_close/indexing_request=false; outcome_report.claims=[] unchanged. No source/test/build/workflow/package/lockfile edits, production/domain/account changes, forms, appointments or PR-02/03/04.
+
 ## Current PR-01 Draft handoff — 2026-09-12T10:43:36.836495+00:00
 
 PR-01 status: DRAFT_PR_OPEN. Draft PR #2: https://github.com/optidigitalagent/dentix-booking-demo/pull/2 into main; OPEN/isDraft=true. Base and unchanged origin/main: `16ee9d79d06476c88b5748cb87cf0edf0fcdc75c`. Implementation commit and observed remote PR head: `452a77095eab0a5d9d0e66da893f241db5a004e9`. Exact 47 approved files committed with `feat(seo): add DENTIX production technical foundation` and normally pushed. No overlapping open PR was present at creation.

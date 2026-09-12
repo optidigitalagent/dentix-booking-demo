@@ -3,25 +3,25 @@
   "project_id": "dentix",
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
-  "requested_action": "commit",
-  "authorization_level": "PR01-PUBLISH-DRAFT-01: DRAFT_PR_OPEN #2 https://github.com/optidigitalagent/dentix-booking-demo/pull/2; OPEN/isDraft=true observed at implementation head 452a77095eab0a5d9d0e66da893f241db5a004e9; base/main 16ee9d79d06476c88b5748cb87cf0edf0fcdc75c; implementation commit and normal push complete, all required local validation PASS, independent review and F-01..F-05 accepted; metadata follow-up only. Claims empty; no Ready/merge/deploy/production/external accounts or PR-02/03/04.",
+  "requested_action": "merge",
+  "authorization_level": "PR01-MERGE-01: independent Draft review PASS; bounded Ready/normal merge/one automatic noindex Pages preview deployment authorized until 2026-09-12T14:19:36.286412+00:00. Pre-merge action snapshot; Ready/merge/deploy pending. NO_SERVER_CI. Production NOT_LAUNCHED; claims=[]; no release closure.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-12T10:43:36.836495+00:00",
+  "verified_at": "2026-09-12T11:19:36.286412+00:00",
   "remote_main_sha": "16ee9d79d06476c88b5748cb87cf0edf0fcdc75c",
   "local_main_sha": "16ee9d79d06476c88b5748cb87cf0edf0fcdc75c",
   "deployed_sha": null,
   "open_prs": [
     {
+      "number": 2,
+      "state": "OPEN",
+      "isDraft": true,
       "baseRefName": "main",
       "baseRefOid": "16ee9d79d06476c88b5748cb87cf0edf0fcdc75c",
       "headRefName": "seo/dentix-pr01-technical-foundation",
-      "headRefOid": "452a77095eab0a5d9d0e66da893f241db5a004e9",
-      "isDraft": true,
-      "mergeStateStatus": "UNKNOWN",
-      "number": 2,
-      "state": "OPEN",
+      "headRefOid": "ae6849c57a76d8338f434325f7dcbfdd49bde0e8",
+      "mergeStateStatus": "CLEAN",
       "statusCheckRollup": [],
       "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/2"
     }
@@ -50,5 +50,5 @@
   "overlapping_active_pr": false,
   "production_matches_deploy": false,
   "external_state_verified": true,
-  "worktree_clean": false
+  "worktree_clean": true
 }
