@@ -6,9 +6,9 @@
       "source_url_or_id": "UNKNOWN: deployment variable not inspected; src/hooks/use-managed-content.ts and src/lib/google-sheets-content.ts @ f8431478b995031131fcdf4c12d89afdb6743067",
       "access_level": "public-read",
       "refresh_cadence": "Code fetch with cache no-store and _content_version; source publishing cadence UNKNOWN",
-      "static_fallback": "src/data/doctors.ts and src/data/prices.ts; client-side fallback only; absent from initial HTML",
+      "static_fallback": "src/data/doctors.ts and src/data/prices.ts rendered into initial home/price HTML by existing React components; same fallback initializes hydration",
       "failure_behavior": "Use independent local doctor/price fallback on missing endpoint, network failure or invalid section",
-      "drift_check": "PR-01 source/rendered/public-content parity; no account access or live content mutation in PR00",
+      "drift_check": "PR01 source/initial/rendered fallback parity PASS locally; existing malformed/unavailable data tests PASS. Rebuild after approved fallback edits; runtime public-source parity/owner approval pending before launch. No Sheets/account access.",
       "owner": "DENTIX content owner UNKNOWN",
       "approved_at": "UNKNOWN"
     }

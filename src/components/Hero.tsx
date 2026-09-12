@@ -71,7 +71,7 @@ export function Hero() {
             Стоматологія повного циклу
           </Reveal>
           <h1 className="hero-title">
-            <span>Стоматологія</span>
+            <span>Стоматологія</span>{" "}
             <span>{site.name}</span>
           </h1>
           <Reveal as="p" className="hero-lede" delay={80}>

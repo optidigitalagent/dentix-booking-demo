@@ -3,9 +3,10 @@ import { Brand } from "./Brand";
 import { site } from "@/data/site";
 import { siteHref } from "@/lib/site-href";
 import { BookingButton } from "./booking/BookingContext";
+import { usePatientRoute } from "../route-context";
 
 export function Header() {
-  const isPricePage = typeof window !== "undefined" && /\/price\.html\/?$/.test(window.location.pathname);
+  const isPricePage = usePatientRoute() === "price";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);

@@ -19,7 +19,7 @@ export const services: Service[] = [
     title: "Пародонтологія",
     text: "Vector-терапія, підтримуючий курс і пародонтологічне лікування.",
     linkLabel: "Відкрити прайс",
-    href: "/price.html#parodontologiya",
+    href: "/price.html",
   },
   {
     num: "03",

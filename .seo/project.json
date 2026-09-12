@@ -6,6 +6,6 @@
   "primary_language": "uk",
   "site_type": "local-business",
   "initialized_at": "2026-09-08T11:26:26Z",
-  "status": "PR-00 bootstrap / T0 controls / no public changes",
+  "status": "PR-01 ACCEPTED_LOCALLY / NOT_PUBLISHED / F-01..F-05 accepted; founder/video preserved; LF equivalence verified; post-normalization validation PASS; commit/push/Draft PR authorized",
   "secrets_policy": "Do not store credentials, tokens, private exports, personal data, or medical data in .seo"
 }

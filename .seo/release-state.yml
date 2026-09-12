@@ -1,7 +1,7 @@
 {
   "repository": "optidigitalagent/dentix-booking-demo",
   "project_id": "dentix",
-  "pull_request": "https://github.com/optidigitalagent/dentix-booking-demo/pull/1",
+  "pull_request": null,
   "merged_sha": null,
   "deployed_sha": null,
   "production_url": "https://dentix.ua/",

@@ -63,7 +63,7 @@ export function ContactSection() {
               </div>
               <span className="contact-panel-status">без медичних даних</span>
             </div>
-            <LeadForm sourceSite="PUBLIC_DEMO" />
+            <LeadForm sourceSite={__DENTIX_LEAD_SOURCE__} />
           </Reveal>
         </div>
       </div>

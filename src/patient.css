@@ -49,6 +49,17 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 body {
   font-family: "DM Sans", "Manrope", sans-serif;
   color: var(--text-white);
@@ -3579,7 +3590,7 @@ body:has(.nav-mobile.open) .mobile-call-bar {
   }
 }
 
-/* ===================== BELLA DENT COLOR-ONLY REFINEMENT ===================== */
+/* ===================== DENTIX COLOR REFINEMENT ===================== */
 body {
   color: var(--text-primary);
   background:

@@ -16,9 +16,9 @@
       "description": "P1: Historical repository ambiguity and README contradiction",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "This mission selects dentix-booking-demo; correct stale README only in separately scoped work",
+      "mitigation": "This mission selects dentix-booking-demo; correct stale README only in separately scoped work; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mitigated_locally_not_published"
     },
     {
       "id": "R-003",
@@ -26,9 +26,9 @@
       "description": "P0: Preview noindex accidentally removed",
       "likelihood": "risk",
       "impact": "high",
-      "mitigation": "Keep preview permanently noindex; profile parity tests in PR-01",
+      "mitigation": "Keep preview permanently noindex; profile parity tests in PR-01; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mitigated_locally_not_published"
     },
     {
       "id": "R-004",
@@ -36,9 +36,9 @@
       "description": "P0: Preview noindex accidentally carried into final production",
       "likelihood": "risk",
       "impact": "high",
-      "mitigation": "Explicit production domain/profile acceptance before launch",
+      "mitigation": "Explicit production domain/profile acceptance before launch; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mitigated_locally_not_published"
     },
     {
       "id": "R-005",
@@ -76,9 +76,9 @@
       "description": "P0: Critical content absent from initial preview HTML",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "Static HTML/prerender in PR-01; compare source to DOM",
+      "mitigation": "Static HTML/prerender in PR-01; compare source to DOM; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mitigated_locally_not_published"
     },
     {
       "id": "R-009",
@@ -86,9 +86,9 @@
       "description": "P0: New-site canonical/robots/sitemap/local Schema absent",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "Environment-aware production foundation in PR-01 using approved facts",
+      "mitigation": "Local canonical/robots/sitemap and WebSite/WebPage PASS; detailed local entity Schema deferred to PR-03; NOT_PUBLISHED",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "partially_mitigated_locally"
     },
     {
       "id": "R-010",
@@ -96,9 +96,9 @@
       "description": "P1: Patient build creates /admin/ and imports AdminCrm",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "Isolate admin before production; do not open private data or change backend",
+      "mitigation": "Isolate admin before production; do not open private data or change backend; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mitigated_locally_not_published"
     },
     {
       "id": "R-011",
@@ -136,9 +136,9 @@
       "description": "P1: Service link #parodontologiya has no current price target",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "Resolve against approved content in PR-01; source and rendered anchor tests",
+      "mitigation": "Resolve against approved content in PR-01; source and rendered anchor tests; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mitigated_locally_not_published"
     },
     {
       "id": "R-015",
@@ -146,7 +146,7 @@
       "description": "P1: Doctors/prices depend on public runtime source with JS-only fallback",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "Define source owner, refresh and drift; preserve static critical content in PR-01",
+      "mitigation": "Initial source fallback now prerendered and hydration parity verified locally. Runtime refresh unchanged; live source owner/approval/cadence and runtime drift remain unresolved before publication.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
       "status": "open"
     },
@@ -156,9 +156,9 @@
       "description": "P1: postbuild copies app shell into 404.html",
       "likelihood": "confirmed",
       "impact": "medium",
-      "mitigation": "PR-01 genuine not-found presentation; retain actual HTTP evidence separately",
+      "mitigation": "PR-01 genuine not-found presentation; retain actual HTTP evidence separately; PR01 local acceptance PASS at 2026-09-08T19:44:33.788945+00:00; external artifacts/browser evidence; public release verification remains required",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "mitigated_locally_not_published"
     }
   ]
 }

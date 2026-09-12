@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static demo
-        run: npm run build
+      - name: Build noindex preview
+        run: npm run build:preview
         env:
           VITE_DENTIX_CONTENT_API_URL: ${{ vars.VITE_DENTIX_CONTENT_API_URL }}
           VITE_DENTIX_CONTENT_TIMEOUT_MS: "4000"
@@ -50,7 +50,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: dist/preview
 
   deploy:
     needs: build
