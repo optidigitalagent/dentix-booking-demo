@@ -4,15 +4,24 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "commit",
-  "authorization_level": "PR03 validated for commit/push/one Draft PR; PRE-COMMIT snapshot, worktree_clean=false. Post-PR02 reconciled: PR #3 merged 160804ce2fd0cd759788f2ec2961b1638f7dcda8; successful noindex preview run 34695414098. Migration 64 rows / 49 HOLD unchanged. Production old WordPress; React NOT_LAUNCHED; claims=[]. Final commit/PR receipt external; no self-referential follow-up commit.",
+  "authorization_level": "PR03 independent remote/code/evidence review PASS on f71117c8334376400502203f89cef96112f3a5a9; NO_SERVER_CI. One bounded metadata commit/push; fresh exact-head suite; Ready/normal merge/one automatic noindex preview deployment authorized until 2026-09-13T00:09:08.320787+00:00, all pending. Clean input snapshot verified before metadata edits; clean worktree must be rechecked at each later action boundary. Post-merge identifiers belong in PR #4 body and external evidence; no post-merge commit. Prior release-state identifies PR #3 preview, not PR03 completion. Production NOT_LAUNCHED; claims=[].",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-12T15:04:51.484370+00:00",
+  "verified_at": "2026-09-12T21:09:08.320787+00:00",
   "remote_main_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
   "local_main_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
   "deployed_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
-  "open_prs": [],
+  "open_prs": [
+    {
+      "number": 4,
+      "state": "OPEN",
+      "isDraft": true,
+      "headRefOid": "f71117c8334376400502203f89cef96112f3a5a9",
+      "baseRefOid": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/4"
+    }
+  ],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
@@ -56,5 +65,5 @@
   "overlapping_active_pr": false,
   "production_matches_deploy": false,
   "external_state_verified": true,
-  "worktree_clean": false
+  "worktree_clean": true
 }
