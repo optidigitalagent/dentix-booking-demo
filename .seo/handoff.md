@@ -1,3 +1,13 @@
+## Current PR-01 Draft handoff — 2026-09-12T10:43:36.836495+00:00
+
+PR-01 status: DRAFT_PR_OPEN. Draft PR #2: https://github.com/optidigitalagent/dentix-booking-demo/pull/2 into main; OPEN/isDraft=true. Base and unchanged origin/main: `16ee9d79d06476c88b5748cb87cf0edf0fcdc75c`. Implementation commit and observed remote PR head: `452a77095eab0a5d9d0e66da893f241db5a004e9`. Exact 47 approved files committed with `feat(seo): add DENTIX production technical foundation` and normally pushed. No overlapping open PR was present at creation.
+
+All fresh required local validation PASS, including the repeated post-normalization run. LF normalization: 21 files, semantic equivalence proven; default diff checks PASS; package-lock unchanged; founder/video preserved. Operator 0.2.1: 213 matching files, 10 skills, bundle PASS, outcome 47/47, tenant isolation 7/7. Unit 8/8; both builds PASS without extensionless warning; artifacts 8/8; technical 20 + no-JS 20 + semantics 40 + 404 4; lead-source 8/8; safe mobile 40/40; founder/video 16/16; read-only admin and XML sitemap PASS. GitHub server check list at creation: []; absence is not passing CI. Historical initial F-01 timing failure remains preserved.
+
+This bounded metadata follow-up records the actual Draft PR identifiers; its containing commit SHA and final remote equality are recorded in external final evidence to avoid a self-referential SHA. project.json and earlier sections retain their implementation/recovery-time observations; this section and project-state/release-state are the current handoff. Main remains unchanged. No deployment was triggered; latest observed Pages deployment before push: 6407235554 at `16ee9d79d06476c88b5748cb87cf0edf0fcdc75c`. Final unchanged-deployment check is recorded externally; no production launch or production response verification is claimed.
+
+outcome_report.claims=[]; no indexation/ranking/traffic/leads/appointments or SEO/GEO outcome claimed. Ready for review, merge, deploy, production/external changes and PR-02/03/04 remain outside scope. Stop after normal metadata push and evidence ZIP; next step is independent Draft PR review.
+
 ## PR-01 authorized Draft publication boundary — 2026-09-12T10:38:47.089968+00:00
 
 Independent local review accepted, including F-01 through F-05. Accepted archive SHA-256: de902d56d4c5ede6ea47394393addf09957f0365f08661beb37a82bf1abff0d9 (159/159 entries; 47/47 snapshots). Base/current main: 16ee9d79d06476c88b5748cb87cf0edf0fcdc75c. Upstream founder/video preserved. The user continued commit/push/one Draft PR authorization after repairing the external Python launcher. Earlier local-only permissions describe historical recovery, superseded by the current authorization.yml.
