@@ -356,3 +356,14 @@ Record validation only; no aggregate SEO PASS. Claims are bounded to their suppl
 ```
 
 No claim establishes SEO causality, representative global visibility, or an actual client result from synthetic fixtures.
+
+
+## PR02-MERGE-01 authorization snapshot — 2026-09-12T13:00:43.239753+00:00
+
+Independent supplied evidence review: PASS. Evidence ZIP: 155182 bytes; SHA-256 `ee28ac6420ad5018f5c417e38bc316e2bba44c355f5e09e36bbd88b62c2982c2`; manifest 85/85 verified, no mismatches or undeclared files.
+
+Accepted planning baseline: 64 unique migration URLs (KEEP 3; REBUILD_SAME_URL 4; 301 7; 410 1; HOLD_FOR_CONFIRMATION 49), 12 planned destinations, 24 query-map entries, 20 sampled Google queries / 60 organic rows, 13 local observations, 3 observed AIO samples, 20 competitor pages / 13 domains, 7 external UTM examples, 13 event definitions. Numeric demand UNKNOWN; numeric T0 NOT_READY because required account data is ACCESS_BLOCKED. ChatGPT/Bing and GSC/GBP/GA4/GTM remain ACCESS_BLOCKED.
+
+Public-crawl coverage only; no GSC/log orphan coverage. IP locale Kyiv, no geo-grid. The 49 HOLD rows block cutover resolution, not content planning. No new research finding, migration disposition, source/public change, account action, production launch or SEO outcome is claimed. `outcome_report.claims=[]`.
+
+Time-bounded grant expires 2026-09-12T16:00:43.239753+00:00. Ready, normal merge and one automatic noindex Pages preview deployment are pending validation. Only PR #3 body may be updated externally. No manual dispatch, second deployment, branch deletion, production publish, indexing, release closure or PR03/04 implementation. Existing release-state identifiers describe completed PR #2; this stage's final identifiers belong in merged PR #3 body and external evidence, and must be reconciled in the next separately authorized stage. No post-merge repository commit.

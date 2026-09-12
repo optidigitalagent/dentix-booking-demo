@@ -4,15 +4,25 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "commit",
-  "authorization_level": "PR02-MIGRATION-DEMAND-01 authorized planning only. PRE-COMMIT snapshot; branch pending one Draft PR. PR #2 merged; preview deployment reconciled to current main. dentix.ua remains old WordPress production; new React site NOT_LAUNCHED. claims=[]; no release closure. worktree_clean=false records prepared uncommitted .seo artifacts; post-commit clean push/Draft PR boundary will be verified in external receipts.",
+  "authorization_level": "PR02-MERGE-01 authorized; PRE-COMMIT metadata snapshot. Independent supplied evidence review PASS and archive integrity reverified 85/85. PR #3 Draft OPEN, 47 .seo paths, NO_SERVER_CI; Ready/normal merge/single automatic preview deployment pending. worktree_clean=false describes this metadata preparation; clean action boundaries will be captured externally after commit. Final merge/deployment identifiers must be reconciled at the next authorized stage; no post-merge repository commit. dentix.ua old WordPress remains production, React NOT_LAUNCHED; claims=[].",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-12T12:18:25.462402+00:00",
+  "verified_at": "2026-09-12T13:00:43.239753+00:00",
   "remote_main_sha": "ff675a1e4363d1c5e8d936b5273710bf5db89211",
   "local_main_sha": "ff675a1e4363d1c5e8d936b5273710bf5db89211",
   "deployed_sha": "ff675a1e4363d1c5e8d936b5273710bf5db89211",
-  "open_prs": [],
+  "open_prs": [
+    {
+      "number": 3,
+      "state": "OPEN",
+      "isDraft": true,
+      "headRefName": "seo/dentix-pr02-migration-demand-baseline",
+      "headRefOid": "6759c4e380cf030c70b6676187a6bad9ded876ed",
+      "baseRefName": "main",
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/3"
+    }
+  ],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
