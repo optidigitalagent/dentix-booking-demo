@@ -6,6 +6,6 @@
   "primary_language": "uk",
   "site_type": "local-business",
   "initialized_at": "2026-09-08T11:26:26Z",
-  "status": "PR-01 ACCEPTED_LOCALLY / NOT_PUBLISHED / F-01..F-05 accepted; founder/video preserved; LF equivalence verified; post-normalization validation PASS; commit/push/Draft PR authorized",
+  "status": "PR-02 PREPARED_FOR_DRAFT_PR; PR #2 merged and noindex Pages preview reconciled to ff675a1e4363d1c5e8d936b5273710bf5db89211; old dentix.ua remains production; React NOT_LAUNCHED; planning only; claims=[]",
   "secrets_policy": "Do not store credentials, tokens, private exports, personal data, or medical data in .seo"
 }

@@ -370,5 +370,17 @@
       "GSC/GBP/GA4/Bing baseline access unavailable",
       "Field CWV and outcomes unknown"
     ]
+  },
+  "pr02_reconciliation": {
+    "observed_at": "2026-09-12T12:18:25Z",
+    "main_sha": "ff675a1e4363d1c5e8d936b5273710bf5db89211",
+    "pr01": "MERGED PR #2",
+    "preview_deployment_sha": "ff675a1e4363d1c5e8d936b5273710bf5db89211",
+    "preview_robots": "noindex,nofollow,noarchive",
+    "new_production": "NOT_LAUNCHED",
+    "current_production": "Old WordPress dentix.ua; nginx HTTP evidence",
+    "inventory": "crawl-report.csv and redirect-map.csv: 61 discovered +3 probes =64",
+    "hosting": "hosting-decisions.md; unapproved target and arbitrary 301/410 capability",
+    "historical_records": "Earlier PR01 source/local-only statements are historical; use this reconciliation and current project-state.yml"
   }
 }

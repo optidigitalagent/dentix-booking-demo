@@ -66,3 +66,19 @@ All fresh required local validation PASS, including the repeated post-normalizat
 This bounded metadata follow-up records the actual Draft PR identifiers; its containing commit SHA and final remote equality are recorded in external final evidence to avoid a self-referential SHA. project.json and earlier sections retain their implementation/recovery-time observations; this section and project-state/release-state are the current handoff. Main remains unchanged. No deployment was triggered; latest observed Pages deployment before push: 6407235554 at `16ee9d79d06476c88b5748cb87cf0edf0fcdc75c`. Final unchanged-deployment check is recorded externally; no production launch or production response verification is claimed.
 
 outcome_report.claims=[]; no indexation/ranking/traffic/leads/appointments or SEO/GEO outcome claimed. Ready for review, merge, deploy, production/external changes and PR-02/03/04 remain outside scope. Stop after normal metadata push and evidence ZIP; next step is independent Draft PR review.
+
+
+## 2026-09-12 PR02 migration and demand planning
+
+Reconciled PR #2 merged/preview SHA ff675a1e4363d1c5e8d936b5273710bf5db89211. Public research only: complete attempted public discovery inventory, per-URL dispositions, dated organic/local/AI samples, competitor and exact-page planning, hosting/cutover and measurement/access/UTM/event controls. No public source change, no external account mutation, no production launch. Quantitative T0 blocked; claims=[]. Final commit/Draft PR receipt belongs in external evidence because this is the single pre-commit record.
+
+
+## PR02-MERGE-01 authorization snapshot — 2026-09-12T13:00:43.239753+00:00
+
+Independent supplied evidence review: PASS. Evidence ZIP: 155182 bytes; SHA-256 `ee28ac6420ad5018f5c417e38bc316e2bba44c355f5e09e36bbd88b62c2982c2`; manifest 85/85 verified, no mismatches or undeclared files.
+
+Accepted planning baseline: 64 unique migration URLs (KEEP 3; REBUILD_SAME_URL 4; 301 7; 410 1; HOLD_FOR_CONFIRMATION 49), 12 planned destinations, 24 query-map entries, 20 sampled Google queries / 60 organic rows, 13 local observations, 3 observed AIO samples, 20 competitor pages / 13 domains, 7 external UTM examples, 13 event definitions. Numeric demand UNKNOWN; numeric T0 NOT_READY because required account data is ACCESS_BLOCKED. ChatGPT/Bing and GSC/GBP/GA4/GTM remain ACCESS_BLOCKED.
+
+Public-crawl coverage only; no GSC/log orphan coverage. IP locale Kyiv, no geo-grid. The 49 HOLD rows block cutover resolution, not content planning. No new research finding, migration disposition, source/public change, account action, production launch or SEO outcome is claimed. `outcome_report.claims=[]`.
+
+Time-bounded grant expires 2026-09-12T16:00:43.239753+00:00. Ready, normal merge and one automatic noindex Pages preview deployment are pending validation. Only PR #3 body may be updated externally. No manual dispatch, second deployment, branch deletion, production publish, indexing, release closure or PR03/04 implementation. Existing release-state identifiers describe completed PR #2; this stage's final identifiers belong in merged PR #3 body and external evidence, and must be reconciled in the next separately authorized stage. No post-merge repository commit.

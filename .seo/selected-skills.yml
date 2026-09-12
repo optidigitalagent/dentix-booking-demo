@@ -1,38 +1,38 @@
 {
-  "selected_at": "2026-09-08T11:26:26Z",
-  "requested_mode": "audit",
+  "selected_at": "2026-09-12T12:18:25.462402+00:00",
+  "requested_mode": "plan",
   "skills": [
     {
       "name": "seo-command-center",
-      "reason": "DENTIX scope, state, authorization and dependency control"
+      "reason": "PR02 bounded command-center research and planning; no public implementation"
     },
     {
       "name": "seo-market-intelligence",
-      "reason": "19 provisional therapy/surgery/implantation queries; research only"
+      "reason": "PR02 bounded market-intelligence research and planning; no public implementation"
     },
     {
       "name": "seo-technical-engineer",
-      "reason": "Source/build/preview T0 and same-domain migration risks"
+      "reason": "PR02 bounded technical-engineer research and planning; no public implementation"
     },
     {
       "name": "seo-content-architect",
-      "reason": "Facts, regulated claims and bounded future content gates"
+      "reason": "PR02 bounded content-architect research and planning; no public implementation"
     },
     {
       "name": "seo-local-growth",
-      "reason": "One real Dnipro clinic; local facts and missing GBP baseline"
+      "reason": "PR02 bounded local-growth research and planning; no public implementation"
     },
     {
       "name": "seo-ai-discovery",
-      "reason": "Independent AI mention/citation/referral and crawler policy records"
+      "reason": "PR02 bounded ai-discovery research and planning; no public implementation"
     },
     {
       "name": "seo-authority-builder",
-      "reason": "Provenance and absence of approved outreach or backlink data"
+      "reason": "PR02 bounded authority-builder research and planning; no public implementation"
     },
     {
       "name": "seo-measurement-control",
-      "reason": "T0 funnel, data gaps and outcome evidence gate"
+      "reason": "PR02 bounded measurement-control research and planning; no public implementation"
     }
   ],
   "excluded_skills": [

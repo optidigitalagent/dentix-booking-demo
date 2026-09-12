@@ -1,130 +1,402 @@
 {
   "events": [
     {
+      "name": "page_view",
+      "stage": "visit",
+      "trigger": "Client page rendered; once per actual route view",
+      "source": "browser",
+      "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
+      "allowed_parameters": [
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "patient_id",
+        "diagnosis",
+        "symptoms",
+        "treatment",
+        "form_field_values",
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
+    },
+    {
       "name": "phone_click",
-      "stage": "conversion_intent",
+      "stage": "intent",
+      "trigger": "User activates telephone link; not a connected call",
+      "source": "browser",
       "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
       "allowed_parameters": [
-        "page_path",
-        "placement"
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
       ],
       "prohibited_parameters": [
         "name",
         "phone",
         "email",
+        "patient_id",
         "diagnosis",
+        "symptoms",
         "treatment",
         "form_field_values",
-        "patient_id"
-      ]
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
     },
     {
-      "name": "submit_intent",
-      "stage": "conversion_intent",
+      "name": "map_click",
+      "stage": "intent",
+      "trigger": "User follows map/directions link; not a visit",
+      "source": "browser",
       "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
       "allowed_parameters": [
-        "page_path",
-        "placement"
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
       ],
       "prohibited_parameters": [
         "name",
         "phone",
         "email",
+        "patient_id",
         "diagnosis",
+        "symptoms",
         "treatment",
         "form_field_values",
-        "patient_id"
-      ]
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
     },
     {
-      "name": "delivered_form",
-      "stage": "conversion_delivery",
+      "name": "instagram_click",
+      "stage": "intent",
+      "trigger": "User follows clinic Instagram link",
+      "source": "browser",
       "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
       "allowed_parameters": [
-        "page_path",
-        "placement"
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
       ],
       "prohibited_parameters": [
         "name",
         "phone",
         "email",
+        "patient_id",
         "diagnosis",
+        "symptoms",
         "treatment",
         "form_field_values",
-        "patient_id"
-      ]
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
+    },
+    {
+      "name": "form_start",
+      "stage": "intent",
+      "trigger": "First deliberate non-sensitive form interaction; no field values",
+      "source": "browser",
+      "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
+      "allowed_parameters": [
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "patient_id",
+        "diagnosis",
+        "symptoms",
+        "treatment",
+        "form_field_values",
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
+    },
+    {
+      "name": "form_submit_client",
+      "stage": "intent",
+      "trigger": "Client submission attempt passes local checks; not delivery",
+      "source": "browser",
+      "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
+      "allowed_parameters": [
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "patient_id",
+        "diagnosis",
+        "symptoms",
+        "treatment",
+        "form_field_values",
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
+    },
+    {
+      "name": "form_delivered_server",
+      "stage": "delivery",
+      "trigger": "Server confirms durable accepted receipt; retry-safe deduplication",
+      "source": "server receipt",
+      "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
+      "allowed_parameters": [
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "patient_id",
+        "diagnosis",
+        "symptoms",
+        "treatment",
+        "form_field_values",
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
     },
     {
       "name": "connected_call",
       "stage": "connected_interaction",
+      "trigger": "Provider confirms answered call under approved duration/quality rule; numeric threshold pending",
+      "source": "call provider aggregate",
       "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
       "allowed_parameters": [
-        "page_path",
-        "placement"
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
       ],
       "prohibited_parameters": [
         "name",
         "phone",
         "email",
+        "patient_id",
         "diagnosis",
+        "symptoms",
         "treatment",
         "form_field_values",
-        "patient_id"
-      ]
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
     },
     {
       "name": "qualified_lead",
       "stage": "qualified_lead",
+      "trigger": "Clinic confirms relevant non-synthetic inquiry under approved qualification rule",
+      "source": "CRM aggregate",
       "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
       "allowed_parameters": [
-        "page_path",
-        "placement"
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
       ],
       "prohibited_parameters": [
         "name",
         "phone",
         "email",
+        "patient_id",
         "diagnosis",
+        "symptoms",
         "treatment",
         "form_field_values",
-        "patient_id"
-      ]
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
     },
     {
-      "name": "confirmed_booking",
+      "name": "appointment_created",
       "stage": "appointment",
+      "trigger": "Clinic confirms a real booking in source system; request is insufficient",
+      "source": "CRM aggregate",
       "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
       "allowed_parameters": [
-        "page_path",
-        "placement"
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
       ],
       "prohibited_parameters": [
         "name",
         "phone",
         "email",
+        "patient_id",
         "diagnosis",
+        "symptoms",
         "treatment",
         "form_field_values",
-        "patient_id"
-      ]
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
     },
     {
-      "name": "completed_visit_revenue",
+      "name": "completed_visit",
       "stage": "business_outcome",
+      "trigger": "Clinic confirms attendance; no patient record exported",
+      "source": "CRM aggregate",
       "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
       "allowed_parameters": [
-        "page_path",
-        "placement"
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
       ],
       "prohibited_parameters": [
         "name",
         "phone",
         "email",
+        "patient_id",
         "diagnosis",
+        "symptoms",
         "treatment",
         "form_field_values",
-        "patient_id"
-      ]
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
+    },
+    {
+      "name": "revenue",
+      "stage": "business_outcome",
+      "trigger": "Owned aggregate paid/refunded amount with period and currency; no treatment detail",
+      "source": "finance/CRM sanitized aggregate",
+      "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
+      "allowed_parameters": [
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "patient_id",
+        "diagnosis",
+        "symptoms",
+        "treatment",
+        "form_field_values",
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
+    },
+    {
+      "name": "ai_referral",
+      "stage": "visit_segment",
+      "trigger": "Derived segment of page_view/session with observed referrer/source such as chatgpt.com; not an extra pageview",
+      "source": "analytics session",
+      "outcome_confirmed": false,
+      "implementation_status": "PLANNED_NOT_APPLIED",
+      "allowed_parameters": [
+        "clean_page_path",
+        "placement",
+        "environment",
+        "synthetic",
+        "campaign_source_medium_content"
+      ],
+      "prohibited_parameters": [
+        "name",
+        "phone",
+        "email",
+        "patient_id",
+        "diagnosis",
+        "symptoms",
+        "treatment",
+        "form_field_values",
+        "free_text",
+        "full_url_query",
+        "hashed_contact_identifiers"
+      ],
+      "deduplication": "Opaque receipt/event ID handled inside authorized source; aggregate only in .seo; no client patient identifiers",
+      "qa": "No event sent in PR02; later test traffic synthetic=true and excluded from real leads"
     }
-  ]
+  ],
+  "legacy_aliases": {
+    "submit_intent": "form_submit_client",
+    "delivered_form": "form_delivered_server",
+    "confirmed_booking": "appointment_created",
+    "completed_visit_revenue": "split completed_visit and revenue"
+  },
+  "business_rules": "outcome_confirmed=false means no outcomes established in this stage. Actual confirmed CRM events may support future bounded outcome records. Business definitions require clinic owner approval.",
+  "privacy": "No diagnosis or patient data in client analytics. Even page paths may indicate health interests: privacy/consent review required; prefer coarse page_group if necessary. Exclude staff/test/preview traffic."
 }

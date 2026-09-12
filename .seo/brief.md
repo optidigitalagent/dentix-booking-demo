@@ -1,3 +1,5 @@
+> Current-state reconciliation (2026-09-12): PR #2 merged; successful noindex Pages preview matches main ff675a1e4363d1c5e8d936b5273710bf5db89211. Old dentix.ua WordPress remains production; React NOT_LAUNCHED. PR02 research and page decisions are in execution-plan.md, research-methodology.md and canonical CSVs. Earlier observations below remain dated history, not current PR/preview status.
+
 # DENTIX PR-01 brief
 
 Selected working source: optidigitalagent/dentix-booking-demo. PR #1 merged at 7208e7cadda04273c27282a68171ea3853664510; same SHA deployed successfully to the noindex GitHub Pages preview. Old and future production https://dentix.ua/; SAME_DOMAIN_REPLACEMENT; new production launch NOT_YET.

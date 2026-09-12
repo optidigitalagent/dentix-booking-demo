@@ -1,10 +1,10 @@
 {
-  "granted_by": "User: DENTIX_AUTHORIZATION_PR01_READY_MERGE_PREVIEW_DEPLOY",
-  "granted_at": "2026-09-12T11:19:36.286412+00:00",
-  "expires_at": "2026-09-12T14:19:36.286412+00:00",
+  "granted_by": "User: DENTIX_AUTHORIZATION_PR02_READY_MERGE_PREVIEW_DEPLOY",
+  "granted_at": "2026-09-12T13:00:43.239753+00:00",
+  "expires_at": "2026-09-12T16:00:43.239753+00:00",
   "repository": "optidigitalagent/dentix-booking-demo",
   "project_id": "dentix",
-  "scope": "SITE_ID DENTIX ONLY; optidigitalagent/dentix-booking-demo PR #2, existing seo/dentix-pr01-technical-foundation, base 16ee9d79d06476c88b5748cb87cf0edf0fcdc75c, reviewed head ae6849c57a76d8338f434325f7dcbfdd49bde0e8. One bounded .seo authorization commit and normal push; one fresh exact-head validation suite; Ready then normal merge commit without bypass/squash/rebase/auto-merge/force-push/branch deletion. external_action limited solely to PR #2 body updates. deploy limited to exactly one automatic GitHub Pages noindex preview deployment caused by authorized merge push to main; no manual dispatch or second deployment. indexing_request=false; outcome_report.claims=[]. No functional source/test/build/workflow/package/lockfile, facts/claims/Query Lock/measurement edits; no production/domain/account action, form submission or appointment; no PR-02/03/04; no publish, release or release closure.",
+  "scope": "SITE_ID DENTIX ONLY; PR #3 in optidigitalagent/dentix-booking-demo. One bounded .seo metadata commit and normal push on seo/dentix-pr02-migration-demand-baseline; Ready for review; normal merge commit into main without bypass, squash, rebase, auto-merge, force push or branch deletion. external_action limited ONLY to PR #3 body updates. deploy limited ONLY to one automatic GitHub Pages noindex preview deployment triggered by merge push/main; no manual dispatch or second deployment. Sanitized evidence ZIP outside repository. No source/public/routes/design/workflow/package/dependency/lockfile changes; no production dentix.ua/DNS/hosting/account changes; no forms/appointments; indexing_request=false; no PR03/04 implementation or post-merge repository commit; outcome_report.claims=[]. Single bounded completion, no production launch.",
   "permissions": {
     "audit": true,
     "branch": false,

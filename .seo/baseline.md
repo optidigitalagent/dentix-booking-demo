@@ -1,3 +1,5 @@
+> Current-state reconciliation (2026-09-12): PR #2 merged; successful noindex Pages preview matches main ff675a1e4363d1c5e8d936b5273710bf5db89211. Old dentix.ua WordPress remains production; React NOT_LAUNCHED. PR02 research and page decisions are in execution-plan.md, research-methodology.md and canonical CSVs. Earlier observations below remain dated history, not current PR/preview status.
+
 # DENTIX T0 baseline
 Captured 2026-09-08T11:33:58Z; technical observations at 11:28–11:30 UTC on 2026-09-08. Scope: optidigitalagent/dentix-booking-demo @ f8431478b995031131fcdf4c12d89afdb6743067; GitHub Pages is preview, https://dentix.ua/ is the old website and future domain.
 
