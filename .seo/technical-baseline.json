@@ -382,5 +382,29 @@
     "inventory": "crawl-report.csv and redirect-map.csv: 61 discovered +3 probes =64",
     "hosting": "hosting-decisions.md; unapproved target and arbitrary 301/410 capability",
     "historical_records": "Earlier PR01 source/local-only statements are historical; use this reconciliation and current project-state.yml"
+  },
+  "pr03_entity_local": {
+    "observed_at": "2026-09-12T15:04:51.484370+00:00",
+    "base_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
+    "fact_lock": "DENTIX_ENTITY_FACT_LOCK_V1",
+    "fact_sources": {
+      "src/data/site.ts": "947768cd448cefaa1c31e2928850e87e9b554da2",
+      "src/data/doctors.ts": "5f5ebdc56fb60cc7f140943a684ec1294fb35dc3",
+      "src/data/prices.ts": "8a1be1f4256bac67dc938f1d7816f26c44b4d0ca",
+      "src/components/AboutSection.tsx": "92dd12a3ed4342909efb0e338248ebe8dfbcf20c"
+    },
+    "routes": [
+      "/",
+      "/likari/",
+      "/kontakty/",
+      "/price.html"
+    ],
+    "preview": "noindex; no canonical/sitemap/entity graph",
+    "production": "LOCAL_ARTIFACT_ONLY; NOT_LAUNCHED",
+    "qa": "PASS: 10 unit; 14 artifact; 40 Chromium hydrated + 40 no-JS; 16 lead-source/managed-content fixtures; 40 safe mobile Chromium/WebKit cases; 16 founder/video cases",
+    "schema": "Shared source-derived builder; Person only on visible team pages; contact channels only on visible contact pages; structured values PostalAddress/OpeningHoursSpecification/ListItem support permitted graph types",
+    "migration_rows": 64,
+    "hold_rows": 49,
+    "claims": []
   }
 }

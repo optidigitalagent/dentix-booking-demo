@@ -56,3 +56,7 @@ Query Lock подтверждает порядок бизнес-направле
 До PR-04 запросы продолжают иметь статус `RESEARCH_REQUIRED`.
 
 T0 source/access gaps and outcome_report.claims=[] remain unchanged. Phone clicks do not prove connected calls; no forms are submitted.
+
+## PR03 authority and fact reconciliation — 2026-09-12T14:48:37.389890+00:00
+
+DENTIX_ENTITY_FACT_LOCK_V1 approves the current new-site source snapshot for home/doctors/contacts/prices and safe entity schema. Canonical facts-register.csv owns approvals; legacy WordPress conflicts cannot override them. PR #3 merged 160804ce2fd0cd759788f2ec2961b1638f7dcda8; successful noindex preview. PR03 local implementation plus one commit/push/Draft PR authorized. No Ready/merge/deploy, account changes, requests/appointments or PR04; T0 NOT_READY; claims=[].

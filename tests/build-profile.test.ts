@@ -51,7 +51,11 @@ test("patient route detection respects base and rejects admin and unknown URLs",
     assert.equal(patientRoute(base, base), "home");
     assert.equal(patientRoute(base + "index.html", base), "home");
     assert.equal(patientRoute(base + "price.html", base), "price");
-    for (const route of ["admin/", "admin/index.html", "missing", "price.html/more"]) assert.equal(patientRoute(base + route, base), null);
+    for (const [path, expected] of [["likari/", "doctors"], ["kontakty/", "contacts"]]) {
+      assert.equal(patientRoute(base + path, base), expected);
+      assert.equal(patientRoute(base + path + "index.html", base), expected);
+    }
+    for (const route of ["likari", "kontakty", "likari/missing", "admin/", "admin/index.html", "missing", "price.html/more"]) assert.equal(patientRoute(base + route, base), null);
   }
   assert.equal(patientRoute("/price.html", "/dentix-booking-demo/"), null);
 });

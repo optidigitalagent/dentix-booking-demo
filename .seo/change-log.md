@@ -82,3 +82,9 @@ Accepted planning baseline: 64 unique migration URLs (KEEP 3; REBUILD_SAME_URL 4
 Public-crawl coverage only; no GSC/log orphan coverage. IP locale Kyiv, no geo-grid. The 49 HOLD rows block cutover resolution, not content planning. No new research finding, migration disposition, source/public change, account action, production launch or SEO outcome is claimed. `outcome_report.claims=[]`.
 
 Time-bounded grant expires 2026-09-12T16:00:43.239753+00:00. Ready, normal merge and one automatic noindex Pages preview deployment are pending validation. Only PR #3 body may be updated externally. No manual dispatch, second deployment, branch deletion, production publish, indexing, release closure or PR03/04 implementation. Existing release-state identifiers describe completed PR #2; this stage's final identifiers belong in merged PR #3 body and external evidence, and must be reconciled in the next separately authorized stage. No post-merge repository commit.
+
+## PR03 — 2026-09-12T14:39:20.364016+00:00
+
+Post-PR02 reconciled to 160804ce2fd0cd759788f2ec2961b1638f7dcda8; successful noindex preview. DENTIX_ENTITY_FACT_LOCK_V1 approved current-source facts. Entity/local implementation in progress; four local routes and source-derived schema. No production/external account action, no PR04, migration 64/49 HOLD preserved; claims=[].
+
+PR03 acceptance 2026-09-12T15:04:51.484370+00:00: implementation and local validation complete; 10 unit / 14 artifact / 40 hydrated + 40 no-JS / 16 managed-content+lead fixtures / 40 safe mobile / 16 founder-video. Final commit/push/Draft PR receipt external. No production/publication/outcome claim.
