@@ -64,7 +64,7 @@ test("real SSR renders fallback with a configured content endpoint and zero fetc
   const originalFetch = globalThis.fetch;
   let fetches = 0;
   process.env.VITE_DENTIX_CONTENT_API_URL = "http://127.0.0.1:49151/__qa/content";
-  const server = await createServer({ server: { middlewareMode: true }, appType: "custom" });
+  const server = await createServer({ server: { middlewareMode: true, hmr: false }, appType: "custom" });
   globalThis.fetch = (() => { fetches++; throw new Error("SSR network forbidden"); }) as typeof fetch;
   try {
     const { render } = await server.ssrLoadModule("/src/entry-server.tsx");

@@ -1,10 +1,10 @@
 {
-  "granted_by": "DENTIX user grant DENTIX_AUTHORIZATION_PR04A_READY_MERGE_PREVIEW_DEPLOY supplied by the user execution file in this session",
-  "granted_at": "2026-09-13T10:20:50.948291+00:00",
-  "expires_at": "2026-09-13T13:20:50.948291+00:00",
+  "granted_by": "DENTIX user supplied DENTIX_PR04B_READY_MERGE_PREVIEW_DEPLOY_PACK_2026-09-13.zip / 01_AUTHORIZATION_READY_MERGE_PREVIEW_DEPLOY.txt",
+  "granted_at": "2026-09-13T11:28:14.102250+00:00",
+  "expires_at": "2026-09-13T14:28:14.102250+00:00",
   "repository": "optidigitalagent/dentix-booking-demo",
   "project_id": "dentix",
-  "scope": "SITE_ID DENTIX; project dentix; repository optidigitalagent/dentix-booking-demo; PR #5 only; base main at 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; reviewed head 86e1130603ea98243c93c971a1e0285ff53901db; existing branch seo/dentix-pr04a-therapy-cluster. One bounded completion: independent evidence/content review, one minimal .seo authorization commit and normal push, one fresh exact-final-head premerge suite, Ready, normal merge commit without bypass/squash/rebase/auto-merge/branch deletion, and exactly one automatic GitHub Pages noindex preview deployment caused by that merge push. external_action=true is limited to PR #5 body updates only. deploy=true is limited to that one automatic preview deployment only; no manual workflow dispatch or second deployment. No functional source/copy/routes/tests/workflow/package/dependency/lock/fact change; no PR04B/C. No production dentix.ua, DNS/hosting/account/integration action, form submission or appointment. publish=false; sitemap_submit=false; indexing_request=false; release=false; release_close=false. professional_review_status=UNKNOWN / NOT_COMPLETED; production NOT_LAUNCHED; outcome_report.claims=[].",
+  "scope": "SITE_ID DENTIX only; repository optidigitalagent/dentix-booking-demo; PR #6; branch seo/dentix-pr04b-surgery-cluster; expected initial base be42e9d3547a9388e2e0a0ffa4d7258a55616579, head c2c36d966f747092e9a20447f656227b90e11c7e, 42 paths. One bounded .seo operational metadata commit and normal push; PR #6 body updates only under external_action. Ready, one fresh exact-final-head premerge suite, normal merge commit without bypass/squash/rebase/auto-merge/force push/branch deletion, exactly one automatic push/main GitHub Pages noindex preview deployment caused by merge, and ten-route live QA. No manual workflow dispatch or second deployment. No functional source/copy/routes/tests/workflow/package/dependency/lock changes. No production dentix.ua/DNS/hosting/accounts/GSC/GBP/GA4/GTM/Bing/CRM/Railway/Sheets/Calendar/Telegram changes; no forms/appointments/indexing_request/sitemap/release/release_close/PR04C/post-merge repository commit. Professional review UNKNOWN / NOT_COMPLETED; no named surgeon inferred; outcome_report.claims=[]. Grant expires at stated expiry and is consumed by this single completion.",
   "permissions": {
     "audit": true,
     "branch": false,

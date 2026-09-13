@@ -12,7 +12,7 @@ const output = path.resolve(process.env.DENTIX_QA_OUTPUT);
 await fs.mkdir(output, { recursive: true });
 const results = [], notFound = [], noJs = [], forbiddenRequests = [], thirdParty = new Set();
 const semantics = [];
-const servicePaths = ["terapevtychna-stomatolohiia/", "likuvannia-kariiesu/", "lechenie-pod-mikroskopom/"];
+const servicePaths = ["terapevtychna-stomatolohiia/", "likuvannia-kariiesu/", "lechenie-pod-mikroskopom/", "khirurhichna-stomatolohiia/", "vydalennia-zuba/", "vydalennia-zuba-mudrosti/"];
 const patientPaths = ["", "likari/", "kontakty/", "price.html", ...servicePaths];
 const primarySelector = (file) => servicePaths.includes(file) ? "#service-scope" : file === "price.html" ? ".price-list" : file === "likari/" ? "#team" : file === "kontakty/" ? "#contact-info" : "#services";
 let leadSourceEntriesPassed = false;
@@ -188,5 +188,5 @@ try {
   leadSourceEntriesPassed = true;
 } finally {
   await browser.close();
-  await fs.writeFile(path.join(output, "browser_qa.json"), JSON.stringify({ observed_at: new Date().toISOString(), engine: "Chromium", physical_device: false, results, no_javascript: noJs, semantics, not_found: notFound, forbidden_requests: forbiddenRequests, third_party_requests_intercepted: [...thirdParty], lead_source_entry_points_passed: leadSourceEntriesPassed, limitations: "Local lab only; maps/fonts intercepted; no forms submitted; no field CWV, account access or external mutations. Additional in-memory fixture builds exercise both real drawer branches on all seven routes with intercepted GET-only readiness/catalog responses.", pass: results.length === 70 && noJs.length === 70 && semantics.length === 140 && notFound.length === 4 && forbiddenRequests.length === 0 && leadSourceEntriesPassed }, null, 2) + "\n");
+  await fs.writeFile(path.join(output, "browser_qa.json"), JSON.stringify({ observed_at: new Date().toISOString(), engine: "Chromium", physical_device: false, results, no_javascript: noJs, semantics, not_found: notFound, forbidden_requests: forbiddenRequests, third_party_requests_intercepted: [...thirdParty], lead_source_entry_points_passed: leadSourceEntriesPassed, limitations: "Local lab only; maps/fonts intercepted; no forms submitted; no field CWV, account access or external mutations. Additional in-memory fixture builds exercise both real drawer branches on all ten routes with intercepted GET-only readiness/catalog responses.", pass: results.length === 100 && noJs.length === 100 && semantics.length === 200 && notFound.length === 4 && forbiddenRequests.length === 0 && leadSourceEntriesPassed }, null, 2) + "\n");
 }

@@ -3,14 +3,14 @@
     {
       "name": "DENTIX public doctors and prices",
       "source_of_truth": "Existing runtime public-content precedence retained; local fallback approved by DENTIX_ENTITY_FACT_LOCK_V1",
-      "source_url_or_id": "Deployment variable remains uninspected; src/hooks/use-managed-content.ts and src/lib/google-sheets-content.ts unchanged by PR04A",
+      "source_url_or_id": "Existing public runtime setting uninspected; src/hooks/use-managed-content.ts and src/lib/google-sheets-content.ts unchanged",
       "access_level": "public-read",
       "refresh_cadence": "Code fetch with cache no-store and _content_version; source publishing cadence UNKNOWN",
-      "static_fallback": "src/data/doctors.ts and src/data/prices.ts unchanged approved source; seven-route SSR; therapy pages select exact price names and roles from one managed snapshot",
-      "failure_behavior": "Existing independent doctor/price section fallback on invalid/empty/unavailable data. Valid snapshot with no matching therapy row/role shows contact text; no per-row fallback mixing.",
-      "drift_check": "PR04A 24 fixtures: valid/empty/invalid/unmatched across three service routes and both profiles; exact selected Person/visible parity; one content GET; SSR zero GET; no hydration errors",
+      "static_fallback": "Approved src/data/doctors.ts and src/data/prices.ts unchanged; ten-route SSR; exact surgery/therapy row selection from one managed snapshot. No fallback surgeon.",
+      "failure_behavior": "Existing independent section fallback on invalid/empty/unavailable content. Valid unmatched rows/roles show phone guidance. Surgery selects exact visible хірург role token; no founder/therapist/orthodontist inference or per-row price backfill.",
+      "drift_check": "PASS: real SSR zero fetch; surgery valid/empty/invalid/unmatched/near-role fixtures and existing therapy fixtures; Person matches visible team; no POST.",
       "owner": "DENTIX content owner UNKNOWN",
-      "approved_at": "2026-09-13T09:06:01.002482+00:00"
+      "approved_at": "2026-09-13T10:57:39.826480+00:00"
     }
   ]
 }

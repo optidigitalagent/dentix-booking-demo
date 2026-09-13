@@ -6,6 +6,6 @@
   "primary_language": "uk",
   "site_type": "local-business",
   "initialized_at": "2026-09-08T11:26:26Z",
-  "status": "PR #4 merged 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; successful noindex preview run 34719593977. PR04A implemented; fresh local QA PASS; one normal commit/push/Draft PR authorized. Ready/merge/deploy/publish/accounts/indexing forbidden. Old WordPress is production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[].",
+  "status": "PR #5 merged be42e9d3547a9388e2e0a0ffa4d7258a55616579; successful noindex preview workflow 34752031347 and deployment 6420548670 at the same SHA; seven live preview routes verified. PR04B surgery implementation complete locally; local QA PASS; one normal commit/push/Draft PR authorized. No named surgeon in approved fallback. professional_review_status=UNKNOWN / NOT_COMPLETED. Old WordPress remains production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized.",
   "secrets_policy": "Do not store credentials, tokens, private exports, personal data, or medical data in .seo"
 }

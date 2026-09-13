@@ -13,7 +13,7 @@ export function getBuildProfile(target: string) {
   } as const;
 }
 
-export type PatientRoute = "home" | "price" | "doctors" | "contacts" | "therapy" | "caries" | "microscope";
+export type PatientRoute = "home" | "price" | "doctors" | "contacts" | "therapy" | "caries" | "microscope" | "surgery" | "extraction" | "wisdom";
 
 export function patientRoute(pathname: string, base: string): PatientRoute | null {
   if (pathname === base || pathname === `${base}index.html`) return "home";
@@ -23,5 +23,8 @@ export function patientRoute(pathname: string, base: string): PatientRoute | nul
   if (pathname === `${base}terapevtychna-stomatolohiia/` || pathname === `${base}terapevtychna-stomatolohiia/index.html`) return "therapy";
   if (pathname === `${base}likuvannia-kariiesu/` || pathname === `${base}likuvannia-kariiesu/index.html`) return "caries";
   if (pathname === `${base}lechenie-pod-mikroskopom/` || pathname === `${base}lechenie-pod-mikroskopom/index.html`) return "microscope";
+  if (pathname === `${base}khirurhichna-stomatolohiia/` || pathname === `${base}khirurhichna-stomatolohiia/index.html`) return "surgery";
+  if (pathname === `${base}vydalennia-zuba/` || pathname === `${base}vydalennia-zuba/index.html`) return "extraction";
+  if (pathname === `${base}vydalennia-zuba-mudrosti/` || pathname === `${base}vydalennia-zuba-mudrosti/index.html`) return "wisdom";
   return null;
 }

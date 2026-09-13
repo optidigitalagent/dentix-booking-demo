@@ -1,3 +1,5 @@
+import { SurgeryPage } from "./SurgeryPage";
+import { isSurgeryRoute } from "./data/surgery-pages";
 import { TherapyPage } from "./TherapyPage";
 import { isTherapyRoute } from "./data/therapy-pages";
 import { EntityPage } from "./EntityPage";
@@ -11,7 +13,7 @@ export function PatientApp({ route }: { route: PatientRoute }) {
   return (
     <RouteContext.Provider value={route}>
       <EntitySchema route={route} />
-      {route === "price" ? <PriceDemo /> : route === "home" ? <PatientDemo /> : isTherapyRoute(route) ? <TherapyPage route={route} /> : <EntityPage route={route} />}
+      {route === "price" ? <PriceDemo /> : route === "home" ? <PatientDemo /> : isTherapyRoute(route) ? <TherapyPage route={route} /> : isSurgeryRoute(route) ? <SurgeryPage route={route} /> : <EntityPage route={route} />}
     </RouteContext.Provider>
   );
 }

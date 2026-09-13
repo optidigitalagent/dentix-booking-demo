@@ -1,34 +1,34 @@
 {
-  "selected_at": "2026-09-13T09:02:48.284444+00:00",
+  "selected_at": "2026-09-13T10:57:39.826480+00:00",
   "requested_mode": "implement",
   "skills": [
     {
       "name": "seo-command-center",
-      "reason": "PR04A bounded therapy cluster: source/intent/technical/content/local/AI readiness and measurement controls"
+      "reason": "PR04B bounded surgery implementation, source/doctor boundary, ten-route contracts and validation"
     },
     {
       "name": "seo-market-intelligence",
-      "reason": "PR04A bounded therapy cluster: source/intent/technical/content/local/AI readiness and measurement controls"
+      "reason": "PR04B bounded surgery implementation, source/doctor boundary, ten-route contracts and validation"
     },
     {
       "name": "seo-technical-engineer",
-      "reason": "PR04A bounded therapy cluster: source/intent/technical/content/local/AI readiness and measurement controls"
+      "reason": "PR04B bounded surgery implementation, source/doctor boundary, ten-route contracts and validation"
     },
     {
       "name": "seo-content-architect",
-      "reason": "PR04A bounded therapy cluster: source/intent/technical/content/local/AI readiness and measurement controls"
+      "reason": "PR04B bounded surgery implementation, source/doctor boundary, ten-route contracts and validation"
     },
     {
       "name": "seo-local-growth",
-      "reason": "PR04A bounded therapy cluster: source/intent/technical/content/local/AI readiness and measurement controls"
+      "reason": "PR04B bounded surgery implementation, source/doctor boundary, ten-route contracts and validation"
     },
     {
       "name": "seo-ai-discovery",
-      "reason": "PR04A bounded therapy cluster: source/intent/technical/content/local/AI readiness and measurement controls"
+      "reason": "PR04B bounded surgery implementation, source/doctor boundary, ten-route contracts and validation"
     },
     {
       "name": "seo-measurement-control",
-      "reason": "PR04A bounded therapy cluster: source/intent/technical/content/local/AI readiness and measurement controls"
+      "reason": "PR04B bounded surgery implementation, source/doctor boundary, ten-route contracts and validation"
     }
   ],
   "excluded_skills": [
