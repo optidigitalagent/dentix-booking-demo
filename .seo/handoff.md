@@ -1,24 +1,14 @@
-# DENTIX PR03 handoff
+# DENTIX PR04A handoff
 
-## PR03 final merge gate — 2026-09-12T21:09:08.320787+00:00
+PR #4 merged 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; successful noindex preview run 34719593977. PR04A implemented; fresh local QA PASS; one normal commit/push/Draft PR authorized. Ready/merge/deploy/publish/accounts/indexing forbidden. Old WordPress is production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[].
 
-This section supersedes earlier PR03 Draft-only operational snapshots. Independent remote/code review PASS; local evidence SHA-256 3aee078930d6f14ac2ae2e658c6dd072f3057a6da8e8cc46deadf391a9f95166, 41,660,844 bytes and 139/139 checksums PASS. PR #4 OPEN/Draft, base 160804ce2fd0cd759788f2ec2961b1638f7dcda8, reviewed head f71117c8334376400502203f89cef96112f3a5a9, 43 paths; no overlapping PR, no submitted reviews and NO_SERVER_CI.
+This supersedes the PR03 pre-merge action snapshot. PR #4 merged 2026-09-12T21:18:51Z; preview deployment workflow https://github.com/optidigitalagent/dentix-booking-demo/actions/runs/34719593977 succeeded on 51e1da2343923d5e997d8bb6d7abe6734b9bc24c. Four entity/local routes remain deployed to noindex preview. release-state.yml records that actual preview receipt; production_matches_deploy=false and closed=false.
 
-Approved source blobs remain unchanged: src/data/site.ts 947768cd448cefaa1c31e2928850e87e9b554da2; src/data/doctors.ts 5f5ebdc56fb60cc7f140943a684ec1294fb35dc3; src/data/prices.ts 8a1be1f4256bac67dc938f1d7816f26c44b4d0ca; src/components/AboutSection.tsx 92dd12a3ed4342909efb0e338248ebe8dfbcf20c. Four patient routes; source-derived production-only safe entity graph; preview noindex/no canonical/no entity graph/no sitemap. Historical local QA: 10 unit / 14 artifact / 40 hydrated + 40 no-JS / 40 safe mobile / 16 managed-content+lead fixtures / 16 founder-video PASS. These historical totals do not replace the required fresh final-head suite.
+Three routes implemented locally using shared managed doctors/prices, bounded approved operational copy, meaningful initial HTML, contextual links and production-only Service graph. See content-briefs/pr-04a.md for exact source and professional review boundary. Named reviewer UNKNOWN; medical review not completed.
 
-Grant expires 2026-09-13T00:09:08.320787+00:00. Metadata commit/push, fresh validation, Ready, normal merge and one automatic noindex Pages preview deployment are pending. PR #4 body updates only; branch retained. No manual dispatch, second deployment, production/account/indexing action, submissions, release closure or PR04. Production NOT_LAUNCHED; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; T0 NOT_READY; outcome_report.claims=[].
+Input worktree was clean in an isolated checkout; original untracked .DS_Store files preserved. Main safely fast-forwarded without a merge commit. No source/fact drift. Fresh QA PASS: {"unit_tests": 15, "artifact_tests": 20, "hydrated_browser_cases": 70, "no_js_browser_cases": 70, "semantic_cases": 140, "lead_source_cases": 28, "managed_content_cases": 24, "safe_mobile_cases": 40, "founder_video_cases": 16, "forbidden_requests": [], "production_publish": false, "claims": []}; both builds PASS. Current metadata is a pre-commit snapshot; final exact commit/push/Draft PR receipts will be external, avoiding a self-referential follow-up commit.
 
-Committed records are a pre-merge action snapshot. release-state.yml remains the factual prior PR #3 preview receipt. Final Ready/merge/main/workflow/deployment/live-QA identifiers will be recorded in merged PR #4 body and external evidence; no post-merge repository commit.
-
-PR03 adds /likari/ and /kontakty/, links all four patient routes, and adds a shared production-only entity graph derived from approved current sources. Existing layout, four doctors, contact details, prices, founder/video, runtime managed content and fail-closed intake remain intact. Person nodes appear only on pages displaying the team; supporting PostalAddress/OpeningHoursSpecification/ListItem objects carry approved values. No invented clinical, credential, review or legal claims.
-
-DENTIX_ENTITY_FACT_LOCK_V1 is recorded in canonical facts-register.csv, entity-consistency.csv and data-source-register.yml. The four pinned source blobs remain unchanged. Legacy WordPress/profile differences do not override the new-source fact lock. PR04 and external profiles remain outside this stage.
-
-Post-PR02 reconciliation: PR #3 merged at 160804ce2fd0cd759788f2ec2961b1638f7dcda8; successful noindex preview run 34695414098. Production is still old WordPress; React NOT_LAUNCHED. Migration map remains 64 rows / 49 HOLD. GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; numeric T0 NOT_READY.
-
-Fresh validation: 10 unit tests, both builds, 14 artifact tests, 40 hydrated and 40 no-JS Chromium route/viewport cases, 16 managed-content/lead-source cases, 40 safe Chromium/WebKit mobile cases, 16 founder/video cases; all PASS. Five widths: 360, 390, 768, 1024, 1440. No POST or appointment. Preview noindex/no canonical/no sitemap/no entity graph. Production artifact has four self-canonicals and four sitemap URLs; production admin and unknown paths return 404. Package and lockfile unchanged. Maps/fonts intercepted in browser lab; no field CWV, live endpoint validation or search/business result claimed.
-
-This is the pre-commit snapshot. Final commit, push and Draft PR receipt are in the external evidence pack, avoiding a self-referential follow-up commit. One normal commit/push/Draft PR authorized; next action is review of that Draft PR. Ready/merge/deploy/production/accounts/indexing/release closure are unauthorized. Evidence directory: ~/Downloads/DENTIX_PR03_ENTITY_LOCAL_EVIDENCE_2026-09-12/. outcome_report.claims=[].
+Next authorized work: explicit staging, normal commit/push, one Draft PR. No Ready, merge, deploy, publication, external account actions, indexing requests, release closure or PR04B/C.
 
 # Outcome report
 

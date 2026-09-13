@@ -406,5 +406,38 @@
     "migration_rows": 64,
     "hold_rows": 49,
     "claims": []
+  },
+  "pr04a_local_acceptance": {
+    "observed_at": "2026-09-13T09:06:01.002482+00:00",
+    "base_sha": "51e1da2343923d5e997d8bb6d7abe6734b9bc24c",
+    "status": "PASS_LOCAL_NOT_PUBLISHED",
+    "routes": [
+      "https://dentix.ua/",
+      "https://dentix.ua/likari/",
+      "https://dentix.ua/kontakty/",
+      "https://dentix.ua/price.html",
+      "https://dentix.ua/terapevtychna-stomatolohiia/",
+      "https://dentix.ua/likuvannia-kariiesu/",
+      "https://dentix.ua/lechenie-pod-mikroskopom/"
+    ],
+    "preview_policy": "noindex,nofollow,noarchive; no canonical/sitemap/production graph",
+    "production_policy": "Local artifact index,follow; seven self-canonicals and seven sitemap URLs; not launched",
+    "shared_source": "useManagedContent doctors/priceBlocks; unchanged approved fallbacks",
+    "medical_review": "UNKNOWN; NOT_COMPLETED; professional review boundary before production",
+    "qa": {
+      "unit_tests": 15,
+      "artifact_tests": 20,
+      "hydrated_browser_cases": 70,
+      "no_js_browser_cases": 70,
+      "semantic_cases": 140,
+      "lead_source_cases": 28,
+      "managed_content_cases": 24,
+      "safe_mobile_cases": 40,
+      "founder_video_cases": 16,
+      "forbidden_requests": [],
+      "production_publish": false,
+      "claims": []
+    },
+    "evidence": "External DENTIX_PR04A_THERAPY_EVIDENCE_2026-09-13; exact final Git receipts outside repository"
   }
 }

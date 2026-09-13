@@ -14,13 +14,16 @@ const meta = (html, key) => tags(html, "meta").filter((tag) => attr(tag, "name")
 const canonicals = (html) => tags(html, "link").filter((tag) => attr(tag, "rel") === "canonical").map((tag) => attr(tag, "href"));
 const decode = (value) => value.replaceAll("&amp;", "&").replaceAll("&quot;", '"').replaceAll("&#x27;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">");
 const plain = (html) => decode(html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " "));
+const patientFiles = ["index.html", "likari/index.html", "kontakty/index.html", "price.html", "terapevtychna-stomatolohiia/index.html", "likuvannia-kariiesu/index.html", "lechenie-pod-mikroskopom/index.html"];
+const patientPaths = patientFiles.map((file) => file.replace(/index\.html$/, ""));
+const sitemapUrls = patientPaths.map((route) => "https://dentix.ua/" + route);
 const results = {};
 const record = (group, row) => (results[group] ??= []).push(row);
 
 for (const target of ["preview", "production"]) {
   const profile = getBuildProfile(target);
   const production = target === "production";
-  for (const file of ["index.html", "likari/index.html", "kontakty/index.html", "price.html"]) {
+  for (const file of patientFiles) {
     test(`${target} ${file}: initial HTML, route head, schema and source parity`, () => {
       const html = read(target, file), text = plain(html);
       const url = profile.origin + profile.base + file.replace(/index\.html$/, "");
@@ -65,7 +68,7 @@ for (const target of ["preview", "production"]) {
       if (production) {
         assert.equal(ld[0]["@context"], "https://schema.org");
         const graph = ld[0]["@graph"];
-        const allowed = ["WebSite", "WebPage", "CollectionPage", "ContactPage", "Dentist", "Person", "BreadcrumbList"];
+        const allowed = ["WebSite", "WebPage", "CollectionPage", "ContactPage", "Dentist", "Person", "BreadcrumbList", "Service"];
         assert.ok(graph.every((node) => allowed.includes(node["@type"])));
         assert.equal(new Set(graph.map((node) => node["@id"])).size, graph.length);
         assert.equal(graph[1].url, url);
@@ -75,14 +78,14 @@ for (const target of ["preview", "production"]) {
         assert.deepEqual(clinic.address, { "@type": "PostalAddress", streetAddress: "вул. Калинова, 28", postalCode: "49000", addressLocality: "Дніпро", addressCountry: "UA" });
         assert.deepEqual(clinic.openingHoursSpecification.map((day) => [day.opens, day.closes]), [["09:00", "20:00"], ["09:00", "18:00"], ["00:00", "00:00"]]);
         const people = graph.filter((node) => node["@type"] === "Person");
-        assert.equal(people.length, ["index.html", "likari/index.html"].includes(file) ? 4 : 0);
+        assert.equal(people.length, ["index.html", "likari/index.html"].includes(file) ? 4 : file.startsWith("lechenie-") ? 1 : /^(?:terapevtychna-|likuvannia-)/.test(file) ? 2 : 0);
         for (const person of people) {
           assert.ok(text.includes(person.name)); assert.ok(text.includes(person.jobTitle));
           assert.deepEqual(Object.keys(person).sort(), ["@type", "@id", "name", "jobTitle", "worksFor", "image"].sort());
           assert.ok(fs.existsSync(path.join(profile.outDir, new URL(person.image).pathname)));
           assert.ok(html.includes(`src="${new URL(person.image).pathname}"`));
         }
-        assert.doesNotMatch(JSON.stringify(ld), /AggregateRating|Review|SearchAction|Offer|legalName|alumniOf|award|experience|medicalSpecialty|geo"|priceRange|paymentAccepted/);
+        assert.doesNotMatch(JSON.stringify(ld), /AggregateRating|Review|FAQPage|MedicalProcedure|SearchAction|Offer|legalName|alumniOf|award|experience|medicalSpecialty|geo"|priceRange|paymentAccepted/);
 
       }
       if (file === "price.html") {
@@ -102,10 +105,10 @@ for (const target of ["preview", "production"]) {
   }
 
   test(`${target}: distinct entity pages, exact team/contact facts and route reachability`, () => {
-    const files = ["index.html", "likari/index.html", "kontakty/index.html", "price.html"];
+    const files = patientFiles;
     const titles = files.map((file) => read(target, file).match(/<title>(.*?)<\/title>/)[1]);
     const descriptions = files.map((file) => meta(read(target, file), "description")[0]);
-    assert.equal(new Set(titles).size, 4); assert.equal(new Set(descriptions).size, 4);
+    assert.equal(new Set(titles).size, 7); assert.equal(new Set(descriptions).size, 7);
     for (const file of files) {
       const html = read(target, file);
       assert.equal((html.match(/aria-current="page"/g) ?? []).length, 1);
@@ -118,7 +121,7 @@ for (const target of ["preview", "production"]) {
     for (const fact of ["вул. Калинова, 28", "49000, м. Дніпро", "вхід з «червоної лінії»", "+380 67 985 40 50", "+380 50 912 44 52", "Пн–Пт 09:00–20:00", "Сб 09:00–18:00", "Нд зачинено", "dentix1@outlook.com", "@dentix_dp"]) assert.ok(contacts.includes(fact), fact);
   });
   test(`${target}: every initial internal link, fragment and asset resolves`, () => {
-    for (const file of ["index.html", "likari/index.html", "kontakty/index.html", "price.html", "404.html"]) {
+    for (const file of [...patientFiles, "404.html"]) {
       const html = read(target, file);
       const current = new URL(profile.base + file.replace(/index\.html$/, ""), profile.origin);
       let checked = 0;
@@ -127,6 +130,7 @@ for (const target of ["preview", "production"]) {
         if (!value) continue;
         const url = new URL(decode(value), current);
         if (url.origin !== profile.origin) continue;
+        assert.ok(![...url.searchParams.keys()].some((key) => key.startsWith("utm_")), "internal UTM forbidden");
         assert.ok(url.pathname.startsWith(profile.base), `${file}: wrong base ${url}`);
         const relative = url.pathname.slice(profile.base.length) || "index.html";
         const local = path.join(profile.outDir, relative.endsWith("/") ? relative + "index.html" : relative);
@@ -159,7 +163,7 @@ for (const target of ["preview", "production"]) {
       assert.doesNotMatch(code, /AdminCrm|admin-shell|admin-sidebar|DEMO Пацієнт|DEMO Dentist|\/admin\//);
       const sitemap = read(target, "sitemap.xml");
       assert.match(sitemap, /<urlset xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9">/);
-      assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]), ["https://dentix.ua/", "https://dentix.ua/likari/", "https://dentix.ua/kontakty/", "https://dentix.ua/price.html"]);
+      assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]), sitemapUrls);
       assert.doesNotMatch(sitemap, /lastmod|admin|github|404/);
       assert.equal((robots.match(/Sitemap:/g) ?? []).length, 1);
       assert.match(robots, /Sitemap: https:\/\/dentix.ua\/sitemap.xml/);
@@ -171,12 +175,12 @@ for (const target of ["preview", "production"]) {
     }
     const { server, origin, base } = await serveArtifact(target);
     try {
-      for (const suffix of ["likari", "kontakty"]) {
+      for (const suffix of ["likari", "kontakty", "terapevtychna-stomatolohiia", "likuvannia-kariiesu", "lechenie-pod-mikroskopom"]) {
         const response = await fetch(origin + base + suffix, { redirect: "manual" });
         assert.equal(response.status, 308);
         assert.equal(response.headers.get("location"), base + suffix + "/");
       }
-      for (const suffix of ["", "likari/", "likari/index.html", "kontakty/", "kontakty/index.html", "price.html", ...(!production ? ["admin/"] : [])]) assert.equal((await fetch(origin + base + suffix)).status, 200);
+      for (const suffix of [...patientPaths, ...patientFiles, ...(!production ? ["admin/"] : [])]) assert.equal((await fetch(origin + base + suffix)).status, 200);
       for (const suffix of ["missing-pr01", "404.html", ...(production ? ["admin/", "admin/index.html"] : [])]) {
         const response = await fetch(origin + base + suffix);
         assert.equal(response.status, 404);
@@ -184,7 +188,7 @@ for (const target of ["preview", "production"]) {
       }
     } finally { await new Promise((resolve) => server.close(resolve)); }
     record("admin_isolation_assertions", { target, admin_entries: adminEntries, admin_artifact: !production, http_missing_status: 404, pass: true });
-    record("robots_sitemap_assertions", { target, robots, sitemap_urls: production ? ["https://dentix.ua/", "https://dentix.ua/likari/", "https://dentix.ua/kontakty/", "https://dentix.ua/price.html"] : [], pass: true });
+    record("robots_sitemap_assertions", { target, robots, sitemap_urls: production ? sitemapUrls : [], pass: true });
   });
 }
 

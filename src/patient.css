@@ -4754,3 +4754,23 @@ body:has(.lead-form :is(input, select, textarea):focus) .mobile-call-bar { displ
 @media (min-width: 1024px) {
   .nav-links { gap: clamp(10px, 1.2vw, 18px); }
 }
+
+/* Therapy pages reuse the patient site's type, colors, cards and controls. */
+.therapy-hero .hero-title { font-size: clamp(2rem, 4vw, 3.6rem); }
+.therapy-hero .breadcrumbs { flex-wrap: wrap; }
+.therapy-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.therapy-overview .sec-title { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+.therapy-scope, .therapy-steps { padding-left: 1.4rem; line-height: 1.8; }
+.therapy-scope li, .therapy-steps li { margin-bottom: 14px; }
+.therapy-price-list { list-style: none; margin: 28px 0 16px; }
+.therapy-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.therapy-questions { max-width: 900px; }
+.therapy-questions details { padding: 22px 0; border-bottom: 1px solid rgba(37, 67, 53, .15); }
+.therapy-questions summary { cursor: pointer; font-weight: 600; line-height: 1.5; }
+.therapy-questions p { line-height: 1.8; margin-top: 14px; }
+.therapy-related { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
+.therapy-related .btn { white-space: normal; }
+@media (max-width: 767px) {
+  .therapy-overview, .therapy-team-grid { grid-template-columns: 1fr; gap: 32px; }
+  .therapy-price-list { padding: 12px 18px; }
+}

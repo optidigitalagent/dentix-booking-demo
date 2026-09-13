@@ -64,7 +64,8 @@ export async function postbuild(profile, render) {
   // control the shared GitHub Pages host's root robots policy.
   await writeFile(`${profile.outDir}/robots.txt`, `User-agent: *\nAllow: /\n${profile.target === "production" ? "\nSitemap: https://dentix.ua/sitemap.xml\n" : ""}`);
   if (profile.target === "production") {
-    await writeFile(`${profile.outDir}/sitemap.xml`, '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://dentix.ua/</loc></url><url><loc>https://dentix.ua/likari/</loc></url><url><loc>https://dentix.ua/kontakty/</loc></url><url><loc>https://dentix.ua/price.html</loc></url></urlset>\n');
+    const urls = Object.values(routeMetadata).map(({ path }) => `<url><loc>https://dentix.ua/${path}</loc></url>`).join("");
+    await writeFile(`${profile.outDir}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>\n`);
   }
-  console.log(`DENTIX ${profile.target}: home/doctors/contacts/price prerendered; 404 generated; output ${profile.outDir}`);
+  console.log(`DENTIX ${profile.target}: ${Object.keys(routeMetadata).length} patient routes prerendered; 404 generated; output ${profile.outDir}`);
 }

@@ -209,6 +209,16 @@
       "mitigation": "One endodontic/microscope URL; complex extraction section initially; revisit only with SERP/GSC and original content evidence.",
       "owner": "DENTIX owner / assigned implementer; named owner pending",
       "status": "open"
+    },
+    {
+      "id": "R-PR04A-REVIEW",
+      "area": "medical/content",
+      "description": "Named qualified reviewer UNKNOWN; production medical review boundary unresolved",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "Bound PR04A to approved current facts and operational copy. No symptoms/durations/materials/equipment/outcome claims or cases. Any new clinical explanation needs professional review before production; no fake reviewer.",
+      "owner": "DENTIX owner; qualified reviewer UNKNOWN",
+      "status": "LOCAL_DRAFT_ALLOWED_PRODUCTION_REVIEW_REQUIRED"
     }
   ]
 }

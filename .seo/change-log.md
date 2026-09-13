@@ -98,3 +98,10 @@ Approved source blobs remain unchanged: src/data/site.ts 947768cd448cefaa1c31e29
 Grant expires 2026-09-13T00:09:08.320787+00:00. Metadata commit/push, fresh validation, Ready, normal merge and one automatic noindex Pages preview deployment are pending. PR #4 body updates only; branch retained. No manual dispatch, second deployment, production/account/indexing action, submissions, release closure or PR04. Production NOT_LAUNCHED; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; T0 NOT_READY; outcome_report.claims=[].
 
 Committed records are a pre-merge action snapshot. release-state.yml remains the factual prior PR #3 preview receipt. Final Ready/merge/main/workflow/deployment/live-QA identifiers will be recorded in merged PR #4 body and external evidence; no post-merge repository commit.
+
+
+## 2026-09-13 — PR04A therapy cluster (local/Draft stage)
+
+PR #4 merged 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; successful noindex preview run 34719593977. PR04A implemented; fresh local QA PASS; one normal commit/push/Draft PR authorized. Ready/merge/deploy/publish/accounts/indexing forbidden. Old WordPress is production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[].
+
+Added three Ukrainian therapy/caries/microscope routes, preserved microscope URL, reused shared managed doctors/prices, extended initial HTML/head/sitemap/Schema and contextual navigation. No clinical explanations beyond approved current facts. Qualified reviewer UNKNOWN; production review/cutover blocked. Full fresh QA and final Git receipts recorded in external PR04A evidence.

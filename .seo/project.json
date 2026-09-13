@@ -6,6 +6,6 @@
   "primary_language": "uk",
   "site_type": "local-business",
   "initialized_at": "2026-09-08T11:26:26Z",
-  "status": "PR03 IMPLEMENTED_LOCALLY_VALIDATED_FOR_DRAFT_PR; final Git receipt external. PR #3 merged 160804ce2fd0cd759788f2ec2961b1638f7dcda8; successful noindex preview. Production old WordPress; React NOT_LAUNCHED; T0 NOT_READY; claims=[]",
+  "status": "PR #4 merged 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; successful noindex preview run 34719593977. PR04A implemented; fresh local QA PASS; one normal commit/push/Draft PR authorized. Ready/merge/deploy/publish/accounts/indexing forbidden. Old WordPress is production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[].",
   "secrets_policy": "Do not store credentials, tokens, private exports, personal data, or medical data in .seo"
 }

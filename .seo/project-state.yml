@@ -4,24 +4,15 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "commit",
-  "authorization_level": "PR03 independent remote/code/evidence review PASS on f71117c8334376400502203f89cef96112f3a5a9; NO_SERVER_CI. One bounded metadata commit/push; fresh exact-head suite; Ready/normal merge/one automatic noindex preview deployment authorized until 2026-09-13T00:09:08.320787+00:00, all pending. Clean input snapshot verified before metadata edits; clean worktree must be rechecked at each later action boundary. Post-merge identifiers belong in PR #4 body and external evidence; no post-merge commit. Prior release-state identifies PR #3 preview, not PR03 completion. Production NOT_LAUNCHED; claims=[].",
+  "authorization_level": "PR #4 merged 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; successful noindex preview run 34719593977. PR04A implemented; fresh local QA PASS; one normal commit/push/Draft PR authorized. Ready/merge/deploy/publish/accounts/indexing forbidden. Old WordPress is production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[]. worktree_clean records clean branch input before edits; scoped changes are expected at commit boundary and actual Git cleanliness is checked again after commit.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-12T21:09:08.320787+00:00",
-  "remote_main_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
-  "local_main_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
-  "deployed_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
-  "open_prs": [
-    {
-      "number": 4,
-      "state": "OPEN",
-      "isDraft": true,
-      "headRefOid": "f71117c8334376400502203f89cef96112f3a5a9",
-      "baseRefOid": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
-      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/4"
-    }
-  ],
+  "verified_at": "2026-09-13T09:02:48.284444+00:00",
+  "remote_main_sha": "51e1da2343923d5e997d8bb6d7abe6734b9bc24c",
+  "local_main_sha": "51e1da2343923d5e997d8bb6d7abe6734b9bc24c",
+  "deployed_sha": "51e1da2343923d5e997d8bb6d7abe6734b9bc24c",
+  "open_prs": [],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
@@ -51,6 +42,15 @@
         "oid": "160804ce2fd0cd759788f2ec2961b1638f7dcda8"
       },
       "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/3"
+    },
+    {
+      "number": 4,
+      "state": "MERGED",
+      "mergeCommit": {
+        "oid": "51e1da2343923d5e997d8bb6d7abe6734b9bc24c"
+      },
+      "mergedAt": "2026-09-12T21:18:51Z",
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/4"
     }
   ],
   "active_branches": [
@@ -58,9 +58,10 @@
     "seo/dentix-pr00-bootstrap-t0",
     "seo/dentix-pr01-technical-foundation",
     "seo/dentix-pr02-migration-demand-baseline",
-    "seo/dentix-pr03-entity-local-foundation"
+    "seo/dentix-pr03-entity-local-foundation",
+    "seo/dentix-pr04a-therapy-cluster"
   ],
-  "handoff_sha": "160804ce2fd0cd759788f2ec2961b1638f7dcda8",
+  "handoff_sha": "51e1da2343923d5e997d8bb6d7abe6734b9bc24c",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
   "production_matches_deploy": false,
