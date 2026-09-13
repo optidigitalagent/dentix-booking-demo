@@ -4,15 +4,25 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "commit",
-  "authorization_level": "Current direct chat grant authorizes one PR04C implementation/commit/push/Draft. Entry tracked worktree/index clean; two unrelated untracked .DS_Store retained. PR06 merged and ten live noindex preview routes verified; workflow 34755054592/deployment 6421117100 success at current main. PR04C implemented locally; fresh local QA PASS; commit/push/one Draft pending; no clinician inference; professional review UNKNOWN / NOT_COMPLETED; WordPress production; React NOT_LAUNCHED; T0 NOT_READY; accounts ACCESS_BLOCKED; claims=[].",
+  "authorization_level": "Pre-merge action snapshot at 2026-09-13T13:07:45.718094+00:00, expires 2026-09-13T16:07:45.718094+00:00. User ZIP grants the exact PR04C Ready/normal merge/one automatic noindex preview stage; supersedes earlier Draft-only operational restrictions for this stage only. PR #7 OPEN/Draft/CLEAN; base ae1a929bd339b7a9172760320e9917325243004e; reviewed head 6da5ae7dffb7345de50aad6cdcd6b1782194a149; 43 changed paths; tracked/index clean at entry; two unrelated .DS_Store untouched. No overlapping PR; NO_SERVER_CI (empty checks is not CI PASS). Supplied remote review and independent local contract review PASS. Evidence ZIP 85955387 bytes; SHA-256 0436ecc37485c1182729b1578391318b2e17a1195908c11a852162b78b4bda33; 200/200 checksums; no undeclared payload. Seven source pins PASS; both exact legacy paths preserved; 12-route candidate; prices separate; Під ключ. note only. No approved fallback implantologist/orthopedist; exact managed-role and visible/Schema parity required; ортодонт negative. Professional review UNKNOWN / NOT_COMPLETED. Five-query bounded sanity sample dated 2026-09-13, device/searcher location/personalization UNKNOWN; no rank/volume finding. P2 requestedInterest decision/test required before public booking activation. Fresh exact-final-head suite, Ready, merge and one automatic deployment PENDING. Current verified preview remains PR #6 at ae1a929bd339b7a9172760320e9917325243004e, workflow 34755054592/deployment 6421117100. WordPress production; React NOT_LAUNCHED; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; T0 NOT_READY; outcome_report.claims=[].",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-13T12:06:29.690822+00:00",
+  "verified_at": "2026-09-13T13:07:45.718094+00:00",
   "remote_main_sha": "ae1a929bd339b7a9172760320e9917325243004e",
   "local_main_sha": "ae1a929bd339b7a9172760320e9917325243004e",
   "deployed_sha": "ae1a929bd339b7a9172760320e9917325243004e",
-  "open_prs": [],
+  "open_prs": [
+    {
+      "number": 7,
+      "state": "OPEN",
+      "isDraft": true,
+      "headRefName": "seo/dentix-pr04c-implant-prosthetics-cluster",
+      "headRefOid": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "baseRefOid": "ae1a929bd339b7a9172760320e9917325243004e",
+      "scope": "authorized current PR; no other overlapping PR"
+    }
+  ],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
