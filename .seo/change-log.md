@@ -119,3 +119,7 @@ PR #5 merged be42e9d3547a9388e2e0a0ffa4d7258a55616579; successful noindex previe
 Three routes and a complex-extraction section; shared managed prices and exact surgeon-role selection with phone fallback. Ten local artifacts/sitemap URLs; internal links; safe production-only Service/Person parity. Approved source facts/price amounts/founder/video unchanged. Migration dispositions retained. Fresh validation PASS; final commit/PR receipts external.
 
 Fresh PR04B validation: 20 unit; both ten-route builds; 28 artifact tests; 100 hydrated + 100 no-JS + 200 semantic; 30 surgery managed + 24 therapy managed; 40 lead-source; 40 safe Chromium/WebKit mobile; 16 founder/video cases, all PASS. Zero POST/appointments, overflow, broken images or hydration/console errors. Local lab only.
+
+## 2026-09-13T11:28:14.102250+00:00 — PR04B merge/preview authorization
+
+Evidence integrity 184/184 PASS; independent remote/source/content/no-surgeon review PASS at PR #6 c2c36d966f747092e9a20447f656227b90e11c7e, base be42e9d3547a9388e2e0a0ffa4d7258a55616579, 42 paths. Time-bounded .seo-only grant recorded; Ready/normal merge/one automatic preview deployment and fresh exact-head QA pending. NO_SERVER_CI. Professional review UNKNOWN / NOT_COMPLETED; no fallback surgeon. Production NOT_LAUNCHED; T0 NOT_READY; external measurement access blocked; claims=[]. Final receipts external; no post-merge commit.

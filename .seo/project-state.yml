@@ -4,15 +4,26 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "commit",
-  "authorization_level": "PR #5 merged be42e9d3547a9388e2e0a0ffa4d7258a55616579; successful noindex preview workflow 34752031347 and deployment 6420548670 at the same SHA; seven live preview routes verified. PR04B surgery implementation complete locally; local QA PASS; one normal commit/push/Draft PR authorized. No named surgeon in approved fallback. professional_review_status=UNKNOWN / NOT_COMPLETED. Old WordPress remains production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized. Worktree_clean=false records this precommit implementation snapshot; final action receipts and cleanliness will be recorded externally.",
+  "authorization_level": "PR04B pre-merge authorization snapshot. PR #6 initial base be42e9d3547a9388e2e0a0ffa4d7258a55616579, head c2c36d966f747092e9a20447f656227b90e11c7e; tracked worktree/index clean at verified entry boundary; only two unrelated untracked .DS_Store files. This metadata commit will be validated from an isolated clean exact final head before subsequent actions. Remote supplied review PASS_WITH_PREMERGE_EVIDENCE_AND_SURGEON_REVIEW_GUARDS; local ZIP 75502477 bytes SHA256 2f4c8017b624c205710286f97759f0297413a2bd2d3803f98a33ff6ce42e2195; 184/184 manifest entries PASS. Independent source/content/no-surgeon review PASS; all seven baseline pins verified; protected facts unchanged. Three surgery routes; ten total patient routes. Historical local QA PASS; one fresh final-head suite PENDING. NO_SERVER_CI. Ready/normal merge/one automatic noindex preview deployment/live QA PENDING under current time-bounded grant; external_action only PR #6 body updates. No approved fallback surgeon; professional review UNKNOWN / NOT_COMPLETED. Query sanity sample device/searcher location UNKNOWN. WordPress production remains; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; claims=[]. Final SHA/action receipts outside repository; no post-merge commit or release closure.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-13T10:57:39.826480+00:00",
+  "verified_at": "2026-09-13T11:28:14.102250+00:00",
   "remote_main_sha": "be42e9d3547a9388e2e0a0ffa4d7258a55616579",
   "local_main_sha": "be42e9d3547a9388e2e0a0ffa4d7258a55616579",
   "deployed_sha": "be42e9d3547a9388e2e0a0ffa4d7258a55616579",
-  "open_prs": [],
+  "open_prs": [
+    {
+      "number": 6,
+      "state": "OPEN",
+      "isDraft": true,
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/6",
+      "baseRefName": "main",
+      "baseRefOid": "be42e9d3547a9388e2e0a0ffa4d7258a55616579",
+      "headRefName": "seo/dentix-pr04b-surgery-cluster",
+      "headRefOid": "c2c36d966f747092e9a20447f656227b90e11c7e"
+    }
+  ],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
@@ -76,5 +87,5 @@
   "overlapping_active_pr": false,
   "production_matches_deploy": false,
   "external_state_verified": true,
-  "worktree_clean": false
+  "worktree_clean": true
 }
