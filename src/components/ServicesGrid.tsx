@@ -26,6 +26,7 @@ export function ServicesGrid() {
               <a className="svc-link" href={siteHref(s.href)}>
                 {s.linkLabel} <span aria-hidden="true">→</span>
               </a>
+              {s.secondaryLink && <a className="svc-booking-link" href={siteHref(s.secondaryLink.href)}>{s.secondaryLink.label} <span aria-hidden="true">→</span></a>}
               {bookingDirections.includes(s.title) ? (
                 <BookingButton className="svc-booking-link" requestedInterest={s.title}>
                   Записатися онлайн

@@ -480,5 +480,50 @@
     "migration_dispositions_changed": false,
     "outcome_report_claims": [],
     "validated_at": "2026-09-13T11:01:55.872913+00:00"
+  },
+  "pr04b_preview_reconciliation": {
+    "checked_at": "2026-09-13T12:14:34.884826+00:00",
+    "merge_sha": "ae1a929bd339b7a9172760320e9917325243004e",
+    "workflow_id": 34755054592,
+    "deployment_id": 6421117100,
+    "live_patient_routes": 10,
+    "preview_policy": "noindex,nofollow,noarchive",
+    "production": "WordPress remains production; React NOT_LAUNCHED",
+    "professional_review": "UNKNOWN / NOT_COMPLETED"
+  },
+  "pr04c_local_implementation": {
+    "checked_at": "2026-09-13T12:14:34.884826+00:00",
+    "base_sha": "ae1a929bd339b7a9172760320e9917325243004e",
+    "branch": "seo/dentix-pr04c-implant-prosthetics-cluster",
+    "routes": [
+      "https://dentix.ua/implantatsiya/",
+      "https://dentix.ua/protezirovanie/"
+    ],
+    "patient_routes": 12,
+    "status": "IMPLEMENTED_LOCALLY_VALIDATED_DRAFT_PENDING",
+    "qa": {
+      "browser_qa.json": 120,
+      "no_javascript": 120,
+      "semantics": 240,
+      "implant_prosthetics_managed_content.json": 28,
+      "therapy_managed_content.json": 24,
+      "surgery_managed_content.json": 30,
+      "lead_source_entry_points.json": 48,
+      "founder_video_integration.json": 16,
+      "implant_prosthetics_browser.json": 80,
+      "safe_mobile": 40,
+      "npm-test": 25,
+      "artifact-tests": 34,
+      "preview_build": "PASS",
+      "production_build": "PASS",
+      "post_requests": 0
+    },
+    "prices": "One useManagedContent().priceBlocks; exact rows; implantation separate from implant prosthetics; turnkey note uninterpreted",
+    "clinicians": "No approved implantologist/orthopedist; exact managed tokens only; ортодонт rejected",
+    "professional_review": "UNKNOWN / NOT_COMPLETED",
+    "production": "NOT_LAUNCHED",
+    "outcome_report_claims": [],
+    "evidence": "DENTIX_PR04C_IMPLANT_PROSTHETICS_EVIDENCE_2026-09-13",
+    "validated_at": "2026-09-13T12:19:39.806751+00:00"
   }
 }

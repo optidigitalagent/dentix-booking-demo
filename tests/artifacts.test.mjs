@@ -1,3 +1,4 @@
+import { implantProstheticsPages, selectImplantProstheticsPrices } from "../src/data/implant-prosthetics-pages.ts";
 import { surgeryPages, selectSurgeryPrices } from "../src/data/surgery-pages.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -15,7 +16,7 @@ const meta = (html, key) => tags(html, "meta").filter((tag) => attr(tag, "name")
 const canonicals = (html) => tags(html, "link").filter((tag) => attr(tag, "rel") === "canonical").map((tag) => attr(tag, "href"));
 const decode = (value) => value.replaceAll("&amp;", "&").replaceAll("&quot;", '"').replaceAll("&#x27;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">");
 const plain = (html) => decode(html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " "));
-const patientFiles = ["index.html", "likari/index.html", "kontakty/index.html", "price.html", "terapevtychna-stomatolohiia/index.html", "likuvannia-kariiesu/index.html", "lechenie-pod-mikroskopom/index.html", "khirurhichna-stomatolohiia/index.html", "vydalennia-zuba/index.html", "vydalennia-zuba-mudrosti/index.html"];
+const patientFiles = ["index.html", "likari/index.html", "kontakty/index.html", "price.html", "terapevtychna-stomatolohiia/index.html", "likuvannia-kariiesu/index.html", "lechenie-pod-mikroskopom/index.html", "khirurhichna-stomatolohiia/index.html", "vydalennia-zuba/index.html", "vydalennia-zuba-mudrosti/index.html", "implantatsiya/index.html", "protezirovanie/index.html"];
 const patientPaths = patientFiles.map((file) => file.replace(/index\.html$/, ""));
 const sitemapUrls = patientPaths.map((route) => "https://dentix.ua/" + route);
 const results = {};
@@ -127,16 +128,48 @@ for (const target of ["preview", "production"]) {
       record("surgery_content_assertions", { target, route, prices, named_surgeons: 0, complex_section: route === "extraction", bounded_copy: true, pass: true });
     }
     assert.ok(read(target, "index.html").includes(`href="${profile.base}khirurhichna-stomatolohiia/"`));
-    for (const unsupported of ["skladne-vydalennia-zuba/", "implantatsiya/", "implantatsiia/", "all-on-4/"]) {
+    for (const unsupported of ["skladne-vydalennia-zuba/", "implantatsiia/", "all-on-4/"]) {
       assert.equal(fs.existsSync(path.join(profile.outDir, unsupported)), false);
       for (const file of patientFiles) assert.ok(!read(target, file).includes(`href="${profile.base}${unsupported}"`));
     }
+  });
+  test(`${target}: preserved implant/prosthetics routes, separate prices, bounded copy and absent clinicians`, () => {
+    for (const [route, page] of Object.entries(implantProstheticsPages)) {
+      const html = read(target, page.path + "index.html");
+      const rows = [...html.matchAll(/<li class="price-row">([\s\S]*?)<\/li>/g)].map((match) => plain(match[1]).trim());
+      assert.deepEqual(rows, selectImplantProstheticsPrices(route, priceBlocks).map((row) => [row.name, row.note, row.cost].filter(Boolean).join(" ")));
+      assert.equal(rows.length, route === "implantation" ? 3 : 6);
+      assert.equal(rows.some((row) => row.startsWith("Імплантація ")), route === "implantation");
+      assert.equal(rows.some((row) => row.startsWith("Протезування на імплантах ")), route === "prosthetics");
+      assert.equal((plain(html).match(/Під ключ\./g) ?? []).length, route === "prosthetics" ? 1 : 0);
+      assert.ok(plain(html).includes(page.answer));
+      assert.doesNotMatch(html, /class="doc-role"|#person-|Стасюк|Подолянский|Грисяк|Гамаза/);
+      assert.ok(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."));
+      assert.doesNotMatch(plain(html.split('id="contact"')[0]), /безболіс|гарант|анестез|відновлен|симптом|протипоказ|триваліст|ускладнен|прижив|навантаж|кістков|етапи|All.on|3D|100%/i);
+      const related = route === "implantation" ? ["protezirovanie/", "vydalennia-zuba/"] : ["implantatsiya/"];
+      for (const path of related) assert.ok(html.includes(`href="${profile.base}${path}"`));
+      for (const source of ["index.html", "price.html"]) assert.ok(read(target, source).includes(`href="${profile.base}${page.path}"`));
+      if (production) {
+        const graph = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"];
+        assert.deepEqual(graph.map((node) => node["@type"]), ["WebSite", "WebPage", "Dentist", "Service", "BreadcrumbList"]);
+        const service = graph.find((node) => node["@type"] === "Service");
+        assert.equal(service.name, page.h1); assert.equal(service.description, page.answer);
+        assert.deepEqual(service.provider, { "@id": "https://dentix.ua/#dentist" });
+        assert.doesNotMatch(JSON.stringify(graph), /Product|Offer|price|FAQPage|Review|MedicalProcedure|medicalSpecialty|Під ключ/i);
+      }
+      record("implant_prosthetics_content_assertions", { target, route, prices: rows, named_clinicians: 0, price_separation: true, turnkey_note_only: true, bounded_copy: true, pass: true });
+    }
+    assert.equal(services.length, 6);
+    assert.equal(services.find((service) => service.title === "Хірургія").href, "/khirurhichna-stomatolohiia/");
+    assert.equal(services.find((service) => service.title === "Хірургія").secondaryLink.href, "/implantatsiya/");
+    assert.equal(services.find((service) => service.title === "Ортопедія").href, "/protezirovanie/");
+    for (const unsupported of ["implantatsiia/", "protezuvannia/", "all-on-4/"]) assert.equal(fs.existsSync(path.join(profile.outDir, unsupported)), false);
   });
   test(`${target}: distinct entity pages, exact team/contact facts and route reachability`, () => {
     const files = patientFiles;
     const titles = files.map((file) => read(target, file).match(/<title>(.*?)<\/title>/)[1]);
     const descriptions = files.map((file) => meta(read(target, file), "description")[0]);
-    assert.equal(new Set(titles).size, 10); assert.equal(new Set(descriptions).size, 10);
+    assert.equal(new Set(titles).size, 12); assert.equal(new Set(descriptions).size, 12);
     for (const file of files) {
       const html = read(target, file);
       assert.equal((html.match(/aria-current="page"/g) ?? []).length, 1);
@@ -203,7 +236,7 @@ for (const target of ["preview", "production"]) {
     }
     const { server, origin, base } = await serveArtifact(target);
     try {
-      for (const suffix of ["likari", "kontakty", "terapevtychna-stomatolohiia", "likuvannia-kariiesu", "lechenie-pod-mikroskopom", "khirurhichna-stomatolohiia", "vydalennia-zuba", "vydalennia-zuba-mudrosti"]) {
+      for (const suffix of ["likari", "kontakty", "terapevtychna-stomatolohiia", "likuvannia-kariiesu", "lechenie-pod-mikroskopom", "khirurhichna-stomatolohiia", "vydalennia-zuba", "vydalennia-zuba-mudrosti", "implantatsiya", "protezirovanie"]) {
         const response = await fetch(origin + base + suffix, { redirect: "manual" });
         assert.equal(response.status, 308);
         assert.equal(response.headers.get("location"), base + suffix + "/");

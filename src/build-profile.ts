@@ -13,7 +13,7 @@ export function getBuildProfile(target: string) {
   } as const;
 }
 
-export type PatientRoute = "home" | "price" | "doctors" | "contacts" | "therapy" | "caries" | "microscope" | "surgery" | "extraction" | "wisdom";
+export type PatientRoute = "home" | "price" | "doctors" | "contacts" | "therapy" | "caries" | "microscope" | "surgery" | "extraction" | "wisdom" | "implantation" | "prosthetics";
 
 export function patientRoute(pathname: string, base: string): PatientRoute | null {
   if (pathname === base || pathname === `${base}index.html`) return "home";
@@ -26,5 +26,7 @@ export function patientRoute(pathname: string, base: string): PatientRoute | nul
   if (pathname === `${base}khirurhichna-stomatolohiia/` || pathname === `${base}khirurhichna-stomatolohiia/index.html`) return "surgery";
   if (pathname === `${base}vydalennia-zuba/` || pathname === `${base}vydalennia-zuba/index.html`) return "extraction";
   if (pathname === `${base}vydalennia-zuba-mudrosti/` || pathname === `${base}vydalennia-zuba-mudrosti/index.html`) return "wisdom";
+  if (pathname === `${base}implantatsiya/` || pathname === `${base}implantatsiya/index.html`) return "implantation";
+  if (pathname === `${base}protezirovanie/` || pathname === `${base}protezirovanie/index.html`) return "prosthetics";
   return null;
 }

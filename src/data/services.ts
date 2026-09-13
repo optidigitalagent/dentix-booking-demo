@@ -4,6 +4,7 @@ export type Service = {
   text: string;
   linkLabel: string;
   href: string;
+  secondaryLink?: { label: string; href: string };
 };
 
 export const services: Service[] = [
@@ -39,8 +40,8 @@ export const services: Service[] = [
     num: "05",
     title: "Ортопедія",
     text: "Металокерамічні й цирконієві коронки та керамічні вініри.",
-    linkLabel: "Відкрити прайс",
-    href: "/price.html#ortopediya",
+    linkLabel: "Про протезування зубів",
+    href: "/protezirovanie/",
   },
   {
     num: "06",
@@ -48,5 +49,6 @@ export const services: Service[] = [
     text: "Видалення зубів і встановлення імпланта за опублікованим прайсом.",
     linkLabel: "Про видалення зубів",
     href: "/khirurhichna-stomatolohiia/",
+    secondaryLink: { label: "Про імплантацію зубів", href: "/implantatsiya/" },
   },
 ];

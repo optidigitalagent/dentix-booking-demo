@@ -39,7 +39,7 @@
     "channels": {
       "technical": {
         "status": "UNKNOWN",
-        "reason": "PR04A merged be42e9d3547a9388e2e0a0ffa4d7258a55616579 to seven-route noindex preview; workflow 34752031347/deployment 6420548670 verified. PR04B ten-route local implementation validated; Draft stage only. Old WordPress remains production; React NOT_LAUNCHED; production readiness NOT_ESTABLISHED.",
+        "reason": "PR #6 merged ae1a929bd339b7a9172760320e9917325243004e; successful noindex preview workflow 34755054592 and deployment 6421117100 at the same SHA; ten live preview patient routes verified. Therapy and surgery merged to preview only. PR04C implantation/prosthetics implemented locally; fresh local QA PASS; one normal commit/push/Draft PR authorized. Both legacy URLs preserved. No approved fallback surgeon, implantologist or orthopedist. professional_review_status=UNKNOWN / NOT_COMPLETED; PROFESSIONAL_REVIEW_REQUIRED_BEFORE_PRODUCTION. Implantation and prosthetics-on-implants prices separate; Під ключ. remains source-row note only. WordPress remains production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized.",
         "evidence_ids": []
       },
       "google_indexation": {

@@ -8,12 +8,14 @@ import { PatientDemo } from "./PatientDemo";
 import { PriceDemo } from "./PriceDemo";
 import type { PatientRoute } from "./build-profile";
 import { RouteContext } from "./route-context";
+import { ImplantProstheticsPage } from "./ImplantProstheticsPage";
+import { isImplantProstheticsRoute } from "./data/implant-prosthetics-pages";
 
 export function PatientApp({ route }: { route: PatientRoute }) {
   return (
     <RouteContext.Provider value={route}>
       <EntitySchema route={route} />
-      {route === "price" ? <PriceDemo /> : route === "home" ? <PatientDemo /> : isTherapyRoute(route) ? <TherapyPage route={route} /> : isSurgeryRoute(route) ? <SurgeryPage route={route} /> : <EntityPage route={route} />}
+      {route === "price" ? <PriceDemo /> : route === "home" ? <PatientDemo /> : isTherapyRoute(route) ? <TherapyPage route={route} /> : isSurgeryRoute(route) ? <SurgeryPage route={route} /> : isImplantProstheticsRoute(route) ? <ImplantProstheticsPage route={route} /> : <EntityPage route={route} />}
     </RouteContext.Provider>
   );
 }

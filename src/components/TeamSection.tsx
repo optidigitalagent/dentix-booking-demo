@@ -1,3 +1,4 @@
+import { selectImplantProstheticsDoctors, type ImplantProstheticsRoute } from "@/data/implant-prosthetics-pages";
 import { selectSurgeryDoctors, type SurgeryRoute } from "@/data/surgery-pages";
 import { selectTherapyDoctors, type TherapyRoute } from "@/data/therapy-pages";
 import { siteHref } from "@/lib/site-href";
@@ -6,20 +7,20 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { BookingButton } from "./booking/BookingContext";
 
-export function TeamSection({ therapyRoute, surgeryRoute }: { therapyRoute?: TherapyRoute; surgeryRoute?: SurgeryRoute } = {}) {
+export function TeamSection({ therapyRoute, surgeryRoute, implantProstheticsRoute }: { therapyRoute?: TherapyRoute; surgeryRoute?: SurgeryRoute; implantProstheticsRoute?: ImplantProstheticsRoute } = {}) {
   const { doctors: managedDoctors, doctorsSource } = useManagedContent();
-  const doctors = surgeryRoute ? selectSurgeryDoctors(managedDoctors) : therapyRoute ? selectTherapyDoctors(therapyRoute, managedDoctors) : managedDoctors;
+  const doctors = implantProstheticsRoute ? selectImplantProstheticsDoctors(implantProstheticsRoute, managedDoctors) : surgeryRoute ? selectSurgeryDoctors(managedDoctors) : therapyRoute ? selectTherapyDoctors(therapyRoute, managedDoctors) : managedDoctors;
 
   return (
     <section className="section" id="team" data-content-source={doctorsSource}>
       <div className="wrap">
         <SectionHeading
           kicker="Команда"
-          title={surgeryRoute ? "Лікар напрямку" : therapyRoute === "microscope" ? "Ендодонтист, мікроскопіст DENTIX" : therapyRoute ? "Лікарі-терапевти DENTIX" : "Лікарі DENTIX"}
-          lede={surgeryRoute ? "Інформацію про лікаря та прийом уточнюйте у клініці телефоном." : "Прийом ведуть лікарі клініки за відповідними напрямками лікування."}
+          title={implantProstheticsRoute || surgeryRoute ? "Лікар напрямку" : therapyRoute === "microscope" ? "Ендодонтист, мікроскопіст DENTIX" : therapyRoute ? "Лікарі-терапевти DENTIX" : "Лікарі DENTIX"}
+          lede={implantProstheticsRoute || surgeryRoute ? "Інформацію про лікаря та прийом уточнюйте у клініці телефоном." : "Прийом ведуть лікарі клініки за відповідними напрямками лікування."}
         />
         {!doctors.length && <p>Уточніть лікаря цього напрямку у клініці телефоном.</p>}
-        <div className={`team-grid${therapyRoute || surgeryRoute ? " therapy-team-grid" : ""}`}>
+        <div className={`team-grid${therapyRoute || surgeryRoute || implantProstheticsRoute ? " therapy-team-grid" : ""}`}>
           {doctors.map((d, i) => (
             <Reveal as="article" key={d.id} className="doc" delay={i * 80}>
               <div className="doc-ring">
@@ -36,8 +37,8 @@ export function TeamSection({ therapyRoute, surgeryRoute }: { therapyRoute?: The
               <div className="doc-copy">
                 <h3>{d.name}</h3>
                 <p className="doc-role">{d.role}</p>
-                {!therapyRoute && !surgeryRoute && d.description ? <p className="doc-description">{d.description}</p> : null}
-                {!therapyRoute && !surgeryRoute && d.role.includes("Лікар-терапевт") && <a className="doc-booking" href={siteHref(d.role.includes("ендодонтист") && d.role.includes("мікроскопіст") ? "/lechenie-pod-mikroskopom/" : "/terapevtychna-stomatolohiia/")}>{d.role.includes("ендодонтист") && d.role.includes("мікроскопіст") ? "Лікування каналів під мікроскопом" : "Терапевтична стоматологія"}</a>}
+                {!therapyRoute && !surgeryRoute && !implantProstheticsRoute && d.description ? <p className="doc-description">{d.description}</p> : null}
+                {!therapyRoute && !surgeryRoute && !implantProstheticsRoute && d.role.includes("Лікар-терапевт") && <a className="doc-booking" href={siteHref(d.role.includes("ендодонтист") && d.role.includes("мікроскопіст") ? "/lechenie-pod-mikroskopom/" : "/terapevtychna-stomatolohiia/")}>{d.role.includes("ендодонтист") && d.role.includes("мікроскопіст") ? "Лікування каналів під мікроскопом" : "Терапевтична стоматологія"}</a>}
                 <BookingButton className="doc-booking">
                   Обрати лікаря
                 </BookingButton>
