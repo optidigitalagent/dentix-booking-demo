@@ -1,14 +1,24 @@
-# DENTIX PR04A handoff
+# DENTIX PR04A merge gate handoff
 
-PR #4 merged 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; successful noindex preview run 34719593977. PR04A implemented; fresh local QA PASS; one normal commit/push/Draft PR authorized. Ready/merge/deploy/publish/accounts/indexing forbidden. Old WordPress is production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[].
+PR #5 pre-merge action snapshot. Remote/evidence/independent source-content-contract review PASS at base 51e1da2343923d5e997d8bb6d7abe6734b9bc24c / reviewed head 86e1130603ea98243c93c971a1e0285ff53901db; exactly 40 paths; NO_SERVER_CI; no submitted review or overlapping PR. Input ZIP 63266311 bytes / SHA256 f7b58f3320b39593b603305d6e70cea3a107401cc5572a820139a083af45c243 / 166 verified checksum entries. Six source pins PASS. Current grant permits one .seo metadata commit/push, Ready, normal merge and exactly one automatic noindex Pages preview deployment; these actions and fresh final-head QA are pending. Professional review UNKNOWN / NOT_COMPLETED; production review boundary retained. Old WordPress is production; React NOT_LAUNCHED; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; T0 NOT_READY; outcome_report.claims=[]. worktree_clean records the verified clean input boundary; only these bounded metadata edits may be dirty at commit. Actual final-head cleanliness and remote state must be rechecked before Ready/merge. No post-merge commit; external evidence and PR body will record completion.
 
-This supersedes the PR03 pre-merge action snapshot. PR #4 merged 2026-09-12T21:18:51Z; preview deployment workflow https://github.com/optidigitalagent/dentix-booking-demo/actions/runs/34719593977 succeeded on 51e1da2343923d5e997d8bb6d7abe6734b9bc24c. Four entity/local routes remain deployed to noindex preview. release-state.yml records that actual preview receipt; production_matches_deploy=false and closed=false.
+Authorization: 2026-09-13T10:20:50.948291+00:00 through 2026-09-13T13:20:50.948291+00:00, only the action matrix and restrictions in authorization.yml. The user explicitly authorized this final preview stage. This supersedes prior Draft-only operational instructions; historical logs and research remain unchanged. The existing release-state.yml is the factual PR #4 preview receipt, not a claim that PR #5 has merged or production has launched.
 
-Three routes implemented locally using shared managed doctors/prices, bounded approved operational copy, meaningful initial HTML, contextual links and production-only Service graph. See content-briefs/pr-04a.md for exact source and professional review boundary. Named reviewer UNKNOWN; medical review not completed.
+Three therapy routes: /terapevtychna-stomatolohiia/, /likuvannia-kariiesu/, /lechenie-pod-mikroskopom/. Seven patient routes including /, /likari/, /kontakty/, /price.html. No canal-only or PR04B/C route. Service titles/descriptions and all protected facts unchanged; services.ts has only the authorized therapy link change. Shared useManagedContent doctors/priceBlocks; exact visible row/role selection and matching production Person nodes. Preview has noindex,nofollow,noarchive and no canonical/sitemap/production graph.
 
-Input worktree was clean in an isolated checkout; original untracked .DS_Store files preserved. Main safely fast-forwarded without a merge commit. No source/fact drift. Fresh QA PASS: {"unit_tests": 15, "artifact_tests": 20, "hydrated_browser_cases": 70, "no_js_browser_cases": 70, "semantic_cases": 140, "lead_source_cases": 28, "managed_content_cases": 24, "safe_mobile_cases": 40, "founder_video_cases": 16, "forbidden_requests": [], "production_publish": false, "claims": []}; both builds PASS. Current metadata is a pre-commit snapshot; final exact commit/push/Draft PR receipts will be external, avoiding a self-referential follow-up commit.
+Six pinned base sources:
+- src/data/site.ts: 947768cd448cefaa1c31e2928850e87e9b554da2
+- src/data/doctors.ts: 5f5ebdc56fb60cc7f140943a684ec1294fb35dc3
+- src/data/prices.ts: 8a1be1f4256bac67dc938f1d7816f26c44b4d0ca
+- src/data/services.ts: c431720fff5fa008b91fad4a211318873da6dbc1
+- src/components/AboutSection.tsx: 92dd12a3ed4342909efb0e338248ebe8dfbcf20c
+- .seo/content-briefs/pr-04a.md: 1ca30f3d177d8ff36381764a140a6dd238466c80
 
-Next authorized work: explicit staging, normal commit/push, one Draft PR. No Ready, merge, deploy, publication, external account actions, indexing requests, release closure or PR04B/C.
+Historical local QA, independently reconciled with the 166-entry archive: npm ci; 15 unit; 20 artifact; both builds; 70 hydrated + 70 no-JS + 140 semantic; 24 managed-content; 28 lead-source; 40 safe Chromium/WebKit mobile; 16 founder/video, all PASS. These are historical results; exactly one fresh full suite on the final authorization-commit head is required before merge. NO_SERVER_CI.
+
+Independent review means source/editorial/contract verification by Codex; it is not a submitted GitHub review or qualified medical review. professional_review_status: UNKNOWN / NOT_COMPLETED. The production-review boundary in content-briefs/pr-04a.md and medical-review-log.csv remains.
+
+Next authorized action: normal bounded metadata commit/push, PR #5 body update and Ready, one fresh final-head suite, immediate merge gate, normal merge, one automatic noindex preview deployment, seven-route live QA, external final evidence. Stop on the mission's specified failure verdict; no source repair in this stage. Stop after PR04A; production/accounts/indexing/release closure/PR04B/C remain forbidden. Final SHA/run/deployment/live receipts will be in PR #5 body and external DENTIX_PR04A_MERGE_PREVIEW_DEPLOY_EVIDENCE_2026-09-13, avoiding self-referential or post-merge commits.
 
 # Outcome report
 
