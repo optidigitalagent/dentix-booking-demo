@@ -10,7 +10,7 @@ Use Node 22.18+ and `npm ci`.
 | --- | --- |
 | `npm run dev` | Development at http://127.0.0.1:4180/dentix-booking-demo/ |
 | `npm run build` / `npm run build:preview` | `dist/preview`, base `/dentix-booking-demo/`, all pages `noindex,nofollow,noarchive` |
-| `npm run build:production` | Local `dist/production`, base `/`, ten indexable patient routes |
+| `npm run build:production` | Local `dist/production`, base `/`, twelve indexable patient routes |
 | `npm run preview` | Serve preview locally on port 4181 |
 | `npm run preview:production` | Serve production artifact locally on port 4182 |
 | `npm test` | Unit and build-policy checks |
@@ -19,9 +19,9 @@ Use Node 22.18+ and `npm ci`.
 
 The build driver requires an explicit validated target. The default build and direct Vite invocation select preview unless `DENTIX_BUILD_TARGET` is explicitly set. The existing Pages workflow builds and uploads **only `dist/preview`**. Output directories are ignored; no CNAME or domain switch is generated.
 
-All ten current patient routes are prerendered from the same React components and fallback data used for client hydration. Build-time rendering performs no content or booking requests. Asset references come from the client manifest. Public runtime content may refresh the fallback after hydration; malformed/unavailable content retains the existing section fallback. Updating the approved fallback requires a new build and review. Local `.env` files are not loaded by Vite; public runtime configuration is supplied explicitly as `VITE_DENTIX_*` process settings. Never put secrets in Vite variables.
+All twelve current patient routes are prerendered from the same React components and fallback data used for client hydration. Build-time rendering performs no content or booking requests. Asset references come from the client manifest. Public runtime content may refresh the fallback after hydration; malformed/unavailable content retains the existing section fallback. Updating the approved fallback requires a new build and review. Local `.env` files are not loaded by Vite; public runtime configuration is supplied explicitly as `VITE_DENTIX_*` process settings. Never put secrets in Vite variables.
 
-Production head metadata uses Ukrainian route descriptions, self-canonicals and OG/Twitter. The sitemap contains exactly `/`, `/likari/`, `/kontakty/`, `/price.html`, `/terapevtychna-stomatolohiia/`, `/likuvannia-kariiesu/`, `/lechenie-pod-mikroskopom/`, `/khirurhichna-stomatolohiia/`, `/vydalennia-zuba/` and `/vydalennia-zuba-mudrosti/`, with no invented modification dates. Production-only entity JSON-LD uses approved clinic facts and visibly shown managed doctors. Therapy and surgery pages add a Service node matching the visible H1 and answer, plus breadcrumbs. Prices, offers, ratings, reviews, FAQ and inferred medical procedures are excluded from Schema. Existing visible fallback content is preserved; this technical change does not grant publication approval for pending clinical, team, price or legal facts.
+Production head metadata uses Ukrainian route descriptions, self-canonicals and OG/Twitter. The sitemap contains exactly `/`, `/likari/`, `/kontakty/`, `/price.html`, `/terapevtychna-stomatolohiia/`, `/likuvannia-kariiesu/`, `/lechenie-pod-mikroskopom/`, `/khirurhichna-stomatolohiia/`, `/vydalennia-zuba/`, `/vydalennia-zuba-mudrosti/`, `/implantatsiya/` and `/protezirovanie/`, with no invented modification dates. Production-only entity JSON-LD uses approved clinic facts and visibly shown managed doctors. Therapy, surgery, implantation and prosthetics pages add a Service node matching the visible H1 and answer, plus breadcrumbs. Prices, offers, ratings, reviews, FAQ and inferred medical procedures are excluded from Schema. Existing visible fallback content is preserved; this technical change does not grant publication approval for pending clinical, team, price or legal facts.
 
 ## Admin, forms and hosting boundary
 
@@ -45,8 +45,18 @@ The microscope/canals page preserves its existing URL; no separate canal route i
 
 ## PR-04B surgery cluster
 
-Three additional Ukrainian routes reuse the service-page layout: `/khirurhichna-stomatolohiia/`, `/vydalennia-zuba/`, and `/vydalennia-zuba-mudrosti/`. Complex impacted extraction stays at `/vydalennia-zuba/#complex-extraction`. The explicit route contract now includes ten patient routes in both profiles; the local production sitemap lists exactly those ten URLs.
+Three additional Ukrainian routes reuse the service-page layout: `/khirurhichna-stomatolohiia/`, `/vydalennia-zuba/`, and `/vydalennia-zuba-mudrosti/`. Complex impacted extraction stays at `/vydalennia-zuba/#complex-extraction`. PR #6 merged this cluster to the ten-route noindex preview; the current PR-04C candidate extends the local contract to twelve routes.
 
 `src/data/surgery-pages.ts` owns bounded service/organizational copy, metadata and exact price-row names. `useManagedContent().priceBlocks` remains the sole price source; no implantation row or copied amounts are added. Approved fallback doctors contain no exact `хірург` role. Surgery pages therefore show contact guidance and zero doctor cards/Person nodes. A future managed exact surgeon role updates visible content and production Schema together. Invalid/empty sections preserve the existing global fallback; valid unmatched rows/roles never restore removed values.
 
 `tests/surgery-pages.test.ts` and `tests/surgery-managed-browser.mjs` cover the source, price, role and Schema boundary. Run the latter with the same external Playwright and evidence variables as the browser suite. Professional review remains UNKNOWN / NOT_COMPLETED; expanded clinical copy and any named-surgeon production claim remain blocked pending approved evidence/review. This stage ends at a Draft PR; Ready, merge, deployment, production and PR-04C require separate authorization.
+
+## PR-04C implantation and prosthetics cluster
+
+`/implantatsiya/` and `/protezirovanie/` retain both legacy paths. `src/data/implant-prosthetics-pages.ts` supplies one bounded model with exact managed price names and role selection. `ImplantProstheticsPage` reuses the existing layout. Implantation and prosthetics on implants are separate price positions; the latter appears only in the prosthetics price list. The exact source note `Під ключ.` remains beside its row without defining package inclusions.
+
+No approved fallback doctor has an exact visible `імплантолог` or `ортопед` role. Each page shows phone guidance until its exact managed role is present; hyphen/comma tokens qualify, while `ортодонт`, related words and other roles do not. The same selector controls visible clinicians and production Person nodes. Expanded clinical and named-clinician production claims remain blocked; professional review UNKNOWN / NOT_COMPLETED.
+
+Home keeps six service directions. The surgery card retains extraction navigation with an optional secondary implantation link; orthopedics links to prosthetics. Corresponding price categories and both preserved pages have crawlable contextual links. No new dependencies, prices, clinicians or medical facts are introduced.
+
+`tests/implant-prosthetics-managed-browser.mjs` covers exact hyphen/comma roles, cross-role/near-role rejection and valid/empty/invalid/unmatched prices through real SSR and hydration with intercepted GET-only fixtures. The 12-route browser suite retains therapy/surgery, lead-source, 404 and admin isolation checks. Production is a local artifact only; this stage ends at Draft PR review, without Ready, merge, deployment or indexing actions.

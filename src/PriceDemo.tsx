@@ -10,6 +10,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { useManagedContent } from "@/hooks/use-managed-content";
 import { siteHref } from "@/lib/site-href";
 import { site } from "@/data/site";
+import { implantProstheticsPages } from "@/data/implant-prosthetics-pages";
 
 export function PriceDemo() {
   const { priceBlocks, priceSource } = useManagedContent();
@@ -77,7 +78,8 @@ export function PriceDemo() {
                 ))}
               </ul>
               {block.id === "terapiya" && <nav className="entity-links" aria-label="Терапевтичні послуги">{Object.values(therapyPages).map((page) => <a key={page.path} href={siteHref("/" + page.path)}>{page.label}</a>)}</nav>}
-              {block.id === "hirurgiya" && <nav className="entity-links" aria-label="Хірургічні послуги">{Object.values(surgeryPages).map((page) => <a key={page.path} href={siteHref("/" + page.path)}>{page.label}</a>)}</nav>}
+              {block.id === "hirurgiya" && <nav className="entity-links" aria-label="Хірургічні послуги та імплантація">{[...Object.values(surgeryPages), implantProstheticsPages.implantation].map((page) => <a key={page.path} href={siteHref("/" + page.path)}>{page.label}</a>)}</nav>}
+              {block.id === "ortopediya" && <nav className="entity-links" aria-label="Протезування"><a href={siteHref("/" + implantProstheticsPages.prosthetics.path)}>{implantProstheticsPages.prosthetics.label}</a></nav>}
               {block.note ? <p className="price-note">{block.note}</p> : null}
               {(["profilaktyka", "terapiya", "ortodontiya"] as string[]).includes(block.id) ? (
                 <BookingButton

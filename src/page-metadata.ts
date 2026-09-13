@@ -1,5 +1,6 @@
 import { surgeryPages } from "./data/surgery-pages.ts";
 import { therapyPages } from "./data/therapy-pages.ts";
+import { implantProstheticsPages } from "./data/implant-prosthetics-pages.ts";
 
 export const routeMetadata = {
   home: {
@@ -28,4 +29,6 @@ export const routeMetadata = {
   surgery: surgeryPages.surgery,
   extraction: surgeryPages.extraction,
   wisdom: surgeryPages.wisdom,
+  implantation: implantProstheticsPages.implantation,
+  prosthetics: implantProstheticsPages.prosthetics,
 };

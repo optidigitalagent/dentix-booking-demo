@@ -229,6 +229,16 @@
       "mitigation": "No named surgery clinician or initial Person; exact managed хірург token only with visible/schema parity; phone guidance otherwise. Only approved labels/prices/organizational copy. PROFESSIONAL_REVIEW_REQUIRED_BEFORE_PRODUCTION; no production authorization.",
       "owner": "DENTIX owner; qualified reviewer UNKNOWN",
       "status": "LOCAL_DRAFT_ALLOWED_PRODUCTION_REVIEW_REQUIRED"
+    },
+    {
+      "id": "R-PR04C-CLINICIAN-PRICE-REVIEW",
+      "area": "medical/content",
+      "description": "No approved implantologist/orthopedist and qualified reviewer UNKNOWN / NOT_COMPLETED; implantation and prosthetics-on-implants must remain separate; turnkey inclusions unknown.",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "Bounded current labels and organizational copy only. Exact managed role with visible/Schema parity; reject ортодонт; phone fallback. One shared price source; Під ключ. only beside source row. No brands/systems/material claims beyond exact approved crown labels, stages/healing/timelines/eligibility/anaesthesia/cases/guarantees/inferred credentials or medicalSpecialty. PROFESSIONAL_REVIEW_REQUIRED_BEFORE_PRODUCTION.",
+      "owner": "DENTIX owner; qualified reviewer UNKNOWN",
+      "status": "LOCAL_DRAFT_ALLOWED_PRODUCTION_REVIEW_REQUIRED"
     }
   ]
 }

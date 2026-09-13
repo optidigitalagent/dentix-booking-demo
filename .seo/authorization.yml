@@ -1,10 +1,10 @@
 {
-  "granted_by": "DENTIX user supplied DENTIX_PR04B_READY_MERGE_PREVIEW_DEPLOY_PACK_2026-09-13.zip / 01_AUTHORIZATION_READY_MERGE_PREVIEW_DEPLOY.txt",
-  "granted_at": "2026-09-13T11:28:14.102250+00:00",
-  "expires_at": "2026-09-13T14:28:14.102250+00:00",
+  "granted_by": "DENTIX user supplied DENTIX_AUTHORIZATION_PR04C_READY_MERGE_PREVIEW_DEPLOY in the session ZIP",
+  "granted_at": "2026-09-13T13:07:45.718094+00:00",
+  "expires_at": "2026-09-13T16:07:45.718094+00:00",
   "repository": "optidigitalagent/dentix-booking-demo",
   "project_id": "dentix",
-  "scope": "SITE_ID DENTIX only; repository optidigitalagent/dentix-booking-demo; PR #6; branch seo/dentix-pr04b-surgery-cluster; expected initial base be42e9d3547a9388e2e0a0ffa4d7258a55616579, head c2c36d966f747092e9a20447f656227b90e11c7e, 42 paths. One bounded .seo operational metadata commit and normal push; PR #6 body updates only under external_action. Ready, one fresh exact-final-head premerge suite, normal merge commit without bypass/squash/rebase/auto-merge/force push/branch deletion, exactly one automatic push/main GitHub Pages noindex preview deployment caused by merge, and ten-route live QA. No manual workflow dispatch or second deployment. No functional source/copy/routes/tests/workflow/package/dependency/lock changes. No production dentix.ua/DNS/hosting/accounts/GSC/GBP/GA4/GTM/Bing/CRM/Railway/Sheets/Calendar/Telegram changes; no forms/appointments/indexing_request/sitemap/release/release_close/PR04C/post-merge repository commit. Professional review UNKNOWN / NOT_COMPLETED; no named surgeon inferred; outcome_report.claims=[]. Grant expires at stated expiry and is consumed by this single completion.",
+  "scope": "SITE_ID DENTIX; only optidigitalagent/dentix-booking-demo PR #7; branch seo/dentix-pr04c-implant-prosthetics-cluster; base ae1a929bd339b7a9172760320e9917325243004e; reviewed head 6da5ae7dffb7345de50aad6cdcd6b1782194a149. One bounded .seo metadata commit/push; independent evidence/content/price/clinician review; fresh final-head suite; Ready; normal merge commit with branch retained; exactly one automatic push/main GitHub Pages noindex preview deployment; twelve-route live QA; sanitized external evidence. external_action=true ONLY updates PR #7 body. deploy=true ONLY the automatic preview deployment caused by this merge; no manual dispatch or second deployment. No functional source, public copy, tests, workflows, dependencies, prices, roles or migration/research changes. No production dentix.ua/DNS/hosting/accounts/indexing/forms/appointments, post-merge repository commit, release closure or later implementation. indexing_request=false. Professional review UNKNOWN / NOT_COMPLETED; outcome_report.claims=[]. Authorization ends on completion or expiry, whichever occurs first.",
   "permissions": {
     "audit": true,
     "branch": false,

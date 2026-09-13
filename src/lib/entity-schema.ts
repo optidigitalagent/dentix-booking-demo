@@ -4,6 +4,7 @@ import type { PatientRoute } from "../build-profile";
 import { routeMetadata } from "../page-metadata.ts";
 import type { Doctor } from "../data/doctors";
 import type { site as siteData } from "../data/site";
+import { isImplantProstheticsRoute, selectImplantProstheticsDoctors, implantProstheticsPages } from "../data/implant-prosthetics-pages.ts";
 
 type Clinic = typeof siteData;
 const root = "https://dentix.ua/";
@@ -19,9 +20,9 @@ export function buildEntitySchema(route: PatientRoute, site: Clinic, doctors: Do
   const metadata = routeMetadata[route];
   const url = root + metadata.path;
   const clinicId = root + "#dentist";
-  const servicePage = isSurgeryRoute(route) ? surgeryPages[route] : isTherapyRoute(route) ? therapyPages[route] : null;
+  const servicePage = isImplantProstheticsRoute(route) ? implantProstheticsPages[route] : isSurgeryRoute(route) ? surgeryPages[route] : isTherapyRoute(route) ? therapyPages[route] : null;
   const serviceParent = isSurgeryRoute(route) && route !== "surgery" ? surgeryPages.surgery : isTherapyRoute(route) && route !== "therapy" ? therapyPages.therapy : null;
-  const visibleDoctors = isSurgeryRoute(route) ? selectSurgeryDoctors(doctors) : isTherapyRoute(route) ? selectTherapyDoctors(route, doctors) : doctors;
+  const visibleDoctors = isImplantProstheticsRoute(route) ? selectImplantProstheticsDoctors(route, doctors) : isSurgeryRoute(route) ? selectSurgeryDoctors(doctors) : isTherapyRoute(route) ? selectTherapyDoctors(route, doctors) : doctors;
   const teamVisible = route === "home" || route === "doctors" || Boolean(servicePage);
   const contactsVisible = route === "home" || route === "contacts";
   const city = /^(\d{5}), м\. (.+)$/.exec(site.city);
