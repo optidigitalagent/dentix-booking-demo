@@ -13,12 +13,15 @@ export function getBuildProfile(target: string) {
   } as const;
 }
 
-export type PatientRoute = "home" | "price" | "doctors" | "contacts";
+export type PatientRoute = "home" | "price" | "doctors" | "contacts" | "therapy" | "caries" | "microscope";
 
 export function patientRoute(pathname: string, base: string): PatientRoute | null {
   if (pathname === base || pathname === `${base}index.html`) return "home";
   if (pathname === `${base}price.html`) return "price";
   if (pathname === `${base}likari/` || pathname === `${base}likari/index.html`) return "doctors";
   if (pathname === `${base}kontakty/` || pathname === `${base}kontakty/index.html`) return "contacts";
+  if (pathname === `${base}terapevtychna-stomatolohiia/` || pathname === `${base}terapevtychna-stomatolohiia/index.html`) return "therapy";
+  if (pathname === `${base}likuvannia-kariiesu/` || pathname === `${base}likuvannia-kariiesu/index.html`) return "caries";
+  if (pathname === `${base}lechenie-pod-mikroskopom/` || pathname === `${base}lechenie-pod-mikroskopom/index.html`) return "microscope";
   return null;
 }

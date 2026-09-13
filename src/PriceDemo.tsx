@@ -1,3 +1,4 @@
+import { therapyPages } from "@/data/therapy-pages";
 import type { CSSProperties } from "react";
 import priceHeroImg from "@/assets/about-2.jpg";
 import { BackToTopButton } from "@/components/BackToTopButton";
@@ -74,6 +75,7 @@ export function PriceDemo() {
                   </li>
                 ))}
               </ul>
+              {block.id === "terapiya" && <nav className="entity-links" aria-label="Терапевтичні послуги">{Object.values(therapyPages).map((page) => <a key={page.path} href={siteHref("/" + page.path)}>{page.label}</a>)}</nav>}
               {block.note ? <p className="price-note">{block.note}</p> : null}
               {(["profilaktyka", "terapiya", "ortodontiya"] as string[]).includes(block.id) ? (
                 <BookingButton

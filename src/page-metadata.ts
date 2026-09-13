@@ -1,3 +1,5 @@
+import { therapyPages } from "./data/therapy-pages.ts";
+
 export const routeMetadata = {
   home: {
     path: "",
@@ -19,4 +21,7 @@ export const routeMetadata = {
     title: "Ціни на стоматологічні послуги у Дніпрі — DENTIX",
     description: "Прайс DENTIX у Дніпрі за напрямками стоматології. Остаточну вартість та індивідуальний план підтверджує клініка. Уточніть деталі телефоном.",
   },
+  therapy: therapyPages.therapy,
+  caries: therapyPages.caries,
+  microscope: therapyPages.microscope,
 };

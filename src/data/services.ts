@@ -25,8 +25,8 @@ export const services: Service[] = [
     num: "03",
     title: "Терапія",
     text: "Лікування карієсу, пряма реставрація та ендодонтичне лікування.",
-    linkLabel: "Відкрити прайс",
-    href: "/price.html#terapiya",
+    linkLabel: "Про терапевтичне лікування",
+    href: "/terapevtychna-stomatolohiia/",
   },
   {
     num: "04",

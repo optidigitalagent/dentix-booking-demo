@@ -1,10 +1,10 @@
 {
-  "granted_by": "User: DENTIX_AUTHORIZATION_PR03_READY_MERGE_PREVIEW_DEPLOY explicitly supplied in current chat",
-  "granted_at": "2026-09-12T21:09:08.320787+00:00",
-  "expires_at": "2026-09-13T00:09:08.320787+00:00",
+  "granted_by": "DENTIX user grant DENTIX_AUTHORIZATION_PR04A_READY_MERGE_PREVIEW_DEPLOY supplied by the user execution file in this session",
+  "granted_at": "2026-09-13T10:20:50.948291+00:00",
+  "expires_at": "2026-09-13T13:20:50.948291+00:00",
   "repository": "optidigitalagent/dentix-booking-demo",
   "project_id": "dentix",
-  "scope": "SITE_ID DENTIX ONLY; project dentix; PR #4 in optidigitalagent/dentix-booking-demo. One bounded .seo metadata commit and normal push on seo/dentix-pr03-entity-local-foundation; fresh exact-head validation; Ready for review; normal merge commit into main without bypass, squash, rebase, auto-merge, force push or branch deletion. external_action limited ONLY to PR #4 body updates. deploy limited ONLY to one automatic GitHub Pages noindex preview deployment triggered by authorized merge push/main; no manual dispatch or second deployment. Sanitized evidence ZIP outside repository. No functional source/routes/design/tests/workflow/package/dependency/lockfile/fact/price changes; no production dentix.ua/DNS/hosting/account changes; no forms/appointments; indexing_request=false; no PR04 implementation or post-merge repository commit; outcome_report.claims=[]. Single bounded completion; no production launch or release closure.",
+  "scope": "SITE_ID DENTIX; project dentix; repository optidigitalagent/dentix-booking-demo; PR #5 only; base main at 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; reviewed head 86e1130603ea98243c93c971a1e0285ff53901db; existing branch seo/dentix-pr04a-therapy-cluster. One bounded completion: independent evidence/content review, one minimal .seo authorization commit and normal push, one fresh exact-final-head premerge suite, Ready, normal merge commit without bypass/squash/rebase/auto-merge/branch deletion, and exactly one automatic GitHub Pages noindex preview deployment caused by that merge push. external_action=true is limited to PR #5 body updates only. deploy=true is limited to that one automatic preview deployment only; no manual workflow dispatch or second deployment. No functional source/copy/routes/tests/workflow/package/dependency/lock/fact change; no PR04B/C. No production dentix.ua, DNS/hosting/account/integration action, form submission or appointment. publish=false; sitemap_submit=false; indexing_request=false; release=false; release_close=false. professional_review_status=UNKNOWN / NOT_COMPLETED; production NOT_LAUNCHED; outcome_report.claims=[].",
   "permissions": {
     "audit": true,
     "branch": false,

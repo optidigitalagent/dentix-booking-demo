@@ -1,11 +1,10 @@
-# DENTIX execution plan — PR03
+# DENTIX execution plan — PR04A
 
-PR02 reconciled: PR #3 merged 160804ce2fd0cd759788f2ec2961b1638f7dcda8; preview run 34695414098 successful/noindex. Migration map stays 64 rows with 49 HOLD cutover blockers. Production remains old WordPress; React NOT_LAUNCHED.
+PR #4 merged 51e1da2343923d5e997d8bb6d7abe6734b9bc24c; successful noindex preview run 34719593977. PR04A implemented; fresh local QA PASS; one normal commit/push/Draft PR authorized. Ready/merge/deploy/publish/accounts/indexing forbidden. Old WordPress is production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[].
 
-1. Lock current new-site facts in canonical records (complete).
-2. Implement home/entity, doctors, contacts, shared-price navigation and schema (complete).
-3. Fresh operator/client/state/evidence/assets/outcome, unit/build/artifact/browser/mobile/founder QA PASS.
-4. Explicit staging, one normal commit/push, one Draft PR.
-5. Stop for Draft PR review. Ready/merge/deploy and PR04 unauthorized.
-
-GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; T0 NOT_READY; outcome_report.claims=[].
+1. Reconcile PR03 merge and noindex deployment in this PR (complete).
+2. Verify operator 0.2.1 and six pinned sources; retain fresh 2026-09-12 research (complete).
+3. Implement therapy, caries and preserved microscope URL using shared data (complete).
+4. Run fresh unit/build/artifact/browser/mobile/managed/founder and operator controls (PASS).
+5. Inspect screenshots/diff; explicit staging; one normal commit/push and one Draft PR.
+6. Stop for Draft PR review. Final Git receipts in external evidence; no metadata follow-up commit.

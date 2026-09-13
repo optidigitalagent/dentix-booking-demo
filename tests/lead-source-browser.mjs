@@ -26,9 +26,9 @@ export async function checkLeadSourceEntryPoints({ browser, output }) {
       const bundle = await build({ mode: target, publicDir: false, build: { write: false, manifest: false, rollupOptions: { input: path.resolve("index.html") } } });
       const assets = new Map((Array.isArray(bundle) ? bundle : [bundle]).flatMap((result) => result.output).map((asset) => [base + asset.fileName, asset.type === "chunk" ? asset.code : asset.source]));
       assets.set(base, assets.get(base + "index.html"));
-      for (const file of ["likari/", "kontakty/", "price.html"]) assets.set(base + file, assets.get(base + "index.html"));
+      for (const file of ["likari/", "kontakty/", "price.html", "terapevtychna-stomatolohiia/", "likuvannia-kariiesu/", "lechenie-pod-mikroskopom/"]) assets.set(base + file, assets.get(base + "index.html"));
       const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".png": "image/png", ".webp": "image/webp", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon" };
-      for (const file of ["", "likari/", "kontakty/", "price.html"]) for (const catalogReady of [false, true]) {
+      for (const file of ["", "likari/", "kontakty/", "price.html", "terapevtychna-stomatolohiia/", "likuvannia-kariiesu/", "lechenie-pod-mikroskopom/"]) for (const catalogReady of [false, true]) {
         const context = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 390, height: 900 } });
         try {
           const violations = [];
@@ -95,9 +95,9 @@ export async function checkLeadSourceEntryPoints({ browser, output }) {
         } finally { await context.close(); }
       }
     }
-    assert.equal(results.length, 16);
+    assert.equal(results.length, 28);
   } finally {
     for (const key of keys) { if (previous[key] === undefined) delete process.env[key]; else process.env[key] = previous[key]; }
-    await fs.writeFile(path.join(output, "lead_source_entry_points.json"), JSON.stringify({ observed_at: new Date().toISOString(), fixture_scope: "Real source; in-memory builds; all network intercepted; no request or personal data submitted", results, requests, pass: results.length === 16 }, null, 2) + "\n");
+    await fs.writeFile(path.join(output, "lead_source_entry_points.json"), JSON.stringify({ observed_at: new Date().toISOString(), fixture_scope: "Real source; in-memory builds; all network intercepted; no request or personal data submitted", results, requests, pass: results.length === 28 }, null, 2) + "\n");
   }
 }
