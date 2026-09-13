@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "site_id": "DENTIX",
+  "status": "T0_NOT_READY",
+  "requests_sent": false,
+  "secrets_requested": false,
+  "owner": "DENTIX owner; named assignee UNKNOWN",
+  "channels": [
+    {
+      "channel": "GSC",
+      "status": "ACCESS_BLOCKED",
+      "property": "sc-domain:dentix.ua (owner must confirm existing property)",
+      "minimum_access_or_export": "Restricted/read-only access or owner export",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "query,page,country,device,search appearance,date,clicks,impressions,CTR,position; indexed/excluded coverage; sitemap/inspection receipts",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "measurement",
+      "received_evidence": null
+    },
+    {
+      "channel": "GBP",
+      "status": "ACCESS_BLOCKED",
+      "property": "DENTIX Dnipro, dentix.ua; exact owned profile/location ID UNKNOWN",
+      "minimum_access_or_export": "Owner-provided performance export; no profile edits",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "profile ID, date, search/maps impressions, calls/actions, directions, website clicks",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "measurement/optimization",
+      "received_evidence": null
+    },
+    {
+      "channel": "GA4",
+      "status": "ACCESS_BLOCKED",
+      "property": "dentix.ua web stream/property ID UNKNOWN",
+      "minimum_access_or_export": "Viewer or sanitized aggregate export",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "organic sessions, landing pages, source/medium/campaign, referrals including chatgpt.com, event counts, consent coverage",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "measurement",
+      "received_evidence": null
+    },
+    {
+      "channel": "GTM",
+      "status": "ACCESS_BLOCKED",
+      "property": "dentix.ua container ID UNKNOWN",
+      "minimum_access_or_export": "Read-only container view or sanitized version/tag inventory",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "container/version, tag and trigger list, consent config, measurement IDs (public), event mapping",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "measurement/cutover tracking preservation",
+      "received_evidence": null
+    },
+    {
+      "channel": "Bing",
+      "status": "ACCESS_BLOCKED",
+      "property": "https://dentix.ua/ property ownership UNKNOWN",
+      "minimum_access_or_export": "Read-only view or owner performance/index export",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "query,page,date,clicks,impressions,index coverage; AI performance if available",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "measurement",
+      "received_evidence": null
+    },
+    {
+      "channel": "hosting/DNS",
+      "status": "ACCESS_BLOCKED",
+      "property": "dentix.ua + www; Mirohost NS; origin 89.184.75.186 observed",
+      "minimum_access_or_export": "Redacted domain/access/zone/config evidence from owner; credentials stay owner-managed",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "zone TTLs, MX/TXT/CAA, current origin, vhost/CDN/headers/TLS, upload/config rights, backup/restore/logs",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "cutover",
+      "received_evidence": null
+    },
+    {
+      "channel": "CRM",
+      "status": "ACCESS_BLOCKED",
+      "property": "DENTIX system ID UNKNOWN; Railway URL alone proves no CRM access",
+      "minimum_access_or_export": "Sanitized aggregate export by date/source; owner confirms schema",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "delivered forms, deduplication, qualified leads, confirmed appointments, attendance, net revenue/currency; exclude tests",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "measurement; cutover if activating intake",
+      "received_evidence": null
+    },
+    {
+      "channel": "call tracking",
+      "status": "UNKNOWN",
+      "property": "Provider/account/number-routing identity UNKNOWN",
+      "minimum_access_or_export": "Owner confirms provider and aggregate reporting or records none",
+      "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
+      "baseline_fields": "connected calls, answered duration/qualification definition, date/source, deduplication; phone click separate",
+      "owner": "DENTIX owner; named assignee UNKNOWN",
+      "blocks": "measurement",
+      "received_evidence": null
+    }
+  ],
+  "numeric_capture": {
+    "windows_days": [
+      28,
+      90
+    ],
+    "as_of": "Actual pre-cutover capture; choose latest settled end date for each provider; do not fabricate current totals",
+    "timezone": "Europe/Kyiv (confirm per provider; preserve original zone)",
+    "required_metadata": [
+      "property/profile ID",
+      "exported_at UTC",
+      "window start/end and days",
+      "settled-data latency",
+      "filters and attribution model",
+      "consent gaps",
+      "brand/nonbrand and page groups",
+      "country/device/search appearance",
+      "excluded staff/synthetic traffic",
+      "source hash"
+    ],
+    "fields": [
+      {
+        "metric": "gsc_clicks",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "gsc_impressions",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "indexed_urls",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "excluded_urls",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "gbp_impressions",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "gbp_actions",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "organic_sessions",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "landing_page_sessions",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "chatgpt_referral_sessions",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "other_identifiable_ai_referrals",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "delivered_forms",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "connected_calls",
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      {
+        "metric": "qualified_leads",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "confirmed_appointments",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "completed_visits",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      },
+      {
+        "metric": "net_revenue",
+        "value": null,
+        "status": "ACCESS_BLOCKED"
+      }
+    ],
+    "window_alignment": "Store separate provider windows; compare equal settled durations; do not sum GSC and GA4 or infer AI referrals from prompt samples"
+  },
+  "event_contract": ".seo/event-dictionary.yml",
+  "utm_contract": ".seo/utm-rules.md; .seo/utm-taxonomy.csv",
+  "funnel": [
+    "visit",
+    "intent",
+    "delivery",
+    "connected_interaction",
+    "qualified_lead",
+    "appointment",
+    "business_outcome"
+  ],
+  "analytics_status": "PLANNED_NOT_APPLIED; no tags or events sent",
+  "review_windows_days": [
+    0,
+    1,
+    7,
+    28,
+    90
+  ]
+}

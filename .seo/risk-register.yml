@@ -239,6 +239,26 @@
       "mitigation": "Bounded current labels and organizational copy only. Exact managed role with visible/Schema parity; reject ортодонт; phone fallback. One shared price source; Під ключ. only beside source row. No brands/systems/material claims beyond exact approved crown labels, stages/healing/timelines/eligibility/anaesthesia/cases/guarantees/inferred credentials or medicalSpecialty. PROFESSIONAL_REVIEW_REQUIRED_BEFORE_PRODUCTION.",
       "owner": "DENTIX owner; qualified reviewer UNKNOWN",
       "status": "LOCAL_DRAFT_ALLOWED_PRODUCTION_REVIEW_REQUIRED"
+    },
+    {
+      "id": "R-PR05-HOST-HOLD",
+      "area": "production cutover",
+      "description": "P0: host access, legacy origin/query preservation and owner approvals are unresolved; 49 HOLD URLs must survive",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "ops/release/hosting-decision.json, migration-contract.json and RUNBOOK.md require owner evidence and all-row staging replay. No host selected or adapter deployed.",
+      "owner": "DENTIX hosting/DNS owner; named owner UNKNOWN",
+      "status": "CUTOVER_BLOCKED"
+    },
+    {
+      "id": "R-PR05-REVIEW-T0",
+      "area": "production review and measurement",
+      "description": "Professional sign-off and numeric T0 unavailable; backup/rollback access not proven",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "Exact review packet and safe access/28-90-day T0 request package prepared, not sent; checklists have owner/evidence slots and no executed steps.",
+      "owner": "DENTIX owner; qualified reviewer UNKNOWN",
+      "status": "CUTOVER_AND_MEASUREMENT_NOT_READY"
     }
   ]
 }

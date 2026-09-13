@@ -525,5 +525,53 @@
     "outcome_report_claims": [],
     "evidence": "DENTIX_PR04C_IMPLANT_PROSTHETICS_EVIDENCE_2026-09-13",
     "validated_at": "2026-09-13T12:19:39.806751+00:00"
+  },
+  "pr04c_preview_reconciliation": {
+    "checked_at": "2026-09-13T15:00:21.380965+00:00",
+    "pr": 7,
+    "final_head": "d4bc9bd20b1731b116d9d43ddf1c9447faffb884",
+    "merge_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
+    "workflow_id": 34759609171,
+    "deployment_id": 6422001426,
+    "live_patient_routes": 12,
+    "preview_policy": "noindex,nofollow,noarchive",
+    "production": "WordPress; React NOT_LAUNCHED"
+  },
+  "pr05_production_readiness": {
+    "checked_at": "2026-09-13T15:00:21.380965+00:00",
+    "base_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
+    "status": "VALIDATED_DRAFT_CREATION_AUTHORIZED",
+    "public_audit": "ops/release/public-baseline.json; external evidence/public has raw sanitized DNS/TLS/HTTP",
+    "hosting_decision": "DECISION_PENDING_ACCESS",
+    "release_controls": "ops/release; scripts/release.py",
+    "release_sha_receipt": "Final source SHA and ZIP SHA in external candidate receipt and Draft PR body; not self-embedded",
+    "migration_rows": 64,
+    "hold_rows": 49,
+    "dispositions_unchanged": true,
+    "hold_preservation": "UNRESOLVED_CUTOVER_BLOCKER",
+    "professional_review": "UNKNOWN / NOT_COMPLETED",
+    "requested_interest": "PASS: Імплантація зубів / Протезування зубів; existing Терапія / Хірургія preserved",
+    "production": "NOT_LAUNCHED",
+    "outcome_report_claims": [],
+    "production_content_sha256": "2accd43447e1592c9a422030370a377229882e198291c04ce3142999ec75e669",
+    "qa_counts": {
+      "npm_test": 25,
+      "artifact_tests": 34,
+      "hydrated": 120,
+      "no_javascript": 120,
+      "semantic": 240,
+      "http_404": 4,
+      "lead_source": 48,
+      "release_routes": 48,
+      "booking_seeds": 16,
+      "release_tests": 13,
+      "therapy_managed": 24,
+      "surgery_managed": 30,
+      "implant_managed": 28,
+      "implant_critical_browser": 80,
+      "founder_video": 16,
+      "safe_mobile": 40
+    },
+    "validated_at": "2026-09-13T15:10:35.113651+00:00"
   }
 }

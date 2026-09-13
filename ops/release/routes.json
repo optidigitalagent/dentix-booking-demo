@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "site_id": "DENTIX",
+  "routes": [
+    {
+      "key": "home",
+      "path": "/",
+      "artifact": "index.html",
+      "canonical": "https://dentix.ua/",
+      "title": "Стоматологія DENTIX у Дніпрі — послуги та контакти",
+      "description": "Стоматологічна клініка DENTIX у Дніпрі: терапія, хірургія та імплантація. Перегляньте послуги й контакти та зателефонуйте для уточнення візиту.",
+      "source_key": "src/page-metadata.ts:routeMetadata.home"
+    },
+    {
+      "key": "doctors",
+      "path": "/likari/",
+      "artifact": "likari/index.html",
+      "canonical": "https://dentix.ua/likari/",
+      "title": "Лікарі DENTIX у Дніпрі — команда клініки",
+      "description": "Команда стоматологічної клініки DENTIX у Дніпрі: лікарі та напрямки лікування. Перегляньте контакти й ціни та узгодьте прийом телефоном.",
+      "source_key": "src/page-metadata.ts:routeMetadata.doctors"
+    },
+    {
+      "key": "contacts",
+      "path": "/kontakty/",
+      "artifact": "kontakty/index.html",
+      "canonical": "https://dentix.ua/kontakty/",
+      "title": "Контакти DENTIX у Дніпрі — адреса та графік роботи",
+      "description": "Адреса DENTIX: вул. Калинова, 28, Дніпро. Телефони, графік роботи, карта та канали зв’язку. Зателефонуйте до клініки для узгодження прийому.",
+      "source_key": "src/page-metadata.ts:routeMetadata.contacts"
+    },
+    {
+      "key": "price",
+      "path": "/price.html",
+      "artifact": "price.html",
+      "canonical": "https://dentix.ua/price.html",
+      "title": "Ціни на стоматологічні послуги у Дніпрі — DENTIX",
+      "description": "Прайс DENTIX у Дніпрі за напрямками стоматології. Остаточну вартість та індивідуальний план підтверджує клініка. Уточніть деталі телефоном.",
+      "source_key": "src/page-metadata.ts:routeMetadata.price"
+    },
+    {
+      "key": "therapy",
+      "path": "/terapevtychna-stomatolohiia/",
+      "artifact": "terapevtychna-stomatolohiia/index.html",
+      "canonical": "https://dentix.ua/terapevtychna-stomatolohiia/",
+      "title": "Терапевтична стоматологія у Дніпрі — DENTIX",
+      "description": "Терапевтична стоматологія DENTIX у Дніпрі: карієс, реставрація, лікування каналів і під мікроскопом. Лікарі, актуальний прайс та узгодження прийому телефоном.",
+      "source_key": "src/page-metadata.ts:routeMetadata.therapy"
+    },
+    {
+      "key": "caries",
+      "path": "/likuvannia-kariiesu/",
+      "artifact": "likuvannia-kariiesu/index.html",
+      "canonical": "https://dentix.ua/likuvannia-kariiesu/",
+      "title": "Лікування карієсу у Дніпрі — DENTIX",
+      "description": "Лікування карієсу та художня реставрація у DENTIX у Дніпрі. Перегляньте лікарів-терапевтів і прайс; індивідуальний план та остаточну вартість підтверджує клініка.",
+      "source_key": "src/page-metadata.ts:routeMetadata.caries"
+    },
+    {
+      "key": "microscope",
+      "path": "/lechenie-pod-mikroskopom/",
+      "artifact": "lechenie-pod-mikroskopom/index.html",
+      "canonical": "https://dentix.ua/lechenie-pod-mikroskopom/",
+      "title": "Лікування каналів під мікроскопом у Дніпрі — DENTIX",
+      "description": "Лікування каналів, лікування та перелікування під мікроскопом у DENTIX у Дніпрі. Ендодонтист, мікроскопіст, актуальний прайс та контакти клініки.",
+      "source_key": "src/page-metadata.ts:routeMetadata.microscope"
+    },
+    {
+      "key": "surgery",
+      "path": "/khirurhichna-stomatolohiia/",
+      "artifact": "khirurhichna-stomatolohiia/index.html",
+      "canonical": "https://dentix.ua/khirurhichna-stomatolohiia/",
+      "title": "Хірургічна стоматологія у Дніпрі — DENTIX",
+      "description": "Хірургічна стоматологія DENTIX у Дніпрі: видалення зуба, зуба мудрості та складне видалення ретинованого зуба. Актуальний прайс і контакти клініки.",
+      "source_key": "src/page-metadata.ts:routeMetadata.surgery"
+    },
+    {
+      "key": "extraction",
+      "path": "/vydalennia-zuba/",
+      "artifact": "vydalennia-zuba/index.html",
+      "canonical": "https://dentix.ua/vydalennia-zuba/",
+      "title": "Видалення зуба у Дніпрі — послуги та ціни DENTIX",
+      "description": "Видалення зуба та складне видалення ретинованого зуба у DENTIX у Дніпрі. Позиції прайсу, консультація й контакти для уточнення обсягу та остаточної вартості.",
+      "source_key": "src/page-metadata.ts:routeMetadata.extraction"
+    },
+    {
+      "key": "wisdom",
+      "path": "/vydalennia-zuba-mudrosti/",
+      "artifact": "vydalennia-zuba-mudrosti/index.html",
+      "canonical": "https://dentix.ua/vydalennia-zuba-mudrosti/",
+      "title": "Видалення зуба мудрості у Дніпрі — DENTIX",
+      "description": "Видалення зуба мудрості у DENTIX у Дніпрі: поточний прайс, консультація та контакти клініки. Обсяг послуги й остаточну вартість уточнюйте у клініці.",
+      "source_key": "src/page-metadata.ts:routeMetadata.wisdom"
+    },
+    {
+      "key": "implantation",
+      "path": "/implantatsiya/",
+      "artifact": "implantatsiya/index.html",
+      "canonical": "https://dentix.ua/implantatsiya/",
+      "title": "Імплантація зубів у Дніпрі — послуга та ціни DENTIX",
+      "description": "Імплантація зубів у DENTIX у Дніпрі: окрема позиція поточного прайсу, консультація й контакти. Протезування на імплантах наведене окремо.",
+      "source_key": "src/page-metadata.ts:routeMetadata.implantation"
+    },
+    {
+      "key": "prosthetics",
+      "path": "/protezirovanie/",
+      "artifact": "protezirovanie/index.html",
+      "canonical": "https://dentix.ua/protezirovanie/",
+      "title": "Протезування зубів у Дніпрі — коронки та ціни DENTIX",
+      "description": "Протезування зубів у DENTIX у Дніпрі: металокерамічна й цирконієва коронки, мостоподібний протез і протезування на імплантах. Поточний прайс та контакти.",
+      "source_key": "src/page-metadata.ts:routeMetadata.prosthetics"
+    }
+  ]
+}

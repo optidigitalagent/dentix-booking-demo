@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "site_id": "DENTIX",
+  "observed_at": "2026-09-13T14:53:25.387106+00:00",
+  "decision": "DECISION_PENDING_ACCESS",
+  "recommended_candidate": null,
+  "cutover_authorized": false,
+  "public_evidence": {
+    "apex_ipv4": "89.184.75.186",
+    "ns": [
+      "ns1.mirohost.net",
+      "ns2.mirohost.net",
+      "ns3.mirohost.net"
+    ],
+    "server_signal": "nginx",
+    "platform": "WordPress / Elementor",
+    "cloudflare": "NOT_EVIDENCED; absence of public signal does not prove no upstream CDN",
+    "apache": "UNKNOWN",
+    "tls": "Lets Encrypt YR2; SAN dentix.ua + www.dentix.ua; expires 2026-10-13T23:07:05Z"
+  },
+  "scoring": {
+    "2": "Observed public behavior, not account access",
+    "1": "Documented or architectural capability; untested for this tenant",
+    "0": "UNKNOWN or insufficient; see candidate explanation"
+  },
+  "candidates": [
+    {
+      "id": "current_origin",
+      "name": "Reuse current nginx-signaled production host",
+      "scores": {
+        "apex_domain": 2,
+        "twelve_real_200": 1,
+        "real_custom_404": 1,
+        "exact_301": 1,
+        "exact_410": 1,
+        "hold_preservation_proxy": 1,
+        "https_www_normalization": 2,
+        "headers_bot_policy": 1,
+        "deploy_sha_observability": 0,
+        "environment_configuration": 0,
+        "rollback": 0,
+        "logs": 0,
+        "cost_operational_access": 0
+      },
+      "score": 10,
+      "status": "NOT_EXECUTABLE_ACCESS_UNPROVEN",
+      "evidence": "Public server header is nginx, WordPress/Elementor HTML and Mirohost NS; configuration/upload/backup access UNKNOWN. nginx return and proxy directives are documented, actual origin permissions are not.",
+      "sources": [
+        "https://nginx.org/en/docs/http/ngx_http_rewrite_module.html",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ],
+      "access": "ACCESS_BLOCKED",
+      "cost": "UNKNOWN; obtain plan, billing owner and operational estimate"
+    },
+    {
+      "id": "cloudflare_pages_worker",
+      "name": "Cloudflare Pages with Worker/Functions routing layer",
+      "scores": {
+        "apex_domain": 1,
+        "twelve_real_200": 1,
+        "real_custom_404": 1,
+        "exact_301": 1,
+        "exact_410": 1,
+        "hold_preservation_proxy": 1,
+        "https_www_normalization": 1,
+        "headers_bot_policy": 1,
+        "deploy_sha_observability": 1,
+        "environment_configuration": 1,
+        "rollback": 1,
+        "logs": 1,
+        "cost_operational_access": 0
+      },
+      "score": 12,
+      "status": "POTENTIAL_REQUIRES_OWNER_ACCESS_AND_ADAPTER",
+      "evidence": "Pages _redirects supports redirect codes but not 410 or external-origin proxy; Worker/Functions code is required for these cases. No account/project or authorized zone change evidenced. Apex onboarding requires Cloudflare zone/nameserver planning.",
+      "sources": [
+        "https://developers.cloudflare.com/pages/configuration/redirects/",
+        "https://developers.cloudflare.com/workers/examples/fetch-html/",
+        "https://developers.cloudflare.com/pages/configuration/custom-domains/",
+        "https://developers.cloudflare.com/pages/configuration/rollbacks/"
+      ],
+      "access": "ACCESS_BLOCKED",
+      "cost": "UNKNOWN; obtain plan, billing owner and operational estimate"
+    },
+    {
+      "id": "github_pages_alone",
+      "name": "GitHub Pages custom domain alone",
+      "scores": {
+        "apex_domain": 1,
+        "twelve_real_200": 1,
+        "real_custom_404": 1,
+        "exact_301": 0,
+        "exact_410": 0,
+        "hold_preservation_proxy": 0,
+        "https_www_normalization": 1,
+        "headers_bot_policy": 0,
+        "deploy_sha_observability": 1,
+        "environment_configuration": 1,
+        "rollback": 1,
+        "logs": 0,
+        "cost_operational_access": 0
+      },
+      "score": 7,
+      "status": "INSUFFICIENT",
+      "evidence": "Static hosting and custom 404 are documented; no arbitrary exact 301/410/HOLD adapter or authorized front layer. Preview success cannot qualify this option.",
+      "sources": [
+        "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+        "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site"
+      ],
+      "access": "ACCESS_BLOCKED",
+      "cost": "UNKNOWN; obtain plan, billing owner and operational estimate"
+    }
+  ],
+  "other_target": "NOT_EVIDENCED; Railway URL is booking backend, not proof of a patient-site hosting target",
+  "minimum_evidence": [
+    "Named DNS/hosting owner and redacted account/domain association; no passwords or tokens",
+    "Current origin: read-only vhost/static upload/configuration permissions, backup/restore and logs proof; staging replay of all 64 rows",
+    "Legacy origin reachable independently of public dentix.ua DNS, tested Host/SNI, redirect-loop and dependency preservation; or complete signed static inventory",
+    "Alternative Cloudflare: owner-approved zone/plan/access, dedicated routing adapter and rollback proof; preserve MX/TXT/CAA",
+    "Named operating and billing owner, restore rehearsal <=15 minutes target, planned change window and separate cutover authorization"
+  ],
+  "decision_rule": "Choose only after an owner proves required capabilities and staged 64-row tests. Investigate current host access first because it is observed; this is not a hosting selection."
+}

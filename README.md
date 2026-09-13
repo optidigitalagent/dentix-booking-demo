@@ -1,6 +1,12 @@
 # DENTIX patient website
 
-`optidigitalagent/dentix-booking-demo` is the selected working source for the new DENTIX patient website. GitHub Pages at https://optidigitalagent.github.io/dentix-booking-demo/ is a **noindex preview**. The future production target is https://dentix.ua/; PR-01 prepares a local artifact and does not launch or replace that site.
+`optidigitalagent/dentix-booking-demo` is the selected working source for the new DENTIX patient website. GitHub Pages at https://optidigitalagent.github.io/dentix-booking-demo/ is a **noindex preview**. The future production target is https://dentix.ua/; PR-05 prepares a local release candidate and does not launch or replace that site.
+
+## PR-05 production readiness
+
+PR #7 merged all twelve patient routes to the noindex preview. [Release controls](ops/release/README.md) now define the production artifact, unchanged 64-row migration contract, hosting decision, environment/access requirements and backup/cutover/rollback checklists. Hosting remains `DECISION_PENDING_ACCESS`; all 49 HOLD rows need an approved, tested preservation strategy before cutover. The existing KEEP 404 probe remains 404. A [qualified review packet](ops/review/README.md) contains the exact current fallback copy; professional review remains UNKNOWN / NOT_COMPLETED.
+
+`node scripts/build-release.mjs` builds a local candidate with backend endpoints unset and booking disabled. `python3 scripts/release.py verify` checks the twelve-route artifact and migration contract. Packaging rebuilds from clean committed source and writes a deterministic ZIP outside the repository. No deployment workflow was added. The two implantation/prosthetics hero actions now pass their exact visible service labels through the existing `requestedInterest` contract; medical copy, endpoints and readiness behavior are unchanged.
 
 ## Local development and builds
 

@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "site_id": "DENTIX",
+  "status": "SANITIZED_CONTRACT; LIVE_CONFIGURATION_NOT_APPROVED",
+  "candidate_booking_enabled": false,
+  "candidate_managed_content": "APPROVED_STATIC_FALLBACK_ONLY",
+  "candidate_build": "node scripts/build-release.mjs; drops inherited VITE_* and DENTIX_*; .env files are not loaded by vite.config.ts",
+  "workflow_file": ".github/workflows/deploy-pages.yml",
+  "workflow_changed": false,
+  "variables": [
+    {
+      "name": "VITE_DENTIX_CONTENT_API_URL",
+      "purpose": "managed content endpoint",
+      "preview": "GitHub repository variable; value not retrieved",
+      "production_status": "UNKNOWN",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Empty: approved static fallbacks; valid runtime changes require separate content review"
+    },
+    {
+      "name": "VITE_DENTIX_CONTENT_TIMEOUT_MS",
+      "purpose": "managed content timeout",
+      "preview": "literal 4000",
+      "production_status": "APPROVED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "4000",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "4000 ms; failed/invalid/empty sections retain approved global fallback"
+    },
+    {
+      "name": "VITE_DENTIX_LEADS_API_URL",
+      "purpose": "lead delivery endpoint",
+      "preview": "GitHub repository variable; value not retrieved",
+      "production_status": "ACCESS_BLOCKED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Empty: disabled submission; contact links remain"
+    },
+    {
+      "name": "VITE_DENTIX_LEAD_CONTACT_METHODS",
+      "purpose": "allowed lead contact method choices",
+      "preview": "literal PHONE,TELEGRAM,VIBER,WHATSAPP",
+      "production_status": "APPROVED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "PHONE,TELEGRAM,VIBER,WHATSAPP",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Existing allowlist; does not establish endpoint/readiness"
+    },
+    {
+      "name": "VITE_DENTIX_BOOKING_API_URL",
+      "purpose": "booking/readiness endpoint",
+      "preview": "literal public Railway /api/public/booking endpoint",
+      "production_status": "ACCESS_BLOCKED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Empty: booking backend unconfigured"
+    },
+    {
+      "name": "VITE_DENTIX_BOOKING_ENABLED",
+      "purpose": "booking activation guard",
+      "preview": "literal true; actual readiness remains server-gated",
+      "production_status": "APPROVED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "false",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "false; booking stays off even if endpoint exists"
+    },
+    {
+      "name": "VITE_DENTIX_LEAD_TEST_MODE",
+      "purpose": "legacy declaration; no active consumer",
+      "preview": "not set in workflow",
+      "production_status": "NOT_REQUIRED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": null,
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Not used by current source; never assume synthetic safety from this flag"
+    },
+    {
+      "name": "VITE_DENTIX_PRIVACY_POLICY_URL",
+      "purpose": "legacy declaration; consent policy comes from intake-status",
+      "preview": "not set in workflow",
+      "production_status": "NOT_REQUIRED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": null,
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Missing server policy/readiness keeps intake unavailable"
+    },
+    {
+      "name": "VITE_DENTIX_DEMO_MODE",
+      "purpose": "legacy .env.example value; no active consumer",
+      "preview": "not set in workflow",
+      "production_status": "NOT_REQUIRED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": null,
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Not used; build target is explicit"
+    },
+    {
+      "name": "DENTIX_BUILD_TARGET",
+      "purpose": "validated build profile",
+      "preview": "preview from build driver",
+      "production_status": "APPROVED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "production",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Production build driver selects production; invalid targets throw"
+    },
+    {
+      "name": "BASE_URL",
+      "purpose": "Vite-generated asset/router base",
+      "preview": "/dentix-booking-demo/",
+      "production_status": "APPROVED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "/",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Derived / in production; never supplied as a secret"
+    },
+    {
+      "name": "__DENTIX_LEAD_SOURCE__",
+      "purpose": "Vite-generated attribution constant",
+      "preview": "PUBLIC_DEMO",
+      "production_status": "APPROVED",
+      "classification": "PUBLIC_BUILD_TIME; never secrets",
+      "candidate_value": "CANONICAL_CANDIDATE",
+      "owner": "DENTIX owner / backend or hosting owner; named assignee UNKNOWN",
+      "validation": "Check source consumer, compiled candidate and intercepted GET-only readiness/browser assertions; never submit",
+      "fail_closed": "Derived CANONICAL_CANDIDATE; not proof of launch"
+    }
+  ],
+  "post_deploy_synthetic_checks": {
+    "status": "NOT_AUTHORIZED_NOT_EXECUTED",
+    "requires": [
+      "Explicit endpoint, scenario, synthetic marker, recipient and cleanup authorization",
+      "Named backend owner; privacy/consent approval; test data excluded from business totals"
+    ],
+    "sequence": [
+      "Inspect GET intake-status/catalog/content and CORS for exact production origin",
+      "If owner elects disabled forms, verify submit and consent disabled and phone link available",
+      "Only under separate exact submission grant: synthetic form receipt, CRM durable delivery, retry deduplication and cleanup",
+      "Appointments require their own separate authorization; never infer one from successful delivery"
+    ]
+  }
+}

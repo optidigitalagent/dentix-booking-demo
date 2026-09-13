@@ -1,0 +1,3385 @@
+{
+  "schema_version": 1,
+  "status": "UNKNOWN / NOT_COMPLETED",
+  "scope": "Exact local production fallback copy on all twelve patient pages; all eight Service graphs. No clinical review performed. Runtime content must be reviewed separately before enabling managed content.",
+  "source_files": {
+    "src/EntityPage.tsx": "150079ff4597f45ff8036a7dab374d095b5601f411bfd4fd9981f25975a4913d",
+    "src/ImplantProstheticsPage.tsx": "25f25b3df7a9ff8da961ac07d5a6ea9524d76c4442da27856b6ae0d6c12f071f",
+    "src/PatientApp.tsx": "33bd5cabb18e942e8e3e9df8835f2973d4b5b54b05425c42d2322ad20d64d862",
+    "src/PatientDemo.tsx": "d2ab001cc56beae0acefb5ce1d074831ef5d594b57daaa306aeef47df8af5671",
+    "src/PriceDemo.tsx": "9a311bd2bd2d388c1b65e62f142f0f56f0efa1bf54d5a32e0e58fa7ab569c4a9",
+    "src/SurgeryPage.tsx": "148d2f47963d4023dacc13386d302baf10b95311d5b0a220c6f310cbaa4c6c26",
+    "src/TherapyPage.tsx": "10ea069361e9f2b9315979c55ab96406518bc7a89cca210661fa5a31f647b5c8",
+    "src/admin/AdminCrm.tsx": "dc504d2abf0ea77257e73d4af712a6ecbf8a22f21ec56679ffc1b133641884a9",
+    "src/build-profile.ts": "11a3141679ba546b290264df3090ea181265f42730ae18d1ffcff22d0dd4d6ed",
+    "src/components/AboutSection.tsx": "90b4c8a83e2b5dacb7b29749d0ffb823659ecd1f2efa5e997f0f1d701c58674b",
+    "src/components/BackToTopButton.tsx": "e0917f3586240b340ddcea59c1903fff09ee6b2cbaa7d683602fe4049fe3dbed",
+    "src/components/Brand.tsx": "26b370eb2e2e30d8dab0ffe39dbe08aa6c64a116520edb8c655d3fb5fb62a431",
+    "src/components/CasesSection.tsx": "e3f95557976ed9e1e22704d34134a0180b33744dd415bca3eb2ebf35bdce853f",
+    "src/components/CertificatesSection.tsx": "50ae63727406876c8d5e0b18e8334ab3a81d33a3f1b75067ed215f24665dedaf",
+    "src/components/ContactInfoSection.tsx": "47a367273158b2c755ba8d09cc32558216c7fb70e86e5749d2b1f2c28c83d1f7",
+    "src/components/ContactSection.tsx": "e5051afeb32d01ca62516dbb4b98b943e7c79e10c15e5198cea1be481b50fd99",
+    "src/components/EntitySchema.tsx": "30d499d4051f7702587b0f84e48a0fd482aead33dd4b4558af7e946af8a62977",
+    "src/components/FaqList.tsx": "d59072e53997b01f8ae467f396ef89dfbea64953fe425bffd585ec0e0d00b727",
+    "src/components/Footer.tsx": "1170945150cabdf08b08411f0d33d3c06180644aa54a9dc28fbcc603d6a1f39f",
+    "src/components/Header.tsx": "07c24b601859cc88d59a10cef9b9c4e595fb7b8dee0f4e9272015c774cc518b3",
+    "src/components/Hero.tsx": "42a0de4cdffdc73ea88d53f388627a7386f457ca9f917f89aa3349b73d640043",
+    "src/components/InfoCards.tsx": "0aa78788739353011a017e76062081e6ebf8232a7dac2caa92c551fc0e90fb85",
+    "src/components/LeadForm.tsx": "3b860bc3ace398e8c5d5aa10e124ac2fbe33d8589dedb61bd258dfc6f6afe827",
+    "src/components/Lightbox.tsx": "f3871f878c3c692ade99b47aec280e031a5b9e6262bbffd34bac228172205bc2",
+    "src/components/MotionMarquee.tsx": "59e37e1d604112d76a2e3ac7b6ee78409dc42db0e960b3cbda37852ba421a916",
+    "src/components/Reveal.tsx": "65668616d3c5c61afb86b0cf2ba72bac4702393fc6ce2b73c0e4501b7f2ddd46",
+    "src/components/ReviewsSection.tsx": "89fa56825814dbd36ca15daf6535e680c3a786f867b6009e6a350d9a99f7cfe3",
+    "src/components/SectionHeading.tsx": "f90fb8d957afbecb4f10ad7768b9d82f33a82392c4fd650da19ddb0bb5650730",
+    "src/components/ServicesGrid.tsx": "9c12058221c80b8ddd083ee56a2990823777078c64bcc382c462b3d5a9d69a5f",
+    "src/components/SiteLayout.tsx": "7302d264329019563f7f25bded9a4fc3d4d8fb5e2cc2a3a4ee62b697b804eb84",
+    "src/components/StatsRow.tsx": "8fb68ddf760222de48ad84a501d78343e5fce2547cae5c681c309a541ad73603",
+    "src/components/StickyCallButton.tsx": "52b1632be5f6bdef353632e37fb69742e8e8711786b6300f629e0d1f36fcf79c",
+    "src/components/TeamSection.tsx": "f77a4245b2eb288705ac1ee99c5b7f53141eeb89501679aeb629366d6862333e",
+    "src/components/booking/BookingContext.tsx": "28aaf5f56f765ac4527e4b957e7d460e5551b64b6a0fefcc52b8bae6aa0c6b9b",
+    "src/components/booking/BookingDrawer.tsx": "38f3ce772b62d901abb0404837d1bfa52bf948f7ce25dc8572f655138f547f50",
+    "src/components/booking/useBookingViewport.ts": "7ee9ff27ba08c788df964481ec34f2b8e64bf6f97489708f82a4d779c6af3d0c",
+    "src/data/about.ts": "c740762136b0ce17d90a2c7e451f089f57d235b7f96edc3a417555edba5dbc4b",
+    "src/data/cases.ts": "1a406386b47ddb06d45bc6fe97a424aef4d4c766d4b1ba78d9f7a36f6f9a00e2",
+    "src/data/certificates.ts": "bfed6cbb7151e8b3faec2fa33c8b245f5341b49c9cc637b748abcb73bff48e8c",
+    "src/data/doctors.ts": "fea45cec3a66530ad1417e19b35e02869a11ff5f6b0c3561f8d665b73493e890",
+    "src/data/implant-prosthetics-pages.ts": "6b299d33d5aebf764c5905cfdc04d3a5852e7616446a06005d0fb9c30c82ed83",
+    "src/data/navigation.ts": "28e93bec7e142abd62e4ccd559037239962e7db09971f16be12f31137617287c",
+    "src/data/prices.ts": "df1eaaf5daef2fa7efd33a94c66ef270af6c4caadb292721e3d9d30bae24967b",
+    "src/data/reviews.ts": "4d670d38527418610fd5d1c48540f0a8660b9f026a4cc4be6718c70185b2ded7",
+    "src/data/services.ts": "229be6b77a2431c79e5ffcd95a8a7f7f82e3725f2dc547a17b90fb2579368464",
+    "src/data/site.ts": "4c46000383946baf45f501c1e8fa8c50f3906d6033b2209ab997e4995e1c5fb1",
+    "src/data/surgery-pages.ts": "13c235e1b2fafa932bd167f332718c8b7da2a4251a8fff44f948c955350bb58a",
+    "src/data/therapy-pages.ts": "d60f1131b97f04fabb35f3ea694cccb2fa9e316d799ab09fbdf2eaf0b6681869",
+    "src/entry-admin.tsx": "6356ed4cdf67adae2431f386c9dd87ba0c30631a7968c6ba1017f5590fe51bdb",
+    "src/entry-server.tsx": "c2716bf0b5a9eb32fb511500355fcc058d4640c458118768fa950534ea8a3d6b",
+    "src/hooks/use-managed-content.ts": "a4b28cad6da5802ac8a0764fc6e6231ddca3f7321e63a7eb5515dd4638fb6ba3",
+    "src/lib/booking-config.ts": "0e7343ff94d4ee8ddba55f371b43c27def871fefd4fcedb8b4ae76bcd91dd0ff",
+    "src/lib/booking-types.ts": "85c077b9daef1bf84d57318066df006951c2dbf2873fa611209343639e1e079a",
+    "src/lib/booking-validation.ts": "91db8c6f635722e51d4ad649e4fd469a013b272386458391fbeafae522a2670f",
+    "src/lib/demo-booking-client.ts": "6e12242d43ca7ec5009dbfe2db8f32006d3e03efd2a1d1e6b699bf2ba6a23dba",
+    "src/lib/entity-schema.ts": "de131852e3ee5fc52b77c9f5ee1df4e67b4abbf0ce7c1e2fcd8e2cfb5ef70aa8",
+    "src/lib/google-sheets-content.ts": "e63227a3d124c5e99b8962986d038b51a42eebe816f8c753f3c95b5a210f976a",
+    "src/lib/intake-status.ts": "68c99ed02aed234f5266d4437b60b72597675f73101aebc40e85111bcc1a4172",
+    "src/lib/site-href.ts": "73f2dccc390f01d7caa9866c29dcdd8e2f5a54fcc38a6cf794758a7ee32d72dd",
+    "src/main.tsx": "e3c534d075e05b519850429b0475e73bf9e34bb1291d7a5f201a8a4663c3c546",
+    "src/page-metadata.ts": "27db26b0b0f6c5fdef1a81bbc6e969e247fabe6c3fdcba9e9c9293dd2964684b",
+    "src/route-context.ts": "572e9d41d870518245519249e286008ae8c3c3e5f1517bb9cb0bc04015135ec5",
+    "src/vite-env.d.ts": "23ebb3684817931dc1ee66d6b242f09213a1f5daed237bf15e07be8d5bbe7c61"
+  },
+  "pages": [
+    {
+      "url": "https://dentix.ua/",
+      "artifact": "index.html",
+      "title": "Стоматологія DENTIX у Дніпрі — послуги та контакти",
+      "h1": "Стоматологія DENTIX",
+      "visible_answer": [],
+      "scope": [],
+      "questions": [],
+      "prices": [],
+      "clinicians": [
+        {
+          "name": [
+            "Стасюк Станіслав Ігорович"
+          ],
+          "role": [
+            "Засновник клініки та головний лікар"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Грисяк Лаура Віталіївна"
+          ],
+          "role": [
+            "Лікар-ортодонт, гнатолог"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Подолянский Альберт Альбертович"
+          ],
+          "role": [
+            "Лікар-терапевт, ендодонтист, мікроскопіст"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Гамаза Олена Анатоліївна"
+          ],
+          "role": [
+            "Лікар-терапевт, гігієніст"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
+      "team_copy": [
+        "КомандаЛікарі DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Стасюк Станіслав ІгоровичЗасновник клініки та головний лікарОбрати лікаряГрисяк Лаура ВіталіївнаЛікар-ортодонт, гнатологОбрати лікаряПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістЛікування каналів під мікроскопомОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністТерапевтична стоматологіяОбрати лікаря"
+      ],
+      "schema_service": [],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу"
+        },
+        {
+          "tag": "h1",
+          "text": "Стоматологія DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Лікування, ортодонтія, імплантація та відновлення усмішки за індивідуальним планом."
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологічна клініка у Дніпрі. вул. Калинова, 28. Лікарі клініки."
+        },
+        {
+          "tag": "h2",
+          "text": "Інформація для відвідувачів"
+        },
+        {
+          "tag": "h3",
+          "text": "Відкритий прайс"
+        },
+        {
+          "tag": "p",
+          "text": "Основні послуги та ціни на окремій сторінці."
+        },
+        {
+          "tag": "h3",
+          "text": "Запис телефоном"
+        },
+        {
+          "tag": "p",
+          "text": "+380 67 985 40 50 · +380 50 912 44 52"
+        },
+        {
+          "tag": "h3",
+          "text": "Ортодонтія"
+        },
+        {
+          "tag": "p",
+          "text": "Консультація, брекет-системи та апарати."
+        },
+        {
+          "tag": "h3",
+          "text": "Адреса"
+        },
+        {
+          "tag": "p",
+          "text": "м. Дніпро, вул. Калинова, 28."
+        },
+        {
+          "tag": "h2",
+          "text": "Напрямки лікування"
+        },
+        {
+          "tag": "p",
+          "text": "Шість основних напрямків клініки DENTIX — від профілактики до хірургії та імплантації."
+        },
+        {
+          "tag": "h3",
+          "text": "Профілактика"
+        },
+        {
+          "tag": "p",
+          "text": "Проф. гігієна з Air-flow, косметична гігієна та відбілювання зубів."
+        },
+        {
+          "tag": "h3",
+          "text": "Пародонтологія"
+        },
+        {
+          "tag": "p",
+          "text": "Vector-терапія, підтримуючий курс і пародонтологічне лікування."
+        },
+        {
+          "tag": "h3",
+          "text": "Терапія"
+        },
+        {
+          "tag": "p",
+          "text": "Лікування карієсу, пряма реставрація та ендодонтичне лікування."
+        },
+        {
+          "tag": "h3",
+          "text": "Ортодонтія"
+        },
+        {
+          "tag": "p",
+          "text": "Лігатурні й самолігуючі брекет-системи та ортодонтичні апарати."
+        },
+        {
+          "tag": "h3",
+          "text": "Ортопедія"
+        },
+        {
+          "tag": "p",
+          "text": "Металокерамічні й цирконієві коронки та керамічні вініри."
+        },
+        {
+          "tag": "h3",
+          "text": "Хірургія"
+        },
+        {
+          "tag": "p",
+          "text": "Видалення зубів і встановлення імпланта за опублікованим прайсом."
+        },
+        {
+          "tag": "h2",
+          "text": "Клініка DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "DENTIX — стоматологія повного циклу: профілактика, терапія, пародонтологія, ортодонтія, ортопедія та хірургія в одному місці."
+        },
+        {
+          "tag": "p",
+          "text": "План лікування складають після огляду й діагностики, а вартість основних послуг опублікована у відкритому прайсі."
+        },
+        {
+          "tag": "p",
+          "text": "DENTIX підтримує роботу під час відключень електроенергії завдяки резервному живленню — інверторам і генераторам. У клініці доступна седація. DENTIX також приймає пацієнтів із гострим болем."
+        },
+        {
+          "tag": "li",
+          "text": "Прийом за попереднім записом телефоном"
+        },
+        {
+          "tag": "li",
+          "text": "Основні напрямки лікування в одній клініці"
+        },
+        {
+          "tag": "li",
+          "text": "Відкритий прайс на сайті"
+        },
+        {
+          "tag": "li",
+          "text": "Індивідуальний план після діагностики"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування дітей наразі не проводимо"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікарі DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Прийом ведуть лікарі клініки за відповідними напрямками лікування."
+        },
+        {
+          "tag": "h3",
+          "text": "Стасюк Станіслав Ігорович"
+        },
+        {
+          "tag": "p",
+          "text": "Засновник клініки та головний лікар"
+        },
+        {
+          "tag": "h3",
+          "text": "Грисяк Лаура Віталіївна"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-ортодонт, гнатолог"
+        },
+        {
+          "tag": "h3",
+          "text": "Подолянский Альберт Альбертович"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, ендодонтист, мікроскопіст"
+        },
+        {
+          "tag": "h3",
+          "text": "Гамаза Олена Анатоліївна"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, гігієніст"
+        },
+        {
+          "tag": "h2",
+          "text": "Навчання та кваліфікація"
+        },
+        {
+          "tag": "p",
+          "text": "Сертифікати та професійне навчання команди DENTIX. Натисніть документ, щоб роздивитися його повністю."
+        },
+        {
+          "tag": "h2",
+          "text": "Клінічні випадки"
+        },
+        {
+          "tag": "p",
+          "text": "Реальні документальні матеріали DENTIX без доданих діагнозів, процедур або непідтверджених результатів."
+        },
+        {
+          "tag": "p",
+          "text": "Кожне зображення показано як окремий переданий матеріал. Пари «до / після», діагнози, процедури та результати не позначені без підтвердженого зіставлення."
+        },
+        {
+          "tag": "h2",
+          "text": "Відгуки пацієнтів"
+        },
+        {
+          "tag": "p",
+          "text": "Короткі дослівні фрагменти реальних відгуків із картки DENTIX у Google."
+        },
+        {
+          "tag": "h3",
+          "text": "Oksana Zhatkina"
+        },
+        {
+          "tag": "h3",
+          "text": "Даша Шаповаленко"
+        },
+        {
+          "tag": "h3",
+          "text": "Сан Саныч"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber. Адресу, графік і карту зібрано нижче."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "h2",
+          "text": "Як нас знайти"
+        },
+        {
+          "tag": "h3",
+          "text": "Адреса"
+        },
+        {
+          "tag": "p",
+          "text": "вул. Калинова, 2849000, м. Дніпровхід з «червоної лінії»"
+        },
+        {
+          "tag": "h3",
+          "text": "Телефони"
+        },
+        {
+          "tag": "p",
+          "text": "+380 67 985 40 50+380 50 912 44 52"
+        },
+        {
+          "tag": "h3",
+          "text": "Графік роботи"
+        },
+        {
+          "tag": "p",
+          "text": "Пн–Пт 09:00–20:00Сб 09:00–18:00 · Нд зачинено"
+        },
+        {
+          "tag": "h3",
+          "text": "Зв’язок онлайн"
+        },
+        {
+          "tag": "p",
+          "text": "Instagram: @dentix_dpViber: +380 50 912 44 52dentix1@outlook.com"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.home",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/likari/",
+      "artifact": "likari/index.html",
+      "title": "Лікарі DENTIX у Дніпрі — команда клініки",
+      "h1": "Лікарі DENTIX",
+      "visible_answer": [],
+      "scope": [],
+      "questions": [],
+      "prices": [],
+      "clinicians": [
+        {
+          "name": [
+            "Стасюк Станіслав Ігорович"
+          ],
+          "role": [
+            "Засновник клініки та головний лікар"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Грисяк Лаура Віталіївна"
+          ],
+          "role": [
+            "Лікар-ортодонт, гнатолог"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Подолянский Альберт Альбертович"
+          ],
+          "role": [
+            "Лікар-терапевт, ендодонтист, мікроскопіст"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Гамаза Олена Анатоліївна"
+          ],
+          "role": [
+            "Лікар-терапевт, гігієніст"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
+      "team_copy": [
+        "КомандаЛікарі DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Стасюк Станіслав ІгоровичЗасновник клініки та головний лікарОбрати лікаряГрисяк Лаура ВіталіївнаЛікар-ортодонт, гнатологОбрати лікаряПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістЛікування каналів під мікроскопомОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністТерапевтична стоматологіяОбрати лікаря"
+      ],
+      "schema_service": [],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "Стоматологічна клініка у Дніпрі"
+        },
+        {
+          "tag": "h1",
+          "text": "Лікарі DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Оберіть лікаря за напрямком лікування. Прийом узгоджується за попередньою домовленістю телефоном."
+        },
+        {
+          "tag": "h2",
+          "text": "Лікарі DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Прийом ведуть лікарі клініки за відповідними напрямками лікування."
+        },
+        {
+          "tag": "h3",
+          "text": "Стасюк Станіслав Ігорович"
+        },
+        {
+          "tag": "p",
+          "text": "Засновник клініки та головний лікар"
+        },
+        {
+          "tag": "h3",
+          "text": "Грисяк Лаура Віталіївна"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-ортодонт, гнатолог"
+        },
+        {
+          "tag": "h3",
+          "text": "Подолянский Альберт Альбертович"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, ендодонтист, мікроскопіст"
+        },
+        {
+          "tag": "h3",
+          "text": "Гамаза Олена Анатоліївна"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, гігієніст"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.doctors",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/kontakty/",
+      "artifact": "kontakty/index.html",
+      "title": "Контакти DENTIX у Дніпрі — адреса та графік роботи",
+      "h1": "Контакти DENTIX",
+      "visible_answer": [],
+      "scope": [],
+      "questions": [],
+      "prices": [],
+      "clinicians": [],
+      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "team_copy": [],
+      "schema_service": [],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "Стоматологічна клініка у Дніпрі"
+        },
+        {
+          "tag": "h1",
+          "text": "Контакти DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "49000, м. Дніпро, вул. Калинова, 28, вхід з «червоної лінії». Зателефонуйте для узгодження прийому."
+        },
+        {
+          "tag": "h2",
+          "text": "Як нас знайти"
+        },
+        {
+          "tag": "h3",
+          "text": "Адреса"
+        },
+        {
+          "tag": "p",
+          "text": "вул. Калинова, 2849000, м. Дніпровхід з «червоної лінії»"
+        },
+        {
+          "tag": "h3",
+          "text": "Телефони"
+        },
+        {
+          "tag": "p",
+          "text": "+380 67 985 40 50+380 50 912 44 52"
+        },
+        {
+          "tag": "h3",
+          "text": "Графік роботи"
+        },
+        {
+          "tag": "p",
+          "text": "Пн–Пт 09:00–20:00Сб 09:00–18:00 · Нд зачинено"
+        },
+        {
+          "tag": "h3",
+          "text": "Зв’язок онлайн"
+        },
+        {
+          "tag": "p",
+          "text": "Instagram: @dentix_dpViber: +380 50 912 44 52dentix1@outlook.com"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.contacts",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/price.html",
+      "artifact": "price.html",
+      "title": "Ціни на стоматологічні послуги у Дніпрі — DENTIX",
+      "h1": "Ціни DENTIX",
+      "visible_answer": [],
+      "scope": [],
+      "questions": [],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Професійна чистка Air Flow"
+          ],
+          "cost": [
+            "1 800 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Відбілювання зубів"
+          ],
+          "cost": [
+            "2 000 грн"
+          ],
+          "note": [
+            "Вартість за одну щелепу."
+          ]
+        },
+        {
+          "name": [
+            "Вінір"
+          ],
+          "cost": [
+            "10 000 грн"
+          ],
+          "note": [
+            "Вартість за один зуб."
+          ]
+        },
+        {
+          "name": [
+            "Лікування карієсу"
+          ],
+          "cost": [
+            "від 1 300 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Художня реставрація"
+          ],
+          "cost": [
+            "від 1 800 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Лікування каналів"
+          ],
+          "cost": [
+            "від 2 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Лікування під мікроскопом"
+          ],
+          "cost": [
+            "від 5 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Перелікування кореневих каналів під мікроскопом"
+          ],
+          "cost": [
+            "від 5 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Консультація ортодонта"
+          ],
+          "cost": [
+            "300 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Брекет-система"
+          ],
+          "cost": [
+            "від 13 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Ортодонтичні пластинки"
+          ],
+          "cost": [
+            "від 6 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Ретейнер"
+          ],
+          "cost": [
+            "2 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Видалення зуба"
+          ],
+          "cost": [
+            "від 1 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Видалення зуба мудрості"
+          ],
+          "cost": [
+            "від 2 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Складне видалення ретинованого зуба"
+          ],
+          "cost": [
+            "від 4 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Імплантація"
+          ],
+          "cost": [
+            "від 16 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Металокерамічна коронка"
+          ],
+          "cost": [
+            "3 800 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Цирконієва коронка"
+          ],
+          "cost": [
+            "5 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Мостоподібний протез"
+          ],
+          "cost": [
+            "від 6 000 грн"
+          ],
+          "note": [
+            "Фінальна вартість залежить від кількості зубів."
+          ]
+        },
+        {
+          "name": [
+            "Протезування на імплантах"
+          ],
+          "cost": [
+            "від 90 000 грн"
+          ],
+          "note": [
+            "Під ключ."
+          ]
+        }
+      ],
+      "clinicians": [],
+      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "team_copy": [],
+      "schema_service": [],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "Прайс клініки"
+        },
+        {
+          "tag": "h1",
+          "text": "Ціни DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Послуги згруповано за напрямками. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "h2",
+          "text": "Консультація та діагностика"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "h2",
+          "text": "Профілактика і професійна гігієна"
+        },
+        {
+          "tag": "li",
+          "text": "Професійна чистка Air Flow1 800 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Естетична стоматологія"
+        },
+        {
+          "tag": "li",
+          "text": "Відбілювання зубівВартість за одну щелепу.2 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "ВінірВартість за один зуб.10 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Терапевтична стоматологія"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування карієсувід 1 300 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Художня реставраціявід 1 800 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування каналіввід 2 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування під мікроскопомвід 5 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Перелікування кореневих каналів під мікроскопомвід 5 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Ортодонтичне лікування"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація ортодонта300 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Брекет-системавід 13 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Ортодонтичні пластинкивід 6 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Ретейнер2 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Хірургічна стоматологія"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зубавід 1 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зуба мудростівід 2 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Складне видалення ретинованого зубавід 4 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Імплантаціявід 16 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Коронки та протезування"
+        },
+        {
+          "tag": "li",
+          "text": "Металокерамічна коронка3 800 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Цирконієва коронка5 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Мостоподібний протезФінальна вартість залежить від кількості зубів.від 6 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Протезування на імплантахПід ключ.від 90 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber. Адресу, графік і карту зібрано нижче."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.price",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/terapevtychna-stomatolohiia/",
+      "artifact": "terapevtychna-stomatolohiia/index.html",
+      "title": "Терапевтична стоматологія у Дніпрі — DENTIX",
+      "h1": "Терапевтична стоматологія у Дніпрі",
+      "visible_answer": [
+        "У DENTIX у Дніпрі напрямок терапії охоплює лікування карієсу, пряму та художню реставрацію, ендодонтичне лікування — лікування каналів, зокрема під мікроскопом."
+      ],
+      "scope": [
+        "Послуги DENTIXЩо входить до напрямку терапіїЛікування карієсуПряма та художня реставраціяЕндодонтичне лікування — лікування каналівЛікування під мікроскопомЛікування карієсу →Лікування під мікроскопом →Як узгодити план лікуванняКонсультація та огляд. Прийом узгоджується за попереднім записом телефоном.Діагностика. План лікування складають після огляду й діагностики.Індивідуальний план. Його склад підтверджує клініка.Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+      ],
+      "questions": [
+        {
+          "question": [
+            "Де переглянути послуги терапевтичного напрямку?"
+          ],
+          "answer": [
+            "Карієс і реставрація мають окрему сторінку. Лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом зібрані на спільній сторінці. Посилання на них наведені нижче."
+          ]
+        },
+        {
+          "question": [
+            "Як узгодити прийом?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+          ]
+        },
+        {
+          "question": [
+            "Коли підтверджують остаточну вартість?"
+          ],
+          "answer": [
+            "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Лікування карієсу"
+          ],
+          "cost": [
+            "від 1 300 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Художня реставрація"
+          ],
+          "cost": [
+            "від 1 800 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Лікування каналів"
+          ],
+          "cost": [
+            "від 2 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Лікування під мікроскопом"
+          ],
+          "cost": [
+            "від 5 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Перелікування кореневих каналів під мікроскопом"
+          ],
+          "cost": [
+            "від 5 000 грн"
+          ],
+          "note": []
+        }
+      ],
+      "clinicians": [
+        {
+          "name": [
+            "Подолянский Альберт Альбертович"
+          ],
+          "role": [
+            "Лікар-терапевт, ендодонтист, мікроскопіст"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Гамаза Олена Анатоліївна"
+          ],
+          "role": [
+            "Лікар-терапевт, гігієніст"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
+      "team_copy": [
+        "КомандаЛікарі-терапевти DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Подолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністОбрати лікаря"
+      ],
+      "schema_service": [
+        {
+          "name": "Терапевтична стоматологія у Дніпрі",
+          "description": "У DENTIX у Дніпрі напрямок терапії охоплює лікування карієсу, пряму та художню реставрацію, ендодонтичне лікування — лікування каналів, зокрема під мікроскопом."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Терапевтична стоматологія у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "У DENTIX у Дніпрі напрямок терапії охоплює лікування карієсу, пряму та художню реставрацію, ендодонтичне лікування — лікування каналів, зокрема під мікроскопом."
+        },
+        {
+          "tag": "h2",
+          "text": "Що входить до напрямку терапії"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування карієсу"
+        },
+        {
+          "tag": "li",
+          "text": "Пряма та художня реставрація"
+        },
+        {
+          "tag": "li",
+          "text": "Ендодонтичне лікування — лікування каналів"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування під мікроскопом"
+        },
+        {
+          "tag": "h2",
+          "text": "Як узгодити план лікування"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація та огляд. Прийом узгоджується за попереднім записом телефоном."
+        },
+        {
+          "tag": "li",
+          "text": "Діагностика. План лікування складають після огляду й діагностики."
+        },
+        {
+          "tag": "li",
+          "text": "Індивідуальний план. Його склад підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування карієсувід 1 300 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Художня реставраціявід 1 800 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування каналіввід 2 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування під мікроскопомвід 5 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Перелікування кореневих каналів під мікроскопомвід 5 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікарі-терапевти DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Прийом ведуть лікарі клініки за відповідними напрямками лікування."
+        },
+        {
+          "tag": "h3",
+          "text": "Подолянский Альберт Альбертович"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, ендодонтист, мікроскопіст"
+        },
+        {
+          "tag": "h3",
+          "text": "Гамаза Олена Анатоліївна"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, гігієніст"
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Де переглянути послуги терапевтичного напрямку?"
+        },
+        {
+          "tag": "p",
+          "text": "Карієс і реставрація мають окрему сторінку. Лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом зібрані на спільній сторінці. Посилання на них наведені нижче."
+        },
+        {
+          "tag": "summary",
+          "text": "Як узгодити прийом?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+        },
+        {
+          "tag": "summary",
+          "text": "Коли підтверджують остаточну вартість?"
+        },
+        {
+          "tag": "p",
+          "text": "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.therapy",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/therapy-pages.ts:therapyPages.therapy",
+        "src/TherapyPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/likuvannia-kariiesu/",
+      "artifact": "likuvannia-kariiesu/index.html",
+      "title": "Лікування карієсу у Дніпрі — DENTIX",
+      "h1": "Лікування карієсу у Дніпрі",
+      "visible_answer": [
+        "DENTIX у Дніпрі надає послуги лікування карієсу та художньої реставрації. На цій сторінці — відповідні позиції прайсу й лікарі-терапевти клініки. Індивідуальний план складають після огляду та діагностики."
+      ],
+      "scope": [
+        "Послуги DENTIXКарієс та реставраціяЛікування карієсуХудожня реставраціяЯк узгодити план лікуванняКонсультація та огляд. Прийом узгоджується за попереднім записом телефоном.Діагностика. План лікування складають після огляду й діагностики.Індивідуальний план. Його склад підтверджує клініка.Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+      ],
+      "questions": [
+        {
+          "question": [
+            "Де знайти вартість лікування карієсу та реставрації?"
+          ],
+          "answer": [
+            "Обидві послуги наведені окремими рядками в прайсі на цій сторінці. Остаточну вартість і склад індивідуального плану підтверджує клініка після огляду та діагностики."
+          ]
+        },
+        {
+          "question": [
+            "Як узгодити прийом?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+          ]
+        },
+        {
+          "question": [
+            "Коли підтверджують остаточну вартість?"
+          ],
+          "answer": [
+            "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Лікування карієсу"
+          ],
+          "cost": [
+            "від 1 300 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Художня реставрація"
+          ],
+          "cost": [
+            "від 1 800 грн"
+          ],
+          "note": []
+        }
+      ],
+      "clinicians": [
+        {
+          "name": [
+            "Подолянский Альберт Альбертович"
+          ],
+          "role": [
+            "Лікар-терапевт, ендодонтист, мікроскопіст"
+          ],
+          "description": []
+        },
+        {
+          "name": [
+            "Гамаза Олена Анатоліївна"
+          ],
+          "role": [
+            "Лікар-терапевт, гігієніст"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
+      "team_copy": [
+        "КомандаЛікарі-терапевти DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Подолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністОбрати лікаря"
+      ],
+      "schema_service": [
+        {
+          "name": "Лікування карієсу у Дніпрі",
+          "description": "DENTIX у Дніпрі надає послуги лікування карієсу та художньої реставрації. На цій сторінці — відповідні позиції прайсу й лікарі-терапевти клініки. Індивідуальний план складають після огляду та діагностики."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Лікування карієсу у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "DENTIX у Дніпрі надає послуги лікування карієсу та художньої реставрації. На цій сторінці — відповідні позиції прайсу й лікарі-терапевти клініки. Індивідуальний план складають після огляду та діагностики."
+        },
+        {
+          "tag": "h2",
+          "text": "Карієс та реставрація"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування карієсу"
+        },
+        {
+          "tag": "li",
+          "text": "Художня реставрація"
+        },
+        {
+          "tag": "h2",
+          "text": "Як узгодити план лікування"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація та огляд. Прийом узгоджується за попереднім записом телефоном."
+        },
+        {
+          "tag": "li",
+          "text": "Діагностика. План лікування складають після огляду й діагностики."
+        },
+        {
+          "tag": "li",
+          "text": "Індивідуальний план. Його склад підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування карієсувід 1 300 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Художня реставраціявід 1 800 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікарі-терапевти DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Прийом ведуть лікарі клініки за відповідними напрямками лікування."
+        },
+        {
+          "tag": "h3",
+          "text": "Подолянский Альберт Альбертович"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, ендодонтист, мікроскопіст"
+        },
+        {
+          "tag": "h3",
+          "text": "Гамаза Олена Анатоліївна"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, гігієніст"
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Де знайти вартість лікування карієсу та реставрації?"
+        },
+        {
+          "tag": "p",
+          "text": "Обидві послуги наведені окремими рядками в прайсі на цій сторінці. Остаточну вартість і склад індивідуального плану підтверджує клініка після огляду та діагностики."
+        },
+        {
+          "tag": "summary",
+          "text": "Як узгодити прийом?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+        },
+        {
+          "tag": "summary",
+          "text": "Коли підтверджують остаточну вартість?"
+        },
+        {
+          "tag": "p",
+          "text": "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.caries",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/therapy-pages.ts:therapyPages.caries",
+        "src/TherapyPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/lechenie-pod-mikroskopom/",
+      "artifact": "lechenie-pod-mikroskopom/index.html",
+      "title": "Лікування каналів під мікроскопом у Дніпрі — DENTIX",
+      "h1": "Лікування каналів під мікроскопом у Дніпрі",
+      "visible_answer": [
+        "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста."
+      ],
+      "scope": [
+        "Послуги DENTIXКанали та мікроскопЛікування каналівЛікування під мікроскопомПерелікування кореневих каналів під мікроскопомЯк узгодити план лікуванняКонсультація та огляд. Прийом узгоджується за попереднім записом телефоном.Діагностика. План лікування складають після огляду й діагностики.Індивідуальний план. Його склад підтверджує клініка.Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+      ],
+      "questions": [
+        {
+          "question": [
+            "Як уточнити вартість перелікування каналів під мікроскопом?"
+          ],
+          "answer": [
+            "Зверніться до клініки телефоном для узгодження прийому. Остаточний обсяг перелікування кореневих каналів під мікроскопом та вартість підтверджує клініка після огляду й діагностики."
+          ]
+        },
+        {
+          "question": [
+            "Як узгодити прийом?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+          ]
+        },
+        {
+          "question": [
+            "Коли підтверджують остаточну вартість?"
+          ],
+          "answer": [
+            "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Лікування каналів"
+          ],
+          "cost": [
+            "від 2 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Лікування під мікроскопом"
+          ],
+          "cost": [
+            "від 5 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Перелікування кореневих каналів під мікроскопом"
+          ],
+          "cost": [
+            "від 5 000 грн"
+          ],
+          "note": []
+        }
+      ],
+      "clinicians": [
+        {
+          "name": [
+            "Подолянский Альберт Альбертович"
+          ],
+          "role": [
+            "Лікар-терапевт, ендодонтист, мікроскопіст"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
+      "team_copy": [
+        "КомандаЕндодонтист, мікроскопіст DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Подолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістОбрати лікаря"
+      ],
+      "schema_service": [
+        {
+          "name": "Лікування каналів під мікроскопом у Дніпрі",
+          "description": "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Лікування каналів під мікроскопом у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста."
+        },
+        {
+          "tag": "h2",
+          "text": "Канали та мікроскоп"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування каналів"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування під мікроскопом"
+        },
+        {
+          "tag": "li",
+          "text": "Перелікування кореневих каналів під мікроскопом"
+        },
+        {
+          "tag": "h2",
+          "text": "Як узгодити план лікування"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація та огляд. Прийом узгоджується за попереднім записом телефоном."
+        },
+        {
+          "tag": "li",
+          "text": "Діагностика. План лікування складають після огляду й діагностики."
+        },
+        {
+          "tag": "li",
+          "text": "Індивідуальний план. Його склад підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування каналіввід 2 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Лікування під мікроскопомвід 5 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Перелікування кореневих каналів під мікроскопомвід 5 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Ендодонтист, мікроскопіст DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Прийом ведуть лікарі клініки за відповідними напрямками лікування."
+        },
+        {
+          "tag": "h3",
+          "text": "Подолянский Альберт Альбертович"
+        },
+        {
+          "tag": "p",
+          "text": "Лікар-терапевт, ендодонтист, мікроскопіст"
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Як уточнити вартість перелікування каналів під мікроскопом?"
+        },
+        {
+          "tag": "p",
+          "text": "Зверніться до клініки телефоном для узгодження прийому. Остаточний обсяг перелікування кореневих каналів під мікроскопом та вартість підтверджує клініка після огляду й діагностики."
+        },
+        {
+          "tag": "summary",
+          "text": "Як узгодити прийом?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+        },
+        {
+          "tag": "summary",
+          "text": "Коли підтверджують остаточну вартість?"
+        },
+        {
+          "tag": "p",
+          "text": "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.microscope",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/therapy-pages.ts:therapyPages.microscope",
+        "src/TherapyPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/khirurhichna-stomatolohiia/",
+      "artifact": "khirurhichna-stomatolohiia/index.html",
+      "title": "Хірургічна стоматологія у Дніпрі — DENTIX",
+      "h1": "Хірургічна стоматологія у Дніпрі",
+      "visible_answer": [
+        "DENTIX у Дніпрі надає послуги видалення зуба, видалення зуба мудрості та складного видалення ретинованого зуба. Тут зібрані відповідні позиції поточного прайсу й контакти клініки для узгодження консультації."
+      ],
+      "scope": [
+        "Послуги DENTIXПослуги з видалення зубівВидалення зубаВидалення зуба мудростіСкладне видалення ретинованого зубаВидалення зуба →Видалення зуба мудрості →Як узгодити план лікуванняКонсультація та огляд. Прийом узгоджується за попереднім записом телефоном.Діагностика. План лікування складають після огляду й діагностики.Індивідуальний план. Його склад підтверджує клініка.Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+      ],
+      "questions": [
+        {
+          "question": [
+            "Де переглянути послуги з видалення зубів?"
+          ],
+          "answer": [
+            "Видалення зуба та складне видалення ретинованого зуба зібрані на спільній сторінці. Видалення зуба мудрості має окрему сторінку. Посилання наведені нижче."
+          ]
+        },
+        {
+          "question": [
+            "Як узгодити прийом?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+          ]
+        },
+        {
+          "question": [
+            "Коли підтверджують остаточну вартість?"
+          ],
+          "answer": [
+            "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Видалення зуба"
+          ],
+          "cost": [
+            "від 1 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Видалення зуба мудрості"
+          ],
+          "cost": [
+            "від 2 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Складне видалення ретинованого зуба"
+          ],
+          "cost": [
+            "від 4 000 грн"
+          ],
+          "note": []
+        }
+      ],
+      "clinicians": [],
+      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "team_copy": [
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+      ],
+      "schema_service": [
+        {
+          "name": "Хірургічна стоматологія у Дніпрі",
+          "description": "DENTIX у Дніпрі надає послуги видалення зуба, видалення зуба мудрості та складного видалення ретинованого зуба. Тут зібрані відповідні позиції поточного прайсу й контакти клініки для узгодження консультації."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Хірургічна стоматологія у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "DENTIX у Дніпрі надає послуги видалення зуба, видалення зуба мудрості та складного видалення ретинованого зуба. Тут зібрані відповідні позиції поточного прайсу й контакти клініки для узгодження консультації."
+        },
+        {
+          "tag": "h2",
+          "text": "Послуги з видалення зубів"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зуба"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зуба мудрості"
+        },
+        {
+          "tag": "li",
+          "text": "Складне видалення ретинованого зуба"
+        },
+        {
+          "tag": "h2",
+          "text": "Як узгодити план лікування"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація та огляд. Прийом узгоджується за попереднім записом телефоном."
+        },
+        {
+          "tag": "li",
+          "text": "Діагностика. План лікування складають після огляду й діагностики."
+        },
+        {
+          "tag": "li",
+          "text": "Індивідуальний план. Його склад підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зубавід 1 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зуба мудростівід 2 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Складне видалення ретинованого зубавід 4 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікар напрямку"
+        },
+        {
+          "tag": "p",
+          "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
+        },
+        {
+          "tag": "p",
+          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Де переглянути послуги з видалення зубів?"
+        },
+        {
+          "tag": "p",
+          "text": "Видалення зуба та складне видалення ретинованого зуба зібрані на спільній сторінці. Видалення зуба мудрості має окрему сторінку. Посилання наведені нижче."
+        },
+        {
+          "tag": "summary",
+          "text": "Як узгодити прийом?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+        },
+        {
+          "tag": "summary",
+          "text": "Коли підтверджують остаточну вартість?"
+        },
+        {
+          "tag": "p",
+          "text": "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.surgery",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/surgery-pages.ts:surgeryPages.surgery",
+        "src/SurgeryPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/vydalennia-zuba/",
+      "artifact": "vydalennia-zuba/index.html",
+      "title": "Видалення зуба у Дніпрі — послуги та ціни DENTIX",
+      "h1": "Видалення зуба у Дніпрі",
+      "visible_answer": [
+        "У DENTIX у Дніпрі доступні видалення зуба та складне видалення ретинованого зуба. На цій сторінці — ці послуги й відповідні позиції прайсу. Індивідуальний план складають після огляду та діагностики; обсяг і остаточну вартість підтверджує клініка."
+      ],
+      "scope": [
+        "Послуги DENTIXВидалення зубаВидалення зубаСкладне видалення ретинованого зубаЯк узгодити план лікуванняКонсультація та огляд. Прийом узгоджується за попереднім записом телефоном.Діагностика. План лікування складають після огляду й діагностики.Індивідуальний план. Його склад підтверджує клініка.Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+      ],
+      "questions": [
+        {
+          "question": [
+            "Де знайти вартість складного видалення?"
+          ],
+          "answer": [
+            "У прайсі на цій сторінці є окрема позиція «Складне видалення ретинованого зуба». Обсяг послуги й остаточну вартість підтверджує клініка після огляду та діагностики."
+          ]
+        },
+        {
+          "question": [
+            "Як узгодити прийом?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+          ]
+        },
+        {
+          "question": [
+            "Коли підтверджують остаточну вартість?"
+          ],
+          "answer": [
+            "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Видалення зуба"
+          ],
+          "cost": [
+            "від 1 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Складне видалення ретинованого зуба"
+          ],
+          "cost": [
+            "від 4 000 грн"
+          ],
+          "note": []
+        }
+      ],
+      "clinicians": [],
+      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "team_copy": [
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+      ],
+      "schema_service": [
+        {
+          "name": "Видалення зуба у Дніпрі",
+          "description": "У DENTIX у Дніпрі доступні видалення зуба та складне видалення ретинованого зуба. На цій сторінці — ці послуги й відповідні позиції прайсу. Індивідуальний план складають після огляду та діагностики; обсяг і остаточну вартість підтверджує клініка."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Видалення зуба у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "У DENTIX у Дніпрі доступні видалення зуба та складне видалення ретинованого зуба. На цій сторінці — ці послуги й відповідні позиції прайсу. Індивідуальний план складають після огляду та діагностики; обсяг і остаточну вартість підтверджує клініка."
+        },
+        {
+          "tag": "h2",
+          "text": "Видалення зуба"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зуба"
+        },
+        {
+          "tag": "li",
+          "text": "Складне видалення ретинованого зуба"
+        },
+        {
+          "tag": "h2",
+          "text": "Як узгодити план лікування"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація та огляд. Прийом узгоджується за попереднім записом телефоном."
+        },
+        {
+          "tag": "li",
+          "text": "Діагностика. План лікування складають після огляду й діагностики."
+        },
+        {
+          "tag": "li",
+          "text": "Індивідуальний план. Його склад підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+        },
+        {
+          "tag": "h2",
+          "text": "Складне видалення ретинованого зуба"
+        },
+        {
+          "tag": "p",
+          "text": "Це окрема позиція поточного прайсу DENTIX. Обсяг послуги та остаточну вартість підтверджує клініка після огляду й діагностики."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зубавід 1 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Складне видалення ретинованого зубавід 4 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікар напрямку"
+        },
+        {
+          "tag": "p",
+          "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
+        },
+        {
+          "tag": "p",
+          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Де знайти вартість складного видалення?"
+        },
+        {
+          "tag": "p",
+          "text": "У прайсі на цій сторінці є окрема позиція «Складне видалення ретинованого зуба». Обсяг послуги й остаточну вартість підтверджує клініка після огляду та діагностики."
+        },
+        {
+          "tag": "summary",
+          "text": "Як узгодити прийом?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+        },
+        {
+          "tag": "summary",
+          "text": "Коли підтверджують остаточну вартість?"
+        },
+        {
+          "tag": "p",
+          "text": "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.extraction",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/surgery-pages.ts:surgeryPages.extraction",
+        "src/SurgeryPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/vydalennia-zuba-mudrosti/",
+      "artifact": "vydalennia-zuba-mudrosti/index.html",
+      "title": "Видалення зуба мудрості у Дніпрі — DENTIX",
+      "h1": "Видалення зуба мудрості у Дніпрі",
+      "visible_answer": [
+        "DENTIX у Дніпрі надає послугу видалення зуба мудрості. Тут наведена її позиція з поточного прайсу. Обсяг послуги, індивідуальний план та остаточну вартість підтверджує клініка після огляду й діагностики."
+      ],
+      "scope": [
+        "Послуги DENTIXВидалення зуба мудростіВидалення зуба мудростіЯк узгодити план лікуванняКонсультація та огляд. Прийом узгоджується за попереднім записом телефоном.Діагностика. План лікування складають після огляду й діагностики.Індивідуальний план. Його склад підтверджує клініка.Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+      ],
+      "questions": [
+        {
+          "question": [
+            "Як уточнити обсяг послуги та вартість?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX для узгодження консультації. У прайсі видалення зуба мудрості та складне видалення ретинованого зуба наведені окремими позиціями. Яка послуга входить до індивідуального плану, підтверджує клініка після огляду й діагностики."
+          ]
+        },
+        {
+          "question": [
+            "Як узгодити прийом?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+          ]
+        },
+        {
+          "question": [
+            "Коли підтверджують остаточну вартість?"
+          ],
+          "answer": [
+            "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Видалення зуба мудрості"
+          ],
+          "cost": [
+            "від 2 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Складне видалення ретинованого зуба"
+          ],
+          "cost": [
+            "від 4 000 грн"
+          ],
+          "note": []
+        }
+      ],
+      "clinicians": [],
+      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "team_copy": [
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+      ],
+      "schema_service": [
+        {
+          "name": "Видалення зуба мудрості у Дніпрі",
+          "description": "DENTIX у Дніпрі надає послугу видалення зуба мудрості. Тут наведена її позиція з поточного прайсу. Обсяг послуги, індивідуальний план та остаточну вартість підтверджує клініка після огляду й діагностики."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Видалення зуба мудрості у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "DENTIX у Дніпрі надає послугу видалення зуба мудрості. Тут наведена її позиція з поточного прайсу. Обсяг послуги, індивідуальний план та остаточну вартість підтверджує клініка після огляду й діагностики."
+        },
+        {
+          "tag": "h2",
+          "text": "Видалення зуба мудрості"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зуба мудрості"
+        },
+        {
+          "tag": "h2",
+          "text": "Як узгодити план лікування"
+        },
+        {
+          "tag": "li",
+          "text": "Консультація та огляд. Прийом узгоджується за попереднім записом телефоном."
+        },
+        {
+          "tag": "li",
+          "text": "Діагностика. План лікування складають після огляду й діагностики."
+        },
+        {
+          "tag": "li",
+          "text": "Індивідуальний план. Його склад підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Видалення зуба мудростівід 2 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Складне видалення ретинованого зубавід 4 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікар напрямку"
+        },
+        {
+          "tag": "p",
+          "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
+        },
+        {
+          "tag": "p",
+          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Як уточнити обсяг послуги та вартість?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження консультації. У прайсі видалення зуба мудрості та складне видалення ретинованого зуба наведені окремими позиціями. Яка послуга входить до індивідуального плану, підтверджує клініка після огляду й діагностики."
+        },
+        {
+          "tag": "summary",
+          "text": "Як узгодити прийом?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження прийому. Телефони та інші канали зв’язку наведені в контактах клініки."
+        },
+        {
+          "tag": "summary",
+          "text": "Коли підтверджують остаточну вартість?"
+        },
+        {
+          "tag": "p",
+          "text": "Після огляду й діагностики клініка підтверджує склад індивідуального плану та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.wisdom",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/surgery-pages.ts:surgeryPages.wisdom",
+        "src/SurgeryPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/implantatsiya/",
+      "artifact": "implantatsiya/index.html",
+      "title": "Імплантація зубів у Дніпрі — послуга та ціни DENTIX",
+      "h1": "Імплантація зубів у Дніпрі",
+      "visible_answer": [
+        "DENTIX у Дніпрі надає послугу імплантації зубів. У поточному прайсі є окрема позиція «Імплантація». Обсяг послуги й остаточну вартість підтверджує клініка після огляду та діагностики. Протезування на імплантах — окрема позиція прайсу, наведена на сторінці протезування."
+      ],
+      "scope": [
+        "Послуги DENTIXІмплантація зубівІмплантаціяЯк уточнити обсяг і вартістьЗателефонуйте до DENTIX для узгодження консультації. Після огляду й діагностики клініка підтверджує склад індивідуального плану, обсяг послуг та остаточну вартість.Контакти клініки →"
+      ],
+      "questions": [
+        {
+          "question": [
+            "Де переглянути вартість протезування на імплантах?"
+          ],
+          "answer": [
+            "Ця послуга має окрему позицію прайсу на сторінці протезування. Посилання наведене нижче. Обсяг кожної послуги та остаточну вартість уточнюйте у клініці."
+          ]
+        },
+        {
+          "question": [
+            "Як уточнити лікаря та час прийому?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX. У клініці підтвердять лікаря цього напрямку та узгодять прийом."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Імплантація"
+          ],
+          "cost": [
+            "від 16 000 грн"
+          ],
+          "note": []
+        }
+      ],
+      "clinicians": [],
+      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "team_copy": [
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+      ],
+      "schema_service": [
+        {
+          "name": "Імплантація зубів у Дніпрі",
+          "description": "DENTIX у Дніпрі надає послугу імплантації зубів. У поточному прайсі є окрема позиція «Імплантація». Обсяг послуги й остаточну вартість підтверджує клініка після огляду та діагностики. Протезування на імплантах — окрема позиція прайсу, наведена на сторінці протезування."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Імплантація зубів у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "DENTIX у Дніпрі надає послугу імплантації зубів. У поточному прайсі є окрема позиція «Імплантація». Обсяг послуги й остаточну вартість підтверджує клініка після огляду та діагностики. Протезування на імплантах — окрема позиція прайсу, наведена на сторінці протезування."
+        },
+        {
+          "tag": "h2",
+          "text": "Імплантація зубів"
+        },
+        {
+          "tag": "li",
+          "text": "Імплантація"
+        },
+        {
+          "tag": "h2",
+          "text": "Як уточнити обсяг і вартість"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження консультації. Після огляду й діагностики клініка підтверджує склад індивідуального плану, обсяг послуг та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Окремі позиції поточного прайсу DENTIX. Обсяг кожної послуги й остаточну вартість підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Імплантаціявід 16 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікар напрямку"
+        },
+        {
+          "tag": "p",
+          "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
+        },
+        {
+          "tag": "p",
+          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Де переглянути вартість протезування на імплантах?"
+        },
+        {
+          "tag": "p",
+          "text": "Ця послуга має окрему позицію прайсу на сторінці протезування. Посилання наведене нижче. Обсяг кожної послуги та остаточну вартість уточнюйте у клініці."
+        },
+        {
+          "tag": "summary",
+          "text": "Як уточнити лікаря та час прийому?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX. У клініці підтвердять лікаря цього напрямку та узгодять прийом."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.implantation",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/implant-prosthetics-pages.ts:implantProstheticsPages.implantation",
+        "src/ImplantProstheticsPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    },
+    {
+      "url": "https://dentix.ua/protezirovanie/",
+      "artifact": "protezirovanie/index.html",
+      "title": "Протезування зубів у Дніпрі — коронки та ціни DENTIX",
+      "h1": "Протезування зубів у Дніпрі",
+      "visible_answer": [
+        "У поточному прайсі DENTIX у Дніпрі наведені металокерамічна коронка, цирконієва коронка, мостоподібний протез і протезування на імплантах. Кожна послуга має окрему позицію. Обсяг послуг та остаточну вартість підтверджує клініка після огляду й діагностики."
+      ],
+      "scope": [
+        "Послуги DENTIXПротезування зубівМеталокерамічна коронкаЦирконієва коронкаМостоподібний протезПротезування на імплантахЯк уточнити обсяг і вартістьЗателефонуйте до DENTIX для узгодження консультації. Після огляду й діагностики клініка підтверджує склад індивідуального плану, обсяг послуг та остаточну вартість.Контакти клініки →"
+      ],
+      "questions": [
+        {
+          "question": [
+            "Де переглянути вартість імплантації?"
+          ],
+          "answer": [
+            "Імплантація та протезування на імплантах — окремі позиції прайсу. Вартість імплантації наведена на окремій сторінці за посиланням нижче. Склад послуг індивідуального плану підтверджує клініка."
+          ]
+        },
+        {
+          "question": [
+            "Як уточнити лікаря та час прийому?"
+          ],
+          "answer": [
+            "Зателефонуйте до DENTIX. У клініці підтвердять лікаря цього напрямку та узгодять прийом."
+          ]
+        }
+      ],
+      "prices": [
+        {
+          "name": [
+            "Консультація стоматолога"
+          ],
+          "cost": [
+            "500 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Прицільний рентген"
+          ],
+          "cost": [
+            "Входить у вартість консультації"
+          ],
+          "note": [
+            "Окремо не тарифікується."
+          ]
+        },
+        {
+          "name": [
+            "Металокерамічна коронка"
+          ],
+          "cost": [
+            "3 800 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Цирконієва коронка"
+          ],
+          "cost": [
+            "5 000 грн"
+          ],
+          "note": []
+        },
+        {
+          "name": [
+            "Мостоподібний протез"
+          ],
+          "cost": [
+            "від 6 000 грн"
+          ],
+          "note": [
+            "Фінальна вартість залежить від кількості зубів."
+          ]
+        },
+        {
+          "name": [
+            "Протезування на імплантах"
+          ],
+          "cost": [
+            "від 90 000 грн"
+          ],
+          "note": [
+            "Під ключ."
+          ]
+        }
+      ],
+      "clinicians": [],
+      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "team_copy": [
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+      ],
+      "schema_service": [
+        {
+          "name": "Протезування зубів у Дніпрі",
+          "description": "У поточному прайсі DENTIX у Дніпрі наведені металокерамічна коронка, цирконієва коронка, мостоподібний протез і протезування на імплантах. Кожна послуга має окрему позицію. Обсяг послуг та остаточну вартість підтверджує клініка після огляду й діагностики."
+        }
+      ],
+      "exact_visible_blocks": [
+        {
+          "tag": "p",
+          "text": "DENTIX · Стоматологічна клініка"
+        },
+        {
+          "tag": "h1",
+          "text": "Протезування зубів у Дніпрі"
+        },
+        {
+          "tag": "p",
+          "text": "У поточному прайсі DENTIX у Дніпрі наведені металокерамічна коронка, цирконієва коронка, мостоподібний протез і протезування на імплантах. Кожна послуга має окрему позицію. Обсяг послуг та остаточну вартість підтверджує клініка після огляду й діагностики."
+        },
+        {
+          "tag": "h2",
+          "text": "Протезування зубів"
+        },
+        {
+          "tag": "li",
+          "text": "Металокерамічна коронка"
+        },
+        {
+          "tag": "li",
+          "text": "Цирконієва коронка"
+        },
+        {
+          "tag": "li",
+          "text": "Мостоподібний протез"
+        },
+        {
+          "tag": "li",
+          "text": "Протезування на імплантах"
+        },
+        {
+          "tag": "h2",
+          "text": "Як уточнити обсяг і вартість"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX для узгодження консультації. Після огляду й діагностики клініка підтверджує склад індивідуального плану, обсяг послуг та остаточну вартість."
+        },
+        {
+          "tag": "h2",
+          "text": "Вартість послуг"
+        },
+        {
+          "tag": "p",
+          "text": "Окремі позиції поточного прайсу DENTIX. Обсяг кожної послуги й остаточну вартість підтверджує клініка."
+        },
+        {
+          "tag": "li",
+          "text": "Консультація стоматолога500 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Прицільний рентгенОкремо не тарифікується.Входить у вартість консультації"
+        },
+        {
+          "tag": "li",
+          "text": "Металокерамічна коронка3 800 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Цирконієва коронка5 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Мостоподібний протезФінальна вартість залежить від кількості зубів.від 6 000 грн"
+        },
+        {
+          "tag": "li",
+          "text": "Протезування на імплантахПід ключ.від 90 000 грн"
+        },
+        {
+          "tag": "h2",
+          "text": "Лікар напрямку"
+        },
+        {
+          "tag": "p",
+          "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
+        },
+        {
+          "tag": "p",
+          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+        },
+        {
+          "tag": "h2",
+          "text": "Питання перед зверненням"
+        },
+        {
+          "tag": "summary",
+          "text": "Де переглянути вартість імплантації?"
+        },
+        {
+          "tag": "p",
+          "text": "Імплантація та протезування на імплантах — окремі позиції прайсу. Вартість імплантації наведена на окремій сторінці за посиланням нижче. Склад послуг індивідуального плану підтверджує клініка."
+        },
+        {
+          "tag": "summary",
+          "text": "Як уточнити лікаря та час прийому?"
+        },
+        {
+          "tag": "p",
+          "text": "Зателефонуйте до DENTIX. У клініці підтвердять лікаря цього напрямку та узгодять прийом."
+        },
+        {
+          "tag": "h2",
+          "text": "Пов’язані послуги"
+        },
+        {
+          "tag": "h2",
+          "text": "Заплануйте візит до DENTIX"
+        },
+        {
+          "tag": "p",
+          "text": "Зв’яжіться з клінікою телефоном, в Instagram або у Viber для узгодження прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Швидкий зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Усе потрібне для запису — в одному місці"
+        },
+        {
+          "tag": "p",
+          "text": "Робочі номери, адреса, графік і офіційний Instagram."
+        },
+        {
+          "tag": "p",
+          "text": "Зворотний зв’язок"
+        },
+        {
+          "tag": "h3",
+          "text": "Залишити заявку"
+        },
+        {
+          "tag": "p",
+          "text": "Перевіряємо доступність форми…"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення усмішки."
+        },
+        {
+          "tag": "p",
+          "text": "© 2026 DENTIX"
+        }
+      ],
+      "source_keys": [
+        "src/page-metadata.ts:routeMetadata.prosthetics",
+        "src/data/prices.ts:priceBlocks",
+        "src/data/doctors.ts:doctors",
+        "src/components/TeamSection.tsx:TeamSection",
+        "src/data/implant-prosthetics-pages.ts:implantProstheticsPages.prosthetics",
+        "src/ImplantProstheticsPage.tsx"
+      ],
+      "copy_source_sha": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
+      "copy_change_date": "2026-09-13T15:22:50+03:00",
+      "decision": null,
+      "allowed_decisions": [
+        "APPROVE",
+        "CHANGE_REQUIRED",
+        "NOT_APPLICABLE"
+      ],
+      "reviewer_name": null,
+      "reviewer_role": null,
+      "review_date": null,
+      "sign_off": null,
+      "required_changes": null
+    }
+  ]
+}
