@@ -10,7 +10,7 @@ Use Node 22.18+ and `npm ci`.
 | --- | --- |
 | `npm run dev` | Development at http://127.0.0.1:4180/dentix-booking-demo/ |
 | `npm run build` / `npm run build:preview` | `dist/preview`, base `/dentix-booking-demo/`, all pages `noindex,nofollow,noarchive` |
-| `npm run build:production` | Local `dist/production`, base `/`, seven indexable patient routes |
+| `npm run build:production` | Local `dist/production`, base `/`, ten indexable patient routes |
 | `npm run preview` | Serve preview locally on port 4181 |
 | `npm run preview:production` | Serve production artifact locally on port 4182 |
 | `npm test` | Unit and build-policy checks |
@@ -19,9 +19,9 @@ Use Node 22.18+ and `npm ci`.
 
 The build driver requires an explicit validated target. The default build and direct Vite invocation select preview unless `DENTIX_BUILD_TARGET` is explicitly set. The existing Pages workflow builds and uploads **only `dist/preview`**. Output directories are ignored; no CNAME or domain switch is generated.
 
-All seven current patient routes are prerendered from the same React components and fallback data used for client hydration. Build-time rendering performs no content or booking requests. Asset references come from the client manifest. Public runtime content may refresh the fallback after hydration; malformed/unavailable content retains the existing section fallback. Updating the approved fallback requires a new build and review. Local `.env` files are not loaded by Vite; public runtime configuration is supplied explicitly as `VITE_DENTIX_*` process settings. Never put secrets in Vite variables.
+All ten current patient routes are prerendered from the same React components and fallback data used for client hydration. Build-time rendering performs no content or booking requests. Asset references come from the client manifest. Public runtime content may refresh the fallback after hydration; malformed/unavailable content retains the existing section fallback. Updating the approved fallback requires a new build and review. Local `.env` files are not loaded by Vite; public runtime configuration is supplied explicitly as `VITE_DENTIX_*` process settings. Never put secrets in Vite variables.
 
-Production head metadata uses Ukrainian route descriptions, self-canonicals and OG/Twitter. The sitemap contains exactly `/`, `/likari/`, `/kontakty/`, `/price.html`, `/terapevtychna-stomatolohiia/`, `/likuvannia-kariiesu/` and `/lechenie-pod-mikroskopom/`, with no invented modification dates. Production-only entity JSON-LD uses approved clinic facts and visibly shown managed doctors. Therapy pages add a Service node matching the visible H1 and answer, plus breadcrumbs. Prices, offers, ratings, reviews, FAQ and inferred medical procedures are excluded from Schema. Existing visible fallback content is preserved; this technical change does not grant publication approval for pending clinical, team, price or legal facts.
+Production head metadata uses Ukrainian route descriptions, self-canonicals and OG/Twitter. The sitemap contains exactly `/`, `/likari/`, `/kontakty/`, `/price.html`, `/terapevtychna-stomatolohiia/`, `/likuvannia-kariiesu/`, `/lechenie-pod-mikroskopom/`, `/khirurhichna-stomatolohiia/`, `/vydalennia-zuba/` and `/vydalennia-zuba-mudrosti/`, with no invented modification dates. Production-only entity JSON-LD uses approved clinic facts and visibly shown managed doctors. Therapy and surgery pages add a Service node matching the visible H1 and answer, plus breadcrumbs. Prices, offers, ratings, reviews, FAQ and inferred medical procedures are excluded from Schema. Existing visible fallback content is preserved; this technical change does not grant publication approval for pending clinical, team, price or legal facts.
 
 ## Admin, forms and hosting boundary
 
@@ -41,4 +41,12 @@ PR-01 does not perform deployment, DNS changes, sitemap submission, indexing req
 
 `tests/therapy-managed-browser.mjs` exercises valid, empty, invalid and unmatched content through real SSR/hydration and intercepted GET-only fixtures. It uses the same `PLAYWRIGHT_MODULE_PATH` and external `DENTIX_QA_OUTPUT` variables as the main browser suite. No fixture data ships.
 
-The microscope/canals page preserves its existing URL; no separate canal route is created. Content is limited to approved services, current roles/prices and operational consultation/plan/contact wording. Named professional reviewer remains UNKNOWN; review for any new clinical explanations and production cutover remain gated. PR-04A authorizes only local implementation, validation and one Draft PR.
+The microscope/canals page preserves its existing URL; no separate canal route is created. Content is limited to approved services, current roles/prices and operational consultation/plan/contact wording. Named professional reviewer remains UNKNOWN; review for any new clinical explanations and production cutover remain gated. PR #5 merged PR-04A to the noindex preview; production remains unlaunched.
+
+## PR-04B surgery cluster
+
+Three additional Ukrainian routes reuse the service-page layout: `/khirurhichna-stomatolohiia/`, `/vydalennia-zuba/`, and `/vydalennia-zuba-mudrosti/`. Complex impacted extraction stays at `/vydalennia-zuba/#complex-extraction`. The explicit route contract now includes ten patient routes in both profiles; the local production sitemap lists exactly those ten URLs.
+
+`src/data/surgery-pages.ts` owns bounded service/organizational copy, metadata and exact price-row names. `useManagedContent().priceBlocks` remains the sole price source; no implantation row or copied amounts are added. Approved fallback doctors contain no exact `хірург` role. Surgery pages therefore show contact guidance and zero doctor cards/Person nodes. A future managed exact surgeon role updates visible content and production Schema together. Invalid/empty sections preserve the existing global fallback; valid unmatched rows/roles never restore removed values.
+
+`tests/surgery-pages.test.ts` and `tests/surgery-managed-browser.mjs` cover the source, price, role and Schema boundary. Run the latter with the same external Playwright and evidence variables as the browser suite. Professional review remains UNKNOWN / NOT_COMPLETED; expanded clinical copy and any named-surgeon production claim remain blocked pending approved evidence/review. This stage ends at a Draft PR; Ready, merge, deployment, production and PR-04C require separate authorization.

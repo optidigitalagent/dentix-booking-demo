@@ -1,3 +1,4 @@
+import { isSurgeryRoute, selectSurgeryDoctors, surgeryPages } from "../data/surgery-pages.ts";
 import { isTherapyRoute, selectTherapyDoctors, therapyPages } from "../data/therapy-pages.ts";
 import type { PatientRoute } from "../build-profile";
 import { routeMetadata } from "../page-metadata.ts";
@@ -18,8 +19,9 @@ export function buildEntitySchema(route: PatientRoute, site: Clinic, doctors: Do
   const metadata = routeMetadata[route];
   const url = root + metadata.path;
   const clinicId = root + "#dentist";
-  const servicePage = isTherapyRoute(route) ? therapyPages[route] : null;
-  const visibleDoctors = isTherapyRoute(route) ? selectTherapyDoctors(route, doctors) : doctors;
+  const servicePage = isSurgeryRoute(route) ? surgeryPages[route] : isTherapyRoute(route) ? therapyPages[route] : null;
+  const serviceParent = isSurgeryRoute(route) && route !== "surgery" ? surgeryPages.surgery : isTherapyRoute(route) && route !== "therapy" ? therapyPages.therapy : null;
+  const visibleDoctors = isSurgeryRoute(route) ? selectSurgeryDoctors(doctors) : isTherapyRoute(route) ? selectTherapyDoctors(route, doctors) : doctors;
   const teamVisible = route === "home" || route === "doctors" || Boolean(servicePage);
   const contactsVisible = route === "home" || route === "contacts";
   const city = /^(\d{5}), м\. (.+)$/.exec(site.city);
@@ -56,8 +58,8 @@ export function buildEntitySchema(route: PatientRoute, site: Clinic, doctors: Do
     "@type": "BreadcrumbList", "@id": url + "#breadcrumbs",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Головна", item: root },
-      ...(servicePage && route !== "therapy" ? [{ "@type": "ListItem", position: 2, name: therapyPages.therapy.label, item: root + therapyPages.therapy.path }] : []),
-      { "@type": "ListItem", position: servicePage && route !== "therapy" ? 3 : 2, name: servicePage?.label ?? (route === "doctors" ? "Лікарі" : route === "contacts" ? "Контакти" : "Ціни"), item: url },
+      ...(serviceParent ? [{ "@type": "ListItem", position: 2, name: serviceParent.label, item: root + serviceParent.path }] : []),
+      { "@type": "ListItem", position: serviceParent ? 3 : 2, name: servicePage?.label ?? (route === "doctors" ? "Лікарі" : route === "contacts" ? "Контакти" : "Ціни"), item: url },
     ],
   });
   return { "@context": "https://schema.org", "@graph": graph };

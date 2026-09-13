@@ -46,7 +46,7 @@ export const services: Service[] = [
     num: "06",
     title: "Хірургія",
     text: "Видалення зубів і встановлення імпланта за опублікованим прайсом.",
-    linkLabel: "Відкрити прайс",
-    href: "/price.html#hirurgiya",
+    linkLabel: "Про видалення зубів",
+    href: "/khirurhichna-stomatolohiia/",
   },
 ];

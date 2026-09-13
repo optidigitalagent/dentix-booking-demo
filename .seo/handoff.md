@@ -1,24 +1,15 @@
-# DENTIX PR04A merge gate handoff
+# DENTIX PR04B Draft handoff
 
-PR #5 pre-merge action snapshot. Remote/evidence/independent source-content-contract review PASS at base 51e1da2343923d5e997d8bb6d7abe6734b9bc24c / reviewed head 86e1130603ea98243c93c971a1e0285ff53901db; exactly 40 paths; NO_SERVER_CI; no submitted review or overlapping PR. Input ZIP 63266311 bytes / SHA256 f7b58f3320b39593b603305d6e70cea3a107401cc5572a820139a083af45c243 / 166 verified checksum entries. Six source pins PASS. Current grant permits one .seo metadata commit/push, Ready, normal merge and exactly one automatic noindex Pages preview deployment; these actions and fresh final-head QA are pending. Professional review UNKNOWN / NOT_COMPLETED; production review boundary retained. Old WordPress is production; React NOT_LAUNCHED; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; T0 NOT_READY; outcome_report.claims=[]. worktree_clean records the verified clean input boundary; only these bounded metadata edits may be dirty at commit. Actual final-head cleanliness and remote state must be rechecked before Ready/merge. No post-merge commit; external evidence and PR body will record completion.
+PR #5 merged be42e9d3547a9388e2e0a0ffa4d7258a55616579; successful noindex preview workflow 34752031347 and deployment 6420548670 at the same SHA; seven live preview routes verified. PR04B surgery implementation complete locally; local QA PASS; one normal commit/push/Draft PR authorized. No named surgeon in approved fallback. professional_review_status=UNKNOWN / NOT_COMPLETED. Old WordPress remains production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized.
 
-Authorization: 2026-09-13T10:20:50.948291+00:00 through 2026-09-13T13:20:50.948291+00:00, only the action matrix and restrictions in authorization.yml. The user explicitly authorized this final preview stage. This supersedes prior Draft-only operational instructions; historical logs and research remain unchanged. The existing release-state.yml is the factual PR #4 preview receipt, not a claim that PR #5 has merged or production has launched.
+Base and preview SHA: `be42e9d3547a9388e2e0a0ffa4d7258a55616579`. Preview URL: https://optidigitalagent.github.io/dentix-booking-demo/. Production https://dentix.ua/ is still WordPress. Release-state describes the completed PR04A preview deployment; it does not close a production release.
 
-Three therapy routes: /terapevtychna-stomatolohiia/, /likuvannia-kariiesu/, /lechenie-pod-mikroskopom/. Seven patient routes including /, /likari/, /kontakty/, /price.html. No canal-only or PR04B/C route. Service titles/descriptions and all protected facts unchanged; services.ts has only the authorized therapy link change. Shared useManagedContent doctors/priceBlocks; exact visible row/role selection and matching production Person nodes. Preview has noindex,nofollow,noarchive and no canonical/sitemap/production graph.
+New local routes: /khirurhichna-stomatolohiia/, /vydalennia-zuba/, /vydalennia-zuba-mudrosti/. Complex extraction remains a section. No PR04C. Shared managed prices; exact `хірург` role only, zero named surgeon or Person in approved fallback. Any expanded clinical copy requires qualified review before production. Professional review UNKNOWN / NOT_COMPLETED.
 
-Six pinned base sources:
-- src/data/site.ts: 947768cd448cefaa1c31e2928850e87e9b554da2
-- src/data/doctors.ts: 5f5ebdc56fb60cc7f140943a684ec1294fb35dc3
-- src/data/prices.ts: 8a1be1f4256bac67dc938f1d7816f26c44b4d0ca
-- src/data/services.ts: c431720fff5fa008b91fad4a211318873da6dbc1
-- src/components/AboutSection.tsx: 92dd12a3ed4342909efb0e338248ebe8dfbcf20c
-- .seo/content-briefs/pr-04a.md: 1ca30f3d177d8ff36381764a140a6dd238466c80
+PASS. Source pins, source/copy audit and final QA counts/receipts are preserved in external DENTIX_PR04B_SURGERY_EVIDENCE_2026-09-13. Final commit/push/Draft PR identifiers and clean-worktree receipt will be external, avoiding a self-referential follow-up commit. Authorization ends after one Draft PR and evidence ZIP. Next authorized action: explicit staging, commit/push/Draft PR, evidence and stop.
 
-Historical local QA, independently reconciled with the 166-entry archive: npm ci; 15 unit; 20 artifact; both builds; 70 hydrated + 70 no-JS + 140 semantic; 24 managed-content; 28 lead-source; 40 safe Chromium/WebKit mobile; 16 founder/video, all PASS. These are historical results; exactly one fresh full suite on the final authorization-commit head is required before merge. NO_SERVER_CI.
 
-Independent review means source/editorial/contract verification by Codex; it is not a submitted GitHub review or qualified medical review. professional_review_status: UNKNOWN / NOT_COMPLETED. The production-review boundary in content-briefs/pr-04a.md and medical-review-log.csv remains.
-
-Next authorized action: normal bounded metadata commit/push, PR #5 body update and Ready, one fresh final-head suite, immediate merge gate, normal merge, one automatic noindex preview deployment, seven-route live QA, external final evidence. Stop on the mission's specified failure verdict; no source repair in this stage. Stop after PR04A; production/accounts/indexing/release closure/PR04B/C remain forbidden. Final SHA/run/deployment/live receipts will be in PR #5 body and external DENTIX_PR04A_MERGE_PREVIEW_DEPLOY_EVIDENCE_2026-09-13, avoiding self-referential or post-merge commits.
+Fresh PR04B validation: 20 unit; both ten-route builds; 28 artifact tests; 100 hydrated + 100 no-JS + 200 semantic; 30 surgery managed + 24 therapy managed; 40 lead-source; 40 safe Chromium/WebKit mobile; 16 founder/video cases, all PASS. Zero POST/appointments, overflow, broken images or hydration/console errors. Local lab only.
 
 # Outcome report
 
@@ -43,7 +34,7 @@ Record validation only; no aggregate SEO PASS. Claims are bounded to their suppl
 {
   "technical": {
     "status": "UNKNOWN",
-    "reason": "PR01 preview reconciled and noindex observed; old WordPress remains production. New React production readiness NOT_ESTABLISHED.",
+    "reason": "PR04A merged be42e9d3547a9388e2e0a0ffa4d7258a55616579 to seven-route noindex preview; workflow 34752031347/deployment 6420548670 verified. PR04B ten-route local implementation validated; Draft stage only. Old WordPress remains production; React NOT_LAUNCHED; production readiness NOT_ESTABLISHED.",
     "evidence_ids": []
   },
   "google_indexation": {

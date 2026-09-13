@@ -219,6 +219,16 @@
       "mitigation": "Bound PR04A to approved current facts and operational copy. No symptoms/durations/materials/equipment/outcome claims or cases. Any new clinical explanation needs professional review before production; no fake reviewer.",
       "owner": "DENTIX owner; qualified reviewer UNKNOWN",
       "status": "LOCAL_DRAFT_ALLOWED_PRODUCTION_REVIEW_REQUIRED"
+    },
+    {
+      "id": "R-PR04B-SURGEON-REVIEW",
+      "area": "medical/content",
+      "description": "Approved fallback contains no surgeon; named qualified reviewer UNKNOWN / NOT_COMPLETED",
+      "likelihood": "confirmed",
+      "impact": "high",
+      "mitigation": "No named surgery clinician or initial Person; exact managed хірург token only with visible/schema parity; phone guidance otherwise. Only approved labels/prices/organizational copy. PROFESSIONAL_REVIEW_REQUIRED_BEFORE_PRODUCTION; no production authorization.",
+      "owner": "DENTIX owner; qualified reviewer UNKNOWN",
+      "status": "LOCAL_DRAFT_ALLOWED_PRODUCTION_REVIEW_REQUIRED"
     }
   ]
 }

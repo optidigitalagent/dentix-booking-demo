@@ -439,5 +439,46 @@
       "claims": []
     },
     "evidence": "External DENTIX_PR04A_THERAPY_EVIDENCE_2026-09-13; exact final Git receipts outside repository"
+  },
+  "pr04a_preview_reconciliation": {
+    "checked_at": "2026-09-13T10:57:39.826480+00:00",
+    "merge_sha": "be42e9d3547a9388e2e0a0ffa4d7258a55616579",
+    "workflow_id": 34752031347,
+    "deployment_id": 6420548670,
+    "live_patient_routes": 7,
+    "preview_policy": "noindex,nofollow,noarchive",
+    "production": "WordPress remains production; React NOT_LAUNCHED"
+  },
+  "pr04b_local_implementation": {
+    "checked_at": "2026-09-13T10:57:39.826480+00:00",
+    "base_sha": "be42e9d3547a9388e2e0a0ffa4d7258a55616579",
+    "branch": "seo/dentix-pr04b-surgery-cluster",
+    "routes": [
+      "/khirurhichna-stomatolohiia/",
+      "/vydalennia-zuba/",
+      "/vydalennia-zuba-mudrosti/"
+    ],
+    "patient_routes": 10,
+    "qa": {
+      "browser_qa.json": 100,
+      "surgery_managed_content.json": 30,
+      "therapy_managed_content.json": 24,
+      "lead_source_entry_points.json": 40,
+      "founder_video_integration.json": 16,
+      "no_javascript": 100,
+      "semantics": 200,
+      "mobile": 40,
+      "npm-test": 20,
+      "artifact-tests": 28,
+      "preview_build": "PASS",
+      "production_build": "PASS",
+      "post_requests": 0
+    },
+    "surgeon": "NO_APPROVED_SURGEON_IN_CURRENT_FALLBACK_SOURCE",
+    "professional_review": "UNKNOWN / NOT_COMPLETED",
+    "production": "NOT_LAUNCHED",
+    "migration_dispositions_changed": false,
+    "outcome_report_claims": [],
+    "validated_at": "2026-09-13T11:01:55.872913+00:00"
   }
 }
