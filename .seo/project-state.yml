@@ -4,25 +4,15 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "commit",
-  "authorization_level": "Pre-merge action snapshot at 2026-09-13T13:07:45.718094+00:00, expires 2026-09-13T16:07:45.718094+00:00. User ZIP grants the exact PR04C Ready/normal merge/one automatic noindex preview stage; supersedes earlier Draft-only operational restrictions for this stage only. PR #7 OPEN/Draft/CLEAN; base ae1a929bd339b7a9172760320e9917325243004e; reviewed head 6da5ae7dffb7345de50aad6cdcd6b1782194a149; 43 changed paths; tracked/index clean at entry; two unrelated .DS_Store untouched. No overlapping PR; NO_SERVER_CI (empty checks is not CI PASS). Supplied remote review and independent local contract review PASS. Evidence ZIP 85955387 bytes; SHA-256 0436ecc37485c1182729b1578391318b2e17a1195908c11a852162b78b4bda33; 200/200 checksums; no undeclared payload. Seven source pins PASS; both exact legacy paths preserved; 12-route candidate; prices separate; Під ключ. note only. No approved fallback implantologist/orthopedist; exact managed-role and visible/Schema parity required; ортодонт negative. Professional review UNKNOWN / NOT_COMPLETED. Five-query bounded sanity sample dated 2026-09-13, device/searcher location/personalization UNKNOWN; no rank/volume finding. P2 requestedInterest decision/test required before public booking activation. Fresh exact-final-head suite, Ready, merge and one automatic deployment PENDING. Current verified preview remains PR #6 at ae1a929bd339b7a9172760320e9917325243004e, workflow 34755054592/deployment 6421117100. WordPress production; React NOT_LAUNCHED; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; T0 NOT_READY; outcome_report.claims=[].",
+  "authorization_level": "PR04A/B/C merged to noindex preview only. PR #7 final head d4bc9bd20b1731b116d9d43ddf1c9447faffb884; merge/main 6465964edb7ae549f5abac9194fad9bbd18f2d9d; successful workflow 34759609171 / Pages deployment 6422001426 at same SHA; twelve live preview patient routes verified. PR05 local production-readiness controls and exact two requestedInterest seeds implemented; final validation/Draft publication receipts outside repository. No new service routes or medical copy. Hosting DECISION_PENDING_ACCESS; 64 migration rows unchanged, 49 HOLD preservation UNRESOLVED_CUTOVER_BLOCKER; KEEP 404 probe explicitly preserved. Review packet generated; professional review UNKNOWN / NOT_COMPLETED; no approved fallback surgeon/implantologist/orthopedist. WordPress remains production; React NOT_LAUNCHED. Candidate endpoints unset; booking disabled. GSC/GBP/GA4/GTM/Bing/CRM ACCESS_BLOCKED; call tracking UNKNOWN; T0 NOT_READY. Backups, host adapter, qualified sign-off and cutover authorization pending. outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized. Tracked/index clean flags describe entry/action boundary; scoped implementation edits are captured in the single commit, and final clean/head/PR state is verified in external receipts. Full required local suite PASS; see ops/release/acceptance.json.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-13T13:07:45.718094+00:00",
-  "remote_main_sha": "ae1a929bd339b7a9172760320e9917325243004e",
-  "local_main_sha": "ae1a929bd339b7a9172760320e9917325243004e",
-  "deployed_sha": "ae1a929bd339b7a9172760320e9917325243004e",
-  "open_prs": [
-    {
-      "number": 7,
-      "state": "OPEN",
-      "isDraft": true,
-      "headRefName": "seo/dentix-pr04c-implant-prosthetics-cluster",
-      "headRefOid": "6da5ae7dffb7345de50aad6cdcd6b1782194a149",
-      "baseRefOid": "ae1a929bd339b7a9172760320e9917325243004e",
-      "scope": "authorized current PR; no other overlapping PR"
-    }
-  ],
+  "verified_at": "2026-09-13T15:00:21.380965+00:00",
+  "remote_main_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
+  "local_main_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
+  "deployed_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
+  "open_prs": [],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
@@ -79,6 +69,16 @@
       },
       "mergedAt": "2026-09-13T11:40:31Z",
       "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/6"
+    },
+    {
+      "number": 7,
+      "state": "MERGED",
+      "mergeCommit": {
+        "oid": "6465964edb7ae549f5abac9194fad9bbd18f2d9d"
+      },
+      "headRefOid": "d4bc9bd20b1731b116d9d43ddf1c9447faffb884",
+      "mergedAt": "2026-09-13T13:21:20Z",
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/7"
     }
   ],
   "active_branches": [
@@ -89,9 +89,10 @@
     "seo/dentix-pr03-entity-local-foundation",
     "seo/dentix-pr04a-therapy-cluster",
     "seo/dentix-pr04b-surgery-cluster",
-    "seo/dentix-pr04c-implant-prosthetics-cluster"
+    "seo/dentix-pr04c-implant-prosthetics-cluster",
+    "seo/dentix-pr05-production-readiness"
   ],
-  "handoff_sha": "ae1a929bd339b7a9172760320e9917325243004e",
+  "handoff_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
   "production_matches_deploy": false,

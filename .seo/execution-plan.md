@@ -1,11 +1,10 @@
-# DENTIX execution plan — PR04C
+# DENTIX PR05 execution plan
 
-PR #6 merged ae1a929bd339b7a9172760320e9917325243004e; successful noindex preview workflow 34755054592 and deployment 6421117100 at the same SHA; ten live preview patient routes verified. Therapy and surgery merged to preview only. PR04C implantation/prosthetics implemented locally; fresh local QA PASS; one normal commit/push/Draft PR authorized. Both legacy URLs preserved. No approved fallback surgeon, implantologist or orthopedist. professional_review_status=UNKNOWN / NOT_COMPLETED; PROFESSIONAL_REVIEW_REQUIRED_BEFORE_PRODUCTION. Implantation and prosthetics-on-implants prices separate; Під ключ. remains source-row note only. WordPress remains production; React NOT_LAUNCHED; T0 NOT_READY; GSC/GBP/GA4/GTM/Bing ACCESS_BLOCKED; outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized.
+PR04A/B/C merged to noindex preview only. PR #7 final head d4bc9bd20b1731b116d9d43ddf1c9447faffb884; merge/main 6465964edb7ae549f5abac9194fad9bbd18f2d9d; successful workflow 34759609171 / Pages deployment 6422001426 at same SHA; twelve live preview patient routes verified. PR05 local production-readiness controls and exact two requestedInterest seeds implemented; final validation/Draft publication receipts outside repository. No new service routes or medical copy. Hosting DECISION_PENDING_ACCESS; 64 migration rows unchanged, 49 HOLD preservation UNRESOLVED_CUTOVER_BLOCKER; KEEP 404 probe explicitly preserved. Review packet generated; professional review UNKNOWN / NOT_COMPLETED; no approved fallback surgeon/implantologist/orthopedist. WordPress remains production; React NOT_LAUNCHED. Candidate endpoints unset; booking disabled. GSC/GBP/GA4/GTM/Bing/CRM ACCESS_BLOCKED; call tracking UNKNOWN; T0 NOT_READY. Backups, host adapter, qualified sign-off and cutover authorization pending. outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized.
 
-1. Operator/Git/PR04B deployment and source/migration/query gates PASS.
-2. Two preserved routes, one managed price source, exact-role no-clinician fallback, six-direction navigation implemented.
-3. Fresh unit/build/artifact/browser/managed/mobile/founder QA PASS.
-4. Final source/copy/diff/records validators; explicit staging; one commit, normal push and one Draft PR.
-5. External sanitized evidence ZIP; stop before Ready/merge/deploy or another cluster.
-
-Fresh local QA PASS: 25 unit tests; both 12-route builds; 34 artifact tests; 120 hydrated + 120 no-JS + 240 semantic checks; 80 additional Chromium/WebKit PR04C critical-region no-JS/hydrated cases across five widths in both profiles; 28 implant/prosthetics managed + 24 therapy managed + 30 surgery managed; 48 lead-source fixtures; 40 safe mobile cases; 16 founder/video cases. Zero POST, appointments, overflow, broken images or hydration/page/console errors. Local lab only; no physical device, live account or production claim.
+1. Reconcile exact remote/base/deployment/operator identity and unchanged dispositions.
+2. Public read-only audit and hosting capability/access matrix.
+3. Local release manifests/contracts, exact current copy review package, T0/environment contracts and backup/cutover/rollback checklists.
+4. Apply two hero requestedInterest labels; build and verify existing/new suites without submission.
+5. Explicitly stage scoped paths, commit, rebuild/package from final head, normal push and one Draft PR. Final identifiers outside repository.
+6. Stop. Next stage is Draft review; no merge/launch/account action.

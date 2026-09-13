@@ -1,30 +1,30 @@
 {
-  "selected_at": "2026-09-13T12:06:29.690822+00:00",
+  "selected_at": "2026-09-13T15:00:21.380965+00:00",
   "requested_mode": "implement",
   "skills": [
     {
       "name": "seo-command-center",
-      "reason": "PR04C bounded implantation/prosthetics source, role, price, migration, local entity and 12-route validation"
+      "reason": "PR05 hosting/migration/artifact/readiness/review/measurement controls; no production launch or medical-content changes"
     },
     {
       "name": "seo-technical-engineer",
-      "reason": "PR04C bounded implantation/prosthetics source, role, price, migration, local entity and 12-route validation"
+      "reason": "PR05 hosting/migration/artifact/readiness/review/measurement controls; no production launch or medical-content changes"
     },
     {
       "name": "seo-content-architect",
-      "reason": "PR04C bounded implantation/prosthetics source, role, price, migration, local entity and 12-route validation"
+      "reason": "PR05 hosting/migration/artifact/readiness/review/measurement controls; no production launch or medical-content changes"
     },
     {
       "name": "seo-local-growth",
-      "reason": "PR04C bounded implantation/prosthetics source, role, price, migration, local entity and 12-route validation"
+      "reason": "PR05 hosting/migration/artifact/readiness/review/measurement controls; no production launch or medical-content changes"
     },
     {
       "name": "seo-ai-discovery",
-      "reason": "PR04C bounded implantation/prosthetics source, role, price, migration, local entity and 12-route validation"
+      "reason": "PR05 hosting/migration/artifact/readiness/review/measurement controls; no production launch or medical-content changes"
     },
     {
       "name": "seo-measurement-control",
-      "reason": "PR04C bounded implantation/prosthetics source, role, price, migration, local entity and 12-route validation"
+      "reason": "PR05 hosting/migration/artifact/readiness/review/measurement controls; no production launch or medical-content changes"
     }
   ],
   "excluded_skills": [
