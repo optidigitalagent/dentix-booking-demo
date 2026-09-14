@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Pause, Play } from "lucide-react";
 import { aboutSlides } from "@/data/about";
 import { Reveal } from "./Reveal";
 import { siteHref } from "@/lib/site-href";
@@ -11,141 +12,62 @@ const bullets = [
   "Лікування дітей наразі не проводимо",
 ];
 
-const galleryItemCount = aboutSlides.length + 1;
+const galleryItemCount = aboutSlides.length;
 
 export function AboutSection() {
   const [i, setI] = useState(0);
+  const [rotationPaused, setRotationPaused] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const gallery = galleryRef.current;
-    const video = videoRef.current;
-    if (!gallery || !video) return;
-
+    if (!gallery) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let inView = false;
-    let autoplayAttempted = false;
-    let resumeWhenVisible = false;
+    let inView = typeof IntersectionObserver === "undefined";
     let timer: number | undefined;
-
-    const syncPlayback = () => {
+    const syncRotation = () => {
       window.clearTimeout(timer);
-      if (!inView || document.hidden) {
-        // Only resume a video that visibility interrupted; preserve a viewer's manual pause.
-        if (i === 0 && !video.paused && !video.ended) resumeWhenVisible = true;
-        video.pause();
-        return;
+      if (inView && !document.hidden && !reducedMotion.matches && !rotationPaused) {
+        timer = window.setTimeout(() => setI((v) => (v + 1) % galleryItemCount), 5000);
       }
-      if (i !== 0) video.pause();
-      if (reducedMotion.matches) return;
-
-      if (i === 0) {
-        if (!autoplayAttempted || resumeWhenVisible) {
-          autoplayAttempted = true;
-          resumeWhenVisible = false;
-          video.muted = true;
-          void video.play().catch(() => {
-            // Autoplay can be blocked; leave the poster and native controls available.
-          });
-        }
-        return;
-      }
-
-      timer = window.setTimeout(() => setI((v) => (v + 1) % galleryItemCount), 5000);
     };
-    const onMotionChange = () => {
-      if (reducedMotion.matches) {
-        resumeWhenVisible = false;
-        video.pause();
-      }
-      syncPlayback();
-    };
-    const onPlay = () => {
-      if (i !== 0 || !inView || document.hidden) {
-        if (i === 0 && !video.ended) resumeWhenVisible = true;
-        video.pause();
-      }
-      autoplayAttempted = true;
-    };
-    const checkViewport = () => {
-      const rect = gallery.getBoundingClientRect();
-      const visibleWidth = Math.max(
-        0,
-        Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0),
-      );
-      const visibleHeight = Math.max(
-        0,
-        Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0),
-      );
-      inView =
-        rect.width > 0 &&
-        rect.height > 0 &&
-        (visibleWidth * visibleHeight) / (rect.width * rect.height) >= 0.25;
-      syncPlayback();
-    };
-    const observer =
-      typeof IntersectionObserver === "undefined"
-        ? null
-        : new IntersectionObserver(
-            ([entry]) => {
-              inView = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.25);
-              syncPlayback();
-            },
-            { threshold: [0, 0.25] },
-          );
-
-    video.addEventListener("play", onPlay);
-    document.addEventListener("visibilitychange", syncPlayback);
-    reducedMotion.addEventListener("change", onMotionChange);
-    if (observer) {
-      observer.observe(gallery);
-    } else {
-      checkViewport();
-      window.addEventListener("scroll", checkViewport, { passive: true });
-      window.addEventListener("resize", checkViewport);
-    }
-
+    const observer = typeof IntersectionObserver === "undefined" ? null :
+      new IntersectionObserver(([entry]) => {
+        inView = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.25);
+        syncRotation();
+      }, { threshold: [0, 0.25] });
+    observer?.observe(gallery);
+    document.addEventListener("visibilitychange", syncRotation);
+    reducedMotion.addEventListener("change", syncRotation);
+    syncRotation();
     return () => {
       window.clearTimeout(timer);
       observer?.disconnect();
-      window.removeEventListener("scroll", checkViewport);
-      window.removeEventListener("resize", checkViewport);
-      document.removeEventListener("visibilitychange", syncPlayback);
-      reducedMotion.removeEventListener("change", onMotionChange);
-      video.removeEventListener("play", onPlay);
-      video.pause();
+      document.removeEventListener("visibilitychange", syncRotation);
+      reducedMotion.removeEventListener("change", syncRotation);
     };
-  }, [i]);
+  }, [i, rotationPaused]);
 
   return (
     <section className="section about" id="about">
       <div className="wrap about-grid">
         <Reveal className="about-media">
-          <div ref={galleryRef} className={`about-gallery${i === 0 ? " is-video" : ""}`}>
-            <video
-              ref={videoRef}
-              className={`about-slide about-video${i === 0 ? " is-active" : ""}`}
-              src={siteHref("/media/dentix-clinic-tour.mp4")}
-              poster={siteHref("/media/dentix-clinic-tour-poster.webp")}
-              aria-label="Відеоогляд клініки DENTIX"
-              controls
-              playsInline
-              muted
-              preload="none"
-              hidden={i !== 0}
-              inert={i !== 0}
-              aria-hidden={i !== 0}
-              tabIndex={i === 0 ? 0 : -1}
-              onEnded={() => setI((current) => (current === 0 ? 1 : current))}
-            />
+          <div ref={galleryRef} className="about-gallery">
+            <button
+              type="button"
+              className="gallery-nav gallery-playback"
+              aria-label={rotationPaused ? "Відновити зміну фотографій" : "Призупинити зміну фотографій"}
+              onClick={() => setRotationPaused((paused) => !paused)}
+            >
+              {rotationPaused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
+            </button>
             {aboutSlides.map((slide, idx) => (
               <img
                 key={slide.id}
-                className={`about-slide${idx + 1 === i ? " is-active" : ""}`}
+                className={`about-slide${idx === i ? " is-active" : ""}`}
                 src={slide.src}
                 alt={slide.alt}
-                aria-hidden={idx + 1 !== i}
+                aria-hidden={idx !== i}
                 loading={idx < 2 ? "eager" : "lazy"}
                 decoding="async"
                 style={{ objectPosition: slide.objectPosition }}
@@ -155,7 +77,7 @@ export function AboutSection() {
               type="button"
               className="gallery-nav prev"
               aria-label="Попередній елемент галереї"
-              onClick={() => setI((v) => (v - 1 + galleryItemCount) % galleryItemCount)}
+              onClick={() => { setRotationPaused(true); setI((v) => (v - 1 + galleryItemCount) % galleryItemCount); }}
             >
               ‹
             </button>
@@ -163,26 +85,19 @@ export function AboutSection() {
               type="button"
               className="gallery-nav next"
               aria-label="Наступний елемент галереї"
-              onClick={() => setI((v) => (v + 1) % galleryItemCount)}
+              onClick={() => { setRotationPaused(true); setI((v) => (v + 1) % galleryItemCount); }}
             >
               ›
             </button>
             <div className="gallery-dots">
-              <button
-                type="button"
-                className={i === 0 ? "is-active" : ""}
-                aria-label="Відеоогляд клініки DENTIX"
-                aria-current={i === 0 ? "true" : undefined}
-                onClick={() => setI(0)}
-              />
               {aboutSlides.map((slide, idx) => (
                 <button
                   key={slide.id}
                   type="button"
-                  className={idx + 1 === i ? "is-active" : ""}
+                  className={idx === i ? "is-active" : ""}
                   aria-label={`Фото ${idx + 1}`}
-                  aria-current={idx + 1 === i ? "true" : undefined}
-                  onClick={() => setI(idx + 1)}
+                  aria-current={idx === i ? "true" : undefined}
+                  onClick={() => { setRotationPaused(true); setI(idx); }}
                 />
               ))}
             </div>

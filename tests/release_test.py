@@ -49,8 +49,8 @@ class ReleaseTests(unittest.TestCase):
     def test_review_prices_and_missing_clinicians(self):
         pages=release.read_json(release.ROOT/'ops/review/professional-review.json')['pages']
         implant=next(p for p in pages if p['url'].endswith('/implantatsiya/'));prosthetics=next(p for p in pages if p['url'].endswith('/protezirovanie/'))
-        self.assertIn(['Імплантація'],[r['name'] for r in implant['prices']]);self.assertNotIn(['Протезування на імплантах'],[r['name'] for r in implant['prices']])
-        self.assertIn(['Під ключ.'],[r['note'] for r in prosthetics['prices']])
+        self.assertIn(['Імплант'],[r['name'] for r in implant['prices']]);self.assertIn(['Імплантація All-on-4 (Корея)'],[r['name'] for r in implant['prices']]);self.assertNotIn(['Імплантація All-on-4 (Корея)'],[r['name'] for r in prosthetics['prices']])
+        self.assertIn(['У вартість входять імпланти та протезування на імплантах.'],[r['note'] for r in implant['prices']]);self.assertNotIn(['Під ключ.'],[r['note'] for r in prosthetics['prices']])
         self.assertEqual(implant['clinicians'],[]);self.assertEqual(prosthetics['clinicians'],[])
     def test_environment_inventory_and_disabled_candidate(self):
         env=release.read_json(release.OPS/'environment.json');names={r['name'] for r in env['variables']};candidate={r['name']:r['candidate_value'] for r in env['variables']}

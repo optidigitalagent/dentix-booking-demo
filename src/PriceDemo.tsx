@@ -78,7 +78,8 @@ export function PriceDemo() {
                 ))}
               </ul>
               {block.id === "terapiya" && <nav className="entity-links" aria-label="Терапевтичні послуги">{Object.values(therapyPages).map((page) => <a key={page.path} href={siteHref("/" + page.path)}>{page.label}</a>)}</nav>}
-              {block.id === "hirurgiya" && <nav className="entity-links" aria-label="Хірургічні послуги та імплантація">{[...Object.values(surgeryPages), implantProstheticsPages.implantation].map((page) => <a key={page.path} href={siteHref("/" + page.path)}>{page.label}</a>)}</nav>}
+              {block.id === "hirurgiya" && <nav className="entity-links" aria-label="Хірургічні послуги">{Object.values(surgeryPages).map((page) => <a key={page.path} href={siteHref("/" + page.path)}>{page.label}</a>)}</nav>}
+              {block.id === "implantatsiya" && <nav className="entity-links" aria-label="Імплантація"><a href={siteHref("/" + implantProstheticsPages.implantation.path)}>{implantProstheticsPages.implantation.label}</a></nav>}
               {block.id === "ortopediya" && <nav className="entity-links" aria-label="Протезування"><a href={siteHref("/" + implantProstheticsPages.prosthetics.path)}>{implantProstheticsPages.prosthetics.label}</a></nav>}
               {block.note ? <p className="price-note">{block.note}</p> : null}
               {(["profilaktyka", "terapiya", "ortodontiya"] as string[]).includes(block.id) ? (

@@ -21,8 +21,8 @@ test("approved fallback has no surgeon; only the exact visible surgeon role toke
 
 test("surgery uses exact shared managed rows without implantation or removed-row backfill", () => {
   const costs = new Map([
-    ["Консультація стоматолога", "500 грн"],
-    ["Прицільний рентген", "Входить у вартість консультації"],
+    ["Консультація стоматолога", "Безкоштовно"],
+    ["Прицільний рентген", "200 грн"],
     ["Видалення зуба", "від 1 000 грн"],
     ["Видалення зуба мудрості", "від 2 000 грн"],
     ["Складне видалення ретинованого зуба", "від 4 000 грн"],
@@ -34,7 +34,7 @@ test("surgery uses exact shared managed rows without implantation or removed-row
       assert.equal(row.cost, costs.get(row.name));
       assert.ok(priceBlocks.some((block) => block.rows.includes(row)));
     }
-    assert.equal(rows.find((row) => row.name === "Прицільний рентген")?.note, "Окремо не тарифікується.");
+    assert.equal(rows.find((row) => row.name === "Прицільний рентген")?.note, undefined);
     assert.deepEqual(selectSurgeryPrices(route, []), []);
   }
   const updated = [{ ...priceBlocks[5], rows: [{ name: "Видалення зуба", cost: "QA updated", note: "QA current note" }, { name: "Видалення зуба — інше", cost: "exclude" }, { name: "Імплантація", cost: "exclude" }] }];

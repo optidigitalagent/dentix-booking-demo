@@ -652,32 +652,8 @@ h3 {
   height: 100%;
   object-fit: cover;
 }
-/* Keep gallery navigation outside the native video controls without changing the photo layout. */
-.about-gallery.is-video {
-  background: var(--dark-surface);
-}
-.about-gallery .about-video {
-  height: calc(100% - 64px);
-  object-fit: contain;
-  background: var(--dark-surface);
-  transition: none;
-}
 .about-gallery .about-slide:not(.is-active) {
   pointer-events: none;
-}
-.about-gallery .about-video[hidden] {
-  display: none;
-}
-.about-gallery.is-video .gallery-nav {
-  top: auto;
-  bottom: 10px;
-  transform: none;
-}
-.about-gallery.is-video .gallery-dots {
-  left: 64px;
-  right: 64px;
-  bottom: 29px;
-  flex-wrap: wrap;
 }
 @media (prefers-reduced-motion: reduce) {
   .about-gallery .about-slide {
@@ -707,6 +683,11 @@ h3 {
 .gallery-nav svg {
   width: 18px;
   height: 18px;
+}
+.gallery-nav.gallery-playback {
+  top: 14px;
+  right: 14px;
+  transform: none;
 }
 .gallery-nav.prev {
   left: 14px;
@@ -4245,47 +4226,54 @@ body::before,
 }
 
 /* ===================== VERIFIED HERO MEDIA + GOOGLE REVIEWS ===================== */
-.hero-bg .hero-gallery-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s var(--ease);
-}
-
-.hero-bg .hero-gallery-slide.is-active {
-  opacity: 1;
+.hero-bg .hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .hero-overlay {
   z-index: 1;
+  pointer-events: none;
 }
 
-.hero-gallery-dots {
+.hero-video-controls {
   position: absolute;
   right: clamp(18px, 3vw, 44px);
-  bottom: clamp(18px, 3vw, 36px);
+  bottom: 16px;
   z-index: 3;
   display: flex;
   gap: 8px;
 }
 
-.hero-gallery-dots button {
-  width: 8px;
-  height: 8px;
+.hero-video-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid rgba(251, 247, 241, 0.72);
   border-radius: 50%;
-  background: rgba(251, 247, 241, 0.3);
+  color: var(--on-dark);
+  background: rgba(21, 16, 11, 0.55);
   cursor: pointer;
-  transition:
-    transform 0.25s var(--ease),
-    background 0.25s var(--ease);
 }
 
-.hero-gallery-dots button.is-active {
-  background: var(--accent);
-  transform: scale(1.3);
+.hero-video-controls button:hover {
+  background: var(--dark-surface);
+}
+
+.hero-video-controls button:focus-visible,
+.trust-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.trust-item:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .reviews {
@@ -4549,10 +4537,6 @@ body::before,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-bg .hero-gallery-slide {
-    transition: none;
-  }
-
   .motion-row {
     overflow-x: auto;
     scrollbar-width: thin;

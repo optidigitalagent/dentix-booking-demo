@@ -24,10 +24,10 @@ test("no approved implantologist or orthopedist; exact hyphen/comma tokens only"
   }
 });
 
-test("shared managed prices keep implantation separate and preserve exact prosthetics notes", () => {
+test("shared managed prices reflect client corrections and group implant prosthetics with implantation", () => {
   const expected = {
-    implantation: ["Консультація стоматолога", "Прицільний рентген", "Імплантація"],
-    prosthetics: ["Консультація стоматолога", "Прицільний рентген", "Металокерамічна коронка", "Цирконієва коронка", "Мостоподібний протез", "Протезування на імплантах"],
+    implantation: ["Консультація стоматолога", "Прицільний рентген", "Імплант", "Цирконієва коронка на імпланті", "Імплантація All-on-4 (Корея)"],
+    prosthetics: ["Консультація стоматолога", "Прицільний рентген", "Металокерамічна коронка", "Цирконієва коронка", "Мостоподібний протез"],
   };
   for (const route of routes) {
     const rows = selectImplantProstheticsPrices(route, priceBlocks);
@@ -38,8 +38,8 @@ test("shared managed prices keep implantation separate and preserve exact prosth
     assert.deepEqual(selectImplantProstheticsPrices(route, updated), [updated[0].rows[0]], "removed rows never restored");
     assert.deepEqual(selectImplantProstheticsPrices(route, [{ ...updated[0], rows: [updated[0].rows[1]] }]), []);
   }
-  assert.deepEqual(selectImplantProstheticsPrices("implantation", priceBlocks).at(-1), { name: "Імплантація", cost: "від 16 000 грн" });
-  assert.deepEqual(selectImplantProstheticsPrices("prosthetics", priceBlocks).at(-1), { name: "Протезування на імплантах", cost: "від 90 000 грн", note: "Під ключ." });
+  assert.deepEqual(selectImplantProstheticsPrices("implantation", priceBlocks).at(-1), { name: "Імплантація All-on-4 (Корея)", cost: "90 000 грн", note: "У вартість входять імпланти та протезування на імплантах." });
+  assert.deepEqual(selectImplantProstheticsPrices("prosthetics", priceBlocks).at(-1), { name: "Мостоподібний протез", cost: "від 6 000 грн", note: "Фінальна вартість залежить від кількості зубів." });
   for (const file of ["src/data/implant-prosthetics-pages.ts", "src/ImplantProstheticsPage.tsx"]) assert.doesNotMatch(fs.readFileSync(file, "utf8"), /\d[\d ]*\s*грн|cost\s*:/);
 });
 
@@ -60,14 +60,14 @@ test("service graphs have exact visible parity, clinic provider and zero fallbac
   }
 });
 
-test("legacy paths and distinct approved scopes exclude expanded medical copy and turnkey definitions", () => {
+test("legacy paths and client-confirmed scopes exclude unsupported clinical claims", () => {
   assert.equal(implantProstheticsPages.implantation.path, "implantatsiya/");
   assert.equal(implantProstheticsPages.prosthetics.path, "protezirovanie/");
-  assert.deepEqual(implantProstheticsPages.implantation.scope, ["Імплантація"]);
-  assert.deepEqual(implantProstheticsPages.prosthetics.scope, ["Металокерамічна коронка", "Цирконієва коронка", "Мостоподібний протез", "Протезування на імплантах"]);
+  assert.deepEqual(implantProstheticsPages.implantation.scope, ["Імплант", "Цирконієва коронка на імпланті", "Імплантація All-on-4 (Корея)"]);
+  assert.deepEqual(implantProstheticsPages.prosthetics.scope, ["Металокерамічна коронка", "Цирконієва коронка", "Мостоподібний протез"]);
   for (const page of Object.values(implantProstheticsPages)) {
     assert.match(page.h1, /Дніпрі/);
-    assert.doesNotMatch(JSON.stringify(page), /під ключ|безболіс|гарант|успішн|симптом|протипоказ|анестез|седац|відновлен|ускладнен|хвилин|триваліст|прижив|навантаж|кістков|All.on|3D|(?<![\p{L}\p{N}_])КТ(?![\p{L}\p{N}_])|100%/iu);
+    assert.doesNotMatch(JSON.stringify(page), /під ключ|безболіс|гарант|успішн|симптом|протипоказ|анестез|седац|відновлен|ускладнен|хвилин|триваліст|прижив|навантаж|кістков|3D|(?<![\p{L}\p{N}_])КТ(?![\p{L}\p{N}_])|100%/iu);
   }
 });
 

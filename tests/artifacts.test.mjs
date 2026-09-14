@@ -138,14 +138,14 @@ for (const target of ["preview", "production"]) {
       const html = read(target, page.path + "index.html");
       const rows = [...html.matchAll(/<li class="price-row">([\s\S]*?)<\/li>/g)].map((match) => plain(match[1]).trim());
       assert.deepEqual(rows, selectImplantProstheticsPrices(route, priceBlocks).map((row) => [row.name, row.note, row.cost].filter(Boolean).join(" ")));
-      assert.equal(rows.length, route === "implantation" ? 3 : 6);
-      assert.equal(rows.some((row) => row.startsWith("Імплантація ")), route === "implantation");
-      assert.equal(rows.some((row) => row.startsWith("Протезування на імплантах ")), route === "prosthetics");
-      assert.equal((plain(html).match(/Під ключ\./g) ?? []).length, route === "prosthetics" ? 1 : 0);
+      assert.equal(rows.length, 5);
+      assert.equal(rows.some((row) => row.startsWith("Імплант ")), route === "implantation");
+      assert.equal(rows.some((row) => row.startsWith("Імплантація All-on-4 (Корея) ")), route === "implantation");
+      assert.equal((plain(html).match(/Під ключ\./g) ?? []).length, 0);
       assert.ok(plain(html).includes(page.answer));
       assert.doesNotMatch(html, /class="doc-role"|#person-|Стасюк|Подолянский|Грисяк|Гамаза/);
       assert.ok(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."));
-      assert.doesNotMatch(plain(html.split('id="contact"')[0]), /безболіс|гарант|анестез|відновлен|симптом|протипоказ|триваліст|ускладнен|прижив|навантаж|кістков|етапи|All.on|3D|100%/i);
+      assert.doesNotMatch(plain(html.split('id="contact"')[0]), /безболіс|гарант|анестез|відновлен|симптом|протипоказ|триваліст|ускладнен|прижив|навантаж|кістков|етапи|3D|100%/i);
       const related = route === "implantation" ? ["protezirovanie/", "vydalennia-zuba/"] : ["implantatsiya/"];
       for (const path of related) assert.ok(html.includes(`href="${profile.base}${path}"`));
       for (const source of ["index.html", "price.html"]) assert.ok(read(target, source).includes(`href="${profile.base}${page.path}"`));
@@ -179,7 +179,9 @@ for (const target of ["preview", "production"]) {
     assert.equal((doctors.match(/class="doc-role"/g) ?? []).length, 4);
     for (const name of ["Стасюк Станіслав Ігорович", "Грисяк Лаура Віталіївна", "Подолянский Альберт Альбертович", "Гамаза Олена Анатоліївна"]) assert.ok(plain(doctors).includes(name));
     const contacts = plain(read(target, "kontakty/index.html"));
-    for (const fact of ["вул. Калинова, 28", "49000, м. Дніпро", "вхід з «червоної лінії»", "+380 67 985 40 50", "+380 50 912 44 52", "Пн–Пт 09:00–20:00", "Сб 09:00–18:00", "Нд зачинено", "dentix1@outlook.com", "@dentix_dp"]) assert.ok(contacts.includes(fact), fact);
+    assert.ok(!contacts.includes("dentix1@outlook.com"));
+    for (const number of ["380679854050", "380509124452"]) assert.ok(read(target, "kontakty/index.html").includes(`href="viber://chat?number=%2B${number}"`));
+    for (const fact of ["вул. Калинова, 28", "49000, м. Дніпро", "вхід з «червоної лінії»", "+380 67 985 40 50", "+380 50 912 44 52", "Пн–Пт 09:00–20:00", "Сб 09:00–18:00", "Нд зачинено", "Viber: +380 67 985 40 50", "Viber: +380 50 912 44 52", "@dentix_dp"]) assert.ok(contacts.includes(fact), fact);
   });
   test(`${target}: every initial internal link, fragment and asset resolves`, () => {
     for (const file of [...patientFiles, "404.html"]) {

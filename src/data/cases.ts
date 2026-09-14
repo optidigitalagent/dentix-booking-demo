@@ -1,8 +1,4 @@
-import clinical01 from "@/assets/dentix-content/cases/unclassified/clinical-01-web.webp";
 import clinical02 from "@/assets/dentix-content/cases/unclassified/clinical-02-web.webp";
-import clinical03 from "@/assets/dentix-content/cases/unclassified/clinical-03-web.webp";
-import clinical04 from "@/assets/dentix-content/cases/unclassified/clinical-04-web.webp";
-import clinical05 from "@/assets/dentix-content/cases/unclassified/clinical-05-web.webp";
 import clinical06 from "@/assets/dentix-content/cases/unclassified/clinical-06-web.webp";
 import clinical08 from "@/assets/dentix-content/cases/unclassified/clinical-08-web.webp";
 import clinical09 from "@/assets/dentix-content/cases/unclassified/clinical-09-web.webp";
@@ -16,23 +12,44 @@ export type ClinicalMedia = {
   alt: string;
 };
 
+// Preserve the originally published IDs and captions when removing gallery entries.
 export const clinicalMedia: ClinicalMedia[] = [
-  clinical01,
-  clinical02,
-  clinical03,
-  clinical04,
-  clinical05,
-  clinical06,
-  clinical08,
-  clinical09,
-  clinical10,
-  clinical11,
-  clinical12,
-].map((src, index) => ({
-  id: `clinical-material-${String(index + 1).padStart(2, "0")}`,
-  src,
-  alt: `Документальний клінічний матеріал DENTIX — зображення ${index + 1}`,
-}));
+  {
+    id: "clinical-material-02",
+    src: clinical02,
+    alt: "Документальний клінічний матеріал DENTIX — зображення 2",
+  },
+  {
+    id: "clinical-material-06",
+    src: clinical06,
+    alt: "Документальний клінічний матеріал DENTIX — зображення 6",
+  },
+  {
+    id: "clinical-material-07",
+    src: clinical08,
+    alt: "Документальний клінічний матеріал DENTIX — зображення 7",
+  },
+  {
+    id: "clinical-material-08",
+    src: clinical09,
+    alt: "Документальний клінічний матеріал DENTIX — зображення 8",
+  },
+  {
+    id: "clinical-material-09",
+    src: clinical10,
+    alt: "Документальний клінічний матеріал DENTIX — зображення 9",
+  },
+  {
+    id: "clinical-material-10",
+    src: clinical11,
+    alt: "Документальний клінічний матеріал DENTIX — зображення 10",
+  },
+  {
+    id: "clinical-material-11",
+    src: clinical12,
+    alt: "Документальний клінічний матеріал DENTIX — зображення 11",
+  },
+];
 
 export const casesPublicationState = {
   status: "PUBLISHED_WITHOUT_MEDICAL_CLAIMS",

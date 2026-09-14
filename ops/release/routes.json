@@ -98,7 +98,7 @@
       "artifact": "implantatsiya/index.html",
       "canonical": "https://dentix.ua/implantatsiya/",
       "title": "Імплантація зубів у Дніпрі — послуга та ціни DENTIX",
-      "description": "Імплантація зубів у DENTIX у Дніпрі: окрема позиція поточного прайсу, консультація й контакти. Протезування на імплантах наведене окремо.",
+      "description": "Імплантація у DENTIX у Дніпрі: імплант, цирконієва коронка на імпланті та All-on-4 (Корея). Поточний прайс, консультація й контакти.",
       "source_key": "src/page-metadata.ts:routeMetadata.implantation"
     },
     {
@@ -107,7 +107,7 @@
       "artifact": "protezirovanie/index.html",
       "canonical": "https://dentix.ua/protezirovanie/",
       "title": "Протезування зубів у Дніпрі — коронки та ціни DENTIX",
-      "description": "Протезування зубів у DENTIX у Дніпрі: металокерамічна й цирконієва коронки, мостоподібний протез і протезування на імплантах. Поточний прайс та контакти.",
+      "description": "Протезування зубів у DENTIX у Дніпрі: металокерамічна й цирконієва коронки та мостоподібний протез. Поточний прайс та контакти.",
       "source_key": "src/page-metadata.ts:routeMetadata.prosthetics"
     }
   ]

@@ -44,7 +44,7 @@ export function buildEntitySchema(route: PatientRoute, site: Clinic, doctors: Do
         { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: saturday[1], closes: saturday[2] },
         { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "00:00", closes: "00:00" },
       ],
-      ...(contactsVisible ? { email: site.email, sameAs: [site.instagramHref], hasMap: site.mapLink } : {}),
+      ...(contactsVisible ? { sameAs: [site.instagramHref], hasMap: site.mapLink } : {}),
       ...(teamVisible ? { employee: visibleDoctors.map((doctor) => reference(personId(doctor))), ...(founder ? { founder: reference(personId(founder)) } : {}) } : {}),
     },
   ];

@@ -7,9 +7,9 @@ export function ReviewsSection() {
     <section className="section reviews" id="reviews">
       <div className="wrap">
         <SectionHeading
-          kicker="Google Reviews"
+          kicker="Відгуки в Google"
           title="Відгуки пацієнтів"
-          lede="Короткі дослівні фрагменти реальних відгуків із картки DENTIX у Google."
+          lede="Уривки відгуків із Google у перекладі українською. Оригінали — за посиланнями."
         />
         <div className="reviews-grid">
           {googleReviews.map((review, index) => (
@@ -20,7 +20,7 @@ export function ReviewsSection() {
                   ★★★★★
                 </span>
               </div>
-              <blockquote lang="ru">«{review.excerpt}»</blockquote>
+              <blockquote lang="uk">«{review.excerpt}»</blockquote>
               <a href={review.sourceLink} target="_blank" rel="noreferrer">
                 Переглянути джерело в Google <span aria-hidden="true">→</span>
               </a>

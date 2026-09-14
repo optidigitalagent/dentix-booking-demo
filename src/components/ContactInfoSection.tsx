@@ -52,7 +52,7 @@ export function ContactInfoSection() {
                 <br />
                 <a href={site.viberHref}>{site.viber}</a>
                 <br />
-                <a href={site.emailHref}>{site.email}</a>
+                <a href={site.viberPrimaryHref}>{site.viberPrimary}</a>
               </p>
             </div>
           </Reveal>

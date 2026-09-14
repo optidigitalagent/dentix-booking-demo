@@ -9,8 +9,8 @@ export type PriceBlock = {
   link?: { label: string; href: string };
 };
 
-// Approved public price snapshot, 2026-09-07. Runtime Google Sheets content remains primary.
-// Operational booking modes, durations and doctor mappings live separately in CRM.
+// Client corrections, 2026-09-14. Runtime Google Sheets content remains primary.
+// Public prices do not determine appointment intervals.
 export const priceBlocks: PriceBlock[] = [
   {
     "id": "zagalni",
@@ -20,12 +20,11 @@ export const priceBlocks: PriceBlock[] = [
     "rows": [
       {
         "name": "Консультація стоматолога",
-        "cost": "500 грн"
+        "cost": "Безкоштовно"
       },
       {
         "name": "Прицільний рентген",
-        "cost": "Входить у вартість консультації",
-        "note": "Окремо не тарифікується."
+        "cost": "200 грн"
       }
     ]
   },
@@ -75,7 +74,7 @@ export const priceBlocks: PriceBlock[] = [
       },
       {
         "name": "Лікування каналів",
-        "cost": "від 2 000 грн"
+        "cost": "від 1 000 грн"
       },
       {
         "name": "Лікування під мікроскопом",
@@ -128,16 +127,33 @@ export const priceBlocks: PriceBlock[] = [
       {
         "name": "Складне видалення ретинованого зуба",
         "cost": "від 4 000 грн"
+      }
+    ]
+  },
+  {
+    "id": "implantatsiya",
+    "num": "07",
+    "kicker": "Імплантація",
+    "title": "Імплантація",
+    "rows": [
+      {
+        "name": "Імплант",
+        "cost": "9 000 грн"
       },
       {
-        "name": "Імплантація",
-        "cost": "від 16 000 грн"
+        "name": "Цирконієва коронка на імпланті",
+        "cost": "6 000 грн"
+      },
+      {
+        "name": "Імплантація All-on-4 (Корея)",
+        "cost": "90 000 грн",
+        "note": "У вартість входять імпланти та протезування на імплантах."
       }
     ]
   },
   {
     "id": "ortopediya",
-    "num": "07",
+    "num": "08",
     "kicker": "Ортопедична стоматологія",
     "title": "Коронки та протезування",
     "rows": [
@@ -153,11 +169,6 @@ export const priceBlocks: PriceBlock[] = [
         "name": "Мостоподібний протез",
         "cost": "від 6 000 грн",
         "note": "Фінальна вартість залежить від кількості зубів."
-      },
-      {
-        "name": "Протезування на імплантах",
-        "cost": "від 90 000 грн",
-        "note": "Під ключ."
       }
     ]
   }

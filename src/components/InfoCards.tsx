@@ -1,3 +1,4 @@
+import { siteHref } from "@/lib/site-href";
 import { site } from "@/data/site";
 import { Reveal } from "./Reveal";
 
@@ -14,7 +15,7 @@ export function InfoCards() {
       <h2 className="sr-only" id="clinic-info-heading">Інформація для відвідувачів</h2>
       <div className="wrap trust-grid">
         {site.infoCards.map((card, i) => (
-          <Reveal key={card.title} className="trust-item" delay={i * 70}>
+          <Reveal as="a" href={siteHref(card.href)} key={card.title} className="trust-item" delay={i * 70}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               {icons[i % icons.length]}
             </svg>
