@@ -2,7 +2,7 @@
   "schema_version": 1,
   "site_id": "DENTIX",
   "repository": "optidigitalagent/dentix-booking-demo",
-  "verified_at": "2026-09-28T11:39:09.705882+00:00",
+  "verified_at": "2026-09-28T18:17:23.553890+00:00",
   "base_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
   "branch": "seo/dentix-pr06-mirohost-staging",
   "latest_preview_workflow": {
@@ -17,9 +17,9 @@
     "dns_changes": false
   },
   "account_access": {
-    "domain_panel": "NOT_VERIFIED_CURRENT_SESSION",
-    "hosting_panel": "NOT_VERIFIED_CURRENT_SESSION",
-    "ftp": "ONE_FTPS_READ_ONLY_ATTEMPT_BLOCKED_NO_RETRY",
+    "domain_panel": "NOT_ACCESSED",
+    "hosting_panel": "LOGIN_NOT_CONFIRMED_SINGLE_ISOLATED_PLAYWRIGHT_ATTEMPT",
+    "ftp": "ONE_CURRENT_SERVER_FTPS_ATTEMPT_BLOCKED_NO_FILES",
     "database": "NOT_ATTEMPTED"
   },
   "dns": {
@@ -42,18 +42,18 @@
     "logs_rollback": "UNVERIFIED"
   },
   "backup": {
-    "receipt": "NOT_PRODUCED_ACCOUNT_ACCESS_BLOCKED",
-    "encryption": "NOT_APPLICABLE_NO_PRIVATE_BACKUP_CREATED",
+    "receipt": "PRIVATE_BLOCKER_RECEIPT_ONLY_NO_FILES",
+    "encryption": "FILEVAULT_ON_NO_FILES",
     "cutover_blocker": true
   },
   "staging": {
-    "type": "LOCAL_APACHE_SIMULATION",
-    "remote_status": "ACCESS_BLOCKED_PENDING_ISOLATED_DOCUMENT_ROOT_PROOF",
+    "type": "LOCAL_APACHE_SIMULATION_ONLY",
+    "remote_status": "NOT_CREATED_PANEL_LOGIN_AND_ISOLATION_BLOCKED",
     "auth": "PASS_LOCAL_ONLY",
     "header_noindex": "PASS_LOCAL_ONLY",
     "meta_noindex": "PASS_LOCAL_ONLY",
     "robots_disallow": "PASS_LOCAL_ONLY",
-    "candidate_overlay": "PASS_SYNTHETIC_ZIP; CURRENT_RELEASE_ZIP_OVERLAY_PENDING_FINAL_COMMIT"
+    "candidate_overlay": "PASS_SYNTHETIC_ZIP; EXACT_FINAL_CANDIDATE_OVERLAY_EXTERNAL_POST_COMMIT_RECEIPT"
   },
   "migration": {
     "total_rows": 64,
@@ -108,6 +108,18 @@
   "candidate": {
     "production_content_sha256": "9216df1905903185b2305cedba6447f718e793f08c19fa81192b67d68c6de2d3",
     "build": "SANITIZED_DETERMINISTIC_TWO_RUNS",
-    "zip": "PENDING_FINAL_COMMIT"
+    "zip": "FINAL_SOURCE_SHA_AND_ARCHIVE_HASH_IN_EXTERNAL_POST_COMMIT_RECEIPT"
+  },
+  "automation": {
+    "runner": "ADDED_FAIL_CLOSED_PANEL_AND_STAGING_GATES",
+    "separate_browser_profile": "USED_TEMPORARY_PLAYWRIGHT_CHROMIUM",
+    "panel_login": "NOT_CONFIRMED_SINGLE_ATTEMPT",
+    "two_factor": "NOT_OBSERVED",
+    "ftp_allowlist": "UNCHANGED_NOT_VERIFIED",
+    "ftp_allowlist_cleanup": "NOT_APPLICABLE_NO_ENTRY_ADDED",
+    "remote_staging_qa": "NOT_RUN",
+    "current_browser_qa": "PASS_8_LOCAL_SUITES_PLUS_1_READ_ONLY_LIVE_PREVIEW; FIXTURE_POSTS_INTERCEPTED; PREVIEW_RESTORED",
+    "operator_suite": "PASS_163_OF_163_IN_TEMPORARY_GIT_SNAPSHOT",
+    "local_suite": "PASS_25_UNIT_34_ARTIFACT_13_RELEASE_2_APACHE"
   }
 }

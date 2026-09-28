@@ -1,3 +1,11 @@
+# DENTIX PR06 automated routine continuation — 2026-09-28T18:17:23.553890+00:00
+
+Existing Draft PR #9 and branch `seo/dentix-pr06-mirohost-staging` reconciled at initial head `b64a30c36e6b6c2f5be7af5e2e6cd178ab33e134`. The package checksum, operator 0.2.1 immutable 213-file identity, ten skills, 163/163 operator tests, 25 unit tests, 34 artifact tests, 13 release tests, two local Apache adapter tests, eight local browser suites and one read-only live-preview suite passed. Fixture POST requests were intercepted; preview was restored after fixture QA. A separate temporary Playwright Chromium profile reached the Mirohost login form, but the single supplied control-panel credential attempt did not establish an authenticated session. No 2FA prompt was observed. One controlled explicit-FTPS attempt to the current server was blocked before any backup transfer. The panel allowlist was not changed; no temporary entry exists to remove. FileVault is on; no backup files were obtained.
+
+The DENTIX-only reusable automation runner is fail closed for panel mutations and staging until exact live controls and a separate document root are verified. Remote staging, Basic Auth, noindex and HTTP QA remain **NOT_RUN**. The 64-row local replay is separate from remote capability; all 49 HOLD rows remain unresolved and none is counted as preserved. WordPress production is **NOT_LAUNCHED** for this React release. No production root, DNS, forms, integration, sitemap or index request changed. Credential rotation remains P0 before any future cutover. `outcome_report.claims=[]`.
+
+---
+
 # DENTIX PR06 staging handoff — 2026-09-28
 
 Current base `9fddc64020fcdcf0e01020be838be72c75b1d4a8`; no open PR at entry; successful preview workflow `34840817204` at that SHA. Client correction `37def83` and review snapshot `9fddc64` are included. Branch `seo/dentix-pr06-mirohost-staging` is isolated from current main. Old WordPress remains live at `dentix.ua`; React production is `NOT_LAUNCHED`.

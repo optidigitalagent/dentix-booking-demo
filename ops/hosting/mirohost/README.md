@@ -20,3 +20,7 @@ The selected strategy is **pending live access and 49-row replay**. Until then, 
 ## Rollback template
 
 Before any future cutover, keep a versioned copy of the old document root, database and pre-cutover routing in owner-controlled encrypted storage. Record their hashes and restore procedure privately. A future authorized rollback restores the previous vhost/document-root mapping and exact old `.htaccess`, then verifies the twelve main paths, representative HOLD paths, robots/sitemap, mail and WordPress admin by GET/HEAD. PR-06 does not perform a restore or modify production.
+
+## Automated routine status — 2026-09-28T18:17:23.553890+00:00
+
+`automation/runner.py` provides a private, separate-profile entrypoint and sanitized receipts. Its single panel login attempt did not establish a session; the controlled FTPS attempt transferred no files. Exact live panel controls, isolated staging root and remote `.htaccess` behavior remain unverified. No FTP allowlist entry or staging site was created. Local 64-row replay cannot close the 49 HOLD rows.
