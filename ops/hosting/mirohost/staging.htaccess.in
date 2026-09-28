@@ -1,0 +1,19 @@
+# Install only inside a panel-proven isolated staging document root.
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+AuthType Basic
+AuthName "DENTIX private staging"
+AuthUserFile "@AUTH_USER_FILE@"
+Require valid-user
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Cache-Control "private, no-store"
+  Header always set X-Dentix-Release "@SOURCE_SHA@"
+</IfModule>
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id|attachment_id|feed|s|cat|author|rest_route)= [NC]
+RewriteRule ^ - [R=503,L]
+@HOLD_RULES@
+@SLASH_RULES@

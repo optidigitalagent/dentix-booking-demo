@@ -1,6 +1,6 @@
 # DENTIX PR05 local production candidate
 
-These controls prepare Draft PR review. Hosting is `DECISION_PENDING_ACCESS`; React production is `NOT_LAUNCHED`. The archive does not deploy itself and contains no host adapter. Production cutover remains blocked by hosting access, HOLD preservation, qualified review, backups, configuration and measurement readiness.
+These controls prepare Draft PR review. Hosting is `DECISION_PENDING_ACCESS_OR_CAPABILITY`; React production is `NOT_LAUNCHED`. The archive does not deploy itself; the local-only Mirohost adapter is under `ops/hosting/mirohost/` and has not been tested on the account. Production cutover remains blocked by live hosting access, HOLD preservation, backups, configuration and measurement readiness. Existing current facts/services are owner-approved; new medical claims require separate qualified review.
 
 Requires Node 22.18+, Python 3.9+ and existing npm lockfile. No dependencies added. Run from the repository root:
 

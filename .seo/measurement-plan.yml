@@ -39,7 +39,7 @@
     "channels": {
       "technical": {
         "status": "UNKNOWN",
-        "reason": "PR04A/B/C merged to noindex preview only. PR #7 final head d4bc9bd20b1731b116d9d43ddf1c9447faffb884; merge/main 6465964edb7ae549f5abac9194fad9bbd18f2d9d; successful workflow 34759609171 / Pages deployment 6422001426 at same SHA; twelve live preview patient routes verified. PR05 local production-readiness controls and exact two requestedInterest seeds implemented; final validation/Draft publication receipts outside repository. No new service routes or medical copy. Hosting DECISION_PENDING_ACCESS; 64 migration rows unchanged, 49 HOLD preservation UNRESOLVED_CUTOVER_BLOCKER; KEEP 404 probe explicitly preserved. Review packet generated; professional review UNKNOWN / NOT_COMPLETED; no approved fallback surgeon/implantologist/orthopedist. WordPress remains production; React NOT_LAUNCHED. Candidate endpoints unset; booking disabled. GSC/GBP/GA4/GTM/Bing/CRM ACCESS_BLOCKED; call tracking UNKNOWN; T0 NOT_READY. Backups, host adapter, qualified sign-off and cutover authorization pending. outcome_report.claims=[]. Ready/merge/deploy/publish/accounts/indexing/release closure unauthorized.",
+        "reason": "PR06 base 9fddc640 includes client media/contact/price corrections. Local production artifact and Apache safety adapter are under test; old WordPress remains production. Current public DNS A/NS and nginx WordPress response observed, but no live account zone export, remote Mirohost staging, backup or production cutover. 49 HOLD rows unresolved. GSC/GBP/GA4/GTM/Bing/CRM unchanged. No technical or business outcome claim; outcome_report.claims=[].",
         "evidence_ids": []
       },
       "google_indexation": {

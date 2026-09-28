@@ -97,7 +97,7 @@
     {
       "id": "pre_cutover-08",
       "phase": "pre_cutover",
-      "action": "Qualified review sign-offs for all pages",
+      "action": "Owner approval of current facts/services recorded; qualified review required only for any newly introduced medical claims",
       "status": "NOT_EXECUTED",
       "owner_role": "DENTIX release owner coordinates clinical/hosting/DNS/measurement owners",
       "named_owner": null,

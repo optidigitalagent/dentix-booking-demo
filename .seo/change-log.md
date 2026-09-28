@@ -1,4 +1,7 @@
 # DENTIX change log
+2026-09-28 — PR-06 local staging safety work on `seo/dentix-pr06-mirohost-staging`, based on `9fddc64020fcdcf0e01020be838be72c75b1d4a8`.
+Before: PR-05 release candidate was stale after client media/contact/price corrections; no Mirohost adapter or current account proof. Change: rebuilt current preview/production; added Apache host/staging templates, exact contract-derived HOLD/sitemap/slash rules, local noindex/auth overlay, rotation plan and HTTP replay tests. Current public DNS/WordPress state rechecked; no live zone export, host panel proof, backup or remote staging. Owner-approved existing content recorded; no new medical claims. Production remains `NOT_LAUNCHED`, host `DECISION_PENDING_ACCESS_OR_CAPABILITY`, 49 HOLD unresolved, `outcome_report.claims=[]`. No production, DNS, forms, indexing or external-account mutations.
+
 2026-09-08T11:33:58Z — PR-00, optidigitalagent/dentix-booking-demo, branch seo/dentix-pr00-bootstrap-t0 at f8431478b995031131fcdf4c12d89afdb6743067.
 Before: no canonical .seo or legacy seo; clean checkout, stale local main and README.
 Change: initialized 53 controls from pinned operator 0.2.1 and populated DENTIX scope, facts/claims, 19 query seeds, T0, risks, migration lock, data gaps and ordered backlog.

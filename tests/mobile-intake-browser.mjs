@@ -13,6 +13,9 @@ for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([na
   for (const [width,height] of sizes) {
    const page = await browser.newPage({viewport:{width,height}});
    const errors = []; page.on('pageerror', e => errors.push(e.message));
+   // Form fixture QA does not exercise the founder video; avoid an open media
+   // range request keeping Playwright's networkidle wait pending.
+   await page.route('**/*.mp4', route => route.abort());
    let available = true, leadResult = 422, bookingResult = 409; const sent = [];
    await page.route('**/api/public/**', async route => {
     const req = route.request(), url = new URL(req.url()); let data;
