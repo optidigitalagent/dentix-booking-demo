@@ -8,19 +8,20 @@ Status: **candidate only**. The live WordPress root, DNS, analytics, integration
 - `hold-decisions.json` records each former HOLD path, current public fingerprint, completed 28-day request aggregate, replacement decision and rollback rule. The 90-day log window is unavailable; GSC remains `ACCESS_BLOCKED`, backlink index `UNKNOWN`.
 - `preservation-manifest.json` is a sanitized file and hash contract. The actual public legacy bytes and private receipt live in the external preservation ZIP, never Git.
 - `query-aliases.json` defines 58 known WordPress selector cases. Unknown functional selectors return 410; they never reach the React homepage.
-- The rendered production adapter is an **external artifact**. The five WordPress sitemap redirects remain gated until the new sitemap is live and independently validated. The only intended host is HTTPS apex; unrelated paths return a real 404.
+- The rendered production adapter is an **external artifact**. The five WordPress sitemap redirects remain gated until the new sitemap is live and independently validated. The only intended host is HTTPS apex; unrelated paths return a real 404. The corrected private staging replacement has a 0755 root/directories, 0644 public files and zero world-writable paths; the disabled unsafe old root is outside the active document root.
+- Three consent-sensitive direct paths are excluded from the candidate and return exact 410. Their exclusion does not block this candidate; any later republication requires a separate documented consent decision.
 - React launch mode stays phone first. Booking is disabled and lead/booking/content endpoints remain empty. No real form or appointment test is authorized.
 
 ## Pre-cutover GO checklist (separate future authorization)
 
 1. Name the launch, hosting, clinical and rollback owners, freeze source, confirm exact source SHA, production artifact, preservation ZIP, 99-row contract, query manifest and external SHA-256 receipts. Reject any mismatch.
-2. Verify the encrypted WordPress files/SQL backups, backup age, complete DNS zone and old root routing. Rehearse old-origin restoration in isolation and record actual recovery time. Preserve original WordPress root and database before switching any document root.
-3. Review public legacy media provenance. A newly identified patient/consent conflict is a NO-GO until the owner supplies a documented resolution; do not add patient imagery from the backup merely because it is technically public.
+2. Reconfirm the verified private WordPress files/SQL backup receipts, backup age, complete DNS zone and old root routing. Rehearse old-origin restoration in isolation and record actual recovery time; this rehearsal remains a P0 cutover gate. Preserve original WordPress root and database before switching any document root.
+3. Keep the three excluded consent-sensitive direct objects at exact 410. A newly identified consent conflict in any included object is a NO-GO until the owner supplies a documented resolution; do not add patient imagery from the backup merely because it is technically public.
 4. Rotate exposed hosting/FTP/database credentials under a separately authorized owner procedure. This remains P0 and is not executed by PR-07.
-5. Rebuild exact release from the reviewed commit. Verify 12 patient routes, preservation manifest bytes, query aliases, HTTPS/www behavior, Range, no open proxy, no loops, custom 404, exact 410 and rollback in isolated staging. Staging must retain Basic Auth, X-Robots-Tag noindex and robots disallow.
+5. Rebuild the exact release from merged main under separate authorization. The accepted PR-07 private staging replay passed 12 patient routes, 99 rows, 58 aliases, 139 hashes and 70 Range checks; the future rebuilt release must repeat the required checks, including HTTPS/www behavior, no open proxy, no loops, custom 404, exact 410 and rollback. Staging must retain Basic Auth, X-Robots-Tag noindex and robots disallow.
 6. Decide whether any real lead endpoint is approved and tested. Otherwise retain phone-first, disabled booking and no form delivery. Do not invent an endpoint.
 7. Validate production sitemap contents and canonical routes before enabling five legacy sitemap 301s. Do not submit sitemap or request indexing without separate authorization.
-8. Record a concrete production GO with exact mutation window, owners and rollback trigger. PR-07 Draft status and tests alone do not grant GO.
+8. Record a concrete production GO with exact mutation window, owners and rollback trigger. PR-07 review, merge and preview tests do not grant GO.
 
 ## Cutover (not authorized by PR-07)
 

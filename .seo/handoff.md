@@ -1,6 +1,12 @@
-# DENTIX PR-07 working handoff — 2026-09-29
+# DENTIX PR-07 final review handoff — 2026-09-29T11:01:03Z
 
-Merged PR #9 is reconciled at c75d494945ba8868840f30bd82a12e78cc1bee14; current branch is seo/dentix-pr07-hold-resolution. Private WordPress backup integrity passed. Complete 28-day Mirohost log aggregates cover all 49 former HOLD paths; 90 days are unavailable. Four HTML, seven RSS/XML and 38 media paths have exact static decisions and an external 49-file bundle; no preservation bytes or raw logs are in Git. An extra attachment outside those 49 paths has a patient-consent decision pending and is excluded from the bundle. The existing isolated Basic-Auth/noindex staging passed the PR07 contract replay: 12 patient routes and all 64 migration rows GET/HEAD, 58 known aliases GET/HEAD, 107 remote hashes and 38 media Range checks; no generic homepage fallback, open proxy or loop. The replay used a precommit artifact with the same site bytes; an exact-head package/replay receipt is required after commit. Production WordPress, DNS, external accounts and indexing remain unchanged. Commit/push and Draft PR remain pending. `outcome_report.claims=[]`.
+PR #10 remains OPEN/Draft at reviewed functional head `d01483914652c5d3977b60f8d96b763d4b686b8a` on `seo/dentix-pr07-hold-resolution`, base `main` `c75d494945ba8868840f30bd82a12e78cc1bee14`; 35 changed files and `NO_SERVER_CI`. The bounded operational reconciliation commit/push and fresh exact-final-head suite follow this record snapshot. Production remains old WordPress; GitHub Pages is a separate noindex preview.
+
+The final executable migration contract has **99 rows, zero HOLD, 58 exact known aliases** and 35 added direct paths. Three consent-sensitive direct paths return exact 410 and are excluded; later republication requires consent. Four legacy HTML, seven XML/RSS and 70 media objects have explicit path-scoped noindex policy. The corrected preservation bundle is 7,138,014 bytes / SHA-256 `6357fc35ba4131fc070a2e5f13376fd120c1adf21bcc181dc814065389bf3def`; the unexecuted GO candidate is 29,122,997 bytes / SHA-256 `928ca2322e33d6f420694abc9b72a8d72ee410ccdc317c089318d5bf499ab44b`.
+
+Exact-head private staging replay passed 12 patient routes, 99 rows, 58 aliases, 139 file hashes and 70 media Range checks. Replacement root/directories are 0755, files 0644 and zero active paths are world-writable; unsafe old root is disabled outside the active document root. No homepage fallback, open proxy, loop or real submission. No production, DNS, sitemap, indexing or external-account action occurred.
+
+Credential rotation, rollback rehearsal, lead-delivery decision and numeric T0 remain future cutover gates, along with a merged-main rebuild and separate GO. `outcome_report.claims=[]`; no rankings, AI visibility, leads or revenue are claimed.
 
 ---
 

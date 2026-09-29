@@ -6,7 +6,7 @@
       "description": "P0: Same-domain replacement previously described as cross-domain/no",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "PR-07 final 64-row contract resolves 49 former HOLD paths through exact external static preservation; 28-day access aggregate and public/backup hash evidence. Private staging replay passed; production cutover still requires separately authorized GO and rollback rehearsal.",
+      "mitigation": "PR-07 final 99-row contract resolves 49 former HOLD paths and 35 additional direct paths; 28-day aggregate and public/backup hash evidence. Exact-head private staging replay passed 12/99/58/139/70 with safe permissions. Production cutover still requires credential rotation, rollback rehearsal and separate GO.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
       "status": "migration_contract_resolved_production_not_launched"
     },
@@ -46,9 +46,9 @@
       "description": "P0: Old service URLs may be lost or return 404",
       "likelihood": "risk",
       "impact": "high",
-      "mitigation": "Preserve home + 3 legacy service URLs; map all observed controls/feeds/media. Prosthetics must exist before cutover even though outside growth priorities. GSC/log/backlink orphans unknown.",
+      "mitigation": "PR-07 contract preserves/rebuilds exact known routes and objects: 99 final rows, zero HOLD and 58 aliases; GSC/backlink orphans remain UNKNOWN. Rebuild from merged main and verify all paths at future cutover.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "mapped_pending_owner_and_host_decisions"
+      "status": "KNOWN_PATHS_RESOLVED_ORPHANS_UNKNOWN_PRODUCTION_NOT_LAUNCHED"
     },
     {
       "id": "R-006",
@@ -166,9 +166,9 @@
       "description": "P0: redirect/410 capability and target production host unapproved",
       "likelihood": "confirmed gap",
       "impact": "high",
-      "mitigation": "Resolve hosting-decisions.md; demonstrate all map statuses on staging; no Pages-only assumption.",
+      "mitigation": "Current Mirohost origin is the observed production candidate. Exact-head isolated Basic-Auth/noindex staging verified 12/99/58/139/70 and safe replacement permissions. Production adapter unexecuted; rollback rehearsal, credential rotation and separate GO remain gates.",
       "owner": "DENTIX owner / assigned implementer; named owner pending",
-      "status": "open"
+      "status": "STAGING_CAPABILITY_VERIFIED_PRODUCTION_GO_PENDING"
     },
     {
       "id": "R-018",
@@ -196,9 +196,9 @@
       "description": "P0: media, comments/feeds and default-looking post require provenance/disposition",
       "likelihood": "confirmed gap",
       "impact": "high",
-      "mitigation": "Hold 49 rows; private owner review without patient records in repo; preserve or approve exact retirement.",
+      "mitigation": "PR-07 resolved all 49 former HOLD rows with exact dispositions; 99 final rows, zero HOLD and 58 aliases. Three consent-sensitive direct paths are exact 410 and excluded. GSC orphan coverage remains unavailable; future republication requires consent.",
       "owner": "DENTIX owner / assigned implementer; named owner pending",
-      "status": "open"
+      "status": "MIGRATION_RESOLVED_GSC_ORPHANS_UNKNOWN_PRODUCTION_NOT_LAUNCHED"
     },
     {
       "id": "R-021",
@@ -236,9 +236,9 @@
       "description": "No approved implantologist/orthopedist and qualified reviewer UNKNOWN / NOT_COMPLETED; implantation and prosthetics-on-implants must remain separate; turnkey inclusions unknown.",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "Bounded current labels and organizational copy only. Exact managed role with visible/Schema parity; reject ортодонт; phone fallback. One shared price source; Під ключ. only beside source row. No brands/systems/material claims beyond exact approved crown labels, stages/healing/timelines/eligibility/anaesthesia/cases/guarantees/inferred credentials or medicalSpecialty. PROFESSIONAL_REVIEW_REQUIRED_BEFORE_PRODUCTION.",
+      "mitigation": "Bounded existing owner-approved labels and organizational copy remain accepted without a new signature. Exact managed role with visible/Schema parity; reject ортодонт; phone fallback. One shared price source; Під ключ. only beside source row. New clinical explanations, outcomes or practitioner claims require qualified review. No unapproved brands, stages, timelines, guarantees or credentials.",
       "owner": "DENTIX owner; qualified reviewer UNKNOWN",
-      "status": "LOCAL_DRAFT_ALLOWED_PRODUCTION_REVIEW_REQUIRED"
+      "status": "CURRENT_COPY_OWNER_APPROVED_NEW_CLAIMS_GATED"
     },
     {
       "id": "R-PR05-HOST-HOLD",
@@ -246,17 +246,17 @@
       "description": "Historical PR05 host and HOLD gate; PR07 resolves URL policy and remote staging replay while cutover approval remains open",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "PR07 records 64 final rows and 58 query aliases with exact private preservation. Full private staging replay passed; require exact-head receipt, rollback rehearsal and separate production GO before any live mutation.",
+      "mitigation": "PR07 records 99 final rows, zero HOLD and 58 query aliases. Exact-head private staging replay passed 12 routes, 99 rows, 58 aliases, 139 hashes and 70 Range checks with safe permissions. Require credential rotation, rollback rehearsal, merged-main rebuild and separate production GO before live mutation.",
       "owner": "DENTIX hosting/DNS owner; named owner UNKNOWN",
       "status": "PR07_STAGING_REPLAY_PASSED_CUTOVER_BLOCKED"
     },
     {
       "id": "R-PR05-REVIEW-T0",
       "area": "production review and measurement",
-      "description": "Professional sign-off and numeric T0 unavailable; backup/rollback access not proven",
+      "description": "Numeric T0, rollback rehearsal and lead delivery remain unresolved; verified backups exist",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "Exact review packet and safe access/28-90-day T0 request package prepared, not sent; checklists have owner/evidence slots and no executed steps.",
+      "mitigation": "Verified private backups and isolated staging exist. Rollback rehearsal, credential rotation, lead-delivery decision, numeric T0 and separate production GO remain pending. Existing owner-approved copy needs no new professional review; new medical claims require qualified review.",
       "owner": "DENTIX owner; qualified reviewer UNKNOWN",
       "status": "CUTOVER_AND_MEASUREMENT_NOT_READY"
     },
@@ -266,7 +266,7 @@
       "description": "A discovered attachment outside the 49 HOLD paths depicts a person during care; republishing requires documented provenance/consent decision.",
       "likelihood": "observed_attachment",
       "impact": "high",
-      "mitigation": "Exclude three identifiable-person originals, including the patient-during-care image, from every PR-07 deployable package; their known attachment query aliases and exact direct file paths return 410. Do not infer consent from old public URLs. Owner can review any later republication separately.",
+      "mitigation": "Three consent-sensitive direct paths return exact 410 and are excluded from deployable bytes. Exclusion does not block the present candidate; any later republication requires documented provenance/consent. Do not infer consent from old public URLs.",
       "owner": "DENTIX owner",
       "status": "EXCLUDED_FROM_CANDIDATE"
     }

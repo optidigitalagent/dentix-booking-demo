@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "site_id": "DENTIX",
-  "observed_at": "2026-09-29T07:52:18+00:00",
-  "decision": "CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED",
+  "observed_at": "2026-09-29T11:01:03Z",
+  "decision": "CURRENT_ORIGIN_CANDIDATE_EXACT_HEAD_STAGING_REPLAY_PASSED_PRODUCTION_NOT_LAUNCHED",
   "recommended_candidate": "current_origin_mirohost_for_separate_go_review",
   "cutover_authorized": false,
   "public_evidence": {
@@ -18,7 +18,7 @@
     "apache": "PRIVATE_STAGING_HTACCESS_BEHAVIOR_VERIFIED; PRODUCTION_ADAPTER_NOT_ACTIVATED",
     "tls": "Lets Encrypt YR2; SAN dentix.ua + www.dentix.ua; expires 2026-10-13T23:07:05Z",
     "historical_ip_conflict": "PUBLIC_CURRENT_A_DIFFERS_FROM_HISTORICAL_DOCUMENT; LIVE_ZONE_EXPORT_PENDING; NO_DNS_CHANGE",
-    "panel_access": "READ_ONLY_VERIFIED_FOR_DENTIX; PRIVATE_STAGING_VERIFIED_PR07_64_ROW_REPLAY; PRODUCTION_UNTOUCHED"
+    "panel_access": "READ_ONLY_DENTIX_PANEL_VERIFIED; PRIVATE_STAGING_PR07_99_ROWS_58_ALIASES_139_HASHES_70_RANGE_PASS; PRODUCTION_UNTOUCHED"
   },
   "scoring": {
     "2": "Observed public behavior, not account access",
@@ -35,7 +35,7 @@
         "real_custom_404": 1,
         "exact_301": 1,
         "exact_410": 1,
-        "hold_preservation_proxy": 1,
+        "hold_preservation_proxy": 2,
         "https_www_normalization": 2,
         "headers_bot_policy": 1,
         "deploy_sha_observability": 0,
@@ -44,9 +44,9 @@
         "logs": 0,
         "cost_operational_access": 0
       },
-      "score": 10,
+      "score": 11,
       "status": "CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED",
-      "evidence": "PR07 private Basic-Auth/noindex staging passed all 64 migration rows GET/HEAD, 58 alias rows GET/HEAD, 107 file hashes and 38 media Range checks. Exact-head package/replay receipt follows commit; production root remains untouched.",
+      "evidence": "Exact-head private Basic-Auth/noindex staging passed 12 patient routes, 99 migration rows GET/HEAD, 58 alias rows GET/HEAD, 139 file hashes and 70 media Range checks; zero HOLD. Corrected active root/directories 0755, ordinary files 0644, zero world-writable paths; unsafe old root disabled outside active document root. Production root untouched.",
       "sources": [
         "https://nginx.org/en/docs/http/ngx_http_rewrite_module.html",
         "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
@@ -116,10 +116,10 @@
   "other_target": "NOT_EVIDENCED; Railway URL is booking backend, not proof of a patient-site hosting target",
   "minimum_evidence": [
     "Named DNS/hosting owner and redacted account/domain association; no passwords or tokens",
-    "Current origin: read-only vhost/static upload/configuration permissions, backup/restore and logs proof; staging replay of all 64 rows",
+    "Current origin: read-only vhost/static upload/configuration permissions, backup/restore and logs proof; accepted staging replay of all 99 rows",
     "Legacy origin reachable independently of public dentix.ua DNS, tested Host/SNI, redirect-loop and dependency preservation; or complete signed static inventory",
     "Alternative Cloudflare: owner-approved zone/plan/access, dedicated routing adapter and rollback proof; preserve MX/TXT/CAA",
     "Named operating and billing owner, restore rehearsal <=15 minutes target, planned change window and separate cutover authorization"
   ],
-  "decision_rule": "Current Mirohost is the only observed host candidate and passed isolated PR07 replay. Production selection still requires exact-head receipt, rollback rehearsal and separate owner cutover approval; this record does not authorize deployment."
+  "decision_rule": "Current Mirohost is the observed production candidate with exact-head private staging replay and safe replacement permissions. Zero HOLD remains. Production selection still requires merged-main rebuild, credential rotation, rollback rehearsal, lead-delivery decision, T0 readiness and separately authorized GO; no deployment is authorized by this record."
 }
