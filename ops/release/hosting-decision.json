@@ -2,7 +2,7 @@
   "schema_version": 1,
   "site_id": "DENTIX",
   "observed_at": "2026-09-29T11:01:03Z",
-  "decision": "CURRENT_ORIGIN_CANDIDATE_EXACT_HEAD_STAGING_REPLAY_PASSED_PRODUCTION_NOT_LAUNCHED",
+  "decision": "CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED",
   "recommended_candidate": "current_origin_mirohost_for_separate_go_review",
   "cutover_authorized": false,
   "public_evidence": {
