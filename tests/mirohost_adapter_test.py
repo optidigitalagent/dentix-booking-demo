@@ -220,6 +220,8 @@ class MirohostAdapterTest(unittest.TestCase):
                         self.assertIn(b'noindex,nofollow,noarchive', body)
                     self.assertEqual(request(server.port, '/robots.txt', method, auth='reviewer:' + secret)[0], 200)
                     self.assertEqual(request(server.port, '/?p=1', method, auth='reviewer:' + secret)[0], 503)
+                    self.assertEqual(request(server.port, '/sayt-nahoditsya-na-tehnicheskom-obsluzh/', method,
+                                             auth='reviewer:' + secret)[0], 410)
 
 
 if __name__ == '__main__':

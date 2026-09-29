@@ -16,4 +16,5 @@ RewriteEngine On
 RewriteCond %{QUERY_STRING} (^|&)(p|page_id|attachment_id|feed|s|cat|author|rest_route)= [NC]
 RewriteRule ^ - [R=503,L]
 @HOLD_RULES@
+RewriteRule ^sayt-nahoditsya-na-tehnicheskom-obsluzh/$ - [G,L]
 @SLASH_RULES@

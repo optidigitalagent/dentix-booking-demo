@@ -39,7 +39,7 @@
     "channels": {
       "technical": {
         "status": "UNKNOWN",
-        "reason": "PR06 local candidate and 64-row Apache replay passed. The separate temporary Playwright Mirohost login did not establish an authenticated session; one current-server FTPS attempt transferred no backups. No isolated remote staging root or remote QA was established. Old WordPress remains production; 49 HOLD rows unresolved. No technical or business outcome claim; outcome_report.claims=[].",
+        "reason": "PR06 candidate and 64-row local Apache replay passed. Authenticated isolated Mirohost staging passed remote Basic Auth, noindex, 12 routes, 404, exact 301/410, media Range and file-hash checks; three private backups passed integrity checks. Old WordPress remains production; 49 HOLD rows are unresolved. Staging checks do not establish a production technical or business outcome; outcome_report.claims=[].",
         "evidence_ids": []
       },
       "google_indexation": {

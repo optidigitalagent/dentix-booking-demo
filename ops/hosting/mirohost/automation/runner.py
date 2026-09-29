@@ -15,11 +15,13 @@ import json
 import os
 import re
 import shutil
+import signal
 import ssl
 import subprocess
 import sys
 import tempfile
 import urllib.request
+import time
 from datetime import datetime, timezone
 from ftplib import FTP_TLS
 from pathlib import Path
@@ -36,12 +38,18 @@ BACKUP_NAMES = (
     "backup-2026-09-28-00-49-25-UTC-mysql-dump-newdentix.sql.gz",
 )
 PHASES = (
+    "manual-login-start", "manual-login-status", "manual-login-clear",
+    "resume-after-login",
     "panel-audit", "ensure-ftp-ip", "download-backups", "create-staging",
     "upload-candidate", "verify-staging", "cleanup-temporary-access", "all",
 )
 PRIVATE = Path.home() / "Downloads" / "DENTIX_PRIVATE_ACCESS"
 BACKUPS = Path.home() / "Downloads" / "DENTIX_PRIVATE_BACKUPS"
 REPO = Path(__file__).resolve().parents[4]
+LOGIN_ROOT = Path.home() / "Library" / "Application Support" / "DENTIX" / "MirohostPR06"
+LOGIN_STATUS = LOGIN_ROOT / "status.json"
+LOGIN_MARKER = LOGIN_ROOT / "authenticated.json"
+LOGIN_STORAGE = LOGIN_ROOT / "storage-state.json"
 
 
 class Blocked(Exception):
@@ -107,20 +115,132 @@ def receipt(state: Path, phase: str, details: dict) -> Path:
     return path
 
 
+def login_dir(create: bool = False) -> Path:
+    if create:
+        LOGIN_ROOT.mkdir(mode=0o700, parents=True, exist_ok=True)
+        os.chmod(LOGIN_ROOT, 0o700)
+    if (not LOGIN_ROOT.is_dir() or LOGIN_ROOT.is_symlink()
+            or LOGIN_ROOT.stat().st_mode & 0o077):
+        raise Blocked("PRIVATE_LOGIN_DIRECTORY_UNSAFE")
+    return LOGIN_ROOT
+
+
+def login_status() -> dict:
+    if not LOGIN_STATUS.exists():
+        return {"status": "NOT_STARTED"}
+    login_dir()
+    if LOGIN_STATUS.is_symlink() or LOGIN_STATUS.stat().st_mode & 0o077:
+        raise Blocked("PRIVATE_LOGIN_STATUS_UNSAFE")
+    try:
+        data = json.loads(LOGIN_STATUS.read_text())
+        status = data["status"]
+        pid = data["helper_pid"]
+        if status not in ("WAITING_FOR_USER", "AUTHENTICATED", "EXPIRED", "ERROR"):
+            raise ValueError()
+        if not isinstance(pid, int) or pid < 1:
+            raise ValueError()
+    except (OSError, ValueError, KeyError, TypeError):
+        raise Blocked("PRIVATE_LOGIN_STATUS_INVALID") from None
+    if status == "WAITING_FOR_USER":
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            status = "ERROR"
+    if status == "AUTHENTICATED":
+        if (not LOGIN_MARKER.is_file() or LOGIN_MARKER.is_symlink()
+                or LOGIN_MARKER.stat().st_mode & 0o077
+                or not LOGIN_STORAGE.is_file() or LOGIN_STORAGE.is_symlink()
+                or LOGIN_STORAGE.stat().st_mode & 0o077):
+            status = "ERROR"
+        else:
+            try:
+                marker = json.loads(LOGIN_MARKER.read_text())
+                if (marker.get("site_id") != SITE_ID
+                        or marker.get("authenticated") is not True
+                        or not (marker.get("service_code_visible")
+                                or marker.get("domain_visible"))):
+                    status = "ERROR"
+            except (OSError, ValueError):
+                status = "ERROR"
+    return {"status": status, "helper_pid": pid,
+            "receipt_exists": LOGIN_STATUS.is_file(),
+            "session_readable": status == "AUTHENTICATED"}
+
+
+def manual_login_start() -> dict:
+    if LOGIN_STATUS.exists():
+        current = login_status()
+        if current["status"] in ("WAITING_FOR_USER", "AUTHENTICATED"):
+            return current
+        raise Blocked("PRIVATE_LOGIN_CLEAR_REQUIRED")
+    login_dir(create=True)
+    if (LOGIN_ROOT / "playwright-profile").exists():
+        raise Blocked("PRIVATE_LOGIN_CLEAR_REQUIRED")
+    module = os.environ.get("PLAYWRIGHT_MODULE_PATH", "")
+    if not module or not Path(module).is_file():
+        raise Blocked("PLAYWRIGHT_MODULE_UNAVAILABLE")
+    profile = LOGIN_ROOT / "playwright-profile"
+    profile.mkdir(mode=0o700, exist_ok=True)
+    os.chmod(profile, 0o700)
+    command = ["node", str(Path(__file__).with_name("panel.mjs")),
+               "manual-login-helper", str(profile), str(LOGIN_ROOT)]
+    child = subprocess.Popen(command, stdin=subprocess.DEVNULL,
+                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                             start_new_session=True, close_fds=True,
+                             env={**os.environ, "PLAYWRIGHT_MODULE_PATH": module})
+    for _ in range(100):
+        current = login_status()
+        if (LOGIN_ROOT / "window-ready.json").is_file() and current["status"] == "WAITING_FOR_USER":
+            return current
+        if current["status"] in ("AUTHENTICATED", "EXPIRED", "ERROR"):
+            return current
+        if child.poll() is not None:
+            raise Blocked("PRIVATE_LOGIN_HELPER_EXITED")
+        time.sleep(0.2)
+    raise Blocked("PRIVATE_LOGIN_WINDOW_NOT_READY")
+
+
+def manual_login_clear() -> dict:
+    current = login_status()
+    if current["status"] == "WAITING_FOR_USER":
+        try:
+            command = subprocess.run(["/bin/ps", "-p", str(current["helper_pid"]),
+                                      "-o", "command="], capture_output=True,
+                                     text=True, timeout=5, check=False).stdout
+            if ("panel.mjs manual-login-helper" in command
+                    and str(LOGIN_ROOT / "playwright-profile") in command):
+                os.killpg(current["helper_pid"], signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+    if LOGIN_ROOT.exists():
+        login_dir()
+        shutil.rmtree(LOGIN_ROOT)
+    return {"status": "CLEARED"}
+
+
 def panel(phase: str, state: Path, dry_run: bool) -> dict:
     if dry_run:
         return {"status": "DRY_RUN", "temporary_profile": "ISOLATED"}
     module = os.environ.get("PLAYWRIGHT_MODULE_PATH", "")
     if not module or not Path(module).is_file():
         raise Blocked("PLAYWRIGHT_MODULE_UNAVAILABLE")
-    secret = credentials()
-    profile = state / "playwright-profile"
-    profile.mkdir(mode=0o700, exist_ok=True)
+    resume = phase == "resume-after-login"
+    if resume:
+        if login_status()["status"] != "AUTHENTICATED":
+            raise Blocked("PRIVATE_LOGIN_NOT_AUTHENTICATED")
+        profile = login_dir() / "playwright-profile"
+        if not profile.is_dir() or profile.is_symlink():
+            raise Blocked("PRIVATE_LOGIN_PROFILE_UNSAFE")
+        payload = ""
+    else:
+        secret = credentials()
+        profile = state / "playwright-profile"
+        profile.mkdir(mode=0o700, exist_ok=True)
+        payload = json.dumps({"login": secret["panel_login"],
+                              "password": secret["panel_password"]})
     command = ["node", str(Path(__file__).with_name("panel.mjs")), phase,
                str(profile)]
-    result = subprocess.run(command, input=json.dumps({
-        "login": secret["panel_login"], "password": secret["panel_password"]
-    }), text=True, capture_output=True, env={**os.environ,
+    result = subprocess.run(command, input=payload, text=True, capture_output=True, env={**os.environ,
         "PLAYWRIGHT_MODULE_PATH": module}, timeout=90, check=False)
     # panel.mjs emits only a fixed schema; never include stderr or raw page text.
     try:
@@ -231,7 +351,7 @@ def blocked_dependent_phase(phase: str, dry_run: bool) -> dict:
 
 
 def run_phase(phase: str, state: Path, dry_run: bool) -> dict:
-    if phase == "panel-audit":
+    if phase in ("panel-audit", "resume-after-login"):
         return panel(phase, state, dry_run)
     if phase == "download-backups":
         return download_backups(state, dry_run)
@@ -246,6 +366,18 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--state-dir", help="existing private 0700 directory outside Git")
     args = parser.parse_args()
+    if args.phase in ("manual-login-start", "manual-login-status", "manual-login-clear"):
+        try:
+            if args.phase == "manual-login-start":
+                details = manual_login_start()
+            elif args.phase == "manual-login-status":
+                details = login_status()
+            else:
+                details = manual_login_clear()
+        except Blocked as error:
+            details = {"status": "ERROR", "blocker": error.code}
+        print(json.dumps({"site_id": SITE_ID, "phase": args.phase, **details}))
+        return 0 if details["status"] in ("WAITING_FOR_USER", "AUTHENTICATED", "CLEARED") else 2
     state = safe_state_dir(args.state_dir)
     phases = PHASES[:-1] if args.phase == "all" else (args.phase,)
     try:
