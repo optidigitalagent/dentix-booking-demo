@@ -14,6 +14,7 @@ for(const [engineName,engine] of Object.entries({chromium,webkit}).filter(([name
  try{for(const [width,height] of sizes){
   const page=await browser.newPage({viewport:{width,height}});page.setDefaultTimeout(20000);page.setDefaultNavigationTimeout(45000);const errors=[],requests=[];let firstConflict=true,conflictSlot=false,available=true,receiptStatus='AWAITING_CALLBACK';
   page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/*.mp4',route=>route.abort());
   await page.route('**/api/public/**',async route=>{
    const req=route.request(),path=new URL(req.url()).pathname;let data;
    if(path.endsWith('/intake-status'))data={lead:{enabled:available,mode:available?'LIVE':'UNAVAILABLE',policyUrl:available?'https://example.org/fixture-policy':null,consentVersion:'fixture-v4'},timed:{enabled:available,mode:available?'LIVE':'UNAVAILABLE',policyUrl:available?'https://example.org/fixture-policy':null,consentVersion:'fixture-v4'}};

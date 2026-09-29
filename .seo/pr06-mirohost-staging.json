@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "site_id": "DENTIX",
+  "repository": "optidigitalagent/dentix-booking-demo",
+  "verified_at": "2026-09-28T21:24:54.452481+00:00",
+  "base_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+  "branch": "seo/dentix-pr06-mirohost-staging",
+  "latest_preview_workflow": {
+    "id": 34840817204,
+    "head_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+    "conclusion": "success"
+  },
+  "production": {
+    "platform": "OLD_WORDPRESS",
+    "react_status": "NOT_LAUNCHED",
+    "production_root_mutation": false,
+    "dns_changes": false
+  },
+  "account_access": {
+    "domain_panel": "NOT_ACCESSED",
+    "hosting_panel": "AUTHENTICATED_H_158422_DENTIX_ACTIVE",
+    "ftp": "MANAGER_READABLE_ALLOWLIST_UNCHANGED_FTPS_NOT_USED",
+    "database": "MYSQL_MANAGER_READABLE_IDENTIFIERS_REDACTED"
+  },
+  "dns": {
+    "public_current_a": "89.184.75.186",
+    "public_nameservers": [
+      "ns1.mirohost.net",
+      "ns2.mirohost.net",
+      "ns3.mirohost.net"
+    ],
+    "full_live_panel_zone_export": "ACCESS_BLOCKED",
+    "historical_ip_conflict": "PUBLIC_CURRENT_A_DIFFERS_FROM_HISTORICAL_DOCUMENT; LIVE_PANEL_EXPORT_REQUIRED; NO_CHANGE"
+  },
+  "host_candidate": {
+    "decision": "MIROHOST_STAGING_CAPABILITY_PASS_HOLD_PRESERVATION_UNRESOLVED",
+    "selected": "MIROHOST_SEPARATE_STAGING_SUBDOMAIN",
+    "htaccess": "PASS_REMOTE_ISOLATED_STAGING",
+    "custom_404": "PASS_REMOTE_ISOLATED_STAGING",
+    "exact_301": "PASS_REMOTE_ISOLATED_STAGING",
+    "exact_410": "PASS_REMOTE_ISOLATED_STAGING",
+    "logs_rollback": "LOGS_READABLE_ROLLBACK_NOT_REHEARSED"
+  },
+  "backup": {
+    "receipt": "THREE_PANEL_DOWNLOADS_VERIFIED_PRIVATE_LOCAL_RECEIPT",
+    "encryption": "FILEVAULT_ON_BACKUPS_PRIVATE_LOCAL",
+    "cutover_blocker": false
+  },
+  "staging": {
+    "type": "RANDOM_SUBDOMAIN_SEPARATE_DOCUMENT_ROOT",
+    "remote_status": "PASS_60_PANEL_UPLOADED_58_PUBLIC_HASH_MATCH",
+    "auth": "PASS_REMOTE_401_UNAUTHENTICATED_200_AUTHENTICATED",
+    "header_noindex": "PASS_REMOTE_12_ROUTES_AND_MEDIA",
+    "meta_noindex": "PASS_REMOTE_12_ROUTES",
+    "robots_disallow": "PASS_REMOTE",
+    "candidate_overlay": "EXACT_VERIFIED_CANDIDATE_60_PANEL_FILES_58_PUBLIC_HASH_MATCH"
+  },
+  "migration": {
+    "total_rows": 64,
+    "keep": 3,
+    "rebuild_same_url": 4,
+    "redirect_301": 7,
+    "gone_410": 1,
+    "hold": 49,
+    "local_get_head": "PASS_64_ROW_LOCAL_REPLAY_REMOTE_STAGING_301_410_404_PASS",
+    "hold_preservation": "PENDING_VERIFIED_LEGACY_OR_STATIC_DESIGN",
+    "hold_rows_passed": 0,
+    "open_proxy": "NONE_REMOTE_STAGING",
+    "redirect_loop": "NONE_REMOTE_STAGING"
+  },
+  "content": {
+    "current_existing_facts_and_services": "OWNER_APPROVED",
+    "old_wordpress": "HISTORICAL_SERVICE_CONFIRMATION_ONLY",
+    "new_medical_claims": "FORBIDDEN_WITHOUT_QUALIFIED_REVIEW",
+    "separate_medical_signature_existing_copy": "NOT_A_LAUNCH_BLOCKER"
+  },
+  "credential_rotation": "P0_PLAN_ONLY_NOT_EXECUTED",
+  "integrations": {
+    "GSC": "UNCHANGED",
+    "GBP": "UNCHANGED",
+    "GA4": "UNCHANGED",
+    "GTM": "UNCHANGED",
+    "Bing": "UNCHANGED",
+    "CRM": "UNCHANGED"
+  },
+  "outcome_report": {
+    "claims": []
+  },
+  "package_lock_changed": false,
+  "external_account_changes": true,
+  "production_publish": false,
+  "ready_for_review": false,
+  "merge": false,
+  "sitemap_submit": false,
+  "indexing_request": false,
+  "tests": {
+    "unit": 25,
+    "artifact": 34,
+    "release": 13,
+    "mirohost_apache": 2,
+    "browser_suites_local": 9,
+    "browser_suites_live_preview": 1,
+    "founder_video_local": 1,
+    "operator_tests": 163,
+    "operator_matching_files": 213,
+    "client_artifact_contract": "PASS"
+  },
+  "candidate": {
+    "production_content_sha256": "9216df1905903185b2305cedba6447f718e793f08c19fa81192b67d68c6de2d3",
+    "build": "SANITIZED_DETERMINISTIC_TWO_RUNS",
+    "zip": "241717f22bfc781b645569d3ef6b669659d24ab891b02ddad467af7e161237db"
+  },
+  "automation": {
+    "runner": "TWO_PHASE_PERSISTENT_LOGIN_RESUME_PASS",
+    "separate_browser_profile": "USED_TEMPORARY_PLAYWRIGHT_CHROMIUM",
+    "panel_login": "MANUAL_2FA_AUTHENTICATED",
+    "two_factor": "USER_COMPLETED",
+    "ftp_allowlist": "UNCHANGED_NO_ENTRY_ADDED",
+    "ftp_allowlist_cleanup": "NOT_APPLICABLE_NO_ENTRY_ADDED",
+    "remote_staging_qa": "PASS_12_GET_12_HEAD_AUTH_404_301_410_NOINDEX_MEDIA_RANGE_58_HASHES",
+    "current_browser_qa": "PASS_8_LOCAL_SUITES_AND_LOCAL_PUBLISHED_READ_ONLY; LIVE_PREVIEW_NETWORKIDLE_TIMEOUT; NO_REAL_POST",
+    "operator_suite": "PASS_163_OF_163_IN_TEMPORARY_GIT_SNAPSHOT",
+    "local_suite": "PASS_25_UNIT_34_ARTIFACT_18_PYTHON_INCLUDING_3_LOGIN_2_APACHE",
+    "panel_upload": "PASS_60_FILES_FTPS_NOT_USED"
+  },
+  "external_account_change_scope": "ONE_ISOLATED_STAGING_SUBDOMAIN_LE_CERTIFICATE_STAGING_NGINX_SETTING",
+  "final_review": {
+    "decision": "PASS_WITH_PRODUCTION_CUTOVER_BLOCKERS_PRESERVED",
+    "reviewed_at": "2026-09-29T06:08:36Z",
+    "pr_number": 9,
+    "base_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+    "initial_head_sha": "efd203ff4cc6364e3553bea30e6f9cc7f4105c4a",
+    "changed_files": 32,
+    "evidence_sha256": "9382dce15e366b955c5ab82400b35353093760290c2e44cf1aa984f2a3185967",
+    "evidence_bytes": 1922,
+    "evidence_members": [
+      "manifest.json",
+      "panel-and-backup.json",
+      "staging-qa.json",
+      "migration-and-tests.json"
+    ],
+    "remote_staging_smoke": "PASS_READ_ONLY_12_GET_12_HEAD_401_200_404_301_410_NOINDEX_RANGE_58_HASHES",
+    "ready": "PENDING",
+    "merge": "PENDING",
+    "automatic_preview_deployment": "PENDING",
+    "patient_facing_source_changed": false,
+    "hold_rows_unresolved": 49,
+    "hold_rows_passed": 0,
+    "production": "OLD_WORDPRESS_NOT_LAUNCHED",
+    "credential_rotation": "P0_PENDING_BEFORE_CUTOVER",
+    "outcome_claims": []
+  }
+}

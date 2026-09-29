@@ -3,25 +3,24 @@
   "project_id": "dentix",
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
-  "requested_action": "commit",
-  "authorization_level": "PR05 pre-merge action snapshot at 2026-09-13T15:52:11.566982+00:00, expires 2026-09-13T18:52:11.566982+00:00. User-supplied DENTIX_AUTHORIZATION_PR05_READY_MERGE_PREVIEW_DEPLOY supersedes Draft-only scope for this bounded stage. PR #8 OPEN/Draft/MERGEABLE/CLEAN; base 6465964edb7ae549f5abac9194fad9bbd18f2d9d; reviewed initial head bfc4f5a3f4dfad8fc9c343d02b81f8ec301d38fd; exactly 37 changed paths; no overlapping PR or submitted review; NO_SERVER_CI. Operator 0.2.1 immutable identity: 213 matching files, ten skills, bundle/negative outcome/7 DENTIX path checks PASS. Independent source, evidence and production-readiness contract review PASS: implementation ZIP 98255717 bytes, SHA-256 0dca0c5dd6d3dafb248a4f05d26c49ed9a930549f7d56d50f1e139bb80c78dd9, 346/346 root checksums; nested mission manifest also verified. Release ZIP 22224867 bytes, SHA-256 debdf6cea23228d416fdd657812ee1568d6b5fb25fdc3abb5574b0bdb1716d42, 65 entries/64 checksums, source bfc4f5a3f4dfad8fc9c343d02b81f8ec301d38fd, twelve-route artifact/content manifest and exact review-copy parity PASS. Only patient behavior change is exact implantation/prosthetics requestedInterest. Hosting DECISION_PENDING_ACCESS; recommended_candidate=null. Canonical migration 64 rows: KEEP=3, REBUILD_SAME_URL=4, 301=7, 410=1, HOLD_FOR_CONFIRMATION=49. All 49 HOLD preservation UNRESOLVED_CUTOVER_BLOCKER; /sitemap_index.xml remains 404_KEEP; sitemap redirects gated. Professional review UNKNOWN / NOT_COMPLETED. GSC/GBP/GA4/GTM/Bing/CRM ACCESS_BLOCKED; call tracking UNKNOWN; T0 NOT_READY. Candidate booking=false, endpoints empty; no host adapter or backup/restore rehearsal executed. WordPress remains production; React NOT_LAUNCHED. Fresh exact-final-head suite, Ready, normal merge and one automatic noindex-preview deployment PENDING. No production/cutover, account mutation, sitemap/indexing, form delivery, appointment or release closure. outcome_report.claims=[]. Final head, Ready/merge/deployment and live-QA receipts remain external and in PR #8 body; no post-merge repository commit. Tracked/index clean flags describe the verified entry and commit/action boundary; unrelated .DS_Store files preserved.",
+  "requested_action": "merge",
+  "authorization_level": "DENTIX PR-06 reviewed operational merge and one automatic noindex Pages preview only; production/DNS/HOLD/indexing false",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-13T15:52:11.566982+00:00",
-  "remote_main_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
-  "local_main_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
+  "verified_at": "2026-09-29T06:08:36Z",
+  "remote_main_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+  "local_main_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
   "deployed_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
   "open_prs": [
     {
-      "number": 8,
+      "number": 9,
       "state": "OPEN",
       "isDraft": true,
       "baseRefName": "main",
-      "baseRefOid": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
-      "headRefName": "seo/dentix-pr05-production-readiness",
-      "headRefOid": "bfc4f5a3f4dfad8fc9c343d02b81f8ec301d38fd",
-      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/8"
+      "baseRefOid": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+      "headRefName": "seo/dentix-pr06-mirohost-staging",
+      "headRefOid": "efd203ff4cc6364e3553bea30e6f9cc7f4105c4a"
     }
   ],
   "recently_merged_prs": [
@@ -101,9 +100,10 @@
     "seo/dentix-pr04a-therapy-cluster",
     "seo/dentix-pr04b-surgery-cluster",
     "seo/dentix-pr04c-implant-prosthetics-cluster",
-    "seo/dentix-pr05-production-readiness"
+    "seo/dentix-pr05-production-readiness",
+    "seo/dentix-pr06-mirohost-staging"
   ],
-  "handoff_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
+  "handoff_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
   "production_matches_deploy": false,

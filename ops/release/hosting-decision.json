@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "site_id": "DENTIX",
-  "observed_at": "2026-09-13T14:53:25.387106+00:00",
-  "decision": "DECISION_PENDING_ACCESS",
+  "observed_at": "2026-09-28T11:33:32.016880+00:00",
+  "decision": "DECISION_PENDING_ACCESS_OR_CAPABILITY",
   "recommended_candidate": null,
   "cutover_authorized": false,
   "public_evidence": {
@@ -13,10 +13,12 @@
       "ns3.mirohost.net"
     ],
     "server_signal": "nginx",
-    "platform": "WordPress / Elementor",
+    "platform": "WordPress / Elementor (HTTP headers)",
     "cloudflare": "NOT_EVIDENCED; absence of public signal does not prove no upstream CDN",
     "apache": "UNKNOWN",
-    "tls": "Lets Encrypt YR2; SAN dentix.ua + www.dentix.ua; expires 2026-10-13T23:07:05Z"
+    "tls": "Lets Encrypt YR2; SAN dentix.ua + www.dentix.ua; expires 2026-10-13T23:07:05Z",
+    "historical_ip_conflict": "PUBLIC_CURRENT_A_DIFFERS_FROM_HISTORICAL_DOCUMENT; LIVE_ZONE_EXPORT_PENDING; NO_DNS_CHANGE",
+    "panel_access": "NOT_VERIFIED"
   },
   "scoring": {
     "2": "Observed public behavior, not account access",

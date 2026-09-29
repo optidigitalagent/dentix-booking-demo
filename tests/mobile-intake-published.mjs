@@ -10,7 +10,7 @@ for(const [engineName,engine] of Object.entries({chromium,webkit}).filter(([name
   const page=await browser.newPage({viewport:{width,height}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   if(process.env.DENTIX_QA_LOCAL_ONLY==='true'){
    assert.equal(new URL(origin).hostname,'127.0.0.1');
-   await page.route('**/*',async route=>{const req=route.request();assert.ok(['GET','HEAD'].includes(req.method()),'Submission forbidden');if(new URL(req.url()).origin===new URL(origin).origin)return route.continue();return route.fulfill({status:200,contentType:req.resourceType()==='stylesheet'?'text/css':'text/html',body:''});});
+   await page.route('**/*',async route=>{const req=route.request();assert.ok(['GET','HEAD'].includes(req.method()),'Submission forbidden');if(new URL(req.url()).pathname.endsWith('.mp4'))return route.abort();if(new URL(req.url()).origin===new URL(origin).origin)return route.continue();return route.fulfill({status:200,contentType:req.resourceType()==='stylesheet'?'text/css':'text/html',body:''});});
   }
   await page.goto(origin+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
   const form=page.locator('.lead-form').first();await form.scrollIntoViewIfNeeded();

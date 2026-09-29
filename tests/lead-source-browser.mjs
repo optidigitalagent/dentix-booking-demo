@@ -56,7 +56,16 @@ export async function checkLeadSourceEntryPoints({ browser, output }) {
             const publicRoot = path.resolve("public");
             const local = path.resolve(publicRoot, url.pathname.slice(base.length));
             if (url.pathname.startsWith(base) && local.startsWith(publicRoot + path.sep)) {
-              try { await route.fulfill({ status: 200, contentType: types[path.extname(local)] ?? "application/octet-stream", body: await fs.readFile(local) }); return; } catch {}
+              try {
+                const data = await fs.readFile(local);
+                const range = path.extname(local) === ".mp4" ? /^bytes=(\d+)-(\d*)$/.exec(request.headers().range ?? "") : null;
+                if (range) {
+                  const start = Number(range[1]);
+                  const end = Math.min(range[2] ? Number(range[2]) : data.length - 1, data.length - 1, start + 1024 * 1024 - 1);
+                  await route.fulfill({ status: 206, contentType: "video/mp4", headers: { "Accept-Ranges": "bytes", "Content-Range": `bytes ${start}-${end}/${data.length}` }, body: data.subarray(start, end + 1) }); return;
+                }
+                await route.fulfill({ status: 200, contentType: types[path.extname(local)] ?? "application/octet-stream", body: data }); return;
+              } catch {}
             }
             violations.push({ method: request.method(), unexpected_path: url.pathname }); await route.abort();
           });

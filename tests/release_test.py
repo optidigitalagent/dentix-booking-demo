@@ -73,7 +73,7 @@ class ReleaseTests(unittest.TestCase):
                 if href.startswith('/') or href.startswith('https://dentix.ua'):self.assertNotIn('utm_',href)
         self.assertEqual(release.read_json(release.ROOT/'.seo/measurement-plan.yml')['outcome_report']['claims'],[])
     def test_no_host_selection_or_executed_checklists(self):
-        host=release.read_json(release.OPS/'hosting-decision.json');self.assertEqual(host['decision'],'DECISION_PENDING_ACCESS');self.assertIsNone(host['recommended_candidate']);self.assertEqual(len(host['candidates']),3)
+        host=release.read_json(release.OPS/'hosting-decision.json');self.assertEqual(host['decision'],'DECISION_PENDING_ACCESS_OR_CAPABILITY');self.assertIsNone(host['recommended_candidate']);self.assertEqual(len(host['candidates']),3)
         for candidate in host['candidates']:self.assertEqual(len(candidate['scores']),13)
         checks=release.read_json(release.OPS/'checklists.json');self.assertFalse(checks['launch_authorized']);self.assertTrue(all(c['status']=='NOT_EXECUTED' and c['executed_at'] is None for c in checks['checklists']))
 if __name__=='__main__':unittest.main()

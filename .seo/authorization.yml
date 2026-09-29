@@ -1,10 +1,10 @@
 {
-  "granted_by": "DENTIX user supplied DENTIX_AUTHORIZATION_PR05_READY_MERGE_PREVIEW_DEPLOY in session ZIP",
-  "granted_at": "2026-09-13T15:52:11.566982+00:00",
-  "expires_at": "2026-09-13T18:52:11.566982+00:00",
+  "granted_by": "DENTIX_AUTHORIZATION_PR06_FINAL_REVIEW_MERGE_PREVIEW (direct user chat + 00_EXECUTE_THIS.txt)",
+  "granted_at": "2026-09-29T06:08:36Z",
+  "expires_at": "2026-09-29T09:08:36Z",
   "repository": "optidigitalagent/dentix-booking-demo",
   "project_id": "dentix",
-  "scope": "SITE_ID DENTIX only; optidigitalagent/dentix-booking-demo PR #8; branch seo/dentix-pr05-production-readiness; initial base 6465964edb7ae549f5abac9194fad9bbd18f2d9d; initial head bfc4f5a3f4dfad8fc9c343d02b81f8ec301d38fd. One bounded .seo metadata commit and normal push; one fresh exact-head suite; Ready for review; normal merge commit without bypass/squash/rebase/force/auto-merge/branch deletion; exactly one automatic GitHub Pages noindex-preview deployment from merge push; read-only live regression QA; final external sanitized evidence. external_action=true permits only PR #8 body updates, title unchanged; no comments/reviews. deploy=true excludes manual dispatch and second deployment. indexing_request=false. No functional source/tests/workflow/package/lockfile/migration edits; no production host selection, DNS/hosting/cutover or external-account changes, private exports, form submission/delivery/appointments, professional sign-off, sitemap/indexing, release closure or outcome claim. Production needs separate GO.",
+  "scope": "SITE_ID DENTIX; existing PR #9 and branch seo/dentix-pr06-mirohost-staging only; reviewed base main@9fddc64020fcdcf0e01020be838be72c75b1d4a8, initial head efd203ff4cc6364e3553bea30e6f9cc7f4105c4a, 32 operational files. One bounded .seo authorization commit/push; update only PR #9 body; Ready; normal merge commit; exactly one automatic GitHub Pages noindex-preview deployment; live QA and sanitized evidence. No new branch/PR, patient-facing implementation, production cutover/root/WordPress/DNS, HOLD activation, sitemap/indexing, external account mutation or outcome claim; outcome_report.claims=[].",
   "permissions": {
     "audit": true,
     "branch": false,
@@ -17,10 +17,10 @@
     "ready_for_review": true,
     "merge": true,
     "deploy": true,
-    "publish": false,
-    "sitemap_submit": false,
     "external_action": true,
+    "publish": false,
     "release": false,
-    "release_close": false
+    "release_close": false,
+    "sitemap_submit": false
   }
 }

@@ -1,9 +1,9 @@
 {
   "site_id": "DENTIX",
   "status": "PASS_LOCAL_DRAFT_CANDIDATE",
-  "validated_at": "2026-09-13T15:10:35.113651+00:00",
-  "base_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
-  "production_content_sha256": "2accd43447e1592c9a422030370a377229882e198291c04ce3142999ec75e669",
+  "validated_at": "2026-09-28T11:48:40.932669+00:00",
+  "base_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+  "production_content_sha256": "9216df1905903185b2305cedba6447f718e793f08c19fa81192b67d68c6de2d3",
   "counts": {
     "npm_test": 25,
     "artifact_tests": 34,
@@ -20,7 +20,12 @@
     "implant_managed": 28,
     "implant_critical_browser": 80,
     "founder_video": 16,
-    "safe_mobile": 40
+    "safe_mobile": 40,
+    "mirohost_apache_tests": 2,
+    "browser_suites_local": 9,
+    "browser_suites_live_preview": 1,
+    "founder_video_local": 1,
+    "operator_tests_in_git_snapshot": 163
   },
   "operator_version": "0.2.1",
   "operator_matching_files": 213,
@@ -28,16 +33,22 @@
   "outcome_negative_tests": 47,
   "tenant_cases": 7,
   "preview_build": "PASS",
-  "production_build": "PASS",
+  "production_build": "PASS_SANITIZED_DETERMINISTIC_TWO_RUNS",
   "release_contract": "PASS: unchanged 64 rows / 49 HOLD / explicit KEEP 404",
   "environment_review_measurement_tests": "PASS",
   "medical_copy_changed": false,
-  "professional_review": "UNKNOWN / NOT_COMPLETED",
-  "hosting": "DECISION_PENDING_ACCESS",
+  "professional_review": "NOT_REQUIRED_FOR_EXISTING_OWNER_APPROVED_COPY; NEW_MEDICAL_CLAIMS_GATED",
+  "hosting": "DECISION_PENDING_ACCESS_OR_CAPABILITY",
   "t0": "NOT_READY",
   "production": "NOT_LAUNCHED",
   "post_requests": 0,
   "outcome_report_claims": [],
   "supplementary_generic_scanner": "Raw exit 1: intentional noindex 404/admin and unmounted preview base diagnostics; all 12 production patient pages zero issues. See external qa/static-scan-assessment.md.",
-  "final_git_archive_receipts": "External evidence and Draft PR body; exact committed source SHA and ZIP SHA cannot be embedded in their own source commit."
+  "final_git_archive_receipts": "External evidence and Draft PR body; exact committed source SHA and ZIP SHA cannot be embedded in their own source commit.",
+  "owner_content_approval": "OWNER_APPROVED_EXISTING_FACTS_AND_SERVICES",
+  "staging": "LOCAL_APACHE_ONLY_REMOTE_ACCESS_BLOCKED",
+  "hold_rows_passed": 0,
+  "credential_rotation": "P0_PLAN_NOT_EXECUTED",
+  "operator_suite": "PASS_163_OF_163_IN_TEMPORARY_GIT_SNAPSHOT_OF_IDENTICAL_213_FILES",
+  "client_validation": "UNIT_ARTIFACT_RELEASE_BROWSER_APACHE_PASS; HOST_ACCOUNT_UNVERIFIED"
 }

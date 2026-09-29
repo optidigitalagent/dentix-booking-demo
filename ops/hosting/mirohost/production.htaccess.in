@@ -1,0 +1,43 @@
+# DENTIX production-root TEMPLATE ONLY. Never copy over live WordPress.
+# Render with render_adapter.py after capability, HOLD and rollback gates pass.
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Dentix-Release "@SOURCE_SHA@"
+  <FilesMatch "\.(?:html|xml|txt)$">
+    Header always set Cache-Control "public, max-age=300"
+  </FilesMatch>
+  <FilesMatch "\.(?:js|css|png|jpe?g|webp|svg|woff2?|mp4)$">
+    Header always set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
+
+RewriteEngine On
+# The front nginx MUST provide a trusted X-Forwarded-Proto or Apache HTTPS=on.
+# Verify GET and HEAD through the public edge before this template is eligible.
+RewriteCond %{HTTP_HOST} !^dentix\.ua$ [NC]
+RewriteRule ^ https://dentix.ua%{REQUEST_URI} [R=301,L,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+RewriteRule ^ https://dentix.ua%{REQUEST_URI} [R=301,L,NE]
+
+# Functional WordPress query aliases require an exact legacy preservation map.
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id|attachment_id|feed|s|cat|author|rest_route)= [NC]
+RewriteRule ^ - [R=503,L]
+
+# Sitemap redirects are closed until the new sitemap passes route validation.
+@SITEMAP_GATE@
+@SITEMAP_RULES@
+
+# The 49 HOLD rows are exact-path cutover blockers. No homepage/404 fallback.
+@HOLD_RULES@
+
+# 410 is intentionally unexecuted until owner retirement and link checks.
+# RewriteRule ^sayt-nahoditsya-na-tehnicheskom-obsluzh/$ - [G,L]
+
+# Only the twelve replacement directory routes receive slash normalization.
+@SLASH_RULES@
