@@ -1,3 +1,7 @@
+2026-09-29 — PR-07 migration contract preparation
+
+Base c75d494 (merged PR #9). Verified three private backups, public 64-row HTTP inventory and 28 complete days of aggregated Mirohost logs. Finalized 49 former HOLD dispositions as four exact HTML, seven RSS/XML and 38 media preserves; created external private preservation ZIP and sanitized manifests. Query-alias inventory and final adapter/test work are in progress. No production, DNS, integration or indexing change; no outcome claim.
+
 # DENTIX change log
 2026-09-28 — PR-06 local staging safety work on `seo/dentix-pr06-mirohost-staging`, based on `9fddc64020fcdcf0e01020be838be72c75b1d4a8`.
 Before: PR-05 release candidate was stale after client media/contact/price corrections; no Mirohost adapter or current account proof. Change: rebuilt current preview/production; added Apache host/staging templates, exact contract-derived HOLD/sitemap/slash rules, local noindex/auth overlay, rotation plan and HTTP replay tests. Current public DNS/WordPress state rechecked; no live zone export, host panel proof, backup or remote staging. Owner-approved existing content recorded; no new medical claims. Production remains `NOT_LAUNCHED`, host `DECISION_PENDING_ACCESS_OR_CAPABILITY`, 49 HOLD unresolved, `outcome_report.claims=[]`. No production, DNS, forms, indexing or external-account mutations.

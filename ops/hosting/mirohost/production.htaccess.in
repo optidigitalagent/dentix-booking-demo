@@ -1,7 +1,8 @@
 # DENTIX production-root TEMPLATE ONLY. Never copy over live WordPress.
 # Render with render_adapter.py after capability, HOLD and rollback gates pass.
 Options -Indexes -MultiViews
-DirectoryIndex index.html
+DirectoryIndex index.html index.rss
+AddType application/rss+xml .rss
 ErrorDocument 404 /404.html
 
 <IfModule mod_headers.c>
@@ -25,19 +26,17 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
 RewriteRule ^ https://dentix.ua%{REQUEST_URI} [R=301,L,NE]
 
-# Functional WordPress query aliases require an exact legacy preservation map.
-RewriteCond %{QUERY_STRING} (^|&)(p|page_id|attachment_id|feed|s|cat|author|rest_route)= [NC]
-RewriteRule ^ - [R=503,L]
+# Exact known WordPress aliases; unknown functional selectors retire explicitly.
+@QUERY_RULES@
+RewriteCond %{QUERY_STRING} (^|&)(p|%70|page_id|attachment_id|feed|s|cat|author|rest_route)= [NC]
+RewriteRule ^ - [G,L]
 
 # Sitemap redirects are closed until the new sitemap passes route validation.
 @SITEMAP_GATE@
 @SITEMAP_RULES@
 
-# The 49 HOLD rows are exact-path cutover blockers. No homepage/404 fallback.
-@HOLD_RULES@
-
-# 410 is intentionally unexecuted until owner retirement and link checks.
-# RewriteRule ^sayt-nahoditsya-na-tehnicheskom-obsluzh/$ - [G,L]
+# Explicit 404/410 paths. Preserved static files resolve from the exact path.
+@PATH_RULES@
 
 # Only the twelve replacement directory routes receive slash normalization.
 @SLASH_RULES@

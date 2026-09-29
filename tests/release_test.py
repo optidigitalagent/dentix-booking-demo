@@ -4,31 +4,33 @@ from pathlib import Path
 spec=importlib.util.spec_from_file_location('release',Path(__file__).resolve().parents[1]/'scripts/release.py');release=importlib.util.module_from_spec(spec);spec.loader.exec_module(release)
 class ReleaseTests(unittest.TestCase):
     def setUp(self): self.contract=release.read_json(release.OPS/'migration-contract.json')
-    def test_canonical_dispositions(self): self.assertEqual(release.validate_contract(self.contract)['hold'],49)
-    def test_hold_cannot_become_404_or_home(self):
-        row=next(r for r in self.contract['rows'] if r['required_response']=='HOLD')
+    def test_canonical_dispositions(self): self.assertEqual(release.validate_contract(self.contract)['hold'],0)
+    def test_preservation_cannot_become_404_or_home(self):
+        row=next(r for r in self.contract['rows'] if r['disposition']=='200_STATIC_PRESERVE_MEDIA')
         for key,value in [('target_status',404),('target_path','/'),('disposition','410')]:
             bad=copy.deepcopy(self.contract);next(r for r in bad['rows'] if r['source_url']==row['source_url'])[key]=value
             with self.assertRaises(ValueError):release.validate_contract(bad)
-        self.assertIsNone(release.plan_response(row['source_url'],self.contract)['status'])
+        self.assertEqual(release.plan_response(row['source_url'],self.contract)['status'],200)
     def test_exact_missing_probe_is_keep_404(self): self.assertEqual(release.plan_response('https://dentix.ua/sitemap_index.xml',self.contract)['status'],404)
     def test_redirects_preserve_query_and_path(self):
         for url in ['http://dentix.ua/implantatsiya/?utm_source=chatgpt.com&a=1%2F2','https://www.dentix.ua/implantatsiya/?utm_source=chatgpt.com&a=1%2F2']:
             self.assertEqual(release.plan_response(url,self.contract),{'status':301,'location':'https://dentix.ua/implantatsiya/?utm_source=chatgpt.com&a=1%2F2'})
     def test_sitemap_redirect_is_gated(self):
         for row in self.contract['rows']:
-            if row['disposition']=='301' and 'sitemap' in row['source_path']:
+            if row['disposition']=='301_EXACT_REPLACEMENT' and 'sitemap' in row['source_path']:
                 self.assertIsNone(release.plan_response(row['source_url'],self.contract)['status'])
                 self.assertEqual(release.plan_response(row['source_url'],self.contract,True),{'status':301,'location':'https://dentix.ua/sitemap.xml'})
     def test_commercial_routes_and_410(self):
         for row in self.contract['rows']:
-            if row['disposition']=='REBUILD_SAME_URL':self.assertEqual(release.plan_response(row['source_url'],self.contract)['status'],200)
-            if row['disposition']=='410':self.assertEqual(release.plan_response(row['source_url'],self.contract)['status'],410)
+            if row['disposition']=='200_REBUILD_SAME_URL':self.assertEqual(release.plan_response(row['source_url'],self.contract)['status'],200)
+            if row['disposition']=='410_RETIRE':self.assertEqual(release.plan_response(row['source_url'],self.contract)['status'],410)
         for route in release.routes():self.assertEqual(release.plan_response(route['canonical'],self.contract)['status'],200)
         self.assertEqual(release.plan_response('https://dentix.ua/implantatsiya',self.contract)['status'],301)
     def test_functional_legacy_query_never_disappears(self):
-        for query in ['p=1','page_id=2','attachment_id=3','feed=rss2','s=example','%70=1','PAGE_ID=1']:
-            self.assertIsNone(release.plan_response('https://dentix.ua/?'+query,self.contract)['status'])
+        for query in ['p=1','page_id=538','attachment_id=694','feed=rss2']:
+            self.assertEqual(release.plan_response('https://dentix.ua/?'+query,self.contract)['status'],301)
+        for query in ['page_id=2','attachment_id=3','s=example','PAGE_ID=99999','%70=1','p=1&p=99999','p=1&attachment_id=3']:
+            self.assertEqual(release.plan_response('https://dentix.ua/?'+query,self.contract)['status'],410)
         with self.assertRaises(ValueError):release.plan_response('https://foreign.example/',self.contract)
     def test_deterministic_artifact_and_review(self):
         first=release.verify_artifact(release.ROOT/'dist/production');second=release.verify_artifact(release.ROOT/'dist/production');self.assertEqual(first,second)
@@ -72,8 +74,9 @@ class ReleaseTests(unittest.TestCase):
                 href=a.attrs.get('href','')
                 if href.startswith('/') or href.startswith('https://dentix.ua'):self.assertNotIn('utm_',href)
         self.assertEqual(release.read_json(release.ROOT/'.seo/measurement-plan.yml')['outcome_report']['claims'],[])
-    def test_no_host_selection_or_executed_checklists(self):
-        host=release.read_json(release.OPS/'hosting-decision.json');self.assertEqual(host['decision'],'DECISION_PENDING_ACCESS_OR_CAPABILITY');self.assertIsNone(host['recommended_candidate']);self.assertEqual(len(host['candidates']),3)
+    def test_host_staging_gate_and_unexecuted_checklists(self):
+        host=release.read_json(release.OPS/'hosting-decision.json');self.assertEqual(host['decision'],'CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED');self.assertEqual(host['recommended_candidate'],'current_origin_mirohost_for_separate_go_review');self.assertFalse(host['cutover_authorized']);self.assertEqual(len(host['candidates']),3)
+        self.assertEqual(host['candidates'][0]['status'],'CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED')
         for candidate in host['candidates']:self.assertEqual(len(candidate['scores']),13)
         checks=release.read_json(release.OPS/'checklists.json');self.assertFalse(checks['launch_authorized']);self.assertTrue(all(c['status']=='NOT_EXECUTED' and c['executed_at'] is None for c in checks['checklists']))
 if __name__=='__main__':unittest.main()

@@ -14,6 +14,7 @@ import unittest
 from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
+from urllib.parse import urlencode, urlsplit
 from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +25,9 @@ spec.loader.exec_module(adapter)
 spec = importlib.util.spec_from_file_location('mirohost_staging', MODULE_DIR / 'prepare_staging.py')
 staging = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(staging)
+spec = importlib.util.spec_from_file_location('mirohost_stage_pack', MODULE_DIR / 'pack_staging_overlay.py')
+stage_pack = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(stage_pack)
 SHA = '9fddc64020fcdcf0e01020be838be72c75b1d4a8'
 
 
@@ -107,6 +111,23 @@ class ApacheServer:
 
 
 class MirohostAdapterTest(unittest.TestCase):
+    def test_staging_archive_permissions_are_web_readable(self):
+        with tempfile.TemporaryDirectory(prefix='dentix-stage-pack-') as temp:
+            root = Path(temp) / 'overlay'
+            (root / 'nested').mkdir(parents=True)
+            (root / '.dentix-version').write_text(SHA + '\n')
+            (root / '.htaccess').write_text('Require all granted\n')
+            (root / 'robots.txt').write_text('User-agent: *\nDisallow: /\n')
+            for n in range(98):
+                (root / 'nested' / f'fixture-{n}.txt').write_text('fixture')
+            archive = Path(temp) / 'stage.zip'
+            receipt = stage_pack.pack(root, archive)
+            self.assertEqual(receipt['files'], 101)
+            with ZipFile(archive) as zip_file:
+                self.assertEqual((zip_file.getinfo('nested/').external_attr >> 16) & 0o777, 0o755)
+                self.assertEqual((zip_file.getinfo('.htaccess').external_attr >> 16) & 0o777, 0o644)
+                self.assertEqual((zip_file.getinfo('nested/fixture-0.txt').external_attr >> 16) & 0o777, 0o644)
+
     def test_contract_and_real_apache_replay(self):
         contract = json.loads((ROOT / 'ops/release/migration-contract.json').read_text())
         routes = json.loads((ROOT / 'ops/release/routes.json').read_text())['routes']
@@ -122,9 +143,16 @@ class MirohostAdapterTest(unittest.TestCase):
             (docroot / 'sitemap.xml').write_text('<urlset/>')
             (docroot / 'media').mkdir()
             (docroot / 'media' / 'fixture.webp').write_bytes(b'WEBP_FIXTURE')
-            rendered = adapter.render('production', SHA)
-            self.assertIn('# RewriteRule ^sayt-nahoditsya-na-tehnicheskom-obsluzh/$', rendered)
+            preserved = json.loads((ROOT / 'ops/release/preservation-manifest.json').read_text())['files']
+            for item in preserved:
+                p = docroot / item['path'].lstrip('/')
+                p.parent.mkdir(parents=True, exist_ok=True)
+                p.write_bytes(b'<html>preserved</html>' if p.suffix == '.html' else
+                              b'<rss version="2.0"/>' if p.suffix == '.rss' else b'MEDIA_FIXTURE')
+            rendered = adapter.render('production', SHA, sitemap_ready=True)
+            self.assertIn('RewriteRule ^sayt\\-nahoditsya\\-na\\-tehnicheskom\\-obsluzh/$', rendered)
             self.assertNotIn('ProxyPass', rendered)
+            self.assertNotIn('HOLD_FOR_CONFIRMATION', rendered)
             (docroot / '.htaccess').write_text(rendered)
             with ApacheServer(docroot) as server:
                 for method in ('GET', 'HEAD'):
@@ -145,14 +173,7 @@ class MirohostAdapterTest(unittest.TestCase):
                         https = row['source_scheme'] == 'https'
                         for suffix in ('', '?utm_source=qa'):
                             status, headers, body = request(server.port, row['source_path'] + suffix, method, host, https)
-                            if row['disposition'] == 'HOLD_FOR_CONFIRMATION':
-                                self.assertEqual(status, 503, row['source_path'])
-                            elif row['disposition'] == '410':
-                                self.assertEqual(status, 404, '410 must remain unexecuted')
-                            elif row['disposition'] == '301' and row['source_path'].startswith('/wp-sitemap'):
-                                self.assertEqual(status, 503, 'sitemap gate must stay closed')
-                            else:
-                                self.assertEqual(status, row['target_status'], row['source_url'])
+                            self.assertEqual(status, row['target_status'], row['source_url'])
                             if status == 301 and suffix:
                                 self.assertTrue(headers['Location'].endswith(suffix), row['source_url'])
                     status, _, body = request(server.port, '/missing-probe', method)
@@ -162,25 +183,35 @@ class MirohostAdapterTest(unittest.TestCase):
                     status, headers, _ = request(server.port, '/likari?utm_source=test', method)
                     self.assertEqual(status, 301)
                     self.assertEqual(headers['Location'], 'https://dentix.ua/likari/?utm_source=test')
-                    for query in ('?p=1', '?page_id=2', '?feed=rss2', '?attachment_id=3'):
-                        self.assertEqual(request(server.port, '/' + query, method)[0], 503)
+                    for query in ('?p=1', '?page_id=538', '?feed=rss2', '?attachment_id=694'):
+                        self.assertEqual(request(server.port, '/' + query, method)[0], 301)
+                    for query in ('?p=99999', '?page_id=2', '?attachment_id=3', '?s=patient'):
+                        self.assertEqual(request(server.port, '/' + query, method)[0], 410)
+                    for query in ('?p=1&p=99999', '?p=1&attachment_id=3',
+                                  '?page_id=538&rest_route=%2Funknown'):
+                        self.assertEqual(request(server.port, '/' + query, method)[0], 410)
+                    aliases = json.loads((ROOT / 'ops/release/query-aliases.json').read_text())['aliases']
+                    for alias in aliases:
+                        query = urlencode({alias['key']: alias['value']})
+                        status, headers, _ = request(server.port, alias['source_path'] + '?' + query, method)
+                        expected = 301 if alias['target_path'] else 410
+                        self.assertEqual(status, expected, (alias['source_path'], query))
+                        if expected == 301:
+                            self.assertEqual(urlsplit(headers['Location']).path, alias['target_path'])
+                            self.assertFalse(urlsplit(headers['Location']).query)
                     self.assertEqual(request(server.port, '/media/fixture.webp', method)[0], 200)
-                    self.assertEqual(request(server.port, '/feed/', method)[0], 503)
+                    self.assertEqual(request(server.port, '/feed/', method)[0], 200)
                     self.assertEqual(request(server.port, '/wp-admin/', method)[0], 404)
                     status, headers, _ = request(server.port, '/likari/?utm_source=test', method, host='other.example')
                     self.assertEqual(status, 301)
                     self.assertEqual(headers['Location'], 'https://dentix.ua/likari/?utm_source=test')
                     self.assertEqual(request(server.port, '/likari/', method)[0], 200)
-            (docroot / '.htaccess').write_text(adapter.render('production', SHA, sitemap_ready=True))
+            (docroot / '.htaccess').write_text(adapter.render('production', SHA, sitemap_ready=False))
             with ApacheServer(docroot) as server:
-                for row in (r for r in contract['rows'] if r['disposition'] == '301' and r['source_path'].startswith('/wp-sitemap')):
+                for row in (r for r in contract['rows'] if r['disposition'] == '301_EXACT_REPLACEMENT' and r['source_path'].startswith('/wp-sitemap')):
                     for method in ('GET', 'HEAD'):
                         status, headers, _ = request(server.port, row['source_path'] + '?utm_source=test', method)
-                        self.assertEqual(status, 301)
-                        self.assertEqual(headers['Location'], 'https://dentix.ua/sitemap.xml?utm_source=test')
-            (docroot / '.htaccess').write_text(rendered.replace('# RewriteRule ^sayt-nahoditsya-na-tehnicheskom-obsluzh/$', 'RewriteRule ^sayt-nahoditsya-na-tehnicheskom-obsluzh/$'))
-            with ApacheServer(docroot) as server:
-                self.assertEqual(request(server.port, '/sayt-nahoditsya-na-tehnicheskom-obsluzh/')[0], 410)
+                        self.assertEqual(status, 503)
 
     def test_noindex_basic_auth_and_candidate_integrity(self):
         routes = json.loads((ROOT / 'ops/release/routes.json').read_text())
@@ -209,7 +240,7 @@ class MirohostAdapterTest(unittest.TestCase):
             secret = os.urandom(24).hex()
             password_file = temp / 'auth.users'
             password_file.write_text('reviewer:{SHA}' + base64.b64encode(hashlib.sha1(secret.encode()).digest()).decode() + '\n')
-            (docroot / '.htaccess').write_text(adapter.render('staging', SHA, str(password_file)))
+            (docroot / '.htaccess').write_text(adapter.render('staging', SHA, str(password_file), sitemap_ready=True))
             with ApacheServer(docroot) as server:
                 self.assertEqual(request(server.port, '/')[0], 401)
                 for method in ('GET', 'HEAD'):
@@ -219,7 +250,7 @@ class MirohostAdapterTest(unittest.TestCase):
                     if method == 'GET':
                         self.assertIn(b'noindex,nofollow,noarchive', body)
                     self.assertEqual(request(server.port, '/robots.txt', method, auth='reviewer:' + secret)[0], 200)
-                    self.assertEqual(request(server.port, '/?p=1', method, auth='reviewer:' + secret)[0], 503)
+                    self.assertEqual(request(server.port, '/?p=1', method, auth='reviewer:' + secret)[0], 301)
                     self.assertEqual(request(server.port, '/sayt-nahoditsya-na-tehnicheskom-obsluzh/', method,
                                              auth='reviewer:' + secret)[0], 410)
 

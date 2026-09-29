@@ -3,26 +3,16 @@
   "project_id": "dentix",
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
-  "requested_action": "merge",
-  "authorization_level": "DENTIX PR-06 reviewed operational merge and one automatic noindex Pages preview only; production/DNS/HOLD/indexing false",
+  "requested_action": "draft_pr",
+  "authorization_level": "DENTIX PR-07 staging-only deploy, 49 HOLD resolution, commit/push and one Draft PR; production/DNS/indexing false",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-29T06:08:36Z",
-  "remote_main_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
-  "local_main_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
-  "deployed_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
-  "open_prs": [
-    {
-      "number": 9,
-      "state": "OPEN",
-      "isDraft": true,
-      "baseRefName": "main",
-      "baseRefOid": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
-      "headRefName": "seo/dentix-pr06-mirohost-staging",
-      "headRefOid": "efd203ff4cc6364e3553bea30e6f9cc7f4105c4a"
-    }
-  ],
+  "verified_at": "2026-09-29T07:14:50Z",
+  "remote_main_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
+  "local_main_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
+  "deployed_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
+  "open_prs": [],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
@@ -89,6 +79,17 @@
       "headRefOid": "d4bc9bd20b1731b116d9d43ddf1c9447faffb884",
       "mergedAt": "2026-09-13T13:21:20Z",
       "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/7"
+    },
+    {
+      "number": 9,
+      "state": "MERGED",
+      "baseRefName": "main",
+      "headRefName": "seo/dentix-pr06-mirohost-staging",
+      "mergeCommit": {
+        "oid": "c75d494945ba8868840f30bd82a12e78cc1bee14"
+      },
+      "mergedAt": "2026-09-29T06:31:02Z",
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/9"
     }
   ],
   "active_branches": [
@@ -101,9 +102,10 @@
     "seo/dentix-pr04b-surgery-cluster",
     "seo/dentix-pr04c-implant-prosthetics-cluster",
     "seo/dentix-pr05-production-readiness",
-    "seo/dentix-pr06-mirohost-staging"
+    "seo/dentix-pr06-mirohost-staging",
+    "seo/dentix-pr07-hold-resolution"
   ],
-  "handoff_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+  "handoff_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
   "production_matches_deploy": false,

@@ -6,9 +6,9 @@
       "description": "P0: Same-domain replacement previously described as cross-domain/no",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "Same-domain replacement; redirect-map.csv covers 64 inventory rows, 61 discovered + 3 probes. Resolve HOLD before cutover.",
+      "mitigation": "PR-07 final 64-row contract resolves 49 former HOLD paths through exact external static preservation; 28-day access aggregate and public/backup hash evidence. Private staging replay passed; production cutover still requires separately authorized GO and rollback rehearsal.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "planning_reconciled_cutover_blocked"
+      "status": "migration_contract_resolved_production_not_launched"
     },
     {
       "id": "R-002",
@@ -243,12 +243,12 @@
     {
       "id": "R-PR05-HOST-HOLD",
       "area": "production cutover",
-      "description": "P0: host access, legacy origin/query preservation and owner approvals are unresolved; 49 HOLD URLs must survive",
+      "description": "Historical PR05 host and HOLD gate; PR07 resolves URL policy and remote staging replay while cutover approval remains open",
       "likelihood": "confirmed",
       "impact": "high",
-      "mitigation": "ops/release/hosting-decision.json, migration-contract.json and RUNBOOK.md require owner evidence and all-row staging replay. No host selected or adapter deployed.",
+      "mitigation": "PR07 records 64 final rows and 58 query aliases with exact private preservation. Full private staging replay passed; require exact-head receipt, rollback rehearsal and separate production GO before any live mutation.",
       "owner": "DENTIX hosting/DNS owner; named owner UNKNOWN",
-      "status": "CUTOVER_BLOCKED"
+      "status": "PR07_STAGING_REPLAY_PASSED_CUTOVER_BLOCKED"
     },
     {
       "id": "R-PR05-REVIEW-T0",
@@ -259,6 +259,16 @@
       "mitigation": "Exact review packet and safe access/28-90-day T0 request package prepared, not sent; checklists have owner/evidence slots and no executed steps.",
       "owner": "DENTIX owner; qualified reviewer UNKNOWN",
       "status": "CUTOVER_AND_MEASUREMENT_NOT_READY"
+    },
+    {
+      "id": "R-PR07-CONSENT",
+      "area": "legacy_media",
+      "description": "A discovered attachment outside the 49 HOLD paths depicts a person during care; republishing requires documented provenance/consent decision.",
+      "likelihood": "observed_attachment",
+      "impact": "high",
+      "mitigation": "Exclude the attachment from every PR-07 deployable package; its known attachment query alias returns 410 and its direct file path is absent (404). Do not infer consent from the old public URL. Owner can review any later republication separately.",
+      "owner": "DENTIX owner",
+      "status": "EXCLUDED_FROM_CANDIDATE"
     }
   ]
 }

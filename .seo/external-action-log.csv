@@ -1,1 +1,3 @@
 action_id,platform,exact_action,requested_by,authorized_by,authorized_at,executed_by,executed_at,before_evidence,after_evidence,result,status
+PR07-READ-LOGS,mirohost,external_action,DENTIX owner,DENTIX_AUTHORIZATION_PR07_HOLD_RESOLUTION_PRODUCTION_GO,2026-09-29T07:00:00Z,Codex,2026-09-29T07:07:00Z,PR06_PANEL_ISOLATION_PROVEN,AGGREGATED_28_DAY_49_PATHS,read-only logs; no raw identifiers in Git,executed
+PR07-STAGING,mirohost,deploy,DENTIX owner,DENTIX_AUTHORIZATION_PR07_HOLD_RESOLUTION_PRODUCTION_GO,2026-09-29T07:00:00Z,Codex,2026-09-29T08:15:57Z,PR06_EXISTING_BASIC_AUTH_NOINDEX_STAGING,PR07_PRECOMMIT_64_ROW_REPLAY_PASS,isolated staging updated; Basic Auth/noindex retained; final SHA replay follows commit; production untouched,executed

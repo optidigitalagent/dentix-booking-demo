@@ -1,6 +1,7 @@
 # Install only inside a panel-proven isolated staging document root.
 Options -Indexes -MultiViews
-DirectoryIndex index.html
+DirectoryIndex index.html index.rss
+AddType application/rss+xml .rss
 ErrorDocument 404 /404.html
 AuthType Basic
 AuthName "DENTIX private staging"
@@ -13,8 +14,10 @@ Require valid-user
   Header always set X-Dentix-Release "@SOURCE_SHA@"
 </IfModule>
 RewriteEngine On
-RewriteCond %{QUERY_STRING} (^|&)(p|page_id|attachment_id|feed|s|cat|author|rest_route)= [NC]
-RewriteRule ^ - [R=503,L]
-@HOLD_RULES@
-RewriteRule ^sayt-nahoditsya-na-tehnicheskom-obsluzh/$ - [G,L]
+@QUERY_RULES@
+RewriteCond %{QUERY_STRING} (^|&)(p|%70|page_id|attachment_id|feed|s|cat|author|rest_route)= [NC]
+RewriteRule ^ - [G,L]
+@SITEMAP_GATE@
+@SITEMAP_RULES@
+@PATH_RULES@
 @SLASH_RULES@

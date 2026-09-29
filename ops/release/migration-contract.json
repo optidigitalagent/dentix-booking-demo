@@ -1,17 +1,19 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "site_id": "DENTIX",
-  "status": "PLANNING_CONTRACT_NOT_DEPLOYED",
-  "canonical_map_sha256": "f4bcc00a05304a0e2d3a05aea41cd7111ef4bd592a07bc9ec9b155ecae386807",
+  "status": "PRODUCTION_GO_CANDIDATE_NOT_DEPLOYED",
+  "canonical_map_sha256": "35c2edfc470336621690e2099f21210001f3c42ef04c28901b08dcc1d111c562",
   "disposition_totals": {
-    "KEEP": 3,
-    "REBUILD_SAME_URL": 4,
-    "301": 7,
-    "410": 1,
-    "HOLD_FOR_CONFIRMATION": 49
+    "200_REBUILD_SAME_URL": 6,
+    "301_EXACT_REPLACEMENT": 7,
+    "404_KEEP": 1,
+    "200_STATIC_PRESERVE_HTML": 4,
+    "410_RETIRE": 1,
+    "200_STATIC_PRESERVE_XML": 7,
+    "200_STATIC_PRESERVE_MEDIA": 38
   },
   "keep_404_exception": "/sitemap_index.xml was explicitly KEEP genuine 404 in the source map; 404_KEEP preserves that disposition. It is never 200_KEEP and is not a HOLD conversion.",
-  "unmapped_query_policy": "BLOCK_CUTOVER_PENDING_LEGACY_QUERY_INVENTORY; do not route ?p=, ?page_id=, feed or attachment selectors into the React homepage",
+  "unmapped_query_policy": "UNKNOWN_FUNCTIONAL_WORDPRESS_SELECTORS_410; exact known aliases in query-aliases.json; no homepage fallback",
   "rows": [
     {
       "source_url": "https://dentix.ua/robots.txt",
@@ -22,10 +24,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/robots.txt",
       "observation_status": "OBSERVED",
-      "disposition": "KEEP",
+      "disposition": "200_REBUILD_SAME_URL",
       "target_path": "/robots.txt",
       "target_status": 200,
-      "required_response": "200_KEEP",
+      "required_response": "200_REBUILD_SAME_URL",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -39,7 +41,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "KEEP"
     },
     {
       "source_url": "https://dentix.ua/",
@@ -50,7 +53,7 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/",
       "observation_status": "OBSERVED",
-      "disposition": "REBUILD_SAME_URL",
+      "disposition": "200_REBUILD_SAME_URL",
       "target_path": "/",
       "target_status": 200,
       "required_response": "200_REBUILD_SAME_URL",
@@ -67,7 +70,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "REBUILD_SAME_URL"
     },
     {
       "source_url": "https://dentix.ua/wp-sitemap.xml",
@@ -78,10 +82,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-sitemap.xml",
       "observation_status": "OBSERVED",
-      "disposition": "301",
+      "disposition": "301_EXACT_REPLACEMENT",
       "target_path": "/sitemap.xml",
       "target_status": 301,
-      "required_response": "301",
+      "required_response": "301_EXACT_REPLACEMENT",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -95,7 +99,8 @@
         "REPLACEMENT_SITEMAP_200_AND_VALIDATED"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "301"
     },
     {
       "source_url": "https://dentix.ua/sitemap.xml",
@@ -106,10 +111,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-sitemap.xml",
       "observation_status": "OBSERVED",
-      "disposition": "KEEP",
+      "disposition": "200_REBUILD_SAME_URL",
       "target_path": "/sitemap.xml",
       "target_status": 200,
-      "required_response": "200_KEEP",
+      "required_response": "200_REBUILD_SAME_URL",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -123,7 +128,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "KEEP"
     },
     {
       "source_url": "https://dentix.ua/sitemap_index.xml",
@@ -134,7 +140,7 @@
       "observed_final_status": 404,
       "observed_final_url": "https://dentix.ua/sitemap_index.xml",
       "observation_status": "OBSERVED",
-      "disposition": "KEEP",
+      "disposition": "404_KEEP",
       "target_path": null,
       "target_status": 404,
       "required_response": "404_KEEP",
@@ -151,7 +157,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "KEEP"
     },
     {
       "source_url": "https://dentix.ua/implantatsiya/",
@@ -162,7 +169,7 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/implantatsiya/",
       "observation_status": "OBSERVED",
-      "disposition": "REBUILD_SAME_URL",
+      "disposition": "200_REBUILD_SAME_URL",
       "target_path": "/implantatsiya/",
       "target_status": 200,
       "required_response": "200_REBUILD_SAME_URL",
@@ -179,7 +186,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "REBUILD_SAME_URL"
     },
     {
       "source_url": "https://dentix.ua/protezirovanie/",
@@ -190,7 +198,7 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/protezirovanie/",
       "observation_status": "OBSERVED",
-      "disposition": "REBUILD_SAME_URL",
+      "disposition": "200_REBUILD_SAME_URL",
       "target_path": "/protezirovanie/",
       "target_status": 200,
       "required_response": "200_REBUILD_SAME_URL",
@@ -207,7 +215,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "REBUILD_SAME_URL"
     },
     {
       "source_url": "https://dentix.ua/lechenie-pod-mikroskopom/",
@@ -218,7 +227,7 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/lechenie-pod-mikroskopom/",
       "observation_status": "OBSERVED",
-      "disposition": "REBUILD_SAME_URL",
+      "disposition": "200_REBUILD_SAME_URL",
       "target_path": "/lechenie-pod-mikroskopom/",
       "target_status": 200,
       "required_response": "200_REBUILD_SAME_URL",
@@ -235,7 +244,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "REBUILD_SAME_URL"
     },
     {
       "source_url": "https://dentix.ua/wp-sitemap-posts-post-1.xml",
@@ -246,10 +256,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-sitemap-posts-post-1.xml",
       "observation_status": "OBSERVED",
-      "disposition": "301",
+      "disposition": "301_EXACT_REPLACEMENT",
       "target_path": "/sitemap.xml",
       "target_status": 301,
-      "required_response": "301",
+      "required_response": "301_EXACT_REPLACEMENT",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -263,7 +273,8 @@
         "REPLACEMENT_SITEMAP_200_AND_VALIDATED"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "301"
     },
     {
       "source_url": "https://dentix.ua/wp-sitemap-posts-page-1.xml",
@@ -274,10 +285,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-sitemap-posts-page-1.xml",
       "observation_status": "OBSERVED",
-      "disposition": "301",
+      "disposition": "301_EXACT_REPLACEMENT",
       "target_path": "/sitemap.xml",
       "target_status": 301,
-      "required_response": "301",
+      "required_response": "301_EXACT_REPLACEMENT",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -291,7 +302,8 @@
         "REPLACEMENT_SITEMAP_200_AND_VALIDATED"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "301"
     },
     {
       "source_url": "https://dentix.ua/wp-sitemap-taxonomies-category-1.xml",
@@ -302,10 +314,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-sitemap-taxonomies-category-1.xml",
       "observation_status": "OBSERVED",
-      "disposition": "301",
+      "disposition": "301_EXACT_REPLACEMENT",
       "target_path": "/sitemap.xml",
       "target_status": 301,
-      "required_response": "301",
+      "required_response": "301_EXACT_REPLACEMENT",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -319,7 +331,8 @@
         "REPLACEMENT_SITEMAP_200_AND_VALIDATED"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "301"
     },
     {
       "source_url": "https://dentix.ua/wp-sitemap-users-1.xml",
@@ -330,10 +343,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-sitemap-users-1.xml",
       "observation_status": "OBSERVED",
-      "disposition": "301",
+      "disposition": "301_EXACT_REPLACEMENT",
       "target_path": "/sitemap.xml",
       "target_status": 301,
-      "required_response": "301",
+      "required_response": "301_EXACT_REPLACEMENT",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -347,7 +360,8 @@
         "REPLACEMENT_SITEMAP_200_AND_VALIDATED"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "301"
     },
     {
       "source_url": "https://dentix.ua/2021/04/08/privet-mir/",
@@ -358,31 +372,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/2021/04/08/privet-mir/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_HTML",
       "target_path": "/2021/04/08/privet-mir/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_HTML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:55.575034+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Default-looking WordPress slug actually titled Comments; do not delete solely from slug. Owner must inspect comment export/provenance privately.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "2021/04/08/privet-mir/index.html",
+        "bytes": 734,
+        "sha256": "e16a92a7bcdf474ad46a21b329e77236f8cf9d41a04c35a93228a3c0d08c21d6",
+        "content_type": "text/html"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/sayt-nahoditsya-na-tehnicheskom-obsluzh/",
@@ -393,10 +408,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/sayt-nahoditsya-na-tehnicheskom-obsluzh/",
       "observation_status": "OBSERVED",
-      "disposition": "410",
+      "disposition": "410_RETIRE",
       "target_path": null,
       "target_status": 410,
-      "required_response": "410",
+      "required_response": "410_RETIRE",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -410,7 +425,8 @@
         "OWNER_CONFIRMS_RETIREMENT_AND_LINK_CHECK"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "410"
     },
     {
       "source_url": "https://dentix.ua/otzyivyi/",
@@ -421,31 +437,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/otzyivyi/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_HTML",
       "target_path": "/otzyivyi/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_HTML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:56.134579+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Public reviews shell; source does not establish full comment inventory or reuse consent. Keep URL decision on HOLD pending owner review; no invented reviews.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "otzyivyi/index.html",
+        "bytes": 532,
+        "sha256": "53f3a5e0767ecf47ec2b81576c9c9c23c1327aa19bc636f4f0d1e3b8b0eaa45d",
+        "content_type": "text/html"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/category/bez-rubriki/",
@@ -456,31 +473,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/category/bez-rubriki/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_HTML",
       "target_path": "/category/bez-rubriki/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_HTML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:56.406831+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Preserve until owner reviews purpose/provenance and GSC/link inventory. No traffic or backlink value inferred.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "category/bez-rubriki/index.html",
+        "bytes": 830,
+        "sha256": "3a4d2c44f364af30ed2b332dfb454179f29b984fd91592dfcc022b50339e15dd",
+        "content_type": "text/html"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/author/newdentix/",
@@ -491,31 +509,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/author/newdentix/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_HTML",
       "target_path": "/author/newdentix/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_HTML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:56.902199+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Preserve until owner reviews purpose/provenance and GSC/link inventory. No traffic or backlink value inferred.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "author/newdentix/index.html",
+        "bytes": 794,
+        "sha256": "0ca24c7da900077515bacee6b0261f228d5c6aec570210a5b47f92abceb32167",
+        "content_type": "text/html"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/2021/04/08/privet-mir/feed/",
@@ -526,31 +545,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/2021/04/08/privet-mir/feed/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_XML",
       "target_path": "/2021/04/08/privet-mir/feed/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_XML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:56.958146+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Discovered public RSS/comments feed; subscriptions and comment contents not assessed. Decide keep/export/410 only with owner review; never redirect feed to HTML homepage.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "2021/04/08/privet-mir/feed/index.rss",
+        "bytes": 785,
+        "sha256": "757c7acf41016acd3697bef358e708f4a5f32f6aec4f07cecb7388268ae39919",
+        "content_type": "application/rss+xml"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/author/newdentix/feed/",
@@ -561,31 +581,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/author/newdentix/feed/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_XML",
       "target_path": "/author/newdentix/feed/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_XML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:57.405754+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Discovered public RSS/comments feed; subscriptions and comment contents not assessed. Decide keep/export/410 only with owner review; never redirect feed to HTML homepage.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "author/newdentix/feed/index.rss",
+        "bytes": 2134,
+        "sha256": "56e0214b21d146c54513f277b556d11c382d8ff554d3a4ae26112f10ce9f12e2",
+        "content_type": "application/rss+xml"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/category/bez-rubriki/feed/",
@@ -596,31 +617,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/category/bez-rubriki/feed/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_XML",
       "target_path": "/category/bez-rubriki/feed/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_XML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:57.748431+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Discovered public RSS/comments feed; subscriptions and comment contents not assessed. Decide keep/export/410 only with owner review; never redirect feed to HTML homepage.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "category/bez-rubriki/feed/index.rss",
+        "bytes": 2162,
+        "sha256": "917b4790c3a9a37f3e0a5977accc36026eab4c783c2ed8c49579dadc2ac816db",
+        "content_type": "application/rss+xml"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/comments/feed/",
@@ -631,31 +653,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/comments/feed/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_XML",
       "target_path": "/comments/feed/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_XML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:57.793029+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Discovered public RSS/comments feed; subscriptions and comment contents not assessed. Decide keep/export/410 only with owner review; never redirect feed to HTML homepage.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "comments/feed/index.rss",
+        "bytes": 748,
+        "sha256": "55b4e327a7273b945363b22b362caefd893a2524b15d53f72cfc3fb7370e42e4",
+        "content_type": "application/rss+xml"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/elementor-5/feed/",
@@ -666,31 +689,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/elementor-5/feed/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_XML",
       "target_path": "/elementor-5/feed/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_XML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:57.988094+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Discovered public RSS/comments feed; subscriptions and comment contents not assessed. Decide keep/export/410 only with owner review; never redirect feed to HTML homepage.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "elementor-5/feed/index.rss",
+        "bytes": 744,
+        "sha256": "9157172555f120cefb57c5103001c4562d70f681036b49ad44e6df68d9207676",
+        "content_type": "application/rss+xml"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/feed/",
@@ -701,31 +725,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/feed/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_XML",
       "target_path": "/feed/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_XML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:58.398809+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Discovered public RSS/comments feed; subscriptions and comment contents not assessed. Decide keep/export/410 only with owner review; never redirect feed to HTML homepage.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "feed/index.rss",
+        "bytes": 2081,
+        "sha256": "9c7129c9422ee02c834fb950ee06fe303cb762b3ef4176f774b8938adc307f32",
+        "content_type": "application/rss+xml"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/otzyivyi/feed/",
@@ -736,31 +761,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/otzyivyi/feed/",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_XML",
       "target_path": "/otzyivyi/feed/",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_XML",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "client",
       "evidence_date": "2026-09-13T14:47:58.493812+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Discovered public RSS/comments feed; subscriptions and comment contents not assessed. Decide keep/export/410 only with owner review; never redirect feed to HTML homepage.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "otzyivyi/feed/index.rss",
+        "bytes": 739,
+        "sha256": "2cc944ec5d21b911bfc4de096ffafaeced1d1df59ac0de7185779624e3f318a3",
+        "content_type": "application/rss+xml"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://www.dentix.ua/",
@@ -771,10 +797,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/",
       "observation_status": "OBSERVED",
-      "disposition": "301",
+      "disposition": "301_EXACT_REPLACEMENT",
       "target_path": "/",
       "target_status": 301,
-      "required_response": "301",
+      "required_response": "301_EXACT_REPLACEMENT",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -788,7 +814,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "301"
     },
     {
       "source_url": "http://dentix.ua/",
@@ -799,10 +826,10 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/",
       "observation_status": "OBSERVED",
-      "disposition": "301",
+      "disposition": "301_EXACT_REPLACEMENT",
       "target_path": "/",
       "target_status": 301,
-      "required_response": "301",
+      "required_response": "301_EXACT_REPLACEMENT",
       "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
       "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
@@ -816,7 +843,8 @@
         "HOST_ADAPTER_STAGING_QA"
       ],
       "preservation": null,
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint",
+      "original_disposition": "301"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/03/Logo_cu.png",
@@ -827,31 +855,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/03/Logo_cu.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/03/Logo_cu.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.196928+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/03/Logo_cu.png",
+        "bytes": 52376,
+        "sha256": "95385f658816660e9f5a390000f035d96c015c346da3a26199c76cb303fc6e6d",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/14_150-150x150.png",
@@ -862,31 +891,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/14_150-150x150.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/14_150-150x150.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.326460+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/14_150-150x150.png",
+        "bytes": 6765,
+        "sha256": "3463c0f8fd187dabdd278058296cf918cc0b0ed8a73c1e4e332d6f7f47cf08fe",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/13_150-150x150.png",
@@ -897,31 +927,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/13_150-150x150.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/13_150-150x150.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.410886+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/13_150-150x150.png",
+        "bytes": 9880,
+        "sha256": "7935b37290299b1ab37839751b41143ebc3095c9b2ff759d8c00980cc2f951d1",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/15_150-150x150.png",
@@ -932,31 +963,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/15_150-150x150.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/15_150-150x150.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.491268+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/15_150-150x150.png",
+        "bytes": 8750,
+        "sha256": "b75390d3365831578312c51108238f00ee4b0de687e5b300e22daf1d5a7af851",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_123140_300-169x300.jpg",
@@ -967,31 +999,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_123140_300-169x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_123140_300-169x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.581501+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_123140_300-169x300.jpg",
+        "bytes": 9420,
+        "sha256": "6dd0d0f63af49f035ccd9d5a5d9f71aab3f4dd32a13da93454f26787726f350e",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105221_300-169x300.jpg",
@@ -1002,31 +1035,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105221_300-169x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_105221_300-169x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.666226+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_105221_300-169x300.jpg",
+        "bytes": 9839,
+        "sha256": "33aec01a5d01ed540b079697e547f15e04755c42bf38a5bfc83a7fb2ad565d0f",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105452_300-169x300.jpg",
@@ -1037,31 +1071,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105452_300-169x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_105452_300-169x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.749874+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_105452_300-169x300.jpg",
+        "bytes": 10612,
+        "sha256": "59b5d30344c906da3c8d4ae8ef6530ac8a28a8295ff49aef8e0a6d2cd053ad26",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105121_300-169x300.jpg",
@@ -1072,31 +1107,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105121_300-169x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_105121_300-169x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.856689+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_105121_300-169x300.jpg",
+        "bytes": 8208,
+        "sha256": "b206677acaae6ac9e7968e92fe1b33ba39f8e903b69738f4f9f3bb6a43c761fa",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert10-215x300.jpg",
@@ -1107,31 +1143,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert10-215x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert10-215x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:47:59.956224+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert10-215x300.jpg",
+        "bytes": 8403,
+        "sha256": "a3dd529cf47af850ba3c2b0abd8f559dccc36b52dccfde883dd5f4b47b0f342d",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert9-213x300.jpg",
@@ -1142,31 +1179,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert9-213x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert9-213x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.037993+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert9-213x300.jpg",
+        "bytes": 9076,
+        "sha256": "3fc24361b4dee270e05f21c02a569bcfed06ae31883a3527c60eba2a99d098ff",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert8-208x300.jpg",
@@ -1177,31 +1215,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert8-208x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert8-208x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.116130+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert8-208x300.jpg",
+        "bytes": 6795,
+        "sha256": "dcc7a8070243d9478c1959d8caaa5e21ac6b080b85a4f0e2fbdf6d1dd7d85f24",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert7-203x300.jpg",
@@ -1212,31 +1251,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert7-203x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert7-203x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.121218+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert7-203x300.jpg",
+        "bytes": 10061,
+        "sha256": "ccb0fd0b787ced5c0a009fa7842dab20b91cc6a600835fabaf1c87718861fe80",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert6-300x213.jpg",
@@ -1247,31 +1287,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert6-300x213.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert6-300x213.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.198352+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert6-300x213.jpg",
+        "bytes": 12062,
+        "sha256": "8b4a635abb4a842377e1fbf382225d863a59031682d94ce34b60d1eb4cce65e1",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert5-211x300.jpg",
@@ -1282,31 +1323,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert5-211x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert5-211x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.205917+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert5-211x300.jpg",
+        "bytes": 13070,
+        "sha256": "04abcbcf6449bfb06277eb7dd92fc8c58219428bfbc860ff0b280c1f1b82a968",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert4-212x300.jpg",
@@ -1317,31 +1359,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert4-212x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert4-212x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.271254+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert4-212x300.jpg",
+        "bytes": 12595,
+        "sha256": "fee4be9ee91fd07f3e7a4dd96c987b88fe2ed99f7743a87cc26573049791fab4",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert3-212x300.jpg",
@@ -1352,31 +1395,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert3-212x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert3-212x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.300454+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert3-212x300.jpg",
+        "bytes": 13505,
+        "sha256": "8108bfddd8d67dca2b4ac90700405c40ac23cd1cc746facbc0fd416fa5e902a9",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert2-214x300.jpg",
@@ -1387,31 +1431,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert2-214x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert2-214x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.307969+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert2-214x300.jpg",
+        "bytes": 11349,
+        "sha256": "a656780ac5e9e7d38855c6b00fd48c00c918a0c1fc7f975d63e2f79a90e755e0",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert1-216x300.jpg",
@@ -1422,31 +1467,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert1-216x300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert1-216x300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.380232+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert1-216x300.jpg",
+        "bytes": 26138,
+        "sha256": "5c0df932f40b110bdb04fcab7f47336838a8a1c76d78654a0e433f1221ad92a4",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/Stas.jpg",
@@ -1457,31 +1503,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/Stas.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/Stas.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.402256+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/Stas.jpg",
+        "bytes": 113869,
+        "sha256": "61e3e6dd340907d0582fc0f5883c5ff5216a8e45712b2e68fddc22ccbd48da21",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_123140_300.jpg",
@@ -1492,31 +1539,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_123140_300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_123140_300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.411463+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_123140_300.jpg",
+        "bytes": 19846,
+        "sha256": "a17096d141b8464294d8284bf7e874a7073a3f66df18ee4e6ca910e1dc7f173d",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105221_300.jpg",
@@ -1527,31 +1575,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105221_300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_105221_300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.479247+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_105221_300.jpg",
+        "bytes": 18327,
+        "sha256": "77e110bb897516af6ba4851518f157bf4b4c812a31c03f23ddedb4305c0ccb6f",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105452_300.jpg",
@@ -1562,31 +1611,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105452_300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_105452_300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.508911+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_105452_300.jpg",
+        "bytes": 19893,
+        "sha256": "589c66a1ac0361bb3dfe26df318f9c2058480a2d7179e1f67f2499ea0a14f981",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105121_300.jpg",
@@ -1597,31 +1647,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/05/20240405_105121_300.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/05/20240405_105121_300.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.540094+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/05/20240405_105121_300.jpg",
+        "bytes": 15138,
+        "sha256": "d088c62b4b9de31fdbffc055c149a79decc7c32e33f8c64c2e18bb7c7ac6b733",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert10.jpg",
@@ -1632,31 +1683,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert10.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert10.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.576732+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert10.jpg",
+        "bytes": 298174,
+        "sha256": "25fd98a29eae7a1905b91b81bd85a523dd8677988b323d8e53bea2f0759c5bdc",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert9.jpg",
@@ -1667,31 +1719,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert9.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert9.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.609810+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert9.jpg",
+        "bytes": 273180,
+        "sha256": "9d68163fe02fa9d630372ec35d69a9a6c1d08df1a40ad4adde3b9cabaa67a027",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert8.jpg",
@@ -1702,31 +1755,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert8.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert8.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.634644+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert8.jpg",
+        "bytes": 753136,
+        "sha256": "fd26aecd044f7bdc95c8f59e06402da758184f6adcbc96f6b1ac7d714bf5d1cb",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert7.jpg",
@@ -1737,31 +1791,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert7.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert7.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.752344+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert7.jpg",
+        "bytes": 401960,
+        "sha256": "303a7c136010e8d6f97c6cd266e5d8e4cd1a32c188415c9cf5b977c1bd214054",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert6.jpg",
@@ -1772,31 +1827,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert6.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert6.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.787579+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert6.jpg",
+        "bytes": 518244,
+        "sha256": "3bc59b019751f80d68509fbb8d2ab6e224a2ae30517efbf99f527b1bed676565",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert5.jpg",
@@ -1807,31 +1863,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert5.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert5.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.837905+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert5.jpg",
+        "bytes": 717661,
+        "sha256": "e6fa22059582f0df7dde3086df24ed2abfe1dfcae61c314fe58f0c30d01934f9",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert4.jpg",
@@ -1842,31 +1899,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert4.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert4.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.945317+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert4.jpg",
+        "bytes": 620307,
+        "sha256": "55f4f4038413527ba6dd1fbe9b4b54b32f2e5001b8f252a6f8d4d2923af9d315",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert3.jpg",
@@ -1877,31 +1935,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert3.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert3.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:00.995211+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert3.jpg",
+        "bytes": 666520,
+        "sha256": "c4c5b850664258a0de93447b1a3d75a8896e0f027a61cebc31102aa0e723faa9",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert2.jpg",
@@ -1912,31 +1971,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert2.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert2.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:01.061331+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert2.jpg",
+        "bytes": 565287,
+        "sha256": "0229d2249b37cf8b4c6c8a702422ec6bbad0a7d29a072392b3c473889817a023",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/sert1.jpg",
@@ -1947,31 +2007,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/sert1.jpg",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/sert1.jpg",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:01.170636+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/sert1.jpg",
+        "bytes": 440911,
+        "sha256": "9a0d929a117409bfafde523d32d2815185de29373e1f9c47e58db9793ab32899",
+        "content_type": "image/jpeg"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png",
@@ -1982,31 +2043,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:01.216075+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png",
+        "bytes": 8016,
+        "sha256": "169f2443912c86f364a2d31a6fbecfbaef6f44284cf46602cc7687978ba8d2e4",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/03/unnamed.png",
@@ -2017,31 +2079,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/03/unnamed.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/03/unnamed.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:01.262101+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/03/unnamed.png",
+        "bytes": 89772,
+        "sha256": "0ef71cdf99d04a385b5cfd9962dfd9519a11c44db8592da3ed8e109e6ba0497e",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png",
@@ -2052,31 +2115,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:01.303476+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png",
+        "bytes": 266039,
+        "sha256": "572bf9a4450136881b709ff1ec6e0b03eb0f03118abc4556368983518d55b373",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/03/0fcfe684754725384c.png",
@@ -2087,31 +2151,32 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2024/03/0fcfe684754725384c.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2024/03/0fcfe684754725384c.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:01.369535+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2024/03/0fcfe684754725384c.png",
+        "bytes": 215122,
+        "sha256": "0d3d3db7faf1146603b497debc272c0020a1f0fe9b309b2acf681e009a701a49",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2021/04/Logo_cut_black-1024x276.png",
@@ -2122,31 +2187,33 @@
       "observed_final_status": 200,
       "observed_final_url": "https://dentix.ua/wp-content/uploads/2021/04/Logo_cut_black-1024x276.png",
       "observation_status": "OBSERVED",
-      "disposition": "HOLD_FOR_CONFIRMATION",
+      "disposition": "200_STATIC_PRESERVE_MEDIA",
       "target_path": "/wp-content/uploads/2021/04/Logo_cut_black-1024x276.png",
-      "target_status": null,
-      "required_response": "HOLD",
-      "query_policy": "PRESERVE_VERBATIM; functional WordPress query aliases require legacy-origin handling and separate inventory; never discard or reinterpret",
-      "slash_policy": "Exact source paths; only the twelve replacement directory routes gain a trailing slash; HOLD paths untouched",
+      "target_status": 200,
+      "required_response": "200_STATIC_PRESERVE_MEDIA",
+      "query_policy": "Exact query aliases in query-aliases.json; unknown WordPress selectors 410; ordinary tracking query preserved",
+      "slash_policy": "Exact preserved URL path; no generic fallback",
       "canonical_host_policy": "HTTPS_APEX_PATH_QUERY_PRESERVED",
       "owner": "DENTIX owner / hosting owner; named assignee pending",
       "reviewer": "asset owner; clinical reviewer if patient/case material",
       "evidence_date": "2026-09-13T14:48:01.391539+00:00",
       "canonical_evidence_date": "2026-09-12",
-      "canonical_reason": "Linked or embedded legacy image variant. Preserve URL pending asset-owner approval, original/responsive variant mapping and clinical/consent checks; no copying into new site now.",
-      "cutover_test": "Compare status, Location, path/query and fingerprint with approved preservation receipt",
+      "canonical_reason": "Exact public legacy object retained because current 200, verified backup/public bytes, and 28-day requests; no inferred ranking outcome.",
+      "cutover_test": "GET/HEAD 200 at exact path; SHA-256/content type parity; noindex on staging; original media Range where applicable",
       "prerequisites": [
-        "OWNER_APPROVED_LEGACY_ORIGIN_OR_STATIC_PRESERVATION",
-        "ALL_DEPENDENT_MEDIA_AND_FEEDS_TESTED"
+        "PRIVATE_PRESERVATION_BUNDLE_HASH_VERIFIED",
+        "STAGING_64_ROW_REPLAY_PASS"
       ],
       "preservation": {
-        "status": "UNRESOLVED_CUTOVER_BLOCKER",
-        "strategy": "LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives",
-        "legacy_origin": null,
-        "owner_approval": null,
-        "receipt": null
+        "status": "PRIVATE_BUNDLE_READY_NOT_PRODUCTION_DEPLOYED",
+        "bundle_entry": "wp-content/uploads/2021/04/Logo_cut_black-1024x276.png",
+        "bytes": 33649,
+        "sha256": "28c7b6e9e56f94769aa23d2a43ef889eb01c460aab79af7b43233ffe15fae69f",
+        "content_type": "image/png"
       },
-      "rollback_expectation": "Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint"
+      "rollback_expectation": "Restore old WordPress origin at same path and verify current public fingerprint",
+      "original_disposition": "HOLD_FOR_CONFIRMATION"
     }
-  ]
+  ],
+  "initial_hold_rows": 49
 }

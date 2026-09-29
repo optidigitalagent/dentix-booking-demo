@@ -8,7 +8,11 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 OPS = ROOT / 'ops/release'
-EXPECTED = {'KEEP': 3, 'REBUILD_SAME_URL': 4, '301': 7, '410': 1, 'HOLD_FOR_CONFIRMATION': 49}
+INITIAL = {'KEEP': 3, 'REBUILD_SAME_URL': 4, '301': 7, '410': 1, 'HOLD_FOR_CONFIRMATION': 49}
+EXPECTED = {'200_REBUILD_SAME_URL': 6, '301_EXACT_REPLACEMENT': 7,
+    '404_KEEP': 1, '200_STATIC_PRESERVE_HTML': 4,
+    '200_STATIC_PRESERVE_XML': 7, '200_STATIC_PRESERVE_MEDIA': 38,
+    '410_RETIRE': 1}
 ORIGIN = 'https://dentix.ua'
 def sha(data): return hashlib.sha256(data).hexdigest()
 def read_json(path): return json.loads(Path(path).read_text())
@@ -72,41 +76,56 @@ def derive_contract(observations):
             'preservation': {'status': 'UNRESOLVED_CUTOVER_BLOCKER', 'strategy': 'LEGACY_ORIGIN_PROXY_PREFERRED_IF_ACCESS_PROVEN; static preservation or explicit owner disposition are alternatives', 'legacy_origin': None, 'owner_approval': None, 'receipt': None} if hold else None,
             'rollback_expectation': 'Restore old origin and exact pre-cutover routing/robots state; verify observed status chain and critical content fingerprint',
         })
-    return {'schema_version': 1, 'site_id': 'DENTIX', 'status': 'PLANNING_CONTRACT_NOT_DEPLOYED', 'canonical_map_sha256': sha((ROOT/'.seo/redirect-map.csv').read_bytes()), 'disposition_totals': EXPECTED,
+    return {'schema_version': 1, 'site_id': 'DENTIX', 'status': 'PLANNING_CONTRACT_NOT_DEPLOYED', 'canonical_map_sha256': sha((ROOT/'.seo/redirect-map.csv').read_bytes()), 'disposition_totals': INITIAL,
         'keep_404_exception': '/sitemap_index.xml was explicitly KEEP genuine 404 in the source map; 404_KEEP preserves that disposition. It is never 200_KEEP and is not a HOLD conversion.',
         'unmapped_query_policy': 'BLOCK_CUTOVER_PENDING_LEGACY_QUERY_INVENTORY; do not route ?p=, ?page_id=, feed or attachment selectors into the React homepage',
         'rows': result}
 
 def validate_contract(contract):
     rows = migration_rows(); actual = contract['rows']
+    require(contract['site_id'] == 'DENTIX' and contract['schema_version'] == 2, 'Final DENTIX contract required')
     require(contract['canonical_map_sha256'] == sha((ROOT/'.seo/redirect-map.csv').read_bytes()), 'Canonical map hash drift')
     require(len(rows) == len(actual) == 64, 'Migration count')
     require({k: sum(r['disposition'] == k for r in actual) for k in EXPECTED} == EXPECTED == contract['disposition_totals'], 'Migration totals')
+    require(contract['initial_hold_rows'] == 49, 'Original HOLD count drift')
+    preservation = read_json(OPS / 'preservation-manifest.json')
+    files = {r['path'].lstrip('/'): r for r in preservation['files']}
+    require(len(files) == 49 and preservation['site_id'] == 'DENTIX', 'Preservation manifest drift')
     for original, row in zip(rows, actual):
         require(row['source_url'] == original['source_url'] and row['disposition'] == original['status'], 'Silent disposition/source drift')
         target = urlsplit(original['target_url']).path if original['target_url'] else None
         require(row['target_path'] == target, 'Silent target drift')
         u = urlsplit(row['source_url'])
         require(row['source_host'] == u.netloc and row['source_path'] == (u.path or '/') and row['source_scheme'] == u.scheme, 'Source components drift')
-        expected = {'KEEP': ('200_KEEP', 200), 'REBUILD_SAME_URL': ('200_REBUILD_SAME_URL', 200), '301': ('301', 301), '410': ('410', 410), 'HOLD_FOR_CONFIRMATION': ('HOLD', None)}[original['status']]
-        if original['normalized_path'] == '/sitemap_index.xml': expected = ('404_KEEP', 404)
-        require((row['required_response'], row['target_status']) == expected, 'Required response/status drift')
+        status = 200 if row['disposition'].startswith('200_') else 301 if row['disposition'] == '301_EXACT_REPLACEMENT' else 404 if row['disposition'] == '404_KEEP' else 410
+        require((row['required_response'], row['target_status']) == (row['disposition'], status), 'Required response/status drift')
         for field in ['query_policy','slash_policy','canonical_host_policy','owner','reviewer','evidence_date','cutover_test','rollback_expectation','prerequisites']:
             require(row[field], 'Missing migration field: ' + field)
-        if row['disposition'] == 'HOLD_FOR_CONFIRMATION':
-            require(row['preservation']['status'] == 'UNRESOLVED_CUTOVER_BLOCKER' and row['preservation']['legacy_origin'] is None and row['preservation']['owner_approval'] is None, 'Unproven HOLD execution')
-        if row['disposition'] == 'REBUILD_SAME_URL': require(row['source_path'] == row['target_path'], 'Commercial path changed')
-        if row['disposition'] == '301' and 'sitemap' in row['source_path']: require('REPLACEMENT_SITEMAP_200_AND_VALIDATED' in row['prerequisites'], 'Premature sitemap redirect')
-    return {'status': 'PASS', 'rows': 64, 'hold': 49, 'totals': EXPECTED}
+        if row['disposition'].startswith('200_STATIC_'):
+            receipt = row['preservation']; entry = files.get(receipt['bundle_entry'])
+            require(entry and entry['sha256'] == receipt['sha256'] and entry['bytes'] == receipt['bytes'], 'Unproven preservation entry')
+            require(row['target_path'] == row['source_path'], 'Preservation path changed')
+        if row['disposition'] == '200_REBUILD_SAME_URL': require(row['source_path'] == row['target_path'], 'Rebuilt path changed')
+        if row['disposition'] == '301_EXACT_REPLACEMENT' and 'sitemap' in row['source_path']: require('REPLACEMENT_SITEMAP_200_AND_VALIDATED' in row['prerequisites'], 'Premature sitemap redirect')
+    return {'status': 'PASS', 'rows': 64, 'hold': 0, 'totals': EXPECTED}
 
 def plan_response(url, contract, sitemap_ready=False):
     """Pure contract oracle, never a server adapter. None status means launch blocker."""
     u = urlsplit(url); require(u.hostname in ['dentix.ua', 'www.dentix.ua'] and u.scheme in ['http','https'], 'Foreign URL')
     if u.scheme != 'https' or u.netloc != 'dentix.ua': return {'status': 301, 'location': ORIGIN + (u.path or '/') + ('?' + u.query if u.query else '')}
-    if any(k.lower() in {'p','page_id','attachment_id','feed','s'} for k, _ in parse_qsl(u.query, keep_blank_values=True)): return {'status': None, 'blocker': 'LEGACY_FUNCTIONAL_QUERY_REQUIRES_PRESERVATION'}
+    aliases = read_json(OPS / 'query-aliases.json')
+    parameters = parse_qsl(u.query, keep_blank_values=True)
+    selectors = [(k.lower(), v) for k, v in parameters if k.lower() in aliases['functional_keys']]
+    if selectors:
+        if len(selectors) != 1 or len(parameters) != 1: return {'status': 410}
+        key, value = selectors[0]
+        if u.query.partition('=')[0].lower() != key: return {'status': 410}
+        alias = next((r for r in aliases['aliases'] if r['source_path'] == (u.path or '/') and r['key'] == key and r['value'].lower() == value.lower()), None)
+        if not alias: return {'status': 410}
+        if alias['disposition'] == '410_RETIRE': return {'status': 410}
+        return {'status': 301, 'location': ORIGIN + alias['target_path']}
     row = next((r for r in contract['rows'] if r['source_url'] == ORIGIN + (u.path or '/')), None)
     if row:
-        if row['required_response'] == 'HOLD': return {'status': None, 'blocker': 'HOLD_PRESERVATION_UNRESOLVED'}
         if 'REPLACEMENT_SITEMAP_200_AND_VALIDATED' in row['prerequisites'] and not sitemap_ready: return {'status': None, 'blocker': 'SITEMAP_NOT_READY'}
         result = {'status': row['target_status']}
         if result['status'] == 301: result['location'] = ORIGIN + row['target_path'] + ('?' + u.query if u.query else '')
