@@ -89,5 +89,23 @@
   "correction_evidence_receipt": {
     "bytes": 29156,
     "sha256": "4f6f425b00ee6e0034385b082d958cea5c2b299cc142a10c26adb2ca824689dc"
+  },
+  "phase_a": {
+    "recorded_at": "2026-09-29T19:50:25Z",
+    "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+    "status": "PREPARE_GO_IN_PROGRESS_OWNER_ACCESS_BLOCKED",
+    "local_production_content_sha256": "9216df1905903185b2305cedba6447f718e793f08c19fa81192b67d68c6de2d3",
+    "preservation_sha256": "6357fc35ba4131fc070a2e5f13376fd120c1adf21bcc181dc814065389bf3def",
+    "go_package_sha256": "f5f9fe17b6721f317b92c7a751b46230406276984f7432b1ce79bdedd2924592",
+    "legacy_packager_guard": "PR05 status enum stale; accepted content hash matches rebuilt content; package layout independently reproduced and hashed twice",
+    "remote_replay": "NOT_RUN",
+    "rotation": "NOT_RUN",
+    "fresh_backups": "NOT_RUN",
+    "restore": "NOT_RUN",
+    "rollback": "NOT_RUN",
+    "production": "OLD_WORDPRESS",
+    "outcome_claims": [],
+    "local_provisional_rehearsal": "4800 old WordPress files restored from pre-rotation archive; local isolated same-filesystem rename and reverse PASS; fresh DB clone and Mirohost server rehearsal NOT_RUN",
+    "browser_suites": "Production suites PASS; two intake fixture suites PASS against isolated fake API build with all requests intercepted; no real submission; noindex preview rebuilt afterward"
   }
 }

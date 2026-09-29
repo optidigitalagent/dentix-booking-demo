@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site_id": "DENTIX",
-  "observed_at": "2026-09-29T11:01:03Z",
+  "observed_at": "2026-09-29T19:50:25Z",
   "decision": "CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED",
   "recommended_candidate": "current_origin_mirohost_for_separate_go_review",
   "cutover_authorized": false,
@@ -121,5 +121,16 @@
     "Alternative Cloudflare: owner-approved zone/plan/access, dedicated routing adapter and rollback proof; preserve MX/TXT/CAA",
     "Named operating and billing owner, restore rehearsal <=15 minutes target, planned change window and separate cutover authorization"
   ],
-  "decision_rule": "Current Mirohost is the observed production candidate with exact-head private staging replay and safe replacement permissions. Zero HOLD remains. Production selection still requires merged-main rebuild, credential rotation, rollback rehearsal, lead-delivery decision, T0 readiness and separately authorized GO; no deployment is authorized by this record."
+  "decision_rule": "Current Mirohost is the observed production candidate with exact-head private staging replay and safe replacement permissions. Zero HOLD remains. Production selection still requires merged-main rebuild, credential rotation, rollback rehearsal, lead-delivery decision, T0 readiness and separately authorized GO; no deployment is authorized by this record.",
+  "phase_a": {
+    "status": "LOCAL_CANDIDATE_PASS_REMOTE_REPLAY_PENDING_OWNER_ACCESS",
+    "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+    "candidate_sha256": "f5f9fe17b6721f317b92c7a751b46230406276984f7432b1ce79bdedd2924592",
+    "production_is_wordpress": true,
+    "dns_change_planned": false,
+    "private_staging_existing_basic_auth_401_200": true,
+    "exact_main_remote_replay": "NOT_RUN",
+    "fresh_backup_restore_rollback": "NOT_RUN",
+    "owner_access": "PENDING"
+  }
 }

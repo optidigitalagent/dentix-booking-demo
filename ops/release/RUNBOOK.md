@@ -1,3 +1,25 @@
+# PR-08 Phase A GO/NO-GO and rollback matrix
+
+Recorded 2026-09-29T19:50:25Z. Source main `0cc446e0a525b419f9a79be963ff469eef25210b`. Production remains old WordPress. No production document-root mutation or DNS/indexing action is allowed in Phase A.
+
+| Gate | GO evidence | Current status |
+|---|---|---|
+| Credential rotation | Recovery verified, each active exposed secret replaced in Keychain/encrypted receipt, fresh login and dependent WordPress/database/mail access proved | NO-GO: owner panel login pending |
+| Fresh backups | Post-rotation full files and DB, verified sizes, gzip and SHA-256 in encrypted private storage | NO-GO: not run |
+| Cold restore | Isolated Basic-Auth/noindex WordPress plus cloned DB, admin/media/legacy paths verified | NO-GO: not run |
+| Atomic rollback rehearsal | Same-filesystem rehearsal without live root change, measured recovery ≤900 seconds | NO-GO: not run |
+| DNS/TLS/mail | Full zone/TTL/NS/MX/TXT/CAA export and TLS renewal path verified, zero mutations | PARTIAL: public snapshot only |
+| Candidate | Exact merged-main source, deterministic 12-route production HTML, 99 rows, 58 aliases, 81 preserved files, phone-first fail-closed | LOCAL PASS |
+| Private staging | Existing Basic Auth/noindex root updated to exact candidate; 12/99/58, all file hashes and 70 Range checks | NO-GO: exact-main remote replay pending |
+| Consent and migration | Three excluded objects stay exact 410; zero HOLD; no new patient fact or claim | PASS_LOCAL |
+| Release decision | Named owners, all gates PASS, exact same-chat `DENTIX_PRODUCTION_GO` | NOT RECEIVED |
+
+Release owner: Artem Antonov. Hosting and rollback operator: current authorized DENTIX operator session. Business/contact owner: DENTIX clinic owner. Measurement owner: Artem Antonov until delegated.
+
+After a separate exact GO, recheck no-drift and fresh backup, freeze WordPress writes, upload versioned release sibling, validate privately, rename live WordPress root to protected rollback sibling, rename verified release into the established root, then synchronously verify 12 routes, 99 rows, 58 aliases, sitemap before five gated redirects, robots/canonical/Schema, exact 404/410, media hashes/Range, contacts, fail-closed forms, TLS/mail and 30-minute stabilization. A P0 route/status/hash, TLS/redirect loop, indexability, privacy/admin exposure, contact, form activation or critical 5xx regression triggers immediate reverse renames, old WordPress verification and no retry in the same authorization. Preserve old WordPress root and DB until a separate retention decision.
+
+---
+
 # DENTIX PR-07 production GO and rollback runbook
 
 Status: **candidate only**. The live WordPress root, DNS, analytics, integrations and indexing have not been changed. A separate owner GO and exact cutover authorization are required before any production mutation.

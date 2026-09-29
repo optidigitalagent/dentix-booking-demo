@@ -1,3 +1,15 @@
+# DENTIX PR-08 Phase A preparation — 2026-09-29T19:50:25Z
+
+Source is exact merged `origin/main` `0cc446e0a525b419f9a79be963ff469eef25210b`; PR #10 merged, preview workflow 36605036711 succeeded, no overlapping open PR at preflight. This branch contains operational records only. The public origin remains WordPress/Elementor, and no production/DNS/indexing action occurred.
+
+Local operator identity 213/213, ten skills and disposable Git-aware harness 163/163 passed. Repository unit, Python, artifact, release-contract and production browser suites passed. The exact-main preservation rebuild produced 81 files with SHA-256 `6357fc35ba4131fc070a2e5f13376fd120c1adf21bcc181dc814065389bf3def`. Production HTML has 12/12 indexable routes with canonical and JSON-LD, disabled booking and empty lead endpoint. The candidate GO ZIP is 29,122,982 bytes, SHA-256 `f5f9fe17b6721f317b92c7a751b46230406276984f7432b1ce79bdedd2924592`. The legacy release packager has a stale PR05 status guard; rebuilt content SHA exactly equals the accepted hash and the matching archive layout was reproduced deterministically outside Git.
+
+A private encrypted container holds the read-only 18-path public HTTP/DNS/TLS snapshot, package receipt and local staging overlay. An older pre-rotation archive restored 4,800 WordPress files and passed an isolated local rename/reverse rehearsal; this is provisional only because the database was not cloned and the Mirohost filesystem was not rehearsed. Two legacy intake fixture suites passed using a local intercepted fake API build; sanitized noindex preview was rebuilt afterward. Current public TLS expires 2026-12-13. Existing private staging still returns 401 unauthenticated and 200 authenticated; the exact-main upload and remote 12/99/58/139/70 replay are pending. Current Mirohost panel credential did not establish an authenticated session; owner login is pending. No credential was rotated, no fresh post-rotation files/DB backup was taken, and fresh restore/rollback rehearsals were not run. Public DNS snapshot is partial; full zone and provider renewal path require panel access. Numeric T0, GSC/GBP/GA4/GTM/Bing/CRM remain blocked or unknown. `outcome_report.claims=[]`.
+
+Release owner and measurement owner: Artem Antonov. Hosting/rollback operator: current authorized DENTIX operator session. Business/contact owner: DENTIX clinic owner. Phase A is NO-GO until every security, backup, restore, rollback, full zone/TLS renewal and remote staging gate passes. Phase B remains gated by exact same-chat `DENTIX_PRODUCTION_GO`.
+
+---
+
 # DENTIX PR-07 final review handoff — 2026-09-29T11:01:03Z
 
 PR #10 remains OPEN/Draft at reviewed functional head `d01483914652c5d3977b60f8d96b763d4b686b8a` on `seo/dentix-pr07-hold-resolution`, base `main` `c75d494945ba8868840f30bd82a12e78cc1bee14`; 35 changed files and `NO_SERVER_CI`. The bounded operational reconciliation commit/push and fresh exact-final-head suite follow this record snapshot. Production remains old WordPress; GitHub Pages is a separate noindex preview.

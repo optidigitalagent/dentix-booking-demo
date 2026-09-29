@@ -1,6 +1,6 @@
 {
   "site_id": "DENTIX",
-  "status": "PREPARED_NOT_EXECUTED",
+  "status": "PHASE_A_PREPARING_OWNER_ACCESS_BLOCKED",
   "launch_authorized": false,
   "checklists": [
     {
@@ -497,5 +497,27 @@
       "result": null,
       "authorization_reference": null
     }
-  ]
+  ],
+  "phase_a": {
+    "recorded_at": "2026-09-29T19:50:25Z",
+    "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+    "go_signal": "NOT_READY",
+    "gates": {
+      "merged_main": "PASS",
+      "operator_harness_163": "PASS",
+      "preservation_bundle_81": "PASS",
+      "local_candidate_12_99_58": "PASS_LOCAL_ONLY",
+      "credential_rotation": "BLOCKED_OWNER_LOGIN",
+      "fresh_post_rotation_files_db_backup": "NOT_RUN",
+      "isolated_fresh_restore": "NOT_RUN",
+      "atomic_rollback_rehearsal": "NOT_RUN",
+      "full_zone_export": "NOT_RUN",
+      "public_dns_tls_mail_snapshot": "PARTIAL_PUBLIC_PASS",
+      "exact_main_remote_staging": "NOT_RUN",
+      "production_cutover": "PROHIBITED_WITHOUT_EXACT_GO",
+      "legacy_file_restore_and_local_rename": "PASS_PROVISIONAL_PRE_ROTATION_ONLY",
+      "fresh_database_clone": "NOT_RUN",
+      "fixture_browser_suites": "PASS_LOCAL_INTERCEPTED_ONLY"
+    }
+  }
 }

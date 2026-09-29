@@ -269,6 +269,16 @@
       "mitigation": "Three consent-sensitive direct paths return exact 410 and are excluded from deployable bytes. Exclusion does not block the present candidate; any later republication requires documented provenance/consent. Do not infer consent from old public URLs.",
       "owner": "DENTIX owner",
       "status": "EXCLUDED_FROM_CANDIDATE"
+    },
+    {
+      "id": "R-PR08-ACCESS-ROTATION",
+      "area": "security/hosting",
+      "description": "P0: Exposed active account credentials require owner-assisted verification and rotation before any production cutover",
+      "likelihood": "confirmed gap",
+      "impact": "high",
+      "mitigation": "Use the private owner login, verify recovery and every dependency, rotate into macOS Keychain plus encrypted private receipt, prove fresh sessions, then take fresh files/DB backups and rehearse isolated restore and atomic rollback. The supplied control-panel login did not authenticate in the current run; no rotation or fresh backup is claimed.",
+      "owner": "DENTIX clinic owner / Artem Antonov / current authorized DENTIX operator session",
+      "status": "OWNER_LOGIN_PENDING_PHASE_A_NO_GO"
     }
   ]
 }

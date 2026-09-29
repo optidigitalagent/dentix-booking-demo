@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "site_id": "DENTIX",
-  "status": "T0_NOT_READY",
+  "status": "T0_PUBLIC_SNAPSHOT_ONLY_NUMERIC_NOT_READY",
   "requests_sent": false,
   "secrets_requested": false,
-  "owner": "DENTIX owner; named assignee UNKNOWN",
+  "owner": "Artem Antonov until delegated",
   "channels": [
     {
       "channel": "GSC",
@@ -216,5 +216,22 @@
     7,
     28,
     90
-  ]
+  ],
+  "phase_a_public_snapshot": {
+    "captured_at": "2026-09-29T19:50:25Z",
+    "http_paths": 18,
+    "home_status": 200,
+    "platform": "WordPress/Elementor observed by public HTML",
+    "dns": "PUBLIC_NS_MX_TXT_CAA_A_AAAA_SNAPSHOT_IN_ENCRYPTED_PRIVATE_RECEIPT; full zone export pending owner panel",
+    "tls_expiry": "2026-12-13T22:56:21Z",
+    "public_search": "BOUND_PUBLIC_WEB_OBSERVATION_ONLY; no index inventory, ranking or traffic claim",
+    "mirohost_28_day_aggregate": "HISTORICAL_PR07_RECEIPT_ONLY; fresh panel access pending",
+    "mirohost_90_day_aggregate": "UNAVAILABLE",
+    "gsc": "ACCESS_BLOCKED",
+    "gbp": "ACCESS_BLOCKED",
+    "ga4_gtm": "ACCESS_BLOCKED",
+    "bing": "ACCESS_BLOCKED",
+    "crm": "ACCESS_BLOCKED",
+    "numeric_fields": "UNKNOWN"
+  }
 }
