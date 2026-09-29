@@ -123,5 +123,31 @@
     "local_suite": "PASS_25_UNIT_34_ARTIFACT_18_PYTHON_INCLUDING_3_LOGIN_2_APACHE",
     "panel_upload": "PASS_60_FILES_FTPS_NOT_USED"
   },
-  "external_account_change_scope": "ONE_ISOLATED_STAGING_SUBDOMAIN_LE_CERTIFICATE_STAGING_NGINX_SETTING"
+  "external_account_change_scope": "ONE_ISOLATED_STAGING_SUBDOMAIN_LE_CERTIFICATE_STAGING_NGINX_SETTING",
+  "final_review": {
+    "decision": "PASS_WITH_PRODUCTION_CUTOVER_BLOCKERS_PRESERVED",
+    "reviewed_at": "2026-09-29T06:08:36Z",
+    "pr_number": 9,
+    "base_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+    "initial_head_sha": "efd203ff4cc6364e3553bea30e6f9cc7f4105c4a",
+    "changed_files": 32,
+    "evidence_sha256": "9382dce15e366b955c5ab82400b35353093760290c2e44cf1aa984f2a3185967",
+    "evidence_bytes": 1922,
+    "evidence_members": [
+      "manifest.json",
+      "panel-and-backup.json",
+      "staging-qa.json",
+      "migration-and-tests.json"
+    ],
+    "remote_staging_smoke": "PASS_READ_ONLY_12_GET_12_HEAD_401_200_404_301_410_NOINDEX_RANGE_58_HASHES",
+    "ready": "PENDING",
+    "merge": "PENDING",
+    "automatic_preview_deployment": "PENDING",
+    "patient_facing_source_changed": false,
+    "hold_rows_unresolved": 49,
+    "hold_rows_passed": 0,
+    "production": "OLD_WORDPRESS_NOT_LAUNCHED",
+    "credential_rotation": "P0_PENDING_BEFORE_CUTOVER",
+    "outcome_claims": []
+  }
 }

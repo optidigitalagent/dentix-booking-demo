@@ -3,12 +3,12 @@
   "project_id": "dentix",
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
-  "requested_action": "implement",
-  "authorization_level": "DENTIX PR-06 existing branch/Draft PR only; isolated staging permitted after proof; production/DNS/Ready/merge/indexing prohibited",
+  "requested_action": "merge",
+  "authorization_level": "DENTIX PR-06 reviewed operational merge and one automatic noindex Pages preview only; production/DNS/HOLD/indexing false",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-28T18:17:23.553890+00:00",
+  "verified_at": "2026-09-29T06:08:36Z",
   "remote_main_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
   "local_main_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
   "deployed_sha": "6465964edb7ae549f5abac9194fad9bbd18f2d9d",
@@ -18,8 +18,9 @@
       "state": "OPEN",
       "isDraft": true,
       "baseRefName": "main",
+      "baseRefOid": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
       "headRefName": "seo/dentix-pr06-mirohost-staging",
-      "headRefOid": "b64a30c36e6b6c2f5be7af5e2e6cd178ab33e134"
+      "headRefOid": "efd203ff4cc6364e3553bea30e6f9cc7f4105c4a"
     }
   ],
   "recently_merged_prs": [
@@ -107,5 +108,5 @@
   "overlapping_active_pr": false,
   "production_matches_deploy": false,
   "external_state_verified": true,
-  "worktree_clean": false
+  "worktree_clean": true
 }
