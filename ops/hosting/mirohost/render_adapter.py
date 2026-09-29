@@ -10,6 +10,7 @@ HERE = Path(__file__).resolve().parent
 CONTRACT = ROOT / 'ops/release/migration-contract.json'
 ROUTES = ROOT / 'ops/release/routes.json'
 ALIASES = ROOT / 'ops/release/query-aliases.json'
+INDEX_POLICY = ROOT / 'ops/release/legacy-index-policy.json'
 
 FINAL_TYPES = ('200_REBUILD_SAME_URL', '200_STATIC_PRESERVE_HTML',
                '200_STATIC_PRESERVE_XML', '200_STATIC_PRESERVE_MEDIA',
@@ -28,7 +29,7 @@ def render(mode, source_sha, auth_user_file=None, sitemap_ready=False):
     aliases = json.loads(ALIASES.read_text())
     rows = contract['rows']
     if (contract['site_id'] != 'DENTIX' or route_data['site_id'] != 'DENTIX'
-            or aliases['site_id'] != 'DENTIX' or len(rows) != 64):
+            or aliases['site_id'] != 'DENTIX' or len(rows) != 99):
         raise ValueError('DENTIX migration identity/count mismatch')
     totals = {kind: sum(r['disposition'] == kind for r in rows) for kind in FINAL_TYPES if any(r['disposition'] == kind for r in rows)}
     if totals != contract['disposition_totals'] or any(r['disposition'] not in FINAL_TYPES for r in rows):
@@ -57,6 +58,22 @@ def render(mode, source_sha, auth_user_file=None, sitemap_ready=False):
             path_rules.append(f'RewriteRule {exact(path)} - [G,L]')
         elif row['disposition'] == '404_KEEP':
             path_rules.append(f'RewriteRule {exact(path)} - [R=404,L]')
+    policy = json.loads(INDEX_POLICY.read_text())
+    if policy['site_id'] != 'DENTIX' or {r['path'] for r in policy['rows']} != {
+            r['source_path'] for r in rows if r['disposition'].startswith('200_STATIC_')
+            or (r['disposition'] == '410_RETIRE' and r['source_path'].startswith('/wp-content/uploads/'))}:
+        raise ValueError('legacy index policy coverage drift')
+    if any(r['indexability'] != 'NOINDEX' or r['x_robots_tag'] != 'noindex, nofollow, noarchive'
+           or r['canonical'] != 'NONE' for r in policy['rows']):
+        raise ValueError('unsafe legacy index policy')
+    # Apache Header expr evaluates the original requested URI, including
+    # directory index requests. Every legacy object receives an exact rule.
+    index_headers = '\n'.join(
+        line for r in policy['rows']
+        for path in dict.fromkeys((r['path'], r.get('artifact_path', r['path'])))
+        for line in (
+            f'  Header always set X-Robots-Tag "noindex, nofollow, noarchive" "expr=%{{REQUEST_URI}} == \'{path}\'"',
+            f'  Header always set Cache-Control "{r["cache_control"]}" "expr=%{{REQUEST_URI}} == \'{path}\'"'))
     sitemap = [r for r in rows if r['disposition'] == '301_EXACT_REPLACEMENT' and r['source_path'].startswith('/wp-sitemap')]
     if len(sitemap) != 5 or any(r['target_path'] != '/sitemap.xml' for r in sitemap):
         raise ValueError('sitemap migration drift')
@@ -73,6 +90,7 @@ def render(mode, source_sha, auth_user_file=None, sitemap_ready=False):
     result = (template.replace('@SOURCE_SHA@', source_sha)
         .replace('@QUERY_RULES@', '\n'.join(query_rules))
         .replace('@PATH_RULES@', '\n'.join(path_rules))
+        .replace('@LEGACY_INDEX_HEADERS@', index_headers if mode == 'production' else '')
         .replace('@SITEMAP_GATE@', sitemap_gate)
         .replace('@SITEMAP_RULES@', sitemap_rules)
         .replace('@SLASH_RULES@', slash_rules))

@@ -34,7 +34,7 @@
   "tenant_cases": 7,
   "preview_build": "PASS",
   "production_build": "PASS_SANITIZED_DETERMINISTIC_TWO_RUNS",
-  "release_contract": "PASS: unchanged 64 rows / 49 HOLD / explicit KEEP 404",
+  "release_contract": "PASS: 99 final rows (64 original + 35 direct objects) / 49 former HOLD resolved / zero HOLD / explicit KEEP 404",
   "environment_review_measurement_tests": "PASS",
   "medical_copy_changed": false,
   "professional_review": "NOT_REQUIRED_FOR_EXISTING_OWNER_APPROVED_COPY; NEW_MEDICAL_CLAIMS_GATED",

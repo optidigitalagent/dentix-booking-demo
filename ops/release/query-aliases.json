@@ -99,49 +99,49 @@
       "source_path": "/",
       "key": "attachment_id",
       "value": "27",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/Logo_cut_black.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "45",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/Grey_1.jpg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "199",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/13_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "200",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/14_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "201",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/15_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "202",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/16_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
@@ -227,33 +227,33 @@
       "source_path": "/",
       "key": "attachment_id",
       "value": "448",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/06/Logo_cut_NEO.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "443",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/06/Logo_cut_black_NEO.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "455",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/06/Fon_Grey_1.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "576",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/76498b985421658754ff839f82bf.jpg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
@@ -275,17 +275,17 @@
       "source_path": "/",
       "key": "attachment_id",
       "value": "649",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/acril.jpg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
       "key": "attachment_id",
       "value": "666",
-      "disposition": "410_RETIRE",
-      "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/zubnye-protezy-3.jpeg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
     },
     {
       "source_path": "/",
@@ -293,7 +293,7 @@
       "value": "942",
       "disposition": "410_RETIRE",
       "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "evidence": "Direct attachment path explicit 410 pending consent"
     },
     {
       "source_path": "/",
@@ -301,7 +301,7 @@
       "value": "943",
       "disposition": "410_RETIRE",
       "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "evidence": "Direct attachment path explicit 410 pending consent"
     },
     {
       "source_path": "/",
@@ -317,7 +317,7 @@
       "value": "944",
       "disposition": "410_RETIRE",
       "target_path": null,
-      "evidence": "DB_ATTACHMENT_ID; outside 49-row preservation scope; alias explicitly retired"
+      "evidence": "Direct attachment path explicit 410 pending consent"
     },
     {
       "source_path": "/",

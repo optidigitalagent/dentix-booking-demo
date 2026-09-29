@@ -393,5 +393,7 @@
   ],
   "query_alias_manifest": "ops/release/query-aliases.json",
   "gsc_status": "ACCESS_BLOCKED",
-  "backlink_index_status": "UNKNOWN"
+  "backlink_index_status": "UNKNOWN",
+  "direct_object_paths_added_to_contract": 35,
+  "final_executable_migration_rows": 99
 }

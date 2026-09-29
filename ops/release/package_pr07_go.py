@@ -44,12 +44,12 @@ def build(release_zip, preservation_zip, output):
     decisions = (OPS / 'hold-decisions.json').read_bytes()
     preservation_manifest = (OPS / 'preservation-manifest.json').read_bytes()
     rows = json.loads(contract)['rows']
-    if len(rows) != 64 or any(row['disposition'] == 'HOLD_FOR_CONFIRMATION' for row in rows):
+    if len(rows) != 99 or any(row['disposition'] == 'HOLD_FOR_CONFIRMATION' for row in rows):
         raise ValueError('unresolved migration rows')
     if len(json.loads(aliases)['aliases']) != 58 or len(json.loads(decisions)['rows']) != 49:
         raise ValueError('inventory count drift')
     preserved = {entry['path'].lstrip('/'): entry for entry in json.loads(preservation_manifest)['files']}
-    if len(preserved) != 49:
+    if len(preserved) != 81:
         raise ValueError('preservation count drift')
 
     payload = {}
@@ -91,6 +91,8 @@ def build(release_zip, preservation_zip, output):
     payload['contracts/query-aliases.json'] = aliases
     payload['contracts/hold-decisions.json'] = decisions
     payload['contracts/preservation-manifest.json'] = preservation_manifest
+    payload['contracts/legacy-index-policy.json'] = (OPS / 'legacy-index-policy.json').read_bytes()
+    payload['contracts/direct-path-decisions.json'] = (OPS / 'direct-path-decisions.json').read_bytes()
     payload['contracts/route-manifest.json'] = routes
     payload['contracts/release-manifest.json'] = encoded(release)
     payload['contracts/rollback.json'] = encoded({
@@ -108,8 +110,8 @@ def build(release_zip, preservation_zip, output):
                     'Verify rollback access with the owner before production mutation']})
     payload['contracts/go-manifest.json'] = encoded({
         'schema_version': 1, 'site_id': 'DENTIX', 'source_sha': head,
-        'status': 'CANDIDATE_NOT_DEPLOYED', 'migration_rows': 64, 'query_aliases': 58,
-        'preserved_files': 49, 'sitemap_activation': 'GATED_UNTIL_NEW_SITEMAP_LIVE',
+        'status': 'CANDIDATE_NOT_DEPLOYED', 'migration_rows': len(rows), 'query_aliases': 58,
+        'preserved_files': len(preserved), 'sitemap_activation': 'GATED_UNTIL_NEW_SITEMAP_LIVE',
         'site_file_count': sum(name.startswith('site/') for name in payload),
         'files': [{'path': name, 'bytes': len(data), 'sha256': sha(data)}
                   for name, data in sorted(payload.items())]})

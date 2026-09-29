@@ -4,7 +4,7 @@ Status: **candidate only**. The live WordPress root, DNS, analytics, integration
 
 ## Candidate identity and controls
 
-- `migration-contract.json`: 64 original source rows, zero unresolved dispositions. The 49 former HOLD paths resolve to four static HTML, seven static RSS/XML and 38 exact media paths. The other rows cover six rebuilt 200 URLs, seven exact 301s, one 404 and one 410.
+- `migration-contract.json`: 99 executable source rows (64 original plus 35 direct objects), zero unresolved dispositions. The 49 former HOLD paths resolve to four static HTML, seven static RSS/XML and 38 original exact media paths. The remaining original rows cover six rebuilt 200 URLs, seven exact 301s, one 404 and one 410; the 35 added direct objects add 32 exact preserves and three exact 410s.
 - `hold-decisions.json` records each former HOLD path, current public fingerprint, completed 28-day request aggregate, replacement decision and rollback rule. The 90-day log window is unavailable; GSC remains `ACCESS_BLOCKED`, backlink index `UNKNOWN`.
 - `preservation-manifest.json` is a sanitized file and hash contract. The actual public legacy bytes and private receipt live in the external preservation ZIP, never Git.
 - `query-aliases.json` defines 58 known WordPress selector cases. Unknown functional selectors return 410; they never reach the React homepage.
@@ -13,7 +13,7 @@ Status: **candidate only**. The live WordPress root, DNS, analytics, integration
 
 ## Pre-cutover GO checklist (separate future authorization)
 
-1. Name the launch, hosting, clinical and rollback owners, freeze source, confirm exact source SHA, production artifact, preservation ZIP, 64-row contract, query manifest and external SHA-256 receipts. Reject any mismatch.
+1. Name the launch, hosting, clinical and rollback owners, freeze source, confirm exact source SHA, production artifact, preservation ZIP, 99-row contract, query manifest and external SHA-256 receipts. Reject any mismatch.
 2. Verify the encrypted WordPress files/SQL backups, backup age, complete DNS zone and old root routing. Rehearse old-origin restoration in isolation and record actual recovery time. Preserve original WordPress root and database before switching any document root.
 3. Review public legacy media provenance. A newly identified patient/consent conflict is a NO-GO until the owner supplies a documented resolution; do not add patient imagery from the backup merely because it is technically public.
 4. Rotate exposed hosting/FTP/database credentials under a separately authorized owner procedure. This remains P0 and is not executed by PR-07.
@@ -25,7 +25,7 @@ Status: **candidate only**. The live WordPress root, DNS, analytics, integration
 ## Cutover (not authorized by PR-07)
 
 1. Put only the verified public React artifact and exact-path preservation bytes in a versioned new release directory. Keep WordPress intact as the rollback target. Install the reviewed adapter in the selected root only within the GO window.
-2. Verify live GET/HEAD for 12 patient routes, 64 migration rows and all known aliases. Confirm canonical/index policy, XML and media MIME types, Range, release marker, 404/410, HTTPS/www query preservation, no generic homepage fallback and no loops.
+2. Verify live GET/HEAD for 12 patient routes, 99 migration rows and all known aliases. Confirm canonical/index policy, XML and media MIME types, Range, release marker, 404/410, HTTPS/www query preservation, no generic homepage fallback and no loops.
 3. Activate the five sitemap redirects only after `/sitemap.xml` is 200 with the approved canonical set. No sitemap submission or indexing request follows automatically.
 4. Preserve before/after HTTP receipts and observe errors, calls and leads without placing patient data in public evidence.
 

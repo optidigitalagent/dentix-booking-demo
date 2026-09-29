@@ -130,6 +130,8 @@ class MirohostAdapterTest(unittest.TestCase):
 
     def test_contract_and_real_apache_replay(self):
         contract = json.loads((ROOT / 'ops/release/migration-contract.json').read_text())
+        index_policy = {r['path']: r for r in json.loads(
+            (ROOT / 'ops/release/legacy-index-policy.json').read_text())['rows']}
         routes = json.loads((ROOT / 'ops/release/routes.json').read_text())['routes']
         with tempfile.TemporaryDirectory(prefix='dentix-apache-') as temp:
             docroot = Path(temp) / 'site'
@@ -174,6 +176,11 @@ class MirohostAdapterTest(unittest.TestCase):
                         for suffix in ('', '?utm_source=qa'):
                             status, headers, body = request(server.port, row['source_path'] + suffix, method, host, https)
                             self.assertEqual(status, row['target_status'], row['source_url'])
+                            if row['source_path'] in index_policy and host == 'dentix.ua' and https:
+                                self.assertEqual(headers.get('X-Robots-Tag'),
+                                                 'noindex, nofollow, noarchive', row['source_path'])
+                                self.assertIn(index_policy[row['source_path']]['cache_control'],
+                                              headers.get('Cache-Control', ''), row['source_path'])
                             if status == 301 and suffix:
                                 self.assertTrue(headers['Location'].endswith(suffix), row['source_url'])
                     status, _, body = request(server.port, '/missing-probe', method)

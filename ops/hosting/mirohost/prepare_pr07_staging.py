@@ -28,7 +28,7 @@ def prepare(release_zip: Path, preservation_zip: Path, target: Path, auth_user_f
     receipt = base_staging.prepare(release_zip, target)
     manifest = json.loads((ROOT / 'ops/release/preservation-manifest.json').read_text())
     expected = {entry['path'].lstrip('/'): entry for entry in manifest['files']}
-    if len(expected) != 49 or manifest['site_id'] != 'DENTIX':
+    if len(expected) != 81 or manifest['site_id'] != 'DENTIX':
         raise ValueError('preservation contract drift')
     with ZipFile(preservation_zip) as archive:
         if set(archive.namelist()) != set(expected):
@@ -40,9 +40,9 @@ def prepare(release_zip: Path, preservation_zip: Path, target: Path, auth_user_f
             if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
                 raise ValueError('preservation hash drift')
             if name.endswith('.html'):
-                data, count = re.subn(b'<meta name="robots" content="index,follow">',
-                    b'<meta name="robots" content="noindex,nofollow,noarchive">', data, count=1)
-                if count != 1 or b'<form' in data.lower() or b'<script' in data.lower():
+                if (b'<meta name="robots" content="noindex,nofollow,noarchive">' not in data
+                        or b'rel="canonical"' in data.lower() or b'<form' in data.lower()
+                        or b'<script' in data.lower()):
                     raise ValueError('legacy HTML sanitization failed')
             elif name.endswith('.rss'):
                 if b'<rss' not in data or b'<script' in data.lower() or b'<form' in data.lower():

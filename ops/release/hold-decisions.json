@@ -47,7 +47,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/2021/04/08/privet-mir/index.html",
-      "preservation_sha256": "e16a92a7bcdf474ad46a21b329e77236f8cf9d41a04c35a93228a3c0d08c21d6"
+      "preservation_sha256": "1becc2165beb8a3c7dc1db2d81e7ef4958a0a5832842781e5fc74ad54d6f35ca"
     },
     {
       "source_url": "https://dentix.ua/otzyivyi/",
@@ -92,7 +92,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/otzyivyi/index.html",
-      "preservation_sha256": "53f3a5e0767ecf47ec2b81576c9c9c23c1327aa19bc636f4f0d1e3b8b0eaa45d"
+      "preservation_sha256": "300eca482733c6c8c8db6eda2393c5ebe155699f5fd726ad3ffe0fa602b793e8"
     },
     {
       "source_url": "https://dentix.ua/category/bez-rubriki/",
@@ -135,7 +135,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/category/bez-rubriki/index.html",
-      "preservation_sha256": "3a4d2c44f364af30ed2b332dfb454179f29b984fd91592dfcc022b50339e15dd"
+      "preservation_sha256": "8dd47fefbacce27dc7ff9e58626f9f74375a09bab238df8e98fc03711aeb7db7"
     },
     {
       "source_url": "https://dentix.ua/author/newdentix/",
@@ -179,7 +179,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/author/newdentix/index.html",
-      "preservation_sha256": "0ca24c7da900077515bacee6b0261f228d5c6aec570210a5b47f92abceb32167"
+      "preservation_sha256": "4c04aaa08863d0d1d5d0628bdd0a6a219dd4d27b5d66615dfd033a4849716781"
     },
     {
       "source_url": "https://dentix.ua/2021/04/08/privet-mir/feed/",
@@ -219,7 +219,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/2021/04/08/privet-mir/feed/index.rss",
-      "preservation_sha256": "757c7acf41016acd3697bef358e708f4a5f32f6aec4f07cecb7388268ae39919"
+      "preservation_sha256": "975103dac1fb1141583871a380a3f0c7516fe27ea2cd2909c8649060db72ce2e"
     },
     {
       "source_url": "https://dentix.ua/author/newdentix/feed/",
@@ -259,7 +259,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/author/newdentix/feed/index.rss",
-      "preservation_sha256": "56e0214b21d146c54513f277b556d11c382d8ff554d3a4ae26112f10ce9f12e2"
+      "preservation_sha256": "d428f3f6f12cf504aa07133179b2a4b15abd6cacf3817ec3d364d2793fac8083"
     },
     {
       "source_url": "https://dentix.ua/category/bez-rubriki/feed/",
@@ -300,7 +300,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/category/bez-rubriki/feed/index.rss",
-      "preservation_sha256": "917b4790c3a9a37f3e0a5977accc36026eab4c783c2ed8c49579dadc2ac816db"
+      "preservation_sha256": "564e89fff69b1ec7072094af1cc58e34bb2ff7a1de256121fad8eed5c8bac4b8"
     },
     {
       "source_url": "https://dentix.ua/comments/feed/",
@@ -344,7 +344,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/comments/feed/index.rss",
-      "preservation_sha256": "55b4e327a7273b945363b22b362caefd893a2524b15d53f72cfc3fb7370e42e4"
+      "preservation_sha256": "56cbab9524cf61ae58171e311c13a83f274dcf0beff52d16da1213d01b352740"
     },
     {
       "source_url": "https://dentix.ua/elementor-5/feed/",
@@ -387,7 +387,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/elementor-5/feed/index.rss",
-      "preservation_sha256": "9157172555f120cefb57c5103001c4562d70f681036b49ad44e6df68d9207676"
+      "preservation_sha256": "e9e5ee8feb833a978df51d99313f3cea207366a3a4d3a0325b0fb57177ae737e"
     },
     {
       "source_url": "https://dentix.ua/feed/",
@@ -430,7 +430,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/feed/index.rss",
-      "preservation_sha256": "9c7129c9422ee02c834fb950ee06fe303cb762b3ef4176f774b8938adc307f32"
+      "preservation_sha256": "055f875064dd9454a857c235849c4d2a3340b15d0c025ed45f8e43f58b145af4"
     },
     {
       "source_url": "https://dentix.ua/otzyivyi/feed/",
@@ -470,7 +470,7 @@
       "evidence_confidence": "HIGH_FOR_STATUS_HASH_AND_REQUESTS; BACKLINK_UNKNOWN",
       "evidence_classification": "PUBLIC_HTTP_AND_SANITIZED_AGGREGATE; PRIVATE_BACKUP_METADATA_ONLY",
       "preservation_entry": "/otzyivyi/feed/index.rss",
-      "preservation_sha256": "2cc944ec5d21b911bfc4de096ffafaeced1d1df59ac0de7185779624e3f318a3"
+      "preservation_sha256": "36a6bab110a96ca53e7e3adf827f2258270b4e7b6bee629603877b038fda9330"
     },
     {
       "source_url": "https://dentix.ua/wp-content/uploads/2024/03/Logo_cu.png",

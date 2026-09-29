@@ -266,7 +266,7 @@
       "description": "A discovered attachment outside the 49 HOLD paths depicts a person during care; republishing requires documented provenance/consent decision.",
       "likelihood": "observed_attachment",
       "impact": "high",
-      "mitigation": "Exclude the attachment from every PR-07 deployable package; its known attachment query alias returns 410 and its direct file path is absent (404). Do not infer consent from the old public URL. Owner can review any later republication separately.",
+      "mitigation": "Exclude three identifiable-person originals, including the patient-during-care image, from every PR-07 deployable package; their known attachment query aliases and exact direct file paths return 410. Do not infer consent from old public URLs. Owner can review any later republication separately.",
       "owner": "DENTIX owner",
       "status": "EXCLUDED_FROM_CANDIDATE"
     }

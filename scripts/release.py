@@ -11,8 +11,8 @@ OPS = ROOT / 'ops/release'
 INITIAL = {'KEEP': 3, 'REBUILD_SAME_URL': 4, '301': 7, '410': 1, 'HOLD_FOR_CONFIRMATION': 49}
 EXPECTED = {'200_REBUILD_SAME_URL': 6, '301_EXACT_REPLACEMENT': 7,
     '404_KEEP': 1, '200_STATIC_PRESERVE_HTML': 4,
-    '200_STATIC_PRESERVE_XML': 7, '200_STATIC_PRESERVE_MEDIA': 38,
-    '410_RETIRE': 1}
+    '200_STATIC_PRESERVE_XML': 7, '200_STATIC_PRESERVE_MEDIA': 70,
+    '410_RETIRE': 4}
 ORIGIN = 'https://dentix.ua'
 def sha(data): return hashlib.sha256(data).hexdigest()
 def read_json(path): return json.loads(Path(path).read_text())
@@ -85,12 +85,12 @@ def validate_contract(contract):
     rows = migration_rows(); actual = contract['rows']
     require(contract['site_id'] == 'DENTIX' and contract['schema_version'] == 2, 'Final DENTIX contract required')
     require(contract['canonical_map_sha256'] == sha((ROOT/'.seo/redirect-map.csv').read_bytes()), 'Canonical map hash drift')
-    require(len(rows) == len(actual) == 64, 'Migration count')
+    require(len(rows) == len(actual) == 99, 'Migration count')
     require({k: sum(r['disposition'] == k for r in actual) for k in EXPECTED} == EXPECTED == contract['disposition_totals'], 'Migration totals')
     require(contract['initial_hold_rows'] == 49, 'Original HOLD count drift')
     preservation = read_json(OPS / 'preservation-manifest.json')
     files = {r['path'].lstrip('/'): r for r in preservation['files']}
-    require(len(files) == 49 and preservation['site_id'] == 'DENTIX', 'Preservation manifest drift')
+    require(len(files) == 81 and preservation['site_id'] == 'DENTIX', 'Preservation manifest drift')
     for original, row in zip(rows, actual):
         require(row['source_url'] == original['source_url'] and row['disposition'] == original['status'], 'Silent disposition/source drift')
         target = urlsplit(original['target_url']).path if original['target_url'] else None
@@ -107,7 +107,7 @@ def validate_contract(contract):
             require(row['target_path'] == row['source_path'], 'Preservation path changed')
         if row['disposition'] == '200_REBUILD_SAME_URL': require(row['source_path'] == row['target_path'], 'Rebuilt path changed')
         if row['disposition'] == '301_EXACT_REPLACEMENT' and 'sitemap' in row['source_path']: require('REPLACEMENT_SITEMAP_200_AND_VALIDATED' in row['prerequisites'], 'Premature sitemap redirect')
-    return {'status': 'PASS', 'rows': 64, 'hold': 0, 'totals': EXPECTED}
+    return {'status': 'PASS', 'rows': len(actual), 'hold': 0, 'totals': EXPECTED}
 
 def plan_response(url, contract, sitemap_ready=False):
     """Pure contract oracle, never a server adapter. None status means launch blocker."""

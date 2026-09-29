@@ -9,12 +9,13 @@ ErrorDocument 404 /404.html
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Dentix-Release "@SOURCE_SHA@"
-  <FilesMatch "\.(?:html|xml|txt)$">
+  <FilesMatch "\.(?:html|xml|rss|txt)$">
     Header always set Cache-Control "public, max-age=300"
   </FilesMatch>
   <FilesMatch "\.(?:js|css|png|jpe?g|webp|svg|woff2?|mp4)$">
     Header always set Cache-Control "public, max-age=86400"
   </FilesMatch>
+@LEGACY_INDEX_HEADERS@
 </IfModule>
 
 RewriteEngine On

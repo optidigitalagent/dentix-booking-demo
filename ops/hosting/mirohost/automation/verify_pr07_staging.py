@@ -30,10 +30,12 @@ def verify(overlay: Path):
         config['auth_keychain_account'])
     credential = config['auth_keychain_account'] + ':' + password
     contract = json.loads((ROOT / 'ops/release/migration-contract.json').read_text())
+    index_policy = {r['path']: r for r in json.loads(
+        (ROOT / 'ops/release/legacy-index-policy.json').read_text())['rows']}
     aliases = json.loads((ROOT / 'ops/release/query-aliases.json').read_text())
     routes = json.loads((ROOT / 'ops/release/routes.json').read_text())['routes']
     source_sha = (overlay / '.dentix-version').read_text().strip()
-    if len(contract['rows']) != 64 or len(routes) != 12 or len(aliases['aliases']) != aliases['known_count']:
+    if len(contract['rows']) != 99 or len(routes) != 12 or len(aliases['aliases']) != aliases['known_count']:
         raise ValueError('MANIFEST_DRIFT')
     if helper.request(base)[0] != 401:
         raise ValueError('UNAUTHENTICATED_NOT_401')
@@ -69,12 +71,17 @@ def verify(overlay: Path):
                 status, headers, body = ask(row['source_path'], method)
                 if status != row['target_status']:
                     raise ValueError('MIGRATION_ROW_STATUS_FAILED')
+                if row['source_path'] in index_policy and headers.get('X-Robots-Tag') != 'noindex, nofollow, noarchive':
+                    raise ValueError('LEGACY_INDEX_POLICY_FAILED')
                 if status == 301 and urlparse(headers.get('Location', '')).path != row['target_path']:
                     raise ValueError('MIGRATION_LOCATION_FAILED')
                 if method == 'GET' and row['disposition'] == '200_STATIC_PRESERVE_HTML' and b'noindex,nofollow,noarchive' not in body:
                     raise ValueError('PRESERVED_HTML_META_FAILED')
                 if row['disposition'] == '200_STATIC_PRESERVE_XML' and 'rss' not in headers.get('Content-Type', '').lower():
                     raise ValueError('PRESERVED_XML_TYPE_FAILED')
+                if (row['disposition'] == '200_STATIC_PRESERVE_MEDIA' and
+                        index_policy[row['source_path']]['content_type'].split(';')[0] not in headers.get('Content-Type', '')):
+                    raise ValueError('PRESERVED_OBJECT_TYPE_FAILED')
             checks['migration_' + method.lower()] += 1
     for alias in aliases['aliases']:
         query = urlencode({alias['key']: alias['value']})

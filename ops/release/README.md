@@ -1,6 +1,6 @@
 # DENTIX PR07 legacy migration candidate
 
-These controls prepare a Draft PR and an isolated Mirohost staging candidate. React production remains `NOT_LAUNCHED`. The 64-row migration contract and 58 known query aliases are resolved; preservation bytes are in a separate private archive outside Git. No production rule is installed by packaging or testing. Existing current facts/services are owner-approved; new medical claims require separate qualified review.
+These controls prepare a Draft PR and an isolated Mirohost staging candidate. React production remains `NOT_LAUNCHED`. The 99-row migration/direct-object contract and 58 known query aliases are resolved; preservation bytes are in a separate private archive outside Git. No production rule is installed by packaging or testing. Existing current facts/services are owner-approved; new medical claims require separate qualified review.
 
 Requires Node 22.18+, Python 3.9+ and existing npm lockfile. No dependencies added. Run from the repository root:
 
@@ -16,7 +16,7 @@ python3 scripts/release.py review
 python3 -m unittest discover -s tests -p 'release_test.py' -v
 ```
 
-The review generator and route generator update committed snapshots; inspect those diffs. `ops/release/migration-contract.json` is the final 64-row contract and `.seo/redirect-map.csv` is its canonical source map. `ops/release/hold-decisions.json` records evidence and the final decision for each of the 49 original HOLD rows. `ops/release/query-aliases.json` resolves known WordPress selectors. `404_KEEP` preserves the already missing `/sitemap_index.xml`. Do not regenerate the final contract from the old PR05 observations.
+The review generator and route generator update committed snapshots; inspect those diffs. `ops/release/migration-contract.json` is the final 99-row contract and `.seo/redirect-map.csv` is its canonical source map. `ops/release/hold-decisions.json` records evidence and the final decision for each of the 49 original HOLD rows. `ops/release/query-aliases.json` resolves known WordPress selectors. `404_KEEP` preserves the already missing `/sitemap_index.xml`. Do not regenerate the final contract from the old PR05 observations.
 
 Browser suites require an existing external Playwright installation and external evidence directory via `PLAYWRIGHT_MODULE_PATH` and `DENTIX_QA_OUTPUT`; no Playwright dependency is added here. Run existing `npm run test:browser`, the three managed-content suites and `node --experimental-strip-types tests/release-browser.mjs`. Network interception prevents submissions. The release smoke verifies all twelve routes at 390/1440, navigation, heads, errors, real 404 and exact interest seeds.
 
@@ -35,7 +35,7 @@ python3 ops/release/package_pr07_go.py \
   --output "$HOME/Downloads/DENTIX_PRODUCTION_GO_CANDIDATE_2026-09-29.zip"
 ```
 
-The GO ZIP carries the exact public site files, both rendered production adapter variants, 64-row and alias contracts, rollback plan, credential-rotation checklist and phone-first launch mode. `production-sitemap-ready.htaccess` is only for a separately authorized cutover after the new sitemap is live. The private source backups, staging credentials and raw logs are absent.
+The GO ZIP carries the exact public site files, both rendered production adapter variants, 99-row and alias contracts, rollback plan, credential-rotation checklist and phone-first launch mode. `production-sitemap-ready.htaccess` is only for a separately authorized cutover after the new sitemap is live. The private source backups, staging credentials and raw logs are absent.
 
 The candidate uses approved static content fallback and deliberately disabled intake. Preview workflow values are inventoried, unchanged. No runtime endpoint, tag, host rule, DNS record or external account was changed. See `RUNBOOK.md`, `checklists.json`, `hosting-decision.json`, `environment.json`, `access-t0.json` and the review packet for launch prerequisites.
 
