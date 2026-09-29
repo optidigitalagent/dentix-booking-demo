@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "site_id": "DENTIX",
+  "status": "EXACT_KNOWN_ALIASES_WITH_FAIL_CLOSED_UNKNOWN_SELECTORS",
+  "known_count": 58,
+  "unknown_selector_policy": "410_RETIRE; never React homepage",
+  "functional_keys": [
+    "p",
+    "page_id",
+    "attachment_id",
+    "feed",
+    "cat",
+    "author",
+    "rest_route",
+    "s"
+  ],
+  "aliases": [
+    {
+      "source_path": "/",
+      "key": "p",
+      "value": "1",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/2021/04/08/privet-mir/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "page_id",
+      "value": "5",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "page_id",
+      "value": "432",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "page_id",
+      "value": "564",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/implantatsiya/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "page_id",
+      "value": "538",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/otzyivyi/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "page_id",
+      "value": "615",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/lechenie-pod-mikroskopom/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "page_id",
+      "value": "637",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/protezirovanie/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "694",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "114",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/Stas.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "24",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "27",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/Logo_cut_black.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "45",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/Grey_1.jpg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "199",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/13_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "200",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/14_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "201",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/15_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "202",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/16_150.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "341",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert1.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "342",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert2.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "343",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert3.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "344",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert4.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "345",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert5.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "346",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert6.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "347",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert7.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "348",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert8.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "349",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert9.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "350",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/04/sert10.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "448",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/06/Logo_cut_NEO.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "443",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/06/Logo_cut_black_NEO.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "455",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2021/06/Fon_Grey_1.png",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "576",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/76498b985421658754ff839f82bf.jpg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "589",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/unnamed.png",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "633",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/0fcfe684754725384c.png",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "649",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/acril.jpg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "666",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/zubnye-protezy-3.jpeg",
+      "evidence": "Public original preserved exact path; alias resolves to that object"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "942",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Direct attachment path explicit 410 pending consent"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "943",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Direct attachment path explicit 410 pending consent"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "910",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/03/Logo_cu.png",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "944",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Direct attachment path explicit 410 pending consent"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "961",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/05/20240405_105121_300.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "962",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/05/20240405_105221_300.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "963",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/05/20240405_105452_300.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "attachment_id",
+      "value": "964",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/wp-content/uploads/2024/05/20240405_123140_300.jpg",
+      "evidence": "DB_ATTACHMENT_ID; exact public media preserved"
+    },
+    {
+      "source_path": "/",
+      "key": "cat",
+      "value": "1",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/category/bez-rubriki/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "author",
+      "value": "1",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/author/newdentix/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "feed",
+      "value": "rss2",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/feed/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "feed",
+      "value": "comments-rss2",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/comments/feed/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/",
+      "key": "rest_route",
+      "value": "/wp/v2/posts/1",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Dynamic WordPress API retired; no static JSON substitute"
+    },
+    {
+      "source_path": "/",
+      "key": "rest_route",
+      "value": "/wp/v2/pages/5",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Dynamic WordPress API retired; no static JSON substitute"
+    },
+    {
+      "source_path": "/",
+      "key": "rest_route",
+      "value": "/wp/v2/pages/538",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Dynamic WordPress API retired; no static JSON substitute"
+    },
+    {
+      "source_path": "/",
+      "key": "rest_route",
+      "value": "/wp/v2/pages/564",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Dynamic WordPress API retired; no static JSON substitute"
+    },
+    {
+      "source_path": "/",
+      "key": "rest_route",
+      "value": "/wp/v2/pages/615",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Dynamic WordPress API retired; no static JSON substitute"
+    },
+    {
+      "source_path": "/",
+      "key": "rest_route",
+      "value": "/wp/v2/pages/637",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Dynamic WordPress API retired; no static JSON substitute"
+    },
+    {
+      "source_path": "/",
+      "key": "rest_route",
+      "value": "/",
+      "disposition": "410_RETIRE",
+      "target_path": null,
+      "evidence": "Dynamic WordPress API root retired"
+    },
+    {
+      "source_path": "/2021/04/08/privet-mir/",
+      "key": "feed",
+      "value": "rss2",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/2021/04/08/privet-mir/feed/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/author/newdentix/",
+      "key": "feed",
+      "value": "rss2",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/author/newdentix/feed/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/category/bez-rubriki/",
+      "key": "feed",
+      "value": "rss2",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/category/bez-rubriki/feed/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/otzyivyi/",
+      "key": "feed",
+      "value": "rss2",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/otzyivyi/feed/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    },
+    {
+      "source_path": "/elementor-5/",
+      "key": "feed",
+      "value": "rss2",
+      "disposition": "301_EXACT_REPLACEMENT",
+      "target_path": "/elementor-5/feed/",
+      "evidence": "DB_VERIFIED_EXACT_ID"
+    }
+  ]
+}

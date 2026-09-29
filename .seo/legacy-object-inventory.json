@@ -1,0 +1,399 @@
+{
+  "site_id": "DENTIX",
+  "source": "VERIFIED_PRIVATE_WORDPRESS_BACKUP; SANITIZED_METADATA_ONLY",
+  "published_posts_pages": [
+    {
+      "id": 1,
+      "type": "post",
+      "status": "publish",
+      "path": "/2021/04/08/privet-mir/",
+      "title": "Комментарии",
+      "date": "2021-04-08",
+      "public_comment_count": 0,
+      "category_id": 1
+    },
+    {
+      "id": 5,
+      "type": "page",
+      "status": "publish",
+      "path": "/",
+      "title": "Головна",
+      "date": "2021-04-08",
+      "public_comment_count": 0,
+      "category_id": null
+    },
+    {
+      "id": 432,
+      "type": "page",
+      "status": "publish",
+      "path": "/sayt-nahoditsya-na-tehnicheskom-obsluzh/",
+      "title": "Техническое обслуживание.",
+      "date": "2021-04-20",
+      "public_comment_count": 0,
+      "category_id": null
+    },
+    {
+      "id": 564,
+      "type": "page",
+      "status": "publish",
+      "path": "/implantatsiya/",
+      "title": "Імплантація",
+      "date": "2024-03-11",
+      "public_comment_count": 0,
+      "category_id": null
+    },
+    {
+      "id": 538,
+      "type": "page",
+      "status": "publish",
+      "path": "/otzyivyi/",
+      "title": "Отзывы",
+      "date": "2021-10-22",
+      "public_comment_count": 0,
+      "category_id": null
+    },
+    {
+      "id": 615,
+      "type": "page",
+      "status": "publish",
+      "path": "/lechenie-pod-mikroskopom/",
+      "title": "Лікування під мікроскопом",
+      "date": "2024-03-11",
+      "public_comment_count": 0,
+      "category_id": null
+    },
+    {
+      "id": 637,
+      "type": "page",
+      "status": "publish",
+      "path": "/protezirovanie/",
+      "title": "Протезування",
+      "date": "2024-03-11",
+      "public_comment_count": 0,
+      "category_id": null
+    }
+  ],
+  "published_posts_pages_count": 7,
+  "internal_elementor_templates_count": 17,
+  "wpdiscuz_form_count": 1,
+  "attachments": [
+    {
+      "id": 694,
+      "public_path": "/wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png",
+      "parent_id": 637,
+      "mime": "image/png",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 114,
+      "public_path": "/wp-content/uploads/2021/04/Stas.jpg",
+      "parent_id": 5,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 24,
+      "public_path": "/wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png",
+      "parent_id": 7,
+      "mime": "image/png",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 27,
+      "public_path": "/wp-content/uploads/2021/04/Logo_cut_black.png",
+      "parent_id": 5,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 45,
+      "public_path": "/wp-content/uploads/2021/04/Grey_1.jpg",
+      "parent_id": 5,
+      "mime": "image/jpeg",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 199,
+      "public_path": "/wp-content/uploads/2021/04/13_150.png",
+      "parent_id": 5,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 200,
+      "public_path": "/wp-content/uploads/2021/04/14_150.png",
+      "parent_id": 5,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 201,
+      "public_path": "/wp-content/uploads/2021/04/15_150.png",
+      "parent_id": 5,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 202,
+      "public_path": "/wp-content/uploads/2021/04/16_150.png",
+      "parent_id": 5,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 341,
+      "public_path": "/wp-content/uploads/2021/04/sert1.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 342,
+      "public_path": "/wp-content/uploads/2021/04/sert2.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 343,
+      "public_path": "/wp-content/uploads/2021/04/sert3.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 344,
+      "public_path": "/wp-content/uploads/2021/04/sert4.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 345,
+      "public_path": "/wp-content/uploads/2021/04/sert5.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 346,
+      "public_path": "/wp-content/uploads/2021/04/sert6.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 347,
+      "public_path": "/wp-content/uploads/2021/04/sert7.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 348,
+      "public_path": "/wp-content/uploads/2021/04/sert8.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 349,
+      "public_path": "/wp-content/uploads/2021/04/sert9.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 350,
+      "public_path": "/wp-content/uploads/2021/04/sert10.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 448,
+      "public_path": "/wp-content/uploads/2021/06/Logo_cut_NEO.png",
+      "parent_id": 5,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 443,
+      "public_path": "/wp-content/uploads/2021/06/Logo_cut_black_NEO.png",
+      "parent_id": 5,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 455,
+      "public_path": "/wp-content/uploads/2021/06/Fon_Grey_1.png",
+      "parent_id": 0,
+      "mime": "image/png",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 576,
+      "public_path": "/wp-content/uploads/2024/03/76498b985421658754ff839f82bf.jpg",
+      "parent_id": 564,
+      "mime": "image/jpeg",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 589,
+      "public_path": "/wp-content/uploads/2024/03/unnamed.png",
+      "parent_id": 564,
+      "mime": "image/png",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 633,
+      "public_path": "/wp-content/uploads/2024/03/0fcfe684754725384c.png",
+      "parent_id": 615,
+      "mime": "image/png",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 649,
+      "public_path": "/wp-content/uploads/2024/03/acril.jpg",
+      "parent_id": 637,
+      "mime": "image/jpeg",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 666,
+      "public_path": "/wp-content/uploads/2024/03/zubnye-protezy-3.jpeg",
+      "parent_id": 637,
+      "mime": "image/jpeg",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 942,
+      "public_path": "/wp-content/uploads/2024/04/20240405_104931.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 943,
+      "public_path": "/wp-content/uploads/2024/04/20240405_121304.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 910,
+      "public_path": "/wp-content/uploads/2024/03/Logo_cu.png",
+      "parent_id": 615,
+      "mime": "image/png",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 944,
+      "public_path": "/wp-content/uploads/2024/04/20240405_123153.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "410_RETIRE",
+      "preserved_exact_path": false
+    },
+    {
+      "id": 961,
+      "public_path": "/wp-content/uploads/2024/05/20240405_105121_300.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 962,
+      "public_path": "/wp-content/uploads/2024/05/20240405_105221_300.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 963,
+      "public_path": "/wp-content/uploads/2024/05/20240405_105452_300.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    },
+    {
+      "id": 964,
+      "public_path": "/wp-content/uploads/2024/05/20240405_123140_300.jpg",
+      "parent_id": 0,
+      "mime": "image/jpeg",
+      "alias_decision": "301_EXACT_REPLACEMENT",
+      "preserved_exact_path": true
+    }
+  ],
+  "attachment_count": 35,
+  "upload_file_count": 192,
+  "held_media_exact_paths_preserved": 38,
+  "additional_attachment_originals_outside_64_rows": 15,
+  "approved_public_comments": 0,
+  "unpublished_comment_rows_excluded": 34,
+  "category_archives": [
+    {
+      "term_id": 1,
+      "path": "/category/bez-rubriki/",
+      "published_post_ids": [
+        1
+      ]
+    }
+  ],
+  "author_archives": [
+    {
+      "author_id": 1,
+      "path": "/author/newdentix/",
+      "published_post_ids": [
+        1
+      ]
+    }
+  ],
+  "feed_endpoints": [
+    "/feed/",
+    "/comments/feed/",
+    "/2021/04/08/privet-mir/feed/",
+    "/author/newdentix/feed/",
+    "/category/bez-rubriki/feed/",
+    "/otzyivyi/feed/",
+    "/elementor-5/feed/"
+  ],
+  "query_alias_manifest": "ops/release/query-aliases.json",
+  "gsc_status": "ACCESS_BLOCKED",
+  "backlink_index_status": "UNKNOWN",
+  "direct_object_paths_added_to_contract": 35,
+  "final_executable_migration_rows": 99
+}

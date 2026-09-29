@@ -1,0 +1,2287 @@
+{
+  "site_id": "DENTIX",
+  "parsed_lines": 19676,
+  "malformed_lines": 0,
+  "available_completed_days": 31,
+  "first_completed_day": "2026-08-29",
+  "last_completed_day": "2026-09-28",
+  "windows": {
+    "28": {
+      "complete": true,
+      "status": "COMPLETE",
+      "coverage_days": 28,
+      "start": "2026-09-01",
+      "end_exclusive": "2026-09-29",
+      "rows": {
+        "/2021/04/08/privet-mir/": {
+          "requests": 28,
+          "unique_days": 10,
+          "statuses": {
+            "429": 2,
+            "200": 26
+          },
+          "methods": {
+            "GET": 22,
+            "POST": 6
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 18,
+            "OTHER_BOT": 4
+          },
+          "referrer_classes": {
+            "NONE": 10,
+            "DENTIX": 18
+          },
+          "last_request_utc": "2026-09-23T07:33:35+00:00"
+        },
+        "/2021/04/08/privet-mir/feed/": {
+          "requests": 4,
+          "unique_days": 2,
+          "statuses": {
+            "200": 4
+          },
+          "methods": {
+            "GET": 4
+          },
+          "user_agent_classes": {
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-13T14:47:57+00:00"
+        },
+        "/author/newdentix/": {
+          "requests": 20,
+          "unique_days": 7,
+          "statuses": {
+            "200": 20
+          },
+          "methods": {
+            "GET": 20
+          },
+          "user_agent_classes": {
+            "OTHER_BOT": 4,
+            "OTHER": 4,
+            "BROWSER_CLASS": 12
+          },
+          "referrer_classes": {
+            "NONE": 12,
+            "DENTIX": 6,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-23T07:33:23+00:00"
+        },
+        "/author/newdentix/feed/": {
+          "requests": 4,
+          "unique_days": 2,
+          "statuses": {
+            "200": 4
+          },
+          "methods": {
+            "GET": 4
+          },
+          "user_agent_classes": {
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-13T14:47:58+00:00"
+        },
+        "/category/bez-rubriki/": {
+          "requests": 10,
+          "unique_days": 5,
+          "statuses": {
+            "200": 10
+          },
+          "methods": {
+            "GET": 10
+          },
+          "user_agent_classes": {
+            "OTHER_BOT": 4,
+            "OTHER": 4,
+            "BROWSER_CLASS": 2
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 2
+          },
+          "last_request_utc": "2026-09-23T07:33:29+00:00"
+        },
+        "/category/bez-rubriki/feed/": {
+          "requests": 6,
+          "unique_days": 3,
+          "statuses": {
+            "200": 6
+          },
+          "methods": {
+            "GET": 6
+          },
+          "user_agent_classes": {
+            "OTHER": 4,
+            "BINGBOT": 2
+          },
+          "referrer_classes": {
+            "NONE": 6
+          },
+          "last_request_utc": "2026-09-20T09:28:56+00:00"
+        },
+        "/comments/feed/": {
+          "requests": 30,
+          "unique_days": 10,
+          "statuses": {
+            "200": 30
+          },
+          "methods": {
+            "GET": 30
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 22,
+            "OTHER": 4,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 8,
+            "NONE": 22
+          },
+          "last_request_utc": "2026-09-25T11:01:15+00:00"
+        },
+        "/elementor-5/feed/": {
+          "requests": 26,
+          "unique_days": 9,
+          "statuses": {
+            "200": 26
+          },
+          "methods": {
+            "GET": 26
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 20,
+            "OTHER": 4,
+            "OTHER_BOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 8,
+            "NONE": 18
+          },
+          "last_request_utc": "2026-09-25T11:01:16+00:00"
+        },
+        "/feed/": {
+          "requests": 36,
+          "unique_days": 12,
+          "statuses": {
+            "200": 36
+          },
+          "methods": {
+            "GET": 36
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 30,
+            "OTHER": 4,
+            "OTHER_BOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 8,
+            "NONE": 28
+          },
+          "last_request_utc": "2026-09-28T15:45:08+00:00"
+        },
+        "/otzyivyi/": {
+          "requests": 20,
+          "unique_days": 9,
+          "statuses": {
+            "429": 2,
+            "200": 18
+          },
+          "methods": {
+            "GET": 20
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "OTHER_BOT": 10,
+            "BINGBOT": 2,
+            "BROWSER_CLASS": 2
+          },
+          "referrer_classes": {
+            "NONE": 18,
+            "DENTIX": 2
+          },
+          "last_request_utc": "2026-09-27T15:44:31+00:00"
+        },
+        "/otzyivyi/feed/": {
+          "requests": 4,
+          "unique_days": 2,
+          "statuses": {
+            "200": 4
+          },
+          "methods": {
+            "GET": 4
+          },
+          "user_agent_classes": {
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-13T14:47:59+00:00"
+        },
+        "/wp-content/uploads/2021/04/13_150-150x150.png": {
+          "requests": 140,
+          "unique_days": 28,
+          "statuses": {
+            "200": 136,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 139,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 132,
+            "OTHER_BOT": 2,
+            "BINGBOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 134,
+            "NONE": 6
+          },
+          "last_request_utc": "2026-09-28T11:11:59+00:00"
+        },
+        "/wp-content/uploads/2021/04/14_150-150x150.png": {
+          "requests": 145,
+          "unique_days": 28,
+          "statuses": {
+            "200": 141,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 144,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 4,
+            "BROWSER_CLASS": 138,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 140,
+            "NONE": 5
+          },
+          "last_request_utc": "2026-09-28T11:11:59+00:00"
+        },
+        "/wp-content/uploads/2021/04/15_150-150x150.png": {
+          "requests": 126,
+          "unique_days": 28,
+          "statuses": {
+            "200": 122,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 125,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 4,
+            "BROWSER_CLASS": 119,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 122,
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-28T08:17:15+00:00"
+        },
+        "/wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png": {
+          "requests": 2,
+          "unique_days": 2,
+          "statuses": {
+            "200": 2
+          },
+          "methods": {
+            "HEAD": 1,
+            "GET": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-13T14:48:01+00:00"
+        },
+        "/wp-content/uploads/2021/04/Logo_cut_black-1024x276.png": {
+          "requests": 2,
+          "unique_days": 2,
+          "statuses": {
+            "200": 2
+          },
+          "methods": {
+            "HEAD": 1,
+            "GET": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-13T14:48:01+00:00"
+        },
+        "/wp-content/uploads/2021/04/Stas.jpg": {
+          "requests": 155,
+          "unique_days": 28,
+          "statuses": {
+            "200": 154,
+            "304": 1
+          },
+          "methods": {
+            "GET": 154,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 31,
+            "BROWSER_CLASS": 122,
+            "OTHER_BOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 97,
+            "NONE": 53,
+            "EXTERNAL_HOST": 5
+          },
+          "last_request_utc": "2026-09-28T20:43:22+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert1-216x300.jpg": {
+          "requests": 169,
+          "unique_days": 27,
+          "statuses": {
+            "200": 158,
+            "304": 7,
+            "429": 2,
+            "206": 2
+          },
+          "methods": {
+            "GET": 168,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 158,
+            "GOOGLEBOT": 7,
+            "OTHER_BOT": 2,
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 158,
+            "NONE": 9,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert1.jpg": {
+          "requests": 13,
+          "unique_days": 9,
+          "statuses": {
+            "429": 4,
+            "200": 8,
+            "304": 1
+          },
+          "methods": {
+            "GET": 12,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5,
+            "BINGBOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert10-215x300.jpg": {
+          "requests": 159,
+          "unique_days": 28,
+          "statuses": {
+            "200": 155,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 158,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 153,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 154,
+            "EXTERNAL_HOST": 2,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert10.jpg": {
+          "requests": 14,
+          "unique_days": 10,
+          "statuses": {
+            "200": 9,
+            "429": 4,
+            "304": 1
+          },
+          "methods": {
+            "GET": 13,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 6,
+            "OTHER": 6,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 9,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-28T05:29:41+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert2-214x300.jpg": {
+          "requests": 168,
+          "unique_days": 27,
+          "statuses": {
+            "200": 159,
+            "304": 6,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 167,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 155,
+            "GOOGLEBOT": 7,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 156,
+            "NONE": 10,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert2.jpg": {
+          "requests": 13,
+          "unique_days": 9,
+          "statuses": {
+            "429": 3,
+            "200": 9,
+            "304": 1
+          },
+          "methods": {
+            "GET": 12,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 6,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:02:00+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert3-212x300.jpg": {
+          "requests": 162,
+          "unique_days": 27,
+          "statuses": {
+            "200": 159,
+            "206": 1,
+            "429": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 161,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 155,
+            "OTHER_BOT": 2,
+            "OTHER": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 155,
+            "EXTERNAL_HOST": 2,
+            "NONE": 5
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert3.jpg": {
+          "requests": 13,
+          "unique_days": 10,
+          "statuses": {
+            "429": 4,
+            "200": 8,
+            "304": 1
+          },
+          "methods": {
+            "GET": 12,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:52+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert4-212x300.jpg": {
+          "requests": 163,
+          "unique_days": 28,
+          "statuses": {
+            "200": 159,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 162,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 155,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 156,
+            "NONE": 5,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert4.jpg": {
+          "requests": 12,
+          "unique_days": 8,
+          "statuses": {
+            "200": 8,
+            "429": 4
+          },
+          "methods": {
+            "GET": 11,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "GOOGLEBOT": 1,
+            "OTHER": 6,
+            "BROWSER_CLASS": 5
+          },
+          "referrer_classes": {
+            "NONE": 7,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert5-211x300.jpg": {
+          "requests": 160,
+          "unique_days": 27,
+          "statuses": {
+            "200": 157,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 159,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 155,
+            "OTHER_BOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 156,
+            "EXTERNAL_HOST": 2,
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert5.jpg": {
+          "requests": 13,
+          "unique_days": 9,
+          "statuses": {
+            "429": 4,
+            "200": 9
+          },
+          "methods": {
+            "GET": 12,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5,
+            "BINGBOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert6-300x213.jpg": {
+          "requests": 162,
+          "unique_days": 27,
+          "statuses": {
+            "200": 159,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 161,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 156,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 157,
+            "EXTERNAL_HOST": 2,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert6.jpg": {
+          "requests": 11,
+          "unique_days": 8,
+          "statuses": {
+            "429": 4,
+            "200": 7
+          },
+          "methods": {
+            "GET": 10,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5
+          },
+          "referrer_classes": {
+            "NONE": 6,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert7-203x300.jpg": {
+          "requests": 177,
+          "unique_days": 27,
+          "statuses": {
+            "200": 159,
+            "304": 16,
+            "429": 1,
+            "206": 1
+          },
+          "methods": {
+            "GET": 176,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 154,
+            "GOOGLEBOT": 17,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 155,
+            "NONE": 20,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert7.jpg": {
+          "requests": 14,
+          "unique_days": 10,
+          "statuses": {
+            "429": 4,
+            "200": 9,
+            "304": 1
+          },
+          "methods": {
+            "GET": 13,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5,
+            "BINGBOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 9,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-27T00:04:18+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert8-208x300.jpg": {
+          "requests": 162,
+          "unique_days": 27,
+          "statuses": {
+            "200": 158,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 161,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 155,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 156,
+            "EXTERNAL_HOST": 2,
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert8.jpg": {
+          "requests": 16,
+          "unique_days": 12,
+          "statuses": {
+            "429": 4,
+            "200": 12
+          },
+          "methods": {
+            "GET": 15,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 9,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 7,
+            "DENTIX": 5,
+            "EXTERNAL_HOST": 4
+          },
+          "last_request_utc": "2026-09-28T16:23:47+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert9-213x300.jpg": {
+          "requests": 160,
+          "unique_days": 27,
+          "statuses": {
+            "200": 156,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 159,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 155,
+            "OTHER_BOT": 2,
+            "OTHER": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 155,
+            "EXTERNAL_HOST": 2,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert9.jpg": {
+          "requests": 11,
+          "unique_days": 8,
+          "statuses": {
+            "429": 4,
+            "200": 7
+          },
+          "methods": {
+            "GET": 10,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5
+          },
+          "referrer_classes": {
+            "NONE": 6,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/03/0fcfe684754725384c.png": {
+          "requests": 16,
+          "unique_days": 13,
+          "statuses": {
+            "200": 16
+          },
+          "methods": {
+            "GET": 15,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 14,
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 14,
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-26T10:11:48+00:00"
+        },
+        "/wp-content/uploads/2024/03/Logo_cu.png": {
+          "requests": 176,
+          "unique_days": 27,
+          "statuses": {
+            "200": 173,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 175,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 35,
+            "BROWSER_CLASS": 139,
+            "OTHER_BOT": 2
+          },
+          "referrer_classes": {
+            "NONE": 41,
+            "DENTIX": 134,
+            "EXTERNAL_HOST": 1
+          },
+          "last_request_utc": "2026-09-28T20:43:22+00:00"
+        },
+        "/wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png": {
+          "requests": 14,
+          "unique_days": 10,
+          "statuses": {
+            "200": 13,
+            "304": 1
+          },
+          "methods": {
+            "GET": 13,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 10,
+            "OTHER": 2,
+            "GOOGLEBOT": 1,
+            "OTHER_BOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 11,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/03/unnamed.png": {
+          "requests": 20,
+          "unique_days": 15,
+          "statuses": {
+            "200": 20
+          },
+          "methods": {
+            "GET": 19,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 18,
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 16,
+            "EXTERNAL_HOST": 2,
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-24T13:28:11+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105121_300-169x300.jpg": {
+          "requests": 159,
+          "unique_days": 27,
+          "statuses": {
+            "200": 156,
+            "429": 1,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 158,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 153,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 154,
+            "EXTERNAL_HOST": 2,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105121_300.jpg": {
+          "requests": 14,
+          "unique_days": 8,
+          "statuses": {
+            "200": 9,
+            "304": 1,
+            "429": 4
+          },
+          "methods": {
+            "GET": 13,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 7,
+            "GOOGLEBOT": 1,
+            "OTHER": 6
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 6
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105221_300-169x300.jpg": {
+          "requests": 158,
+          "unique_days": 27,
+          "statuses": {
+            "200": 154,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 157,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 151,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 152,
+            "NONE": 4,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105221_300.jpg": {
+          "requests": 16,
+          "unique_days": 10,
+          "statuses": {
+            "200": 13,
+            "429": 3
+          },
+          "methods": {
+            "GET": 15,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 10,
+            "OTHER": 6
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "EXTERNAL_HOST": 2,
+            "DENTIX": 6
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105452_300-169x300.jpg": {
+          "requests": 159,
+          "unique_days": 27,
+          "statuses": {
+            "200": 156,
+            "206": 1,
+            "429": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 158,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 152,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 153,
+            "EXTERNAL_HOST": 2,
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105452_300.jpg": {
+          "requests": 15,
+          "unique_days": 9,
+          "statuses": {
+            "200": 11,
+            "429": 3,
+            "304": 1
+          },
+          "methods": {
+            "GET": 14,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 8,
+            "OTHER": 6,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 9,
+            "DENTIX": 6
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_123140_300-169x300.jpg": {
+          "requests": 160,
+          "unique_days": 27,
+          "statuses": {
+            "200": 157,
+            "304": 1,
+            "206": 1,
+            "429": 1
+          },
+          "methods": {
+            "GET": 159,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 3,
+            "BROWSER_CLASS": 153,
+            "GOOGLEBOT": 1,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 154,
+            "NONE": 4,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_123140_300.jpg": {
+          "requests": 17,
+          "unique_days": 11,
+          "statuses": {
+            "200": 12,
+            "304": 1,
+            "429": 4
+          },
+          "methods": {
+            "GET": 16,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 10,
+            "GOOGLEBOT": 1,
+            "OTHER": 6
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "EXTERNAL_HOST": 4,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T06:38:40+00:00"
+        }
+      }
+    },
+    "90": {
+      "complete": false,
+      "status": "PARTIAL_DO_NOT_REPORT_AS_FULL_WINDOW",
+      "coverage_days": 31,
+      "start": "2026-07-01",
+      "end_exclusive": "2026-09-29",
+      "rows": {
+        "/2021/04/08/privet-mir/": {
+          "requests": 28,
+          "unique_days": 10,
+          "statuses": {
+            "429": 2,
+            "200": 26
+          },
+          "methods": {
+            "GET": 22,
+            "POST": 6
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 18,
+            "OTHER_BOT": 4
+          },
+          "referrer_classes": {
+            "NONE": 10,
+            "DENTIX": 18
+          },
+          "last_request_utc": "2026-09-23T07:33:35+00:00"
+        },
+        "/2021/04/08/privet-mir/feed/": {
+          "requests": 4,
+          "unique_days": 2,
+          "statuses": {
+            "200": 4
+          },
+          "methods": {
+            "GET": 4
+          },
+          "user_agent_classes": {
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-13T14:47:57+00:00"
+        },
+        "/author/newdentix/": {
+          "requests": 20,
+          "unique_days": 7,
+          "statuses": {
+            "200": 20
+          },
+          "methods": {
+            "GET": 20
+          },
+          "user_agent_classes": {
+            "OTHER_BOT": 4,
+            "OTHER": 4,
+            "BROWSER_CLASS": 12
+          },
+          "referrer_classes": {
+            "NONE": 12,
+            "DENTIX": 6,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-23T07:33:23+00:00"
+        },
+        "/author/newdentix/feed/": {
+          "requests": 4,
+          "unique_days": 2,
+          "statuses": {
+            "200": 4
+          },
+          "methods": {
+            "GET": 4
+          },
+          "user_agent_classes": {
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-13T14:47:58+00:00"
+        },
+        "/category/bez-rubriki/": {
+          "requests": 12,
+          "unique_days": 6,
+          "statuses": {
+            "200": 12
+          },
+          "methods": {
+            "GET": 12
+          },
+          "user_agent_classes": {
+            "BINGBOT": 2,
+            "OTHER_BOT": 4,
+            "OTHER": 4,
+            "BROWSER_CLASS": 2
+          },
+          "referrer_classes": {
+            "NONE": 10,
+            "DENTIX": 2
+          },
+          "last_request_utc": "2026-09-23T07:33:29+00:00"
+        },
+        "/category/bez-rubriki/feed/": {
+          "requests": 6,
+          "unique_days": 3,
+          "statuses": {
+            "200": 6
+          },
+          "methods": {
+            "GET": 6
+          },
+          "user_agent_classes": {
+            "OTHER": 4,
+            "BINGBOT": 2
+          },
+          "referrer_classes": {
+            "NONE": 6
+          },
+          "last_request_utc": "2026-09-20T09:28:56+00:00"
+        },
+        "/comments/feed/": {
+          "requests": 34,
+          "unique_days": 11,
+          "statuses": {
+            "200": 34
+          },
+          "methods": {
+            "GET": 34
+          },
+          "user_agent_classes": {
+            "OTHER_BOT": 6,
+            "BROWSER_CLASS": 22,
+            "OTHER": 4,
+            "GOOGLEBOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 12,
+            "NONE": 22
+          },
+          "last_request_utc": "2026-09-25T11:01:15+00:00"
+        },
+        "/elementor-5/feed/": {
+          "requests": 30,
+          "unique_days": 10,
+          "statuses": {
+            "200": 30
+          },
+          "methods": {
+            "GET": 30
+          },
+          "user_agent_classes": {
+            "OTHER_BOT": 6,
+            "BROWSER_CLASS": 20,
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "DENTIX": 12,
+            "NONE": 18
+          },
+          "last_request_utc": "2026-09-25T11:01:16+00:00"
+        },
+        "/feed/": {
+          "requests": 42,
+          "unique_days": 14,
+          "statuses": {
+            "200": 42
+          },
+          "methods": {
+            "GET": 42
+          },
+          "user_agent_classes": {
+            "OTHER_BOT": 6,
+            "BROWSER_CLASS": 32,
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "DENTIX": 12,
+            "NONE": 30
+          },
+          "last_request_utc": "2026-09-28T15:45:08+00:00"
+        },
+        "/otzyivyi/": {
+          "requests": 20,
+          "unique_days": 9,
+          "statuses": {
+            "429": 2,
+            "200": 18
+          },
+          "methods": {
+            "GET": 20
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "OTHER_BOT": 10,
+            "BINGBOT": 2,
+            "BROWSER_CLASS": 2
+          },
+          "referrer_classes": {
+            "NONE": 18,
+            "DENTIX": 2
+          },
+          "last_request_utc": "2026-09-27T15:44:31+00:00"
+        },
+        "/otzyivyi/feed/": {
+          "requests": 4,
+          "unique_days": 2,
+          "statuses": {
+            "200": 4
+          },
+          "methods": {
+            "GET": 4
+          },
+          "user_agent_classes": {
+            "OTHER": 4
+          },
+          "referrer_classes": {
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-13T14:47:59+00:00"
+        },
+        "/wp-content/uploads/2021/04/13_150-150x150.png": {
+          "requests": 155,
+          "unique_days": 31,
+          "statuses": {
+            "200": 151,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 154,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 147,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "BINGBOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 149,
+            "NONE": 6
+          },
+          "last_request_utc": "2026-09-28T11:11:59+00:00"
+        },
+        "/wp-content/uploads/2021/04/14_150-150x150.png": {
+          "requests": 161,
+          "unique_days": 31,
+          "statuses": {
+            "200": 157,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 160,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 154,
+            "OTHER": 4,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 156,
+            "NONE": 5
+          },
+          "last_request_utc": "2026-09-28T11:11:59+00:00"
+        },
+        "/wp-content/uploads/2021/04/15_150-150x150.png": {
+          "requests": 139,
+          "unique_days": 31,
+          "statuses": {
+            "200": 135,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 138,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 132,
+            "OTHER": 4,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 135,
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-28T08:17:15+00:00"
+        },
+        "/wp-content/uploads/2021/04/Logo_ICO_Black_Bolt.png": {
+          "requests": 2,
+          "unique_days": 2,
+          "statuses": {
+            "200": 2
+          },
+          "methods": {
+            "HEAD": 1,
+            "GET": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-13T14:48:01+00:00"
+        },
+        "/wp-content/uploads/2021/04/Logo_cut_black-1024x276.png": {
+          "requests": 2,
+          "unique_days": 2,
+          "statuses": {
+            "200": 2
+          },
+          "methods": {
+            "HEAD": 1,
+            "GET": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-13T14:48:01+00:00"
+        },
+        "/wp-content/uploads/2021/04/Stas.jpg": {
+          "requests": 167,
+          "unique_days": 31,
+          "statuses": {
+            "200": 166,
+            "304": 1
+          },
+          "methods": {
+            "GET": 166,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 33,
+            "BROWSER_CLASS": 132,
+            "OTHER_BOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 55,
+            "DENTIX": 107,
+            "EXTERNAL_HOST": 5
+          },
+          "last_request_utc": "2026-09-28T20:43:22+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert1-216x300.jpg": {
+          "requests": 185,
+          "unique_days": 30,
+          "statuses": {
+            "200": 174,
+            "304": 7,
+            "429": 2,
+            "206": 2
+          },
+          "methods": {
+            "GET": 184,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 174,
+            "GOOGLEBOT": 7,
+            "OTHER_BOT": 2,
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 174,
+            "NONE": 9,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert1.jpg": {
+          "requests": 15,
+          "unique_days": 10,
+          "statuses": {
+            "200": 10,
+            "429": 4,
+            "304": 1
+          },
+          "methods": {
+            "GET": 14,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 7,
+            "OTHER": 6,
+            "BINGBOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 7,
+            "NONE": 8
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert10-215x300.jpg": {
+          "requests": 175,
+          "unique_days": 31,
+          "statuses": {
+            "200": 171,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 174,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 169,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 170,
+            "EXTERNAL_HOST": 2,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert10.jpg": {
+          "requests": 15,
+          "unique_days": 11,
+          "statuses": {
+            "200": 10,
+            "429": 4,
+            "304": 1
+          },
+          "methods": {
+            "GET": 14,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 7,
+            "OTHER": 6,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 6,
+            "NONE": 9
+          },
+          "last_request_utc": "2026-09-28T05:29:41+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert2-214x300.jpg": {
+          "requests": 184,
+          "unique_days": 30,
+          "statuses": {
+            "200": 175,
+            "304": 6,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 183,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 171,
+            "OTHER": 3,
+            "GOOGLEBOT": 7,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 172,
+            "NONE": 10,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert2.jpg": {
+          "requests": 13,
+          "unique_days": 9,
+          "statuses": {
+            "429": 3,
+            "200": 9,
+            "304": 1
+          },
+          "methods": {
+            "GET": 12,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 6,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:02:00+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert3-212x300.jpg": {
+          "requests": 179,
+          "unique_days": 30,
+          "statuses": {
+            "200": 176,
+            "206": 1,
+            "429": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 178,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 172,
+            "OTHER_BOT": 2,
+            "OTHER": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 172,
+            "EXTERNAL_HOST": 2,
+            "NONE": 5
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert3.jpg": {
+          "requests": 13,
+          "unique_days": 10,
+          "statuses": {
+            "429": 4,
+            "200": 8,
+            "304": 1
+          },
+          "methods": {
+            "GET": 12,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:52+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert4-212x300.jpg": {
+          "requests": 179,
+          "unique_days": 31,
+          "statuses": {
+            "200": 175,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 178,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 171,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 172,
+            "NONE": 5,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert4.jpg": {
+          "requests": 12,
+          "unique_days": 8,
+          "statuses": {
+            "200": 8,
+            "429": 4
+          },
+          "methods": {
+            "GET": 11,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "GOOGLEBOT": 1,
+            "OTHER": 6,
+            "BROWSER_CLASS": 5
+          },
+          "referrer_classes": {
+            "NONE": 7,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert5-211x300.jpg": {
+          "requests": 176,
+          "unique_days": 30,
+          "statuses": {
+            "200": 173,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 175,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 171,
+            "OTHER": 3,
+            "OTHER_BOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 172,
+            "EXTERNAL_HOST": 2,
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert5.jpg": {
+          "requests": 13,
+          "unique_days": 9,
+          "statuses": {
+            "429": 4,
+            "200": 9
+          },
+          "methods": {
+            "GET": 12,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5,
+            "BINGBOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 8,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert6-300x213.jpg": {
+          "requests": 178,
+          "unique_days": 30,
+          "statuses": {
+            "200": 175,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 177,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 172,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 173,
+            "EXTERNAL_HOST": 2,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert6.jpg": {
+          "requests": 11,
+          "unique_days": 8,
+          "statuses": {
+            "429": 4,
+            "200": 7
+          },
+          "methods": {
+            "GET": 10,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5
+          },
+          "referrer_classes": {
+            "NONE": 6,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert7-203x300.jpg": {
+          "requests": 193,
+          "unique_days": 30,
+          "statuses": {
+            "200": 175,
+            "304": 16,
+            "429": 1,
+            "206": 1
+          },
+          "methods": {
+            "GET": 192,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 170,
+            "OTHER": 3,
+            "GOOGLEBOT": 17,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 171,
+            "NONE": 20,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert7.jpg": {
+          "requests": 14,
+          "unique_days": 10,
+          "statuses": {
+            "429": 4,
+            "200": 9,
+            "304": 1
+          },
+          "methods": {
+            "GET": 13,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 5,
+            "BINGBOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 9,
+            "DENTIX": 5
+          },
+          "last_request_utc": "2026-09-27T00:04:18+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert8-208x300.jpg": {
+          "requests": 178,
+          "unique_days": 30,
+          "statuses": {
+            "200": 174,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 177,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 171,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 172,
+            "EXTERNAL_HOST": 2,
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert8.jpg": {
+          "requests": 16,
+          "unique_days": 12,
+          "statuses": {
+            "429": 4,
+            "200": 12
+          },
+          "methods": {
+            "GET": 15,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "OTHER": 6,
+            "BROWSER_CLASS": 9,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "NONE": 7,
+            "DENTIX": 5,
+            "EXTERNAL_HOST": 4
+          },
+          "last_request_utc": "2026-09-28T16:23:47+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert9-213x300.jpg": {
+          "requests": 177,
+          "unique_days": 30,
+          "statuses": {
+            "200": 172,
+            "304": 2,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 176,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 171,
+            "GOOGLEBOT": 2,
+            "OTHER_BOT": 2,
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 171,
+            "NONE": 4,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2021/04/sert9.jpg": {
+          "requests": 12,
+          "unique_days": 9,
+          "statuses": {
+            "200": 8,
+            "429": 4
+          },
+          "methods": {
+            "GET": 11,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 6,
+            "OTHER": 6
+          },
+          "referrer_classes": {
+            "DENTIX": 6,
+            "NONE": 6
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/03/0fcfe684754725384c.png": {
+          "requests": 17,
+          "unique_days": 14,
+          "statuses": {
+            "200": 17
+          },
+          "methods": {
+            "GET": 16,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 15,
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 15,
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-26T10:11:48+00:00"
+        },
+        "/wp-content/uploads/2024/03/Logo_cu.png": {
+          "requests": 193,
+          "unique_days": 30,
+          "statuses": {
+            "200": 190,
+            "429": 2,
+            "206": 1
+          },
+          "methods": {
+            "GET": 192,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 154,
+            "OTHER": 37,
+            "OTHER_BOT": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 149,
+            "NONE": 43,
+            "EXTERNAL_HOST": 1
+          },
+          "last_request_utc": "2026-09-28T20:43:22+00:00"
+        },
+        "/wp-content/uploads/2024/03/krasivaya-ulybka-v-vashikh-rukakh.png": {
+          "requests": 15,
+          "unique_days": 11,
+          "statuses": {
+            "200": 14,
+            "304": 1
+          },
+          "methods": {
+            "GET": 14,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 11,
+            "OTHER": 2,
+            "GOOGLEBOT": 1,
+            "OTHER_BOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 12,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/03/unnamed.png": {
+          "requests": 21,
+          "unique_days": 16,
+          "statuses": {
+            "200": 21
+          },
+          "methods": {
+            "GET": 20,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 19,
+            "OTHER": 2
+          },
+          "referrer_classes": {
+            "DENTIX": 17,
+            "EXTERNAL_HOST": 2,
+            "NONE": 2
+          },
+          "last_request_utc": "2026-09-24T13:28:11+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105121_300-169x300.jpg": {
+          "requests": 175,
+          "unique_days": 30,
+          "statuses": {
+            "200": 172,
+            "429": 1,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 174,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 169,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 170,
+            "EXTERNAL_HOST": 2,
+            "NONE": 3
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105121_300.jpg": {
+          "requests": 15,
+          "unique_days": 9,
+          "statuses": {
+            "200": 10,
+            "304": 1,
+            "429": 4
+          },
+          "methods": {
+            "GET": 14,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 8,
+            "GOOGLEBOT": 1,
+            "OTHER": 6
+          },
+          "referrer_classes": {
+            "DENTIX": 7,
+            "NONE": 8
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105221_300-169x300.jpg": {
+          "requests": 175,
+          "unique_days": 30,
+          "statuses": {
+            "200": 171,
+            "429": 2,
+            "206": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 174,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 168,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "GOOGLEBOT": 1,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 169,
+            "NONE": 4,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105221_300.jpg": {
+          "requests": 18,
+          "unique_days": 11,
+          "statuses": {
+            "200": 15,
+            "429": 3
+          },
+          "methods": {
+            "GET": 17,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 12,
+            "OTHER": 6
+          },
+          "referrer_classes": {
+            "DENTIX": 8,
+            "NONE": 8,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105452_300-169x300.jpg": {
+          "requests": 176,
+          "unique_days": 30,
+          "statuses": {
+            "200": 173,
+            "206": 1,
+            "429": 1,
+            "304": 1
+          },
+          "methods": {
+            "GET": 175,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 169,
+            "OTHER": 3,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 170,
+            "EXTERNAL_HOST": 2,
+            "NONE": 4
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_105452_300.jpg": {
+          "requests": 17,
+          "unique_days": 10,
+          "statuses": {
+            "200": 13,
+            "429": 3,
+            "304": 1
+          },
+          "methods": {
+            "GET": 16,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 10,
+            "OTHER": 6,
+            "GOOGLEBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 8,
+            "NONE": 9
+          },
+          "last_request_utc": "2026-09-24T00:01:51+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_123140_300-169x300.jpg": {
+          "requests": 176,
+          "unique_days": 30,
+          "statuses": {
+            "200": 173,
+            "304": 1,
+            "206": 1,
+            "429": 1
+          },
+          "methods": {
+            "GET": 175,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 169,
+            "OTHER": 3,
+            "GOOGLEBOT": 1,
+            "OTHER_BOT": 2,
+            "BINGBOT": 1
+          },
+          "referrer_classes": {
+            "DENTIX": 170,
+            "NONE": 4,
+            "EXTERNAL_HOST": 2
+          },
+          "last_request_utc": "2026-09-28T11:46:06+00:00"
+        },
+        "/wp-content/uploads/2024/05/20240405_123140_300.jpg": {
+          "requests": 19,
+          "unique_days": 12,
+          "statuses": {
+            "200": 14,
+            "304": 1,
+            "429": 4
+          },
+          "methods": {
+            "GET": 18,
+            "HEAD": 1
+          },
+          "user_agent_classes": {
+            "BROWSER_CLASS": 12,
+            "GOOGLEBOT": 1,
+            "OTHER": 6
+          },
+          "referrer_classes": {
+            "DENTIX": 7,
+            "NONE": 8,
+            "EXTERNAL_HOST": 4
+          },
+          "last_request_utc": "2026-09-24T06:38:40+00:00"
+        }
+      }
+    }
+  }
+}

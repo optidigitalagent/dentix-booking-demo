@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "site_id": "DENTIX",
-  "observed_at": "2026-09-28T11:33:32.016880+00:00",
-  "decision": "DECISION_PENDING_ACCESS_OR_CAPABILITY",
-  "recommended_candidate": null,
+  "observed_at": "2026-09-29T11:01:03Z",
+  "decision": "CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED",
+  "recommended_candidate": "current_origin_mirohost_for_separate_go_review",
   "cutover_authorized": false,
   "public_evidence": {
     "apex_ipv4": "89.184.75.186",
@@ -15,10 +15,10 @@
     "server_signal": "nginx",
     "platform": "WordPress / Elementor (HTTP headers)",
     "cloudflare": "NOT_EVIDENCED; absence of public signal does not prove no upstream CDN",
-    "apache": "UNKNOWN",
+    "apache": "PRIVATE_STAGING_HTACCESS_BEHAVIOR_VERIFIED; PRODUCTION_ADAPTER_NOT_ACTIVATED",
     "tls": "Lets Encrypt YR2; SAN dentix.ua + www.dentix.ua; expires 2026-10-13T23:07:05Z",
     "historical_ip_conflict": "PUBLIC_CURRENT_A_DIFFERS_FROM_HISTORICAL_DOCUMENT; LIVE_ZONE_EXPORT_PENDING; NO_DNS_CHANGE",
-    "panel_access": "NOT_VERIFIED"
+    "panel_access": "READ_ONLY_DENTIX_PANEL_VERIFIED; PRIVATE_STAGING_PR07_99_ROWS_58_ALIASES_139_HASHES_70_RANGE_PASS; PRODUCTION_UNTOUCHED"
   },
   "scoring": {
     "2": "Observed public behavior, not account access",
@@ -35,7 +35,7 @@
         "real_custom_404": 1,
         "exact_301": 1,
         "exact_410": 1,
-        "hold_preservation_proxy": 1,
+        "hold_preservation_proxy": 2,
         "https_www_normalization": 2,
         "headers_bot_policy": 1,
         "deploy_sha_observability": 0,
@@ -44,14 +44,14 @@
         "logs": 0,
         "cost_operational_access": 0
       },
-      "score": 10,
-      "status": "NOT_EXECUTABLE_ACCESS_UNPROVEN",
-      "evidence": "Public server header is nginx, WordPress/Elementor HTML and Mirohost NS; configuration/upload/backup access UNKNOWN. nginx return and proxy directives are documented, actual origin permissions are not.",
+      "score": 11,
+      "status": "CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED",
+      "evidence": "Exact-head private Basic-Auth/noindex staging passed 12 patient routes, 99 migration rows GET/HEAD, 58 alias rows GET/HEAD, 139 file hashes and 70 media Range checks; zero HOLD. Corrected active root/directories 0755, ordinary files 0644, zero world-writable paths; unsafe old root disabled outside active document root. Production root untouched.",
       "sources": [
         "https://nginx.org/en/docs/http/ngx_http_rewrite_module.html",
         "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
       ],
-      "access": "ACCESS_BLOCKED",
+      "access": "READ_ONLY_PANEL_AND_LOGS_VERIFIED; FTP_IP_RESTRICTION_UNCHANGED; ISOLATED_PR07_STAGING_UPLOAD_VERIFIED",
       "cost": "UNKNOWN; obtain plan, billing owner and operational estimate"
     },
     {
@@ -116,10 +116,10 @@
   "other_target": "NOT_EVIDENCED; Railway URL is booking backend, not proof of a patient-site hosting target",
   "minimum_evidence": [
     "Named DNS/hosting owner and redacted account/domain association; no passwords or tokens",
-    "Current origin: read-only vhost/static upload/configuration permissions, backup/restore and logs proof; staging replay of all 64 rows",
+    "Current origin: read-only vhost/static upload/configuration permissions, backup/restore and logs proof; accepted staging replay of all 99 rows",
     "Legacy origin reachable independently of public dentix.ua DNS, tested Host/SNI, redirect-loop and dependency preservation; or complete signed static inventory",
     "Alternative Cloudflare: owner-approved zone/plan/access, dedicated routing adapter and rollback proof; preserve MX/TXT/CAA",
     "Named operating and billing owner, restore rehearsal <=15 minutes target, planned change window and separate cutover authorization"
   ],
-  "decision_rule": "Choose only after an owner proves required capabilities and staged 64-row tests. Investigate current host access first because it is observed; this is not a hosting selection."
+  "decision_rule": "Current Mirohost is the observed production candidate with exact-head private staging replay and safe replacement permissions. Zero HOLD remains. Production selection still requires merged-main rebuild, credential rotation, rollback rehearsal, lead-delivery decision, T0 readiness and separately authorized GO; no deployment is authorized by this record."
 }

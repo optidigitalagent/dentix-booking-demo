@@ -16,6 +16,11 @@ for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([na
    // Form fixture QA does not exercise the founder video; avoid an open media
    // range request keeping Playwright's networkidle wait pending.
    await page.route('**/*.mp4', route => route.abort());
+   await page.route(/^https:\/\/www\.google\.com\/maps\/embed(?:\?|$)/, route => route.fulfill({
+    status: 200,
+    contentType: 'text/html; charset=utf-8',
+    body: '<!doctype html><html><body data-dentix-map-fixture="isolated"></body></html>',
+   }));
    let available = true, leadResult = 422, bookingResult = 409; const sent = [];
    await page.route('**/api/public/**', async route => {
     const req = route.request(), url = new URL(req.url()); let data;
@@ -33,6 +38,9 @@ for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([na
    });
    await page.goto(`${origin}/`,{waitUntil:'networkidle'});
    await page.evaluate(()=>document.fonts.ready);
+   const map = page.locator('iframe[title="Карта розташування клініки DENTIX"]');
+   assert.equal(await map.count(),1);
+   assert.match(await map.getAttribute('src'),/^https:\/\/www\.google\.com\/maps\/embed(?:\?|$)/);
    const form=page.locator('.lead-form').first();
    await form.scrollIntoViewIfNeeded();
    await checkFields(form,width);

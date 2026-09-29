@@ -1,8 +1,8 @@
 {
   "site_id": "DENTIX",
-  "status": "PASS_LOCAL_DRAFT_CANDIDATE",
-  "validated_at": "2026-09-28T11:48:40.932669+00:00",
-  "base_sha": "9fddc64020fcdcf0e01020be838be72c75b1d4a8",
+  "status": "PASS_PR07_FUNCTIONAL_CANDIDATE_PRODUCTION_NOT_LAUNCHED",
+  "validated_at": "2026-09-29T11:01:03Z",
+  "base_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
   "production_content_sha256": "9216df1905903185b2305cedba6447f718e793f08c19fa81192b67d68c6de2d3",
   "counts": {
     "npm_test": 25,
@@ -34,11 +34,11 @@
   "tenant_cases": 7,
   "preview_build": "PASS",
   "production_build": "PASS_SANITIZED_DETERMINISTIC_TWO_RUNS",
-  "release_contract": "PASS: unchanged 64 rows / 49 HOLD / explicit KEEP 404",
+  "release_contract": "PASS: 99 final rows (64 original + 35 direct objects) / 49 former HOLD resolved / zero HOLD / explicit KEEP 404",
   "environment_review_measurement_tests": "PASS",
   "medical_copy_changed": false,
   "professional_review": "NOT_REQUIRED_FOR_EXISTING_OWNER_APPROVED_COPY; NEW_MEDICAL_CLAIMS_GATED",
-  "hosting": "DECISION_PENDING_ACCESS_OR_CAPABILITY",
+  "hosting": "CURRENT_MIROHOST_PRIVATE_STAGING_VERIFIED",
   "t0": "NOT_READY",
   "production": "NOT_LAUNCHED",
   "post_requests": 0,
@@ -46,9 +46,48 @@
   "supplementary_generic_scanner": "Raw exit 1: intentional noindex 404/admin and unmounted preview base diagnostics; all 12 production patient pages zero issues. See external qa/static-scan-assessment.md.",
   "final_git_archive_receipts": "External evidence and Draft PR body; exact committed source SHA and ZIP SHA cannot be embedded in their own source commit.",
   "owner_content_approval": "OWNER_APPROVED_EXISTING_FACTS_AND_SERVICES",
-  "staging": "LOCAL_APACHE_ONLY_REMOTE_ACCESS_BLOCKED",
+  "staging": "REMOTE_EXACT_HEAD_12_ROUTES_99_ROWS_58_ALIASES_139_HASHES_70_RANGE_PASS_SAFE_PERMISSIONS",
   "hold_rows_passed": 0,
   "credential_rotation": "P0_PLAN_NOT_EXECUTED",
   "operator_suite": "PASS_163_OF_163_IN_TEMPORARY_GIT_SNAPSHOT_OF_IDENTICAL_213_FILES",
-  "client_validation": "UNIT_ARTIFACT_RELEASE_BROWSER_APACHE_PASS; HOST_ACCOUNT_UNVERIFIED"
+  "client_validation": "PR07_FUNCTIONAL_AND_PRIVATE_STAGING_PASS; FRESH_FINAL_HEAD_SUITE_PENDING",
+  "functional_head_sha": "d01483914652c5d3977b60f8d96b763d4b686b8a",
+  "host_account_verified_for_private_staging": true,
+  "cutover_authorized": false,
+  "migration_rows": 99,
+  "hold_rows": 0,
+  "query_aliases": 58,
+  "direct_paths_resolved": 35,
+  "patient_routes": 12,
+  "remote_replay": {
+    "routes_get": 12,
+    "routes_head": 12,
+    "migration_get": 99,
+    "migration_head": 99,
+    "aliases_get": 58,
+    "aliases_head": 58,
+    "file_hashes": 139,
+    "media_range": 70
+  },
+  "staging_permissions": {
+    "active_root": "0755",
+    "directories": "0755",
+    "ordinary_files": "0644",
+    "world_writable_paths": 0,
+    "unsafe_old_root": "DISABLED_OUTSIDE_ACTIVE_DOCUMENT_ROOT"
+  },
+  "preservation_bundle_receipt": {
+    "bytes": 7138014,
+    "sha256": "6357fc35ba4131fc070a2e5f13376fd120c1adf21bcc181dc814065389bf3def"
+  },
+  "go_candidate_receipt": {
+    "bytes": 29122997,
+    "sha256": "928ca2322e33d6f420694abc9b72a8d72ee410ccdc317c089318d5bf499ab44b",
+    "source_sha": "d01483914652c5d3977b60f8d96b763d4b686b8a",
+    "status": "CANDIDATE_NOT_DEPLOYED"
+  },
+  "correction_evidence_receipt": {
+    "bytes": 29156,
+    "sha256": "4f6f425b00ee6e0034385b082d958cea5c2b299cc142a10c26adb2ca824689dc"
+  }
 }

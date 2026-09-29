@@ -1,3 +1,15 @@
+# DENTIX PR-07 final review handoff — 2026-09-29T11:01:03Z
+
+PR #10 remains OPEN/Draft at reviewed functional head `d01483914652c5d3977b60f8d96b763d4b686b8a` on `seo/dentix-pr07-hold-resolution`, base `main` `c75d494945ba8868840f30bd82a12e78cc1bee14`; 35 changed files and `NO_SERVER_CI`. The bounded operational reconciliation commit/push and fresh exact-final-head suite follow this record snapshot. Production remains old WordPress; GitHub Pages is a separate noindex preview.
+
+The final executable migration contract has **99 rows, zero HOLD, 58 exact known aliases** and 35 added direct paths. Three consent-sensitive direct paths return exact 410 and are excluded; later republication requires consent. Four legacy HTML, seven XML/RSS and 70 media objects have explicit path-scoped noindex policy. The corrected preservation bundle is 7,138,014 bytes / SHA-256 `6357fc35ba4131fc070a2e5f13376fd120c1adf21bcc181dc814065389bf3def`; the unexecuted GO candidate is 29,122,997 bytes / SHA-256 `928ca2322e33d6f420694abc9b72a8d72ee410ccdc317c089318d5bf499ab44b`.
+
+Exact-head private staging replay passed 12 patient routes, 99 rows, 58 aliases, 139 file hashes and 70 media Range checks. Replacement root/directories are 0755, files 0644 and zero active paths are world-writable; unsafe old root is disabled outside the active document root. No homepage fallback, open proxy, loop or real submission. No production, DNS, sitemap, indexing or external-account action occurred.
+
+Credential rotation, rollback rehearsal, lead-delivery decision and numeric T0 remain future cutover gates, along with a merged-main rebuild and separate GO. `outcome_report.claims=[]`; no rankings, AI visibility, leads or revenue are claimed.
+
+---
+
 # DENTIX PR06 automated routine continuation — 2026-09-28T18:17:23.553890+00:00
 
 Existing Draft PR #9 and branch `seo/dentix-pr06-mirohost-staging` reconciled at initial head `b64a30c36e6b6c2f5be7af5e2e6cd178ab33e134`. The package checksum, operator 0.2.1 immutable 213-file identity, ten skills, 163/163 operator tests, 25 unit tests, 34 artifact tests, 13 release tests, two local Apache adapter tests, eight local browser suites and one read-only live-preview suite passed. Fixture POST requests were intercepted; preview was restored after fixture QA. A separate temporary Playwright Chromium profile reached the Mirohost login form, but the single supplied control-panel credential attempt did not establish an authenticated session. No 2FA prompt was observed. One controlled explicit-FTPS attempt to the current server was blocked before any backup transfer. The panel allowlist was not changed; no temporary entry exists to remove. FileVault is on; no backup files were obtained.

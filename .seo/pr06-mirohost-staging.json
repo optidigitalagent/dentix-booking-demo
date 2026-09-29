@@ -149,5 +149,13 @@
     "production": "OLD_WORDPRESS_NOT_LAUNCHED",
     "credential_rotation": "P0_PENDING_BEFORE_CUTOVER",
     "outcome_claims": []
+  },
+  "post_merge": {
+    "pr": 9,
+    "state": "MERGED",
+    "merge_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
+    "preview_workflow_id": 36531475181,
+    "preview_workflow_conclusion": "success",
+    "recorded_at": "2026-09-29T07:14:50Z"
   }
 }
