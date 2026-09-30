@@ -129,7 +129,7 @@
     "production_is_wordpress": true,
     "dns_change_planned": false,
     "private_staging_existing_basic_auth_401_200": true,
-    "exact_main_remote_replay": "LOCAL_EXACT_MAIN_OVERLAY_PASS_HTTPS_PICKER_PENDING",
+    "exact_main_remote_replay": "EXACT_MAIN_ZIP_HTTPS_UPLOADED_AND_REMOTE_SHA_VERIFIED_EXTRACTION_AND_REPLAY_PENDING",
     "fresh_backup_restore_rollback": "DB_PRIVATE_AND_LOCAL_RESTORE_PASS_FILES_AND_SERVER_REHEARSAL_NOT_RUN",
     "owner_access": "DELEGATED_TECHNICAL_USER_PASS_OWNER_RECOVERY_UNCHANGED",
     "dns_tls_mail": "PANEL_SIX_RECORD_ZONE_TWO_ACTIVE_CERTIFICATES_MAIL_SMTP_BLOCKED_NO_MAILBOXES",
@@ -138,6 +138,6 @@
     "ftp_rotation_independent_verification": "NEW_KEYCHAIN_SECRET_PRESENT_DIFFERS_OLD_PANEL_ONLY_ZERO_EXTERNAL_IPS_SECURE_NEW_LOGIN_UNAVAILABLE",
     "candidate_local_staging_overlay_files": 141,
     "provider_plan": "MINI_NO_SSH",
-    "provider_latest_backup": "2026_09_30_010825Z_REQUEST_IN_PROCESS_CURRENTNESS_UNPROVEN"
+    "provider_latest_backup": "2026_09_30_010825Z_REQUEST_COMPLETE_ARCHIVE_NOT_RETRIEVED_CURRENTNESS_UNPROVEN"
   }
 }

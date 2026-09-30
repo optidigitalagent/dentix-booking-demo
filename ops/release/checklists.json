@@ -499,7 +499,7 @@
     }
   ],
   "phase_a": {
-    "recorded_at": "2026-09-30T10:28:07Z",
+    "recorded_at": "2026-09-30T12:49:36Z",
     "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
     "go_signal": "NOT_READY",
     "gates": {
@@ -508,12 +508,12 @@
       "preservation_bundle_81": "PASS",
       "local_candidate_12_99_58": "PASS_LOCAL_ONLY",
       "credential_rotation": "BLOCKED_FTP_SECRET_KEYCHAIN_PRESENT_PANEL_ONLY_ZERO_EXTERNAL_IPS_OTHER_ACTIVE_CREDENTIALS_UNROTATED",
-      "fresh_post_rotation_files_db_backup": "FRESH_DB_PRIVATE_VERIFIED_PROVIDER_LATEST_FILES_REQUEST_IN_PROCESS_DRIFT_PROOF_PENDING",
+      "fresh_post_rotation_files_db_backup": "FRESH_DB_PRIVATE_VERIFIED_PROVIDER_LATEST_FILES_REQUEST_COMPLETE_ARCHIVE_RETRIEVAL_AND_DRIFT_PROOF_PENDING",
       "isolated_fresh_restore": "LOCAL_DB_SOCKET_PASS_SERVER_WORDPRESS_NOT_RUN",
       "atomic_rollback_rehearsal": "SERVER_NOT_RUN",
       "full_zone_export": "PANEL_SIX_RECORDS_SEEN_REGISTRAR_EXPORT_PENDING",
       "public_dns_tls_mail_snapshot": "CURRENT_PUBLIC_DNS_TLS_MX_SPF_PASS_NO_CHANGES_FULL_ZONE_AND_RENEWAL_PENDING",
-      "exact_main_remote_staging": "LOCAL_EXACT_MAIN_OVERLAY_141_PASS_HTTPS_PICKER_USER_SELECTION_PENDING",
+      "exact_main_remote_staging": "EXACT_MAIN_ZIP_29122982_BYTES_UPLOADED_TO_PRIVATE_ROOT_REMOTE_SHA256_VERIFIED_EXTRACTION_AND_REPLAY_PENDING",
       "production_cutover": "PROHIBITED_WITHOUT_EXACT_GO",
       "legacy_file_restore_and_local_rename": "PASS_PROVISIONAL_PRE_ROTATION_ONLY",
       "fresh_database_clone": "LOCAL_EPHEMERAL_SOCKET_PASS_23_TABLES_SERVER_CLONE_NOT_RUN",
