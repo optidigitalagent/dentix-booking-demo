@@ -3,16 +3,18 @@
   "project_id": "dentix",
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
-  "requested_action": "draft_pr",
-  "authorization_level": "PR-08 Phase A full-access resume authorized for DENTIX; fresh DB and local UNIX-socket restore verified. Plain FTP forbidden; external FTP IP entries removed and access saved as panel-only. Latest provider files snapshot requested through HTTPS Backup Manager, currentness pending. Separate Basic-Auth/noindex staging root reverified; HTTPS upload picker awaits user's manual exact-main ZIP choice. Server restore/rollback, remote replay and critical credential rotation remain open. Production cutover and DNS/indexing prohibited.",
+  "requested_action": "edit",
+  "authorization_level": "DENTIX PR-08 Phase A new-chat resume: existing branch and Draft PR #11 only. Authenticated artemix panel restored. Provider files archive verified in FileVault but currentness/no-drift remains unproved; support requested fresh archive. Exact-main private staging replay PASS 12/99/58, 139 hashes and 70 Range; header and robots noindex with Basic Auth. Server WordPress restore/rollback and critical credential rotation remain blocked. Full zone export and TLS renewal proof requested. Production/DNS/indexing unchanged.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-30T09:53:10Z",
+  "verified_at": "2026-09-30T20:05:15Z",
   "remote_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "local_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "deployed_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
-  "open_prs": [],
+  "open_prs": [
+    "https://github.com/optidigitalagent/dentix-booking-demo/pull/11 (OPEN_DRAFT_MERGEABLE)"
+  ],
   "recently_merged_prs": [
     {
       "baseRefName": "main",

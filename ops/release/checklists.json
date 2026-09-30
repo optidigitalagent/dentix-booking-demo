@@ -1,6 +1,6 @@
 {
   "site_id": "DENTIX",
-  "status": "PHASE_A_PREPARING_OWNER_ACCESS_BLOCKED",
+  "status": "PHASE_A_PRECUTOVER_BLOCKED_AFTER_PRIVATE_STAGING_REPLAY",
   "launch_authorized": false,
   "checklists": [
     {
@@ -499,7 +499,7 @@
     }
   ],
   "phase_a": {
-    "recorded_at": "2026-09-30T12:49:36Z",
+    "recorded_at": "2026-09-30T20:05:15Z",
     "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
     "go_signal": "NOT_READY",
     "gates": {
@@ -507,13 +507,13 @@
       "operator_harness_163": "PASS",
       "preservation_bundle_81": "PASS",
       "local_candidate_12_99_58": "PASS_LOCAL_ONLY",
-      "credential_rotation": "BLOCKED_FTP_SECRET_KEYCHAIN_PRESENT_PANEL_ONLY_ZERO_EXTERNAL_IPS_OTHER_ACTIVE_CREDENTIALS_UNROTATED",
-      "fresh_post_rotation_files_db_backup": "FRESH_DB_PRIVATE_VERIFIED_PROVIDER_LATEST_FILES_REQUEST_COMPLETE_ARCHIVE_RETRIEVAL_AND_DRIFT_PROOF_PENDING",
-      "isolated_fresh_restore": "LOCAL_DB_SOCKET_PASS_SERVER_WORDPRESS_NOT_RUN",
-      "atomic_rollback_rehearsal": "SERVER_NOT_RUN",
-      "full_zone_export": "PANEL_SIX_RECORDS_SEEN_REGISTRAR_EXPORT_PENDING",
-      "public_dns_tls_mail_snapshot": "CURRENT_PUBLIC_DNS_TLS_MX_SPF_PASS_NO_CHANGES_FULL_ZONE_AND_RENEWAL_PENDING",
-      "exact_main_remote_staging": "EXACT_MAIN_ZIP_29122982_BYTES_UPLOADED_TO_PRIVATE_ROOT_REMOTE_SHA256_VERIFIED_EXTRACTION_AND_REPLAY_PENDING",
+      "credential_rotation": "BLOCKED_FTP_KEYCHAIN_PANEL_ONLY_OLD_INVALIDATION_UNPROVEN_OWNER_WORDPRESS_MYSQL_ELEMENTOR_OPEN",
+      "fresh_post_rotation_files_db_backup": "FRESH_DB_PRIVATE_VERIFIED_PROVIDER_FILES_ARCHIVE_VERIFIED_CURRENTNESS_NO_DRIFT_UNPROVEN_FRESH_ARCHIVE_REQUESTED",
+      "isolated_fresh_restore": "LOCAL_DB_SOCKET_PASS_SERVER_WORDPRESS_NOT_RUN_CURRENT_FILES_PENDING",
+      "atomic_rollback_rehearsal": "SERVER_NOT_RUN_CURRENT_FILES_PENDING",
+      "full_zone_export": "SIX_PANEL_RECORDS_SEEN_FULL_EXPORT_SUPPORT_REQUEST_ACCEPTED_PENDING",
+      "public_dns_tls_mail_snapshot": "BASELINE_PASS_ZERO_CHANGES_TLS_RENEWAL_PROOF_SUPPORT_REQUEST_ACCEPTED_PENDING",
+      "exact_main_remote_staging": "PASS_BASIC_AUTH_NOINDEX_HEADER_ROBOTS_12_ROUTES_99_ROWS_58_ALIASES_139_HASHES_70_RANGE",
       "production_cutover": "PROHIBITED_WITHOUT_EXACT_GO",
       "legacy_file_restore_and_local_rename": "PASS_PROVISIONAL_PRE_ROTATION_ONLY",
       "fresh_database_clone": "LOCAL_EPHEMERAL_SOCKET_PASS_23_TABLES_SERVER_CLONE_NOT_RUN",
