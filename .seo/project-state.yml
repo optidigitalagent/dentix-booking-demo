@@ -4,11 +4,11 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "draft_pr",
-  "authorization_level": "PR-08 Phase A PREPARE_GO only; no production cutover before exact same-chat DENTIX_PRODUCTION_GO. Owner Mirohost login and credential rotation remain pending; GO gates not yet satisfied.",
+  "authorization_level": "PR-08 Phase A full-access resume authorized for DENTIX; verified fresh DB in private FileVault storage and local UNIX-socket restore; fresh files backup, server restore/rollback, exact-main remote replay and critical credential rotation remain open; production cutover and DNS/indexing prohibited.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-29T19:50:25Z",
+  "verified_at": "2026-09-30T09:07:49Z",
   "remote_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "local_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "deployed_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
@@ -120,5 +120,5 @@
   "overlapping_active_pr": false,
   "production_matches_deploy": false,
   "external_state_verified": true,
-  "worktree_clean": true
+  "worktree_clean": false
 }

@@ -91,21 +91,30 @@
     "sha256": "4f6f425b00ee6e0034385b082d958cea5c2b299cc142a10c26adb2ca824689dc"
   },
   "phase_a": {
-    "recorded_at": "2026-09-29T19:50:25Z",
+    "recorded_at": "2026-09-30T09:07:49Z",
     "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
-    "status": "PREPARE_GO_IN_PROGRESS_OWNER_ACCESS_BLOCKED",
+    "status": "PRECUTOVER_BLOCKED_LOCAL_DB_RESTORE_PASS_REMOTE_GATES_OPEN",
     "local_production_content_sha256": "9216df1905903185b2305cedba6447f718e793f08c19fa81192b67d68c6de2d3",
     "preservation_sha256": "6357fc35ba4131fc070a2e5f13376fd120c1adf21bcc181dc814065389bf3def",
     "go_package_sha256": "f5f9fe17b6721f317b92c7a751b46230406276984f7432b1ce79bdedd2924592",
     "legacy_packager_guard": "PR05 status enum stale; accepted content hash matches rebuilt content; package layout independently reproduced and hashed twice",
-    "remote_replay": "NOT_RUN",
-    "rotation": "NOT_RUN",
-    "fresh_backups": "NOT_RUN",
-    "restore": "NOT_RUN",
-    "rollback": "NOT_RUN",
+    "remote_replay": "EXACT_MAIN_OVERLAY_LOCAL_PASS_REMOTE_NOT_RUN",
+    "rotation": "FTP_ROTATED_USER_CONFIRMED_OLD_SFTP_REJECTED_NEW_KEYCHAIN_SECRET_NOT_AVAILABLE_OTHER_ACTIVE_CREDENTIALS_OPEN",
+    "fresh_backups": "FRESH_DB_PRIVATE_PASS_FILES_BACKUP_MISSING",
+    "restore": "LOCAL_DB_SOCKET_PASS_SERVER_WORDPRESS_RESTORE_NOT_RUN",
+    "rollback": "SERVER_NOT_RUN",
     "production": "OLD_WORDPRESS",
     "outcome_claims": [],
     "local_provisional_rehearsal": "4800 old WordPress files restored from pre-rotation archive; local isolated same-filesystem rename and reverse PASS; fresh DB clone and Mirohost server rehearsal NOT_RUN",
-    "browser_suites": "Production suites PASS; two intake fixture suites PASS against isolated fake API build with all requests intercepted; no real submission; noindex preview rebuilt afterward"
+    "browser_suites": "Production suites PASS; two intake fixture suites PASS against isolated fake API build with all requests intercepted; no real submission; noindex preview rebuilt afterward",
+    "panel_inventory": "ONE_FTP_ONE_MYSQL_USER_ZERO_MAILBOXES",
+    "dns_tls_mail": "PANEL_ZONE_PARTIAL_TLS_ACTIVE_MAIL_SMTP_BLOCKED",
+    "fresh_db_dump": "PRIVATE_ZIP_AND_SQL_STREAM_VERIFIED_CRC_PASS",
+    "fresh_files_backup": "NOT_CREATED",
+    "fresh_db_archive_sha256": "126c1fb3cffbd78aaa1fefacad2c69b52d6b2de4e05ed322e065755a705a7b07",
+    "fresh_db_sql_stream_sha256": "19b73ba2dcff79dd69236f2bea59a9200c6000aa757ef4a51d164968cf377cf0",
+    "local_db_restore": "PASS_23_TABLES_3_CRITICAL_OPTIONS_TEMP_SOCKET_REMOVED",
+    "exact_main_staging_overlay": "LOCAL_PASS_141_FILES_81_PRESERVED_REMOTE_PENDING",
+    "current_public_dns_tls_mail": "THREE_MIROHOST_NS_APEX_AND_WWW_A_ONE_MX_ONE_SPF_NO_AAAA_OR_CAA_TLS_VALID_TO_2026_12_13_NO_CHANGES"
   }
 }

@@ -63,14 +63,14 @@
     },
     {
       "channel": "hosting/DNS",
-      "status": "ACCESS_BLOCKED",
+      "status": "PARTIAL_PANEL_ACCESS",
       "property": "dentix.ua + www; Mirohost NS; origin 89.184.75.186 observed",
       "minimum_access_or_export": "Redacted domain/access/zone/config evidence from owner; credentials stay owner-managed",
       "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
       "baseline_fields": "zone TTLs, MX/TXT/CAA, current origin, vhost/CDN/headers/TLS, upload/config rights, backup/restore/logs",
       "owner": "DENTIX owner; named assignee UNKNOWN",
       "blocks": "cutover",
-      "received_evidence": null
+      "received_evidence": "DELEGATED_H158422_DENTIX_PANEL_ZONE_SIX_RECORDS_TLS_AND_MAIL_INSPECTED_2026_09_30; registrar export pending; no secret values"
     },
     {
       "channel": "CRM",
@@ -232,6 +232,10 @@
     "ga4_gtm": "ACCESS_BLOCKED",
     "bing": "ACCESS_BLOCKED",
     "crm": "ACCESS_BLOCKED",
-    "numeric_fields": "UNKNOWN"
+    "numeric_fields": "UNKNOWN",
+    "panel_followup_at": "2026-09-30T07:02:36Z",
+    "panel_followup": "DELEGATED_ACCESS_PASS; SIX_ZONE_RECORDS; TWO_ACTIVE_TLS_CERTIFICATES; ZERO_LOCAL_MAILBOXES; SMTP_BLOCKED; DNS_UNCHANGED",
+    "resume_at": "2026-09-30T09:07:49Z",
+    "resume_dns_tls_mail": "PUBLIC_NS_A_MX_SPF_AND_TLS_RECHECK_PASS; AXFR_UNAVAILABLE; NO_CHANGES; FULL_PANEL_ZONE_AND_RENEWAL_PROOF_PENDING"
   }
 }
