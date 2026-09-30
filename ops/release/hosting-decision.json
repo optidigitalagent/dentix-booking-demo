@@ -123,7 +123,7 @@
   ],
   "decision_rule": "Current Mirohost is the observed production candidate with exact-head private staging replay and safe replacement permissions. Zero HOLD remains. Production selection still requires merged-main rebuild, credential rotation, rollback rehearsal, lead-delivery decision, T0 readiness and separately authorized GO; no deployment is authorized by this record.",
   "phase_a": {
-    "status": "FRESH_DB_AND_LOCAL_RESTORE_PASS_SERVER_BACKUP_RESTORE_STAGING_BLOCKED",
+    "status": "KEYCHAIN_FTP_READY_SECURE_TRANSPORT_UNAVAILABLE_REMOTE_GATES_BLOCKED",
     "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
     "candidate_sha256": "f5f9fe17b6721f317b92c7a751b46230406276984f7432b1ce79bdedd2924592",
     "production_is_wordpress": true,
@@ -133,9 +133,11 @@
     "fresh_backup_restore_rollback": "DB_PRIVATE_AND_LOCAL_RESTORE_PASS_FILES_AND_SERVER_REHEARSAL_NOT_RUN",
     "owner_access": "DELEGATED_TECHNICAL_USER_PASS_OWNER_RECOVERY_UNCHANGED",
     "dns_tls_mail": "PANEL_SIX_RECORD_ZONE_TWO_ACTIVE_CERTIFICATES_MAIL_SMTP_BLOCKED_NO_MAILBOXES",
-    "observed_at": "2026-09-30T09:07:49Z",
+    "observed_at": "2026-09-30T09:53:10Z",
     "post_rotation_db_dump": "PRIVATE_VERIFIED_ZIP_SQL_CRC_SHA_PASS",
-    "ftp_rotation_independent_verification": "OLD_SFTP_REJECTED_NEW_SECRET_UNAVAILABLE_IN_KEYCHAIN",
-    "candidate_local_staging_overlay_files": 141
+    "ftp_rotation_independent_verification": "NEW_KEYCHAIN_SECRET_PRESENT_DIFFERS_OLD_FTPS_UNAVAILABLE_SFTP_PREAUTH_CLOSED",
+    "candidate_local_staging_overlay_files": 141,
+    "provider_plan": "MINI_NO_SSH",
+    "provider_latest_backup": "2026_09_30_010825Z_PRE_ROTATION"
   }
 }
