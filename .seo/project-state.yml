@@ -4,7 +4,7 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "draft_pr",
-  "authorization_level": "PR-08 Phase A full-access resume authorized for DENTIX; fresh DB and local UNIX-socket restore verified. New FTP secret is in Keychain but Mini plan lacks SSH, server does not advertise FTPS and SFTP closes pre-auth; fresh files backup, server restore/rollback, remote replay and critical credential rotation remain open. Production cutover and DNS/indexing prohibited.",
+  "authorization_level": "PR-08 Phase A full-access resume authorized for DENTIX; fresh DB and local UNIX-socket restore verified. Plain FTP forbidden; external FTP IP entries removed and access saved as panel-only. Latest provider files snapshot requested through HTTPS Backup Manager, currentness pending. Separate Basic-Auth/noindex staging root reverified; HTTPS upload picker awaits user's manual exact-main ZIP choice. Server restore/rollback, remote replay and critical credential rotation remain open. Production cutover and DNS/indexing prohibited.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
