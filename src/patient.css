@@ -4709,6 +4709,23 @@ body::before,
 .booking-summary dd, .booking-option span, .lead-fields label { min-width: 0; overflow-wrap: anywhere; }
 .booking-form input:not([type]), .booking-form input[type="text"], .booking-form input[type="tel"] { width: 100%; min-height: 48px; padding: 11px 13px; border: 1px solid var(--border); background: var(--surface); font: inherit; }
 .booking-fallback > p { margin-bottom: 16px; }
+/* Shared disabled-intake contact chooser: visible in SSR contact panels and dialogs. */
+.contact-bridge { display: grid; gap: 14px; min-width: 0; }
+.contact-bridge-intro, .contact-bridge-interest, .contact-bridge-note { margin: 0; line-height: 1.55; overflow-wrap: anywhere; }
+.contact-bridge-interest { color: var(--text-primary); }
+.contact-bridge-intro { color: var(--text-primary); }
+.contact-bridge-note { color: var(--text-secondary-strong); font-size: 13px; }
+.contact-bridge-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.contact-bridge-link {
+  display: flex; align-items: center; min-width: 0; min-height: 52px;
+  padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text-primary); background: var(--surface); font-weight: 650;
+  line-height: 1.35; text-decoration: none; overflow-wrap: anywhere;
+}
+.contact-bridge-link:hover, .contact-bridge-link:focus-visible { border-color: var(--accent); background: var(--bg-secondary); }
+.contact-bridge-link-primary { color: var(--on-dark); background: var(--dark-surface); border-color: var(--dark-surface); }
+.contact-bridge-link-primary:hover, .contact-bridge-link-primary:focus-visible { color: var(--on-dark); background: var(--dark-surface-alt); }
+.contact-bridge-drawer .booking-body { padding-top: 24px; }
 body:has(.booking-layer) .mobile-call-bar,
 body:has(.lead-form :is(input, select, textarea):focus) .mobile-call-bar { display: none; }
 @media (max-width: 900px), (pointer: coarse) {
@@ -4717,6 +4734,11 @@ body:has(.lead-form :is(input, select, textarea):focus) .mobile-call-bar { displ
   .booking-layer { top: var(--booking-visible-top, 0px); bottom: auto; height: var(--booking-visible-height, 100dvh); }
   .booking-drawer { max-height: 100%; height: min(94dvh, var(--booking-visible-height, 100dvh)); }
   .booking-body { scroll-padding-block: 20px; }
+}
+@media (max-width: 520px) {
+  .contact-bridge-links { grid-template-columns: 1fr; }
+  .contact-panel { padding: 24px 20px; }
+  .contact-panel-head { flex-wrap: wrap; }
 }
 @media (max-height: 480px) {
   .booking-head { padding-block: 8px; }

@@ -34,7 +34,12 @@ class ReleaseTests(unittest.TestCase):
         with self.assertRaises(ValueError):release.plan_response('https://foreign.example/',self.contract)
     def test_deterministic_artifact_and_review(self):
         first=release.verify_artifact(release.ROOT/'dist/production');second=release.verify_artifact(release.ROOT/'dist/production');self.assertEqual(first,second)
-        packet=release.review_package(release.ROOT/'dist/production');self.assertEqual(packet,release.read_json(release.ROOT/'ops/review/professional-review.json'))
+        packet=release.review_package(release.ROOT/'dist/production')
+        reviewed=release.read_json(release.ROOT/'ops/review/professional-review.json')
+        # The review packet is a historical clinical-copy snapshot. PR-09 changes
+        # contact UI text, so compare only the clinical facts it actually reviewed.
+        clinical_keys=['url','title','h1','visible_answer','scope','questions','prices','clinicians','clinician_state','schema_service']
+        self.assertEqual([[p[key] for key in clinical_keys] for p in packet['pages']],[[p[key] for key in clinical_keys] for p in reviewed['pages']])
         self.assertEqual(len(packet['pages']),12);self.assertEqual(sum(len(p['schema_service']) for p in packet['pages']),8)
         for p in packet['pages']:
             self.assertTrue(p['source_keys']);self.assertIsNone(p['reviewer_name']);self.assertIsNone(p['sign_off']);self.assertIsNone(p['decision'])

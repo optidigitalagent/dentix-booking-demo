@@ -1,93 +1,93 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { serveArtifact } from '../scripts/serve-artifact.mjs';
+
+if (!process.env.PLAYWRIGHT_MODULE_PATH || !process.env.DENTIX_QA_OUTPUT) throw new Error('External Playwright and evidence directory required');
 const { chromium, webkit } = await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE_PATH).href);
-const origin = process.env.DENTIX_PREVIEW_ORIGIN ?? 'http://127.0.0.1:4179/dentix-rebrand';
+const output = path.resolve(process.env.DENTIX_QA_OUTPUT);
+await fs.mkdir(output, { recursive: true });
 const sizes = process.env.DENTIX_QA_SIZES ? JSON.parse(process.env.DENTIX_QA_SIZES) : [[360,844],[375,812],[390,844],[393,852],[412,915],[430,932],[844,390],[768,900],[1024,900],[1440,900]];
-const output = process.env.DENTIX_QA_OUTPUT ?? 'docs/qa/mobile-intake-2026-09-07';
-const reports = [];
-const startsAt = '2026-10-01T10:00:00Z', endsAt = '2026-10-01T10:30:00Z';
-for (const [engineName, engine] of Object.entries({chromium,webkit}).filter(([name]) => !process.env.DENTIX_QA_ENGINE || name === process.env.DENTIX_QA_ENGINE)) {
- const browser = await engine.launch();
- try {
-  for (const [width,height] of sizes) {
-   const page = await browser.newPage({viewport:{width,height}});
-   const errors = []; page.on('pageerror', e => errors.push(e.message));
-   // Form fixture QA does not exercise the founder video; avoid an open media
-   // range request keeping Playwright's networkidle wait pending.
-   await page.route('**/*.mp4', route => route.abort());
-   await page.route(/^https:\/\/www\.google\.com\/maps\/embed(?:\?|$)/, route => route.fulfill({
-    status: 200,
-    contentType: 'text/html; charset=utf-8',
-    body: '<!doctype html><html><body data-dentix-map-fixture="isolated"></body></html>',
-   }));
-   let available = true, leadResult = 422, bookingResult = 409; const sent = [];
-   await page.route('**/api/public/**', async route => {
-    const req = route.request(), url = new URL(req.url()); let data;
-    if (url.pathname.endsWith('/intake-status')) data = {lead:{enabled:available,mode:available?'LIVE':'UNAVAILABLE',policyUrl:available?'https://example.org/approved-policy':null,consentVersion:'fixture-v1'},timed:{enabled:available,mode:available?'LIVE':'UNAVAILABLE',policyUrl:available?'https://example.org/approved-policy':null,consentVersion:'fixture-v1'}};
-    else if (url.pathname.endsWith('/catalog')) data = {mode:'LIVE_REQUESTS_READY',testOnly:false,timezone:'Europe/Kyiv',requestDurationMinutes:60,minDate:'2026-10-01',maxDate:'2026-10-30',consentVersion:'fixture-v1',services:[{id:'service',name:'Ізольована послуга',category:'QA fixture',duration_minutes:60}],doctors:[{id:'doctor',name:'Ізольований лікар',role_label:'QA fixture'}],doctorServices:[{doctor_id:'doctor',service_id:'service',active:true,public_bookable:true,booking_mode:'DIRECT_SLOT',reservation_duration_minutes:60,buffer_before_minutes:0,buffer_after_minutes:0,consultation_service_id:null,scheduled_service_id:'service',scheduled_service_name:'Ізольована послуга'}]};
-    else if (url.pathname.endsWith('/availability')) data={date:'2026-10-01',provisionalMinutes:30,slots:[{startsAt,endsAt,localStart:'13:00',localEnd:'13:30'}]};
-    else if (req.method()==='POST') {
-     const body=req.postDataJSON(); sent.push(body); assert.equal(body.consent,true); assert.equal(body.test_submission,undefined); assert.equal(body.consent_version,'fixture-v1');
-     const code=url.pathname.endsWith('/leads')?leadResult:bookingResult;
-     if(code===0)return route.abort('failed');
-     if(code!==200)return route.fulfill({status:code,json:{error:{code:code===409?'SLOT_NO_LONGER_AVAILABLE':'VALIDATION_ERROR',message:code===409?'Час уже недоступний. Оберіть інший.':'Перевірте дані.'}}});
-     data=url.pathname.endsWith('/leads')?{message:'Дякуємо! Адміністратор DENTIX зв’яжеться з вами для уточнення деталей.'}:{appointmentId:'fixture',reference:'FIXTURE',status:'AWAITING_CALLBACK',revision:1,message:'Запит на запис отримано. Адміністратор DENTIX зателефонує, щоб уточнити та підтвердити деталі.',startsAt,endsAt};
-    }
-    await route.fulfill({json:{data}});
-   });
-   await page.goto(`${origin}/`,{waitUntil:'networkidle'});
-   await page.evaluate(()=>document.fonts.ready);
-   const map = page.locator('iframe[title="Карта розташування клініки DENTIX"]');
-   assert.equal(await map.count(),1);
-   assert.match(await map.getAttribute('src'),/^https:\/\/www\.google\.com\/maps\/embed(?:\?|$)/);
-   const form=page.locator('.lead-form').first();
-   await form.scrollIntoViewIfNeeded();
-   await checkFields(form,width);
-   await form.getByLabel('Ім’я *',{exact:true}).fill('Анна-Марія Мар’ян');
-   await form.getByLabel('Телефон *',{exact:true}).fill('+380000000001');
-   await form.locator('textarea').fill('Перевірка форми без реального пацієнта');
-   assert.equal(await page.locator('.mobile-call-bar').isVisible(),false);
-   await form.locator('select').selectOption('VIBER');
-   await form.locator('input[type=checkbox]').check();
-   await form.getByRole('button',{name:'Залишити заявку'}).click();
-   await form.getByRole('alert').waitFor(); await checkFields(form,width);
-   leadResult=0; await Promise.all([page.waitForEvent('requestfailed',{predicate:request=>request.method()==='POST'&&new URL(request.url()).pathname.endsWith('/leads')}),form.getByRole('button',{name:'Залишити заявку'}).click()]); await page.waitForFunction(()=>{const button=document.querySelector('.lead-form button[type=submit]');return button&&!button.disabled;});
-   leadResult=200; await form.getByRole('button',{name:'Залишити заявку'}).click(); await form.getByText(/Дякуємо!/).waitFor();
-   const trigger=page.getByRole('button',{name:'Записатися онлайн',exact:true}).first();
-   await trigger.scrollIntoViewIfNeeded(); const before=await page.evaluate(()=>({y:scrollY,style:document.body.getAttribute('style')}));
-   await trigger.click(); const capturedY=await page.evaluate(()=>-parseFloat(document.body.style.top)); const dialog=page.getByRole('dialog'); await dialog.locator('.booking-options').getByText('Ізольована послуга',{exact:true}).click(); await next();
-   await dialog.getByText('Ізольований лікар',{exact:true}).click();await next();
-   await checkFields(dialog,width); await dialog.locator('input[type=date]').fill('2026-10-01');await dialog.getByRole('button',{name:'13:00',exact:true}).click();await next();
-   await checkFields(dialog,width);
-   if(width===390){
-    const adapter=await page.evaluate(()=>{
-     const v=visualViewport, layer=document.querySelector('.booking-layer'), prior=layer.style.getPropertyValue('--booking-visible-height');
-     Object.defineProperty(v,'scale',{configurable:true,value:2});Object.defineProperty(v,'height',{configurable:true,value:300});v.dispatchEvent(new Event('resize'));
-     const pinchIgnored=layer.style.getPropertyValue('--booking-visible-height')===prior && v.scale===2;
-     Object.defineProperty(v,'scale',{configurable:true,value:1});v.dispatchEvent(new Event('resize'));
-     const keyboardAdapted=layer.style.getPropertyValue('--booking-visible-height')==='300px';
-     const body=document.querySelector('.booking-body'),footer=document.querySelector('.booking-footer'),close=document.querySelector('.booking-icon-button');
-     body.scrollTop=body.scrollHeight;
-     const bounds=layer.getBoundingClientRect(),foot=footer.getBoundingClientRect(),head=close.getBoundingClientRect();
-     if(foot.bottom>bounds.bottom+1||head.top<bounds.top||body.clientHeight<=0)throw new Error('Keyboard-sized dialog controls inaccessible');
-     delete v.scale;delete v.height;v.dispatchEvent(new Event('resize'));return{pinchIgnored,keyboardAdapted};
-    });assert.deepEqual(adapter,{pinchIgnored:true,keyboardAdapted:true});
-   }
-   await dialog.getByLabel('Ім’я *',{exact:true}).fill('Олена');await dialog.getByLabel('Телефон *',{exact:true}).fill('+380000000001');await dialog.locator('input[type=checkbox]').check();if(width===390){await fs.mkdir(output,{recursive:true});await page.screenshot({path:`${output}/${engineName}-booking390.png`});}await next();
-   await dialog.getByRole('button',{name:'Надіслати запит'}).click();await dialog.getByRole('alert').waitFor();assert.ok(await dialog.locator('input[type=date]').isVisible());
-   bookingResult=200;await dialog.getByRole('button',{name:'13:00',exact:true}).click();await next();await next();await dialog.getByRole('button',{name:'Надіслати запит'}).click();await dialog.getByText('FIXTURE',{exact:true}).waitFor();await dialog.getByRole('button',{name:'Готово'}).click();
-   const after=await page.evaluate(()=>({y:scrollY,style:document.body.getAttribute('style')}));assert.ok(Math.abs(capturedY-after.y)<2,`${engineName} scroll restore ${JSON.stringify({before,after})}`);assert.equal(after.style??'',before.style??'');
-   await trigger.click();await dialog.locator('.booking-options').getByText('Ізольована послуга',{exact:true}).waitFor();await page.keyboard.press('Escape');assert.equal(await dialog.count(),0);
-   available=false;await trigger.click();await dialog.getByText('Заявка не резервує час прийому.').waitFor();assert.equal(await dialog.getByRole('button',{name:'Залишити заявку'}).isDisabled(),true);assert.equal(await dialog.locator('.booking-options').getByText('Ізольована послуга',{exact:true}).count(),0);await checkFields(dialog,width);await dialog.getByRole('button',{name:'Закрити',exact:true}).click();
-   const metrics=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,viewport:[...document.querySelectorAll('meta[name=viewport]')].map(x=>x.content),scale:visualViewport?.scale}));assert.ok(metrics.overflow<=1);assert.equal(metrics.viewport.length,1);assert.ok(!/user-scalable|maximum-scale/.test(metrics.viewport[0]));assert.deepEqual(errors,[]);
-   if(width<1024){await page.getByRole('button',{name:'Відкрити меню',exact:true}).click();await page.locator('#nav-mobile').getByRole('button',{name:'Записатися онлайн',exact:true}).click();await dialog.getByText('Заявка не резервує час прийому.').waitFor();await dialog.getByRole('button',{name:'Закрити',exact:true}).click();assert.equal(await page.evaluate(()=>document.body.style.overflow),'');assert.equal(await page.evaluate(()=>document.documentElement.style.overflow),'');}
-   await page.goto(`${origin}/price.html`,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);await checkFields(page.locator('.lead-form').first(),width);
-   if(width===390){await page.locator('footer.footer').scrollIntoViewIfNeeded();await page.locator('.mobile-call-bar').waitFor({state:'detached',timeout:5000});await page.locator('.lead-form').first().scrollIntoViewIfNeeded();await page.screenshot({path:`${output}/${engineName}-price390.png`});}
-   reports.push({engineName,width,height,pass:true,metrics,requests:sent.length,physicalDevice:false});console.log(`${engineName} ${width}x${height} PASS`);await page.close();
-   async function next(){await dialog.getByRole('button',{name:'Далі',exact:true}).click();}
+const channels = ['phone_primary','phone_secondary','viber_primary','viber_secondary','instagram','contacts'];
+const reports = [], forbidden = [], intake = [];
+let completed = false;
+const { server, origin, base } = await serveArtifact('production');
+try {
+  for (const [engineName, engine] of Object.entries({ chromium, webkit }).filter(([name]) => !process.env.DENTIX_QA_ENGINE || name === process.env.DENTIX_QA_ENGINE)) {
+    const browser = await engine.launch();
+    try {
+      for (const [width, height] of sizes) {
+        const context = await browser.newContext({ viewport: { width, height }, reducedMotion: 'reduce' });
+        await context.route('**/*', async (route) => {
+          const request = route.request();
+          if (!['GET','HEAD'].includes(request.method())) { forbidden.push({ method: request.method(), url: request.url() }); await route.abort(); return; }
+          if (request.url().includes('/intake-status')) { intake.push(request.url()); await route.abort(); return; }
+          if (new URL(request.url()).origin === origin && !request.url().endsWith('.mp4')) { await route.continue(); return; }
+          await route.fulfill({ status: 200, contentType: request.resourceType() === 'stylesheet' ? 'text/css' : 'text/html', body: '' });
+        });
+        const page = await context.newPage(), errors = [];
+        page.on('pageerror', (error) => errors.push(error.message));
+        for (const file of ['', 'price.html']) {
+          await page.goto(origin + base + file, { waitUntil: 'networkidle' });
+          assert.equal(await page.locator('#contact .lead-form').count(), 0);
+          const contact = page.locator('#contact [data-conversion-intent="booking_contact"]');
+          assert.equal(await contact.count(), 1);
+          for (const channel of channels) assert.equal(await contact.locator(`[data-contact-channel="${channel}"]`).count(), 1);
+          const trigger = page.getByRole('button', { name: 'Записатися', exact: true }).first();
+          await trigger.scrollIntoViewIfNeeded();
+          await trigger.click();
+          const dialog = page.getByRole('dialog', { name: 'Зв’язатися для запису' });
+          await dialog.waitFor();
+          assert.equal(await dialog.locator('form, input, textarea, select').count(), 0);
+          for (const channel of channels) assert.equal(await dialog.locator(`[data-contact-channel="${channel}"]`).count(), 1);
+          assert.match(await dialog.innerText(), /Візит буде підтверджено після розмови/);
+          assert.match(await dialog.innerText(), /не резервує час прийому/);
+          assert.match(await dialog.innerText(), /Не надсилайте медичні дані/);
+          await dialog.getByRole('button', { name: 'Закрити', exact: true }).focus();
+          await page.keyboard.press('Tab');
+          assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('data-contact-channel')), 'phone_primary');
+          await page.keyboard.press('Shift+Tab');
+          assert.equal(await dialog.getByRole('button', { name: 'Закрити', exact: true }).evaluate((element) => element === document.activeElement), true);
+          if (width === 390 && !file) {
+            const viewport = await page.evaluate(() => {
+              const view = visualViewport, layer = document.querySelector('.booking-layer');
+              const prior = layer.style.getPropertyValue('--booking-visible-height');
+              Object.defineProperty(view, 'scale', { configurable: true, value: 2 });
+              Object.defineProperty(view, 'height', { configurable: true, value: 300 });
+              view.dispatchEvent(new Event('resize'));
+              const pinchIgnored = layer.style.getPropertyValue('--booking-visible-height') === prior;
+              delete view.scale;
+              delete view.height;
+              view.dispatchEvent(new Event('resize'));
+              return { pinchIgnored };
+            });
+            assert.deepEqual(viewport, { pinchIgnored: true });
+          }
+          const capturedY = await page.evaluate(() => -parseFloat(document.body.style.top));
+          if (width === 390 && !file) await page.screenshot({ path: path.join(output, `${engineName}-bridge-mobile-390.png`), animations: 'disabled' });
+          if (width === 1440 && !file) await page.screenshot({ path: path.join(output, `${engineName}-bridge-desktop-1440.png`), animations: 'disabled' });
+          await page.keyboard.press('Escape');
+          await dialog.waitFor({ state: 'detached' });
+          assert.ok(Math.abs((await page.evaluate(() => scrollY)) - capturedY) < 2);
+          assert.equal(await page.evaluate(() => document.body.style.position), '');
+          assert.equal(await trigger.evaluate((element) => element === document.activeElement), true);
+          const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+          assert.ok(overflow <= 1, `${engineName} ${width} ${file}: overflow ${overflow}`);
+          const viewport = await page.locator('meta[name="viewport"]').getAttribute('content');
+          assert.ok(!/user-scalable|maximum-scale/.test(viewport));
+          assert.deepEqual(errors, []);
+          reports.push({ engineName, width, height, route: file || 'home', channels: channels.length, forbidden_requests: 0, intake_requests: 0, pass: true });
+          console.log(`${engineName} ${width}x${height} ${file || 'home'} PASS`);
+        }
+        await context.close();
+      }
+    } finally { await browser.close(); }
   }
- } finally{await browser.close();}
+  assert.deepEqual(forbidden, []);
+  assert.deepEqual(intake, []);
+  completed = true;
+} finally {
+  await new Promise((resolve) => server.close(resolve));
+  await fs.writeFile(path.join(output, 'mobile-contact-bridge.json'), JSON.stringify({ reports, forbidden, intake, physical_device: false, pass: completed && forbidden.length === 0 && intake.length === 0 }, null, 2) + '\n');
 }
-await fs.mkdir(output,{recursive:true});await fs.writeFile(`${output}/browser-fixtures${process.env.DENTIX_QA_REPORT_SUFFIX??""}.json`,JSON.stringify({kind:'isolated browser API fixtures, no live mutations',physicalDeviceVerification:'pending',reports},null,2));
-async function checkFields(scope,width){const fields=scope.locator('input:not([type=checkbox]):not([type=radio]):not([tabindex="-1"]),select,textarea');for(let i=0;i<await fields.count();i++){const field=fields.nth(i);if(!await field.isVisible())continue;if(width<=900)assert.ok(await field.evaluate(e=>parseFloat(getComputedStyle(e).fontSize))>=16);await field.focus();if(width<=900)assert.ok(await field.evaluate(e=>parseFloat(getComputedStyle(e).fontSize))>=16);await field.blur();}}

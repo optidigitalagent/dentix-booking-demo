@@ -85,7 +85,7 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <BookingButton className="btn nav-cta">Записатися онлайн</BookingButton>
+        <BookingButton className="btn nav-cta">Записатися</BookingButton>
         <button
           ref={menuButtonRef}
           className={`nav-burger${open ? " open" : ""}`}
@@ -113,7 +113,7 @@ export function Header() {
             {item.label}
           </a>
         ))}
-        <BookingButton className="btn" onClick={() => setOpen(false)}>Записатися онлайн</BookingButton>
+        <BookingButton className="btn" onClick={() => setOpen(false)}>Записатися</BookingButton>
         {site.contactDataReady ? (
           <a className="nav-mobile-phone" href={site.phonePrimaryHref}>
             {site.phonePrimary}

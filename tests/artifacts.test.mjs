@@ -43,11 +43,16 @@ for (const target of ["preview", "production"]) {
       const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
       assert.equal(new Set(ids).size, ids.length, "duplicate IDs");
       const leadForms = tags(html, "form").filter((tag) => attr(tag, "class") === "lead-form");
-      assert.equal(leadForms.length, 1, "ContactSection is the initial lead entry; drawer mounts on open");
-      assert.deepEqual(leadForms.map((tag) => attr(tag, "data-source-site")), [target === "preview" ? "PUBLIC_DEMO" : "CANONICAL_CANDIDATE"]);
+      assert.equal(leadForms.length, 0, "Disabled intake must not render a form");
+      const bridge = tags(html, "div").filter((tag) => attr(tag, "data-conversion-intent") === "booking_contact");
+      assert.equal(bridge.length, 1, "Contact bridge is present in prerendered HTML");
+      for (const channel of ["phone_primary", "phone_secondary", "viber_primary", "viber_secondary", "instagram", "contacts"]) {
+        assert.equal(tags(html, "a").filter((tag) => attr(tag, "data-contact-channel") === channel).length, 1);
+      }
+      assert.doesNotMatch(text, /Записатися онлайн|Перевіряємо доступність форми|Залишити заявку/);
       record("h1_assertions", { target, file, stage: "initial_html", normalized_text: h1, exact_home_match: file === "index.html" ? true : null, pass: true });
       record("heading_outline_assertions", { target, file, stage: "initial_html", outline, duplicate_ids: [], pass: true });
-      record("lead_source_initial_assertions", { target, file, entry: "ContactSection", stage: "initial_html", source_site: attr(leadForms[0], "data-source-site"), pass: true });
+      record("contact_bridge_initial_assertions", { target, file, entry: "ContactSection", stage: "initial_html", channels: 6, lead_forms: 0, pass: true });
       assert.match(html, /id="root" data-prerendered="true"><[^>]+/);
       assert.ok(text.length > 1000);
       assert.match(text, /DENTIX/);

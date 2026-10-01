@@ -103,12 +103,12 @@
     {
       "id": "R-011",
       "area": "conversion",
-      "description": "P1: Online CTA and unavailable intake can conflict with user expectations",
-      "likelihood": "confirmed",
-      "impact": "medium",
-      "mitigation": "Phone-first CTA; verify delivery separately in PR-05",
+      "description": "P0: Production booking CTAs end in disabled intake; online wording conflicts with unverified booking/delivery",
+      "likelihood": "confirmed in production T0",
+      "impact": "high",
+      "mitigation": "PR-09 Draft implements a phone/Viber/Instagram/contact bridge in the candidate; exact approved hrefs, no disabled form, no intake-status GET or network write. Production remains on PR-08 until separately authorized release. Lead delivery and booking are unverified.",
       "owner": "DENTIX site owner / assigned PR implementer; named owner pending",
-      "status": "open"
+      "status": "PR09_LOCAL_BRIDGE_IMPLEMENTED_PRODUCTION_UNCHANGED"
     },
     {
       "id": "R-012",
@@ -279,6 +279,16 @@
       "mitigation": "Delegated artemix access to H-158422/dentix.ua restored. FTP new secret present in Keychain and panel-only, but independent new login and old-secret invalidation remain unproved. Owner/recovery, WordPress admin, live MySQL and Elementor active-state/rotation require owner-controlled handoff. Keep Phase A NO-GO until all active critical credentials are rotated and verified; then obtain current files backup and complete isolated WordPress restore/rollback.",
       "owner": "DENTIX clinic owner / Artem Antonov / current authorized DENTIX operator session",
       "status": "ACTIVE_CRITICAL_CREDENTIALS_UNRESOLVED_PHASE_A_NO_GO"
+    },
+    {
+      "id": "R-PR09-PRICE-HEADER",
+      "area": "technical hardening",
+      "description": "P2: public /price.html returns 200 but lacks X-Dentix-Release response header (2026-10-01 read-only HEAD); other React route marker observed on homepage",
+      "likelihood": "confirmed diagnostic",
+      "impact": "low",
+      "mitigation": "Separate server-header task after review; no hosting adapter or production change in PR-09.",
+      "owner": "DENTIX hosting operator; named owner pending",
+      "status": "OPEN_SEPARATE_TASK"
     }
   ]
 }

@@ -1,3 +1,7 @@
+## PR-09 conversion bridge — 2026-10-01T14:16:08Z
+
+Authorized DENTIX-only Draft PR from exact origin/main e9c4e3f922a52e39a500358f86749ec44db3f213. Candidate renders a shared phone/Viber/Instagram/contact chooser instead of disabled intake on 12 patient routes; booking and doctor CTA context stays in the dialog only. Public booking CTA wording no longer promises online booking. Existing live intake remains gated by site.bookingFormReady === true. No production, external-account, analytics, indexing, real lead or appointment action. The /price.html release-header gap is a separate P2. Local QA PASS: 25 unit, 34 artifact, 16 release/adapter, both 12-route builds, 120 hydrated + 120 no-JS + 240 semantic, 48 lead-source, 48 release-browser + 16 service seeds, 196 booking CTA, 40 Chromium/WebKit mobile, 24 therapy + 30 surgery + 28 implant/prosthetics managed-content, 80 critical-region, 8 founder/video, 163 operator and 15 focused negative-gate checks. Browser evidence is local lab, not a physical-device or production result. Security/diff checks PASS; zero /intake-status GET and zero write requests in disabled mode. Outcome RECORD PASS with claims=[]. PR receipt and screenshots remain in sanitized external evidence.
+
 
 ## 2026-10-01T12:12:12Z — DENTIX post-launch reconciliation
 

@@ -27,7 +27,7 @@ export function TherapyPage({ route }: { route: TherapyRoute }) {
           <p className="service-intro" id="service-answer">{page.answer}</p>
           <div className="hero-actions">
             <a className="btn" href={site.phonePrimaryHref}>{site.phonePrimary}</a>
-            <BookingButton className="btn btn-ghost" requestedInterest="Терапія">Узгодити прийом</BookingButton>
+            <BookingButton className="btn btn-ghost" requestedInterest={page.label}>Узгодити прийом</BookingButton>
           </div>
           <nav className="entity-links" aria-label="На цій сторінці">
             <a href="#service-prices">Вартість послуг</a><a href="#team">Лікарі</a><a href="#related-services">Пов’язані послуги</a>
