@@ -1,3 +1,15 @@
+
+## 2026-10-01T12:12:12Z — DENTIX post-launch reconciliation
+
+# DENTIX PR-08 post-launch reconciliation — 2026-10-01T12:12:12Z
+
+Production status: **REACT_LAUNCHED**. User reports manual atomic directory rename: active `/var/www/dentixx/dentix.ua`, retained WordPress rollback `/var/www/dentixx/dentix.ua_wordpress_rollback_20261001`. Actual rename time was not supplied; `2026-10-01T12:12:12Z` is the first fresh observation timestamp in this reconciliation, not a claimed cutover time. Launch/source SHA `0cc446e0a525b419f9a79be963ff469eef25210b` is present in the live home `X-Dentix-Release` header. Main remains at that SHA; PR #11 remains Draft.
+
+Fresh public read-only HTTP: 12/12 patient routes 200 with production canonical and `index,follow`; home marker matches. `/price.html` is 200 with correct canonical/index directive but omits `X-Dentix-Release` (11/12 route markers). Robots 200 allows `/` and points to production sitemap; sitemap 200 contains exactly the 12 patient canonical URLs. HTTP apex, HTTPS www and `/wp-sitemap.xml` each issue expected 301; unknown path 404; retired path 410; sampled preserved WordPress media 200; old wpDiscuz absent from twelve patient HTML responses. This is an availability and publication check, not a full 99-row migration replay or server filesystem inspection.
+
+Remaining conversion: phone-first mode; booking and lead delivery remain disabled/unverified pending a separately approved integration and delivery QA. Remaining security/operations: independently verify retained rollback folder and current restore-ready backup; complete critical credential rotation and old-secret invalidation; verify full DNS zone record and TLS renewal conditions. DNS, NS, IP, mail and CRM are user-reported unchanged; no read/write account actions were performed. GSC, GBP and indexing were not changed. `outcome_report.claims=[]`; no ranking, visibility, lead or revenue result is asserted. Ready/merge need separate permission.
+
+
 # DENTIX PR-08 Phase A preparation — 2026-09-29T19:50:25Z
 
 Source is exact merged `origin/main` `0cc446e0a525b419f9a79be963ff469eef25210b`; PR #10 merged, preview workflow 36605036711 succeeded, no overlapping open PR at preflight. This branch contains operational records only. The public origin remains WordPress/Elementor, and no production/DNS/indexing action occurred.

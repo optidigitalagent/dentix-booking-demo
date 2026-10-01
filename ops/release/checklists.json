@@ -1,6 +1,6 @@
 {
   "site_id": "DENTIX",
-  "status": "PHASE_A_PRECUTOVER_BLOCKED_AFTER_PRIVATE_STAGING_REPLAY",
+  "status": "REACT_LAUNCHED_POST_LAUNCH_FOLLOW_UP_OPEN",
   "launch_authorized": false,
   "checklists": [
     {
@@ -520,5 +520,8 @@
       "fixture_browser_suites": "PASS_LOCAL_INTERCEPTED_ONLY",
       "delegated_hosting_access": "PASS_H158422_DENTIX"
     }
-  }
+  },
+  "production_status": "REACT_LAUNCHED",
+  "post_launch_observed_at_utc": "2026-10-01T12:12:12Z",
+  "historical_checklist_note": "Pre-cutover checklist entries retain their historical statuses; the user reports a completed manual cutover. Unverified items remain open follow-up tasks."
 }

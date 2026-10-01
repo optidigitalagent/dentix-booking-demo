@@ -1,6 +1,6 @@
 {
   "site_id": "DENTIX",
-  "status": "PASS_PR07_FUNCTIONAL_CANDIDATE_PRODUCTION_NOT_LAUNCHED",
+  "status": "REACT_LAUNCHED_POST_LAUNCH_RECONCILIATION",
   "validated_at": "2026-09-29T11:01:03Z",
   "base_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
   "production_content_sha256": "9216df1905903185b2305cedba6447f718e793f08c19fa81192b67d68c6de2d3",
@@ -40,7 +40,7 @@
   "professional_review": "NOT_REQUIRED_FOR_EXISTING_OWNER_APPROVED_COPY; NEW_MEDICAL_CLAIMS_GATED",
   "hosting": "CURRENT_MIROHOST_PRIVATE_STAGING_VERIFIED",
   "t0": "NOT_READY",
-  "production": "NOT_LAUNCHED",
+  "production": "REACT_LAUNCHED",
   "post_requests": 0,
   "outcome_report_claims": [],
   "supplementary_generic_scanner": "Raw exit 1: intentional noindex 404/admin and unmounted preview base diagnostics; all 12 production patient pages zero issues. See external qa/static-scan-assessment.md.",
@@ -120,5 +120,28 @@
     "provider_latest_files_backup": "2026_09_30_010825Z_ARCHIVE_56550280_BYTES_4800_FILES_VERIFIED_NO_DRIFT_UNPROVEN_NEW_ARCHIVE_SUPPORT_REQUEST_ACCEPTED",
     "https_panel_access": "PASS_ARTEMIX_H158422_DENTIX_FILE_MANAGER_BACKUP_MANAGER_MYSQL",
     "staging_noindex_implementation": "X_ROBOTS_TAG_NOINDEX_AND_ROBOTS_DISALLOW; EXACT_MAIN_HTML_BYTES_PRESERVED; LEGACY_META_NOINDEX_VALIDATOR_NOT_APPLICABLE"
+  },
+  "post_launch": {
+    "observed_at_utc": "2026-10-01T12:12:12Z",
+    "actual_cutover_at_utc": "UNKNOWN_USER_DID_NOT_SUPPLY",
+    "launch_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+    "production_root_user_reported": "/var/www/dentixx/dentix.ua",
+    "rollback_folder_user_reported": "/var/www/dentixx/dentix.ua_wordpress_rollback_20261001",
+    "public_http_routes_200": "12/12",
+    "route_release_header": "11/12; /price.html has no X-Dentix-Release",
+    "robots": "200_ALLOW_ROOT_PRODUCTION_SITEMAP",
+    "sitemap": "200_12_URLS_MATCH_PATIENT_ROUTES",
+    "http_apex": "301_HTTPS_APEX",
+    "https_www": "301_HTTPS_APEX",
+    "wp_sitemap": "301_PRODUCTION_SITEMAP",
+    "unknown_url": 404,
+    "retired_url": 410,
+    "preserved_legacy_media": 200,
+    "home_canonical": "https://dentix.ua/",
+    "home_robots": "index,follow",
+    "old_wpdiscuz": "ABSENT_ON_12_PATIENT_ROUTES",
+    "remaining_conversion": "Phone-first; real lead/booking endpoints and delivery unverified; booking disabled pending separate approved integration and QA.",
+    "remaining_security": "Verify retained rollback folder and current backup/restore; complete critical credential rotations and independent old-secret invalidation; verify DNS export and TLS renewal conditions. No server-side proof obtained in this read-only task.",
+    "outcome_claims": []
   }
 }

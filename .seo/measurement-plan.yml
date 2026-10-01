@@ -20,11 +20,12 @@
     "serp-sample.csv and maps-sample.csv (bounded desktop samples)",
     "event-dictionary.yml (13 planned definitions)",
     "utm-taxonomy.csv and utm-rules.md (not applied)",
-    "GSC/GA4/GTM/GBP/Bing ACCESS_BLOCKED; CRM/call tracking UNKNOWN"
+    "GSC/GA4/GTM/GBP/Bing ACCESS_BLOCKED; CRM/call tracking UNKNOWN",
+    "2026-10-01 public HTTP production QA: twelve patient routes, robots, sitemap and redirects; technical evidence only"
   ],
   "baseline_window": "T0 research 2026-09-12 UTC, Europe/Kyiv operational timezone. Pre-launch quantitative T0 NOT_READY: obtain 28/90 settled days and matching prior/year periods where available; record exact property, timezone, latency, brand/page/query/country/device filters, consent and attribution. Public SERP samples do not replace performance exports.",
   "observation_windows": {
-    "technical": "0–7 days AFTER separately authorized production launch; availability/redirects/crawl/index discovery/delivery QA",
+    "technical": "0–7 days after 2026-10-01 production launch observation; availability, redirects, crawl directives and delivery QA",
     "discovery": "28 days AFTER launch; queries/impressions/clicks/Maps/AI samples and referrals",
     "outcome": "90 days AFTER launch or documented business cycle; qualified leads/appointments/page decisions"
   },
@@ -38,9 +39,11 @@
   "outcome_report": {
     "channels": {
       "technical": {
-        "status": "UNKNOWN",
-        "reason": "PR06 candidate and 64-row local Apache replay passed. Authenticated isolated Mirohost staging passed remote Basic Auth, noindex, 12 routes, 404, exact 301/410, media Range and file-hash checks; three private backups passed integrity checks. Old WordPress remains production; 49 HOLD rows are unresolved. Staging checks do not establish a production technical or business outcome; outcome_report.claims=[].",
-        "evidence_ids": []
+        "status": "OBSERVED",
+        "reason": "Public HTTP at 2026-10-01T12:12:12Z: React production observed, 12/12 patient routes 200 with production canonical/index,follow; home release marker matches 0cc446e0a525b419f9a79be963ff469eef25210b. /price.html lacks that header. This is publication/availability evidence only.",
+        "evidence_ids": [
+          "technical-production-20261001"
+        ]
       },
       "google_indexation": {
         "status": "ACCESS_BLOCKED",
@@ -129,6 +132,11 @@
         "id": "ai-third-party-therapy",
         "path": "observations/ai-third-party-therapy.json",
         "sha256": "533ccc5c394a0800d01821e79d01a4fe7cc3e9df19852b21bf1fe1a507c27926"
+      },
+      {
+        "id": "technical-production-20261001",
+        "path": "observations/technical-production-20261001.json",
+        "sha256": "2af92dee17958f8890474f2a89c486343af55898bb649ed09255494064b351b7"
       }
     ],
     "claims": []

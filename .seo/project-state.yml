@@ -4,11 +4,11 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "edit",
-  "authorization_level": "DENTIX PR-08 Phase A new-chat resume: existing branch and Draft PR #11 only. Authenticated artemix panel restored. Provider files archive verified in FileVault but currentness/no-drift remains unproved; support requested fresh archive. Exact-main private staging replay PASS 12/99/58, 139 hashes and 70 Range; header and robots noindex with Basic Auth. Server WordPress restore/rollback and critical credential rotation remain blocked. Full zone export and TLS renewal proof requested. Production/DNS/indexing unchanged.",
+  "authorization_level": "DENTIX_POST_LAUNCH_RECONCILIATION: read-only public production QA; scoped operational-record edits, normal commit/push and existing Draft PR #11 body only. No production, DNS, mail, CRM, GSC, GBP or indexing action; Ready/merge separate.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-30T20:05:15Z",
+  "verified_at": "2026-10-01T12:12:12Z",
   "remote_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "local_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "deployed_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
@@ -120,7 +120,7 @@
   "handoff_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
-  "production_matches_deploy": false,
+  "production_matches_deploy": true,
   "external_state_verified": true,
-  "worktree_clean": false
+  "worktree_clean": true
 }

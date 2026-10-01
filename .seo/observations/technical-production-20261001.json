@@ -1,0 +1,44 @@
+{
+  "project_id": "dentix",
+  "repository": "optidigitalagent/dentix-booking-demo",
+  "production_url": "https://dentix.ua/",
+  "urls": [
+    "https://dentix.ua/",
+    "https://dentix.ua/likari/",
+    "https://dentix.ua/kontakty/",
+    "https://dentix.ua/price.html",
+    "https://dentix.ua/terapevtychna-stomatolohiia/",
+    "https://dentix.ua/likuvannia-kariiesu/",
+    "https://dentix.ua/lechenie-pod-mikroskopom/",
+    "https://dentix.ua/khirurhichna-stomatolohiia/",
+    "https://dentix.ua/vydalennia-zuba/",
+    "https://dentix.ua/vydalennia-zuba-mudrosti/",
+    "https://dentix.ua/implantatsiya/",
+    "https://dentix.ua/protezirovanie/"
+  ],
+  "channel": "technical",
+  "source": {
+    "kind": "live_response",
+    "id": "DENTIX-public-HTTP-20261001"
+  },
+  "measured_at": "2026-10-01T12:12:12Z",
+  "window": {
+    "start": "2026-10-01T12:12:12Z",
+    "end": "2026-10-01T12:12:12Z"
+  },
+  "scope": {
+    "query": "direct URL requests",
+    "filters": "public GET; no credentials; twelve patient routes",
+    "market": "Ukraine / Dnipro production domain",
+    "language": "uk",
+    "device": "HTTP client"
+  },
+  "metric": "patient_routes_http_200",
+  "unit": "count",
+  "value": 12,
+  "denominator": null,
+  "event_type": "read_only_public_http",
+  "synthetic": false,
+  "limitations": "Public HTTP only. Home release marker matches source SHA; /price.html lacks X-Dentix-Release while returning 200, canonical and index,follow. Rollback folder is user-reported and not server-verified. No indexation, visibility, lead or revenue inference.",
+  "environment": "production"
+}

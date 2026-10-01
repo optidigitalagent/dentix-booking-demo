@@ -1,10 +1,10 @@
 {
-  "granted_by": "DENTIX_AUTHORIZATION_PR08_PHASE_A_NEW_CHAT_RESUME (direct user instruction and verified 00_EXECUTE_THIS.txt)",
-  "granted_at": "2026-09-30T20:05:15Z",
+  "granted_by": "DENTIX_POST_LAUNCH_RECONCILIATION (direct user instruction, 2026-10-01)",
+  "granted_at": "2026-10-01T12:12:12Z",
   "expires_at": null,
   "repository": "optidigitalagent/dentix-booking-demo",
   "project_id": "dentix",
-  "scope": "SITE_ID DENTIX only, existing release/dentix-pr08-production-cutover branch and existing Draft PR #11. Phase A private Basic-Auth/noindex staging, current provider backup proof, isolated WordPress restore and rollback rehearsal, critical credential gates, read-only DNS/TLS/mail, scoped operational records, normal commit/push and update to PR #11. No new branch/PR, production root or live DB change, DNS change, plain FTP, sitemap/indexing, real form submission, production cutover or Phase B. DENTIX_PRODUCTION_GO not granted.",
+  "scope": "DENTIX post-launch reconciliation only: read-only production QA; scoped operational records on existing release/dentix-pr08-production-cutover; normal commit/push; update existing Draft PR #11; sanitized evidence ZIP. No build, upload, staging extraction, cutover, production root, DNS, mail, CRM, GSC, GBP, indexing, Ready or merge.",
   "permissions": {
     "audit": true,
     "branch": false,
@@ -16,7 +16,7 @@
     "draft_pr": false,
     "ready_for_review": false,
     "merge": false,
-    "deploy": true,
+    "deploy": false,
     "external_action": true,
     "publish": false,
     "release": false,
