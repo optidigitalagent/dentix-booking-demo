@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site_id": "DENTIX",
-  "observed_at": "2026-09-29T11:01:03Z",
+  "observed_at": "2026-09-29T19:50:25Z",
   "decision": "CURRENT_ORIGIN_CANDIDATE_STAGING_REPLAY_PASSED",
   "recommended_candidate": "current_origin_mirohost_for_separate_go_review",
   "cutover_authorized": false,
@@ -121,5 +121,25 @@
     "Alternative Cloudflare: owner-approved zone/plan/access, dedicated routing adapter and rollback proof; preserve MX/TXT/CAA",
     "Named operating and billing owner, restore rehearsal <=15 minutes target, planned change window and separate cutover authorization"
   ],
-  "decision_rule": "Current Mirohost is the observed production candidate with exact-head private staging replay and safe replacement permissions. Zero HOLD remains. Production selection still requires merged-main rebuild, credential rotation, rollback rehearsal, lead-delivery decision, T0 readiness and separately authorized GO; no deployment is authorized by this record."
+  "decision_rule": "Current Mirohost is the observed production candidate with exact-head private staging replay and safe replacement permissions. Zero HOLD remains. Production selection still requires merged-main rebuild, credential rotation, rollback rehearsal, lead-delivery decision, T0 readiness and separately authorized GO; no deployment is authorized by this record.",
+  "phase_a": {
+    "status": "PRIVATE_EXACT_MAIN_STAGING_REPLAY_PASS_CURRENT_FILES_BACKUP_AND_CRITICAL_CREDENTIALS_BLOCKED",
+    "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+    "candidate_sha256": "f5f9fe17b6721f317b92c7a751b46230406276984f7432b1ce79bdedd2924592",
+    "production_is_wordpress": true,
+    "dns_change_planned": false,
+    "private_staging_existing_basic_auth_401_200": true,
+    "exact_main_remote_replay": "PASS_12_GET_HEAD_99_GET_HEAD_58_GET_HEAD_139_HASHES_70_RANGE_BASIC_AUTH_NOINDEX",
+    "fresh_backup_restore_rollback": "FRESH_DB_AND_LOCAL_RESTORE_PASS_PROVIDER_FILES_ARCHIVE_VERIFIED_CURRENTNESS_UNPROVEN_SERVER_WORDPRESS_RESTORE_AND_ROLLBACK_NOT_RUN",
+    "owner_access": "DELEGATED_TECHNICAL_USER_PASS_OWNER_RECOVERY_UNCHANGED",
+    "dns_tls_mail": "PANEL_SIX_RECORDS_TWO_ACTIVE_CERTIFICATES_MAIL_BASELINE_NO_CHANGES_FULL_ZONE_AND_RENEWAL_PROOF_REQUESTED",
+    "observed_at": "2026-09-30T20:05:15Z",
+    "post_rotation_db_dump": "PRIVATE_VERIFIED_ZIP_SQL_CRC_SHA_PASS",
+    "ftp_rotation_independent_verification": "NEW_KEYCHAIN_SECRET_PRESENT_DIFFERS_OLD_PANEL_ONLY_ZERO_EXTERNAL_IPS_SECURE_NEW_LOGIN_UNAVAILABLE",
+    "candidate_local_staging_overlay_files": 141,
+    "provider_plan": "MINI_NO_SSH",
+    "provider_latest_backup": "2026_09_30_010825Z_ARCHIVE_RETRIEVED_VERIFIED_CURRENTNESS_UNPROVEN_FRESH_PROVIDER_ARCHIVE_REQUEST_ACCEPTED",
+    "staging_previous_sibling_preserved": true,
+    "staging_noindex": "BASIC_AUTH_401_X_ROBOTS_TAG_NOINDEX_ROBOTS_DISALLOW"
+  }
 }

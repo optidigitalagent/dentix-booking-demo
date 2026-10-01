@@ -1,6 +1,6 @@
 {
   "site_id": "DENTIX",
-  "status": "PREPARED_NOT_EXECUTED",
+  "status": "REACT_LAUNCHED_POST_LAUNCH_FOLLOW_UP_OPEN",
   "launch_authorized": false,
   "checklists": [
     {
@@ -497,5 +497,31 @@
       "result": null,
       "authorization_reference": null
     }
-  ]
+  ],
+  "phase_a": {
+    "recorded_at": "2026-09-30T20:05:15Z",
+    "source_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+    "go_signal": "NOT_READY",
+    "gates": {
+      "merged_main": "PASS",
+      "operator_harness_163": "PASS",
+      "preservation_bundle_81": "PASS",
+      "local_candidate_12_99_58": "PASS_LOCAL_ONLY",
+      "credential_rotation": "BLOCKED_FTP_KEYCHAIN_PANEL_ONLY_OLD_INVALIDATION_UNPROVEN_OWNER_WORDPRESS_MYSQL_ELEMENTOR_OPEN",
+      "fresh_post_rotation_files_db_backup": "FRESH_DB_PRIVATE_VERIFIED_PROVIDER_FILES_ARCHIVE_VERIFIED_CURRENTNESS_NO_DRIFT_UNPROVEN_FRESH_ARCHIVE_REQUESTED",
+      "isolated_fresh_restore": "LOCAL_DB_SOCKET_PASS_SERVER_WORDPRESS_NOT_RUN_CURRENT_FILES_PENDING",
+      "atomic_rollback_rehearsal": "SERVER_NOT_RUN_CURRENT_FILES_PENDING",
+      "full_zone_export": "SIX_PANEL_RECORDS_SEEN_FULL_EXPORT_SUPPORT_REQUEST_ACCEPTED_PENDING",
+      "public_dns_tls_mail_snapshot": "BASELINE_PASS_ZERO_CHANGES_TLS_RENEWAL_PROOF_SUPPORT_REQUEST_ACCEPTED_PENDING",
+      "exact_main_remote_staging": "PASS_BASIC_AUTH_NOINDEX_HEADER_ROBOTS_12_ROUTES_99_ROWS_58_ALIASES_139_HASHES_70_RANGE",
+      "production_cutover": "PROHIBITED_WITHOUT_EXACT_GO",
+      "legacy_file_restore_and_local_rename": "PASS_PROVISIONAL_PRE_ROTATION_ONLY",
+      "fresh_database_clone": "LOCAL_EPHEMERAL_SOCKET_PASS_23_TABLES_SERVER_CLONE_NOT_RUN",
+      "fixture_browser_suites": "PASS_LOCAL_INTERCEPTED_ONLY",
+      "delegated_hosting_access": "PASS_H158422_DENTIX"
+    }
+  },
+  "production_status": "REACT_LAUNCHED",
+  "post_launch_observed_at_utc": "2026-10-01T12:12:12Z",
+  "historical_checklist_note": "Pre-cutover checklist entries retain their historical statuses; the user reports a completed manual cutover. Unverified items remain open follow-up tasks."
 }

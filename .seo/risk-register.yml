@@ -269,6 +269,16 @@
       "mitigation": "Three consent-sensitive direct paths return exact 410 and are excluded from deployable bytes. Exclusion does not block the present candidate; any later republication requires documented provenance/consent. Do not infer consent from old public URLs.",
       "owner": "DENTIX owner",
       "status": "EXCLUDED_FROM_CANDIDATE"
+    },
+    {
+      "id": "R-PR08-ACCESS-ROTATION",
+      "area": "security/hosting",
+      "description": "P0: Exposed active account credentials require owner-assisted verification and rotation before any production cutover",
+      "likelihood": "confirmed gap",
+      "impact": "high",
+      "mitigation": "Delegated artemix access to H-158422/dentix.ua restored. FTP new secret present in Keychain and panel-only, but independent new login and old-secret invalidation remain unproved. Owner/recovery, WordPress admin, live MySQL and Elementor active-state/rotation require owner-controlled handoff. Keep Phase A NO-GO until all active critical credentials are rotated and verified; then obtain current files backup and complete isolated WordPress restore/rollback.",
+      "owner": "DENTIX clinic owner / Artem Antonov / current authorized DENTIX operator session",
+      "status": "ACTIVE_CRITICAL_CREDENTIALS_UNRESOLVED_PHASE_A_NO_GO"
     }
   ]
 }

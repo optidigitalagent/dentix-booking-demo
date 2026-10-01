@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "site_id": "DENTIX",
-  "status": "T0_NOT_READY",
+  "status": "T0_PUBLIC_SNAPSHOT_ONLY_NUMERIC_NOT_READY",
   "requests_sent": false,
   "secrets_requested": false,
-  "owner": "DENTIX owner; named assignee UNKNOWN",
+  "owner": "Artem Antonov until delegated",
   "channels": [
     {
       "channel": "GSC",
@@ -63,14 +63,14 @@
     },
     {
       "channel": "hosting/DNS",
-      "status": "ACCESS_BLOCKED",
+      "status": "PARTIAL_PANEL_ACCESS",
       "property": "dentix.ua + www; Mirohost NS; origin 89.184.75.186 observed",
       "minimum_access_or_export": "Redacted domain/access/zone/config evidence from owner; credentials stay owner-managed",
       "safe_evidence": "Redacted role/property screenshot or aggregate CSV in owner-controlled storage; no credentials, cookies, patient rows or private exports in Git",
       "baseline_fields": "zone TTLs, MX/TXT/CAA, current origin, vhost/CDN/headers/TLS, upload/config rights, backup/restore/logs",
       "owner": "DENTIX owner; named assignee UNKNOWN",
       "blocks": "cutover",
-      "received_evidence": null
+      "received_evidence": "DELEGATED_H158422_DENTIX_PANEL_ZONE_SIX_RECORDS_TLS_AND_MAIL_INSPECTED_2026_09_30; registrar export pending; no secret values"
     },
     {
       "channel": "CRM",
@@ -216,5 +216,28 @@
     7,
     28,
     90
-  ]
+  ],
+  "phase_a_public_snapshot": {
+    "captured_at": "2026-09-29T19:50:25Z",
+    "http_paths": 18,
+    "home_status": 200,
+    "platform": "WordPress/Elementor observed by public HTML",
+    "dns": "PUBLIC_NS_MX_TXT_CAA_A_AAAA_SNAPSHOT_IN_ENCRYPTED_PRIVATE_RECEIPT; full zone export pending owner panel",
+    "tls_expiry": "2026-12-13T22:56:21Z",
+    "public_search": "BOUND_PUBLIC_WEB_OBSERVATION_ONLY; no index inventory, ranking or traffic claim",
+    "mirohost_28_day_aggregate": "HISTORICAL_PR07_RECEIPT_ONLY; fresh panel access pending",
+    "mirohost_90_day_aggregate": "UNAVAILABLE",
+    "gsc": "ACCESS_BLOCKED",
+    "gbp": "ACCESS_BLOCKED",
+    "ga4_gtm": "ACCESS_BLOCKED",
+    "bing": "ACCESS_BLOCKED",
+    "crm": "ACCESS_BLOCKED",
+    "numeric_fields": "UNKNOWN",
+    "panel_followup_at": "2026-09-30T20:05:15Z",
+    "panel_followup": "DELEGATED_ARTEMIX_ACCESS_RESTORED; SIX_ZONE_RECORDS; TWO_ACTIVE_TLS_CERTIFICATES; FULL_ZONE_EXPORT_AND_RENEWAL_PROOF_SUPPORT_REQUEST_ACCEPTED; NO_DNS_OR_MAIL_CHANGE",
+    "resume_at": "2026-09-30T09:07:49Z",
+    "resume_dns_tls_mail": "PUBLIC_NS_A_MX_SPF_AND_TLS_RECHECK_PASS; AXFR_UNAVAILABLE; NO_CHANGES; FULL_PANEL_ZONE_AND_RENEWAL_PROOF_PENDING",
+    "transport_followup_at": "2026-09-30T09:53:10Z",
+    "transport_followup": "KEYCHAIN_SECRET_PRESENT_DIFFERS_OLD; MINI_NO_SSH; FTPS_UNAVAILABLE; SFTP_PREAUTH_CLOSED; LATEST_PROVIDER_BACKUP_PRE_ROTATION; NO_MUTATIONS"
+  }
 }

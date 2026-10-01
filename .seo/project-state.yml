@@ -4,28 +4,16 @@
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
   "requested_action": "merge",
-  "authorization_level": "DENTIX PR-07 bounded reconciliation, Ready, normal merge and one automatic noindex preview only; production/DNS/accounts/indexing false Open PR #10 Draft at d01483914652c5d3977b60f8d96b763d4b686b8a; tracked worktree clean after reconciliation commit; old WordPress at dentix.ua differs from noindex Pages deploy; next action exact-head suite, Ready, merge, one automatic preview.",
+  "authorization_level": "DENTIX_AUTHORIZATION_PR08_POST_LAUNCH_READY_MERGE: existing Draft PR #11 only; bounded record-only commit/push, Ready, normal merge retaining branch and one automatic noindex Pages preview observation. No Mirohost production, DNS, external accounts, sitemap/indexing, source/content/form or next PR.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-09-29T11:01:03Z",
-  "remote_main_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
-  "local_main_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
-  "deployed_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
+  "verified_at": "2026-10-01T12:41:34Z",
+  "remote_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+  "local_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+  "deployed_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "open_prs": [
-    {
-      "number": 10,
-      "state": "OPEN",
-      "isDraft": true,
-      "baseRefName": "main",
-      "baseRefOid": "c75d494945ba8868840f30bd82a12e78cc1bee14",
-      "headRefName": "seo/dentix-pr07-hold-resolution",
-      "headRefOid": "d01483914652c5d3977b60f8d96b763d4b686b8a",
-      "changed_files": 35,
-      "reviews": 0,
-      "status_checks": "NO_SERVER_CI",
-      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/10"
-    }
+    "https://github.com/optidigitalagent/dentix-booking-demo/pull/11 (OPEN_DRAFT_MERGEABLE)"
   ],
   "recently_merged_prs": [
     {
@@ -104,6 +92,15 @@
       },
       "mergedAt": "2026-09-29T06:31:02Z",
       "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/9"
+    },
+    {
+      "number": 10,
+      "state": "MERGED",
+      "mergeCommit": {
+        "oid": "0cc446e0a525b419f9a79be963ff469eef25210b"
+      },
+      "mergedAt": "2026-09-29T17:27:17Z",
+      "url": "https://github.com/optidigitalagent/dentix-booking-demo/pull/10"
     }
   ],
   "active_branches": [
@@ -117,12 +114,13 @@
     "seo/dentix-pr04c-implant-prosthetics-cluster",
     "seo/dentix-pr05-production-readiness",
     "seo/dentix-pr06-mirohost-staging",
-    "seo/dentix-pr07-hold-resolution"
+    "seo/dentix-pr07-hold-resolution",
+    "release/dentix-pr08-production-cutover"
   ],
-  "handoff_sha": "c75d494945ba8868840f30bd82a12e78cc1bee14",
+  "handoff_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
-  "production_matches_deploy": false,
+  "production_matches_deploy": true,
   "external_state_verified": true,
   "worktree_clean": true
 }
