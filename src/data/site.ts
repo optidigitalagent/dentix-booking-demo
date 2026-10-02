@@ -24,6 +24,7 @@ export const site = {
   mapEmbed:
     "https://www.google.com/maps/embed?origin=mfe&pb=!1m4!2m1!1z0LrQsNC70LjQvdC-0LLQsNGPIDI4LCDQtNC90LXQv9GAINGD0LrRgNCw0LjQvdCw!5e0!6i15",
   mapLink: "https://maps.app.goo.gl/jB5eSXHDwYmx6cZs9?g_st=ic",
+  contactsHref: "/kontakty/",
   nav: [
     { label: "Послуги", to: "/#services" },
     { label: "Про клініку", to: "/#about" },

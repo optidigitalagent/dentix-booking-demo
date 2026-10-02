@@ -14,7 +14,7 @@ export function Footer() {
             Стоматологія повного циклу DENTIX: лікування, ортодонтія, імплантація та відновлення
             усмішки.
           </p>
-          <BookingButton className="footer-booking">Записатися онлайн</BookingButton>
+          <BookingButton className="footer-booking">Записатися</BookingButton>
         </div>
         <div className="footer-contact">
           <div className="footer-contact-item">

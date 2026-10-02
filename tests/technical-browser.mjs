@@ -35,7 +35,7 @@ async function checkSemantics(page, target, file, width, stage) {
   }
   for (let i = 1; i < state.outline.length; i++) assert.ok(state.outline[i].level <= state.outline[i - 1].level + 1);
   assert.deepEqual(state.duplicate_ids, []);
-  assert.deepEqual(state.lead_sources, [target === "preview" ? "PUBLIC_DEMO" : "CANONICAL_CANDIDATE"]);
+  assert.deepEqual(state.lead_sources, []);
   semantics.push({ target, route: file || "home", width, stage, ...state, pass: true });
 }
 const browser = await chromium.launch();
@@ -87,7 +87,8 @@ try {
           assert.equal(response.status(), 200);
           const primary = await page.locator(primarySelector(file)).innerText();
           assert.equal(primary, parity.get(file), `${target} ${file}: initial/rendered primary content drift`);
-          await page.waitForFunction(() => [...document.querySelectorAll('.lead-form button[type="submit"]')].every((button) => button.disabled));
+          assert.equal(await page.locator(".lead-form").count(), 0);
+          assert.equal(await page.locator('#contact [data-conversion-intent="booking_contact"]').count(), 1);
           const head = await page.evaluate(() => ({ title: document.title, h1: [...document.querySelectorAll("h1")].map((e) => e.textContent), canonical: [...document.querySelectorAll('link[rel="canonical"]')].map((e) => e.href), robots: [...document.querySelectorAll('meta[name="robots"]')].map((e) => e.content), lang: document.documentElement.lang }));
           assert.equal(head.h1.length, 1);
           await checkSemantics(page, target, file, width, "hydrated");
@@ -111,23 +112,13 @@ try {
           assert.deepEqual(brokenImages, []);
           const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
           assert.ok(overflow <= 1, `${target} ${width} ${file}: overflow ${overflow}`);
-          const form = page.locator(".lead-form").first();
-          assert.ok(await form.locator('button[type="submit"]').isDisabled());
-          assert.ok(await form.locator('input[type="checkbox"]').isDisabled());
-          await form.scrollIntoViewIfNeeded();
-          for (const field of await form.locator('input:not([type="checkbox"]):not([tabindex="-1"]),select,textarea').all()) {
-            if (!await field.isVisible()) continue;
-            await field.focus();
-            if (width <= 900) assert.ok(await field.evaluate((element) => parseFloat(getComputedStyle(element).fontSize)) >= 16);
-            await field.blur();
-          }
-          const trigger = page.getByRole("button", { name: "Записатися онлайн", exact: true }).first();
+          const trigger = page.getByRole("button", { name: "Записатися", exact: true }).first();
           await trigger.scrollIntoViewIfNeeded();
           await trigger.click();
           const dialog = page.getByRole("dialog");
-          await dialog.getByText("Заявка не резервує час прийому.").waitFor();
-          assert.equal(await dialog.locator(".lead-form").getAttribute("data-source-site"), target === "preview" ? "PUBLIC_DEMO" : "CANONICAL_CANDIDATE");
-          assert.ok(await dialog.getByRole("button", { name: "Залишити заявку", exact: true }).isDisabled());
+          await dialog.getByRole("heading", { name: "Зв’язатися для запису" }).waitFor();
+          assert.equal(await dialog.locator(".lead-form, form, input, textarea, select").count(), 0);
+          for (const channel of ["phone_primary", "phone_secondary", "viber_primary", "viber_secondary", "instagram", "contacts"]) assert.equal(await dialog.locator(`[data-contact-channel="${channel}"]`).count(), 1);
           const capturedY = await page.evaluate(() => -parseFloat(document.body.style.top));
           await page.keyboard.press("Escape");
           assert.equal(await dialog.count(), 0);
@@ -153,7 +144,7 @@ try {
           assert.deepEqual(errors, []);
           assert.deepEqual(consoleErrors, []);
           assert.deepEqual(failedLocalResponses, []);
-          results.push({ target, route: file || "home", width, height: 900, pass: true, head, overflow, brokenImages, hydration_errors: errors, console_errors: consoleErrors, source_render_parity: true, phone_cta: true, fail_closed_forms: true, keyboard_focus: true, reduced_motion: true, internal_navigation: true, screenshot: [390, 1440].includes(width) ? screenshot : null, lab: performance });
+          results.push({ target, route: file || "home", width, height: 900, pass: true, head, overflow, brokenImages, hydration_errors: errors, console_errors: consoleErrors, source_render_parity: true, phone_cta: true, contact_bridge: true, no_forms: true, keyboard_focus: true, reduced_motion: true, internal_navigation: true, screenshot: [390, 1440].includes(width) ? screenshot : null, lab: performance });
           console.log(`${target} ${file || "home"} ${width}: PASS`);
           await context.close();
         }

@@ -3,18 +3,16 @@
   "project_id": "dentix",
   "default_branch": "main",
   "production_url": "https://dentix.ua/",
-  "requested_action": "merge",
-  "authorization_level": "DENTIX_AUTHORIZATION_PR08_POST_LAUNCH_READY_MERGE: existing Draft PR #11 only; bounded record-only commit/push, Ready, normal merge retaining branch and one automatic noindex Pages preview observation. No Mirohost production, DNS, external accounts, sitemap/indexing, source/content/form or next PR.",
+  "requested_action": "draft_pr",
+  "authorization_level": "SITE_ID DENTIX; optidigitalagent/dentix-booking-demo; branch seo/dentix-pr09-conversion-bridge from origin/main e9c4e3f922a52e39a500358f86749ec44db3f213. Patient conversion bridge; scoped tests/records; normal commit/push; exactly one Draft PR; sanitized evidence. No Ready, merge, deploy, Mirohost, DNS, GSC, GBP, GA4/GTM, Bing, CRM, sitemap submission, indexing or real submission.",
   "client_industry": "local healthcare service business / dental clinic",
   "primary_market": "Ukraine / Dnipro",
   "primary_language": "uk",
-  "verified_at": "2026-10-01T12:41:34Z",
-  "remote_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
-  "local_main_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+  "verified_at": "2026-10-01T14:16:08Z",
+  "remote_main_sha": "e9c4e3f922a52e39a500358f86749ec44db3f213",
+  "local_main_sha": "e9c4e3f922a52e39a500358f86749ec44db3f213",
   "deployed_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
-  "open_prs": [
-    "https://github.com/optidigitalagent/dentix-booking-demo/pull/11 (OPEN_DRAFT_MERGEABLE)"
-  ],
+  "open_prs": [],
   "recently_merged_prs": [
     {
       "baseRefName": "main",
@@ -115,9 +113,10 @@
     "seo/dentix-pr05-production-readiness",
     "seo/dentix-pr06-mirohost-staging",
     "seo/dentix-pr07-hold-resolution",
-    "release/dentix-pr08-production-cutover"
+    "release/dentix-pr08-production-cutover",
+    "seo/dentix-pr09-conversion-bridge"
   ],
-  "handoff_sha": "0cc446e0a525b419f9a79be963ff469eef25210b",
+  "handoff_sha": "e9c4e3f922a52e39a500358f86749ec44db3f213",
   "handoff_matches_remote": true,
   "overlapping_active_pr": false,
   "production_matches_deploy": true,

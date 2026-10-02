@@ -39,7 +39,7 @@ export function TeamSection({ therapyRoute, surgeryRoute, implantProstheticsRout
                 <p className="doc-role">{d.role}</p>
                 {!therapyRoute && !surgeryRoute && !implantProstheticsRoute && d.description ? <p className="doc-description">{d.description}</p> : null}
                 {!therapyRoute && !surgeryRoute && !implantProstheticsRoute && d.role.includes("Лікар-терапевт") && <a className="doc-booking" href={siteHref(d.role.includes("ендодонтист") && d.role.includes("мікроскопіст") ? "/lechenie-pod-mikroskopom/" : "/terapevtychna-stomatolohiia/")}>{d.role.includes("ендодонтист") && d.role.includes("мікроскопіст") ? "Лікування каналів під мікроскопом" : "Терапевтична стоматологія"}</a>}
-                <BookingButton className="doc-booking">
+                <BookingButton className="doc-booking" requestedInterest={`Запис до лікаря: ${d.name}`}>
                   Обрати лікаря
                 </BookingButton>
               </div>

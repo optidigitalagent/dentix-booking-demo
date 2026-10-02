@@ -11,10 +11,16 @@ import { LeadForm } from "../LeadForm";
 import { getIntakeStatus, type IntakeStatus } from "@/lib/intake-status";
 import { useBookingViewport } from "./useBookingViewport";
 import { useBooking } from "./BookingContext";
+import { site } from "@/data/site";
+import { ContactBridgeDrawer } from "./ContactBridgeDrawer";
 
 const stepLabels = ["Послуга", "Лікар", "Дата і час", "Ваші дані", "Перевірка"];
 
 export function BookingDrawer() {
+  return site.bookingFormReady === true ? <LiveBookingDrawer /> : <ContactBridgeDrawer />;
+}
+
+function LiveBookingDrawer() {
   const { isOpen, closeBooking, seed } = useBooking();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);

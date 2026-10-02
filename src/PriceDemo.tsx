@@ -38,7 +38,7 @@ export function PriceDemo() {
                 {site.phonePrimary}
               </a>
               <BookingButton className="btn btn-ghost">
-                Записатися онлайн <span aria-hidden="true">→</span>
+                Записатися <span aria-hidden="true">→</span>
               </BookingButton>
             </div>
           </div>

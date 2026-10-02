@@ -22,7 +22,6 @@ export async function checkLeadSourceEntryPoints({ browser, output }) {
     for (const target of ["preview", "production"]) {
       process.env.DENTIX_BUILD_TARGET = target;
       const base = target === "preview" ? "/dentix-booking-demo/" : "/";
-      const expected = target === "preview" ? "PUBLIC_DEMO" : "CANONICAL_CANDIDATE";
       const bundle = await build({ mode: target, publicDir: false, build: { write: false, manifest: false, rollupOptions: { input: path.resolve("index.html") } } });
       const assets = new Map((Array.isArray(bundle) ? bundle : [bundle]).flatMap((result) => result.output).map((asset) => [base + asset.fileName, asset.type === "chunk" ? asset.code : asset.source]));
       assets.set(base, assets.get(base + "index.html"));
@@ -81,32 +80,26 @@ export async function checkLeadSourceEntryPoints({ browser, output }) {
               assert.deepEqual(graph.filter((node) => node["@type"] === "Person").map((person) => person.name), fixtureDoctors.map((doctor) => doctor.full_name));
             }
           }
-          const contact = page.locator("#contact .lead-form");
-          assert.equal(await contact.getAttribute("data-source-site"), expected);
-          assert.ok(await contact.locator('button[type="submit"]').isDisabled());
-          await page.getByRole("button", { name: "Записатися онлайн", exact: true }).first().click();
+          const contact = page.locator('#contact [data-conversion-intent="booking_contact"]');
+          assert.equal(await contact.count(), 1);
+          assert.equal(await page.locator(".lead-form").count(), 0);
+          await page.getByRole("button", { name: "Записатися", exact: true }).first().click();
           const dialog = page.getByRole("dialog");
-          if (catalogReady) await dialog.getByRole("button", { name: "Залишити окрему заявку без вибору часу", exact: true }).click();
-          else await dialog.getByText("Заявка не резервує час прийому.").waitFor();
-          const form = dialog.locator(".lead-form");
-          // The drawer initially renders its fallback before its readiness effect
-          // switches through loading. Wait for the form's completed readiness state.
-          await form.getByText("Форма ще не активована. Скористайтеся телефоном або Instagram.", { exact: true }).waitFor();
-          assert.equal(await form.count(), 1);
-          assert.equal(await form.getAttribute("data-source-site"), expected);
-          assert.ok(await form.locator('button[type="submit"]').isDisabled());
-          assert.ok(await form.locator('input[type="checkbox"]').isDisabled());
+          await dialog.getByRole("heading", { name: "Зв’язатися для запису" }).waitFor();
+          assert.equal(await dialog.locator("form, input, textarea, select").count(), 0);
+          assert.equal(await dialog.locator('[data-contact-channel]').count(), 6);
+          assert.deepEqual(requests, [], "Disabled mode must ignore even a ready API fixture");
           assert.deepEqual(violations, []);
           assert.deepEqual(errors, []);
           assert.deepEqual(consoleErrors, []);
-          results.push({ target, route: file || "home", source_site: expected, contact: true, entry: catalogReady ? "BookingDrawer.callbackView" : "BookingDrawer.noCatalog", fail_closed: true, form_submissions: 0, errors, consoleErrors, pass: true });
-          console.log(`${target} ${file || "home"} ${catalogReady ? "callback" : "no-catalog"} lead source ${expected}: PASS`);
+          results.push({ target, route: file || "home", remote_ready_fixture: catalogReady, contact: true, entry: "ContactBridgeDrawer", fail_closed: true, form_submissions: 0, errors, consoleErrors, pass: true });
+          console.log(`${target} ${file || "home"} ${catalogReady ? "ready" : "unavailable"} disabled intake: PASS`);
         } finally { await context.close(); }
       }
     }
     assert.equal(results.length, 48);
   } finally {
     for (const key of keys) { if (previous[key] === undefined) delete process.env[key]; else process.env[key] = previous[key]; }
-    await fs.writeFile(path.join(output, "lead_source_entry_points.json"), JSON.stringify({ observed_at: new Date().toISOString(), fixture_scope: "Real source; in-memory builds; all network intercepted; no request or personal data submitted", results, requests, pass: results.length === 48 }, null, 2) + "\n");
+    await fs.writeFile(path.join(output, "lead_source_entry_points.json"), JSON.stringify({ observed_at: new Date().toISOString(), fixture_scope: "Real source; in-memory builds; remote readiness fixtures ignored in disabled mode; no request or personal data submitted", results, requests, pass: results.length === 48 && requests.length === 0 }, null, 2) + "\n");
   }
 }

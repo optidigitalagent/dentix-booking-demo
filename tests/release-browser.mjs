@@ -3,6 +3,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { serveArtifact } from '../scripts/serve-artifact.mjs';
+import { therapyPages } from '../src/data/therapy-pages.ts';
+import { surgeryPages } from '../src/data/surgery-pages.ts';
+import { implantProstheticsPages } from '../src/data/implant-prosthetics-pages.ts';
 if (!process.env.PLAYWRIGHT_MODULE_PATH || !process.env.DENTIX_QA_OUTPUT) throw new Error('External Playwright and evidence directory required');
 const { chromium } = await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE_PATH).href);
 const { routes } = JSON.parse(await fs.readFile('ops/release/routes.json','utf8'));
@@ -29,14 +32,14 @@ try {
           if (target==='production') { assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),route.canonical);assert.equal(await page.title(),route.title); }
           else assert.equal(await page.locator('link[rel="canonical"]').count(),0);
           assert.ok(await page.locator('header').isVisible());
-          assert.ok(await page.locator('#contact button[type="submit"]').isDisabled());
+          assert.equal(await page.locator('#contact .lead-form').count(),0);
+          assert.equal(await page.locator('#contact [data-contact-channel]').count(),6);
           if (['implantation','prosthetics','therapy','surgery'].includes(route.key)) {
-            const expected={implantation:'Імплантація зубів',prosthetics:'Протезування зубів',therapy:'Терапія',surgery:'Хірургія'}[route.key];
+            const expected={implantation:implantProstheticsPages.implantation.label,prosthetics:implantProstheticsPages.prosthetics.label,therapy:therapyPages.therapy.label,surgery:surgeryPages.surgery.label}[route.key];
             await page.locator('.hero-actions button').click();const dialog=page.getByRole('dialog');
-            await dialog.locator('.booking-fallback strong').waitFor();assert.equal(await dialog.locator('.booking-fallback strong').textContent(),expected);
-            assert.equal(await dialog.locator('textarea').inputValue(),`Цікавить: ${expected}. Прошу зателефонувати, без резервування часу.`);
-            assert.ok(await dialog.locator('button[type="submit"]').isDisabled());
-            assert.equal(await dialog.locator('.lead-form').getAttribute('data-source-site'),target==='production'?'CANONICAL_CANDIDATE':'PUBLIC_DEMO');
+            await dialog.locator('.contact-bridge-interest strong').waitFor();assert.equal(await dialog.locator('.contact-bridge-interest strong').textContent(),expected);
+            assert.equal(await dialog.locator('form, input, textarea, select').count(),0);
+            assert.equal(await dialog.locator('[data-contact-channel]').count(),6);
             seeds.push({target,width,path:route.path,requestedInterest:expected,submissions:0,pass:true});
             await page.keyboard.press('Escape');await dialog.waitFor({state:'hidden'});
           }

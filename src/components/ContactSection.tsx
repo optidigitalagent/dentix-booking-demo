@@ -2,6 +2,7 @@ import { site } from "@/data/site";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { LeadForm } from "./LeadForm";
+import { ContactActions } from "./booking/ContactActions";
 
 const contactSlots = [
   { label: "Телефони", value: `${site.phonePrimary} · ${site.phoneSecondary}` },
@@ -58,12 +59,12 @@ export function ContactSection({ lede = "Зв’яжіться з клініко
           <Reveal as="div" className="contact-panel" delay={90}>
             <div className="contact-panel-head">
               <div>
-                <p className="contact-panel-kicker">Зворотний зв’язок</p>
-                <h3>Залишити заявку</h3>
+                <p className="contact-panel-kicker">{site.bookingFormReady === true ? "Зворотний зв’язок" : "Зв’язок з адміністратором"}</p>
+                <h3>{site.bookingFormReady === true ? "Залишити заявку" : "Зв’язатися для запису"}</h3>
               </div>
               <span className="contact-panel-status">без медичних даних</span>
             </div>
-            <LeadForm sourceSite={__DENTIX_LEAD_SOURCE__} />
+            {site.bookingFormReady === true ? <LeadForm sourceSite={__DENTIX_LEAD_SOURCE__} /> : <ContactActions />}
           </Reveal>
         </div>
       </div>

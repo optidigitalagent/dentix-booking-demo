@@ -22,7 +22,7 @@ export function Hero() {
             Хірургія, імплантація, лікування та відновлення усмішки за індивідуальним планом.
           </Reveal>
           <Reveal className="hero-actions" delay={140}>
-            <BookingButton className="btn">Записатися онлайн</BookingButton>
+            <BookingButton className="btn">Записатися</BookingButton>
             <a className="btn btn-ghost" href="#services">
               Наші послуги <span aria-hidden="true">→</span>
             </a>
