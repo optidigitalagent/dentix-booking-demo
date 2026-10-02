@@ -161,6 +161,11 @@ def verify_artifact(root):
             services=[n for n in nodes if n.get('@type')=='Service']; require(len(services)==1, 'Service graph')
             require(services[0]['name']==h1[0] and services[0]['description']==texts(doc,ident='service-answer')[0], 'Visible Service parity')
             require(attribute(doc,'section','id','service-prices','data-content-source')==['local-fallback'], 'Managed price fallback missing')
+            if route['key']=='microscope':
+                people=[{'@id':n['@id']} for n in nodes if n.get('@type')=='Person']
+                provider=[{'@id':ORIGIN+'/#dentist'},*people] if people else {'@id':ORIGIN+'/#dentist'}
+                require(services[0].get('provider')==provider and services[0].get('areaServed')=={'@type':'City','name':'Дніпро'}, 'Microscope doctor/city Service parity')
+                require(len(doc.all(cls='doc'))==len(people), 'Microscope visible clinician parity')
             if route['key'] in ['surgery','extraction','wisdom','implantation','prosthetics']:
                 require(not doc.all(cls='doc') and not any(n.get('@type')=='Person' for n in nodes), 'Unapproved clinician')
         titles.extend(title); descriptions.extend(desc); headings.extend(h1)
@@ -215,6 +220,7 @@ def review_package(root):
         family='implant-prosthetics' if route['key'] in ['implantation','prosthetics'] else 'surgery' if route['key'] in ['surgery','extraction','wisdom'] else 'therapy'
         source_keys=[route['source_key'],'src/data/prices.ts:priceBlocks','src/data/doctors.ts:doctors','src/components/TeamSection.tsx:TeamSection']
         if service: source_keys += [f'src/data/{family}-pages.ts:' + {'therapy':'therapyPages','surgery':'surgeryPages','implant-prosthetics':'implantProstheticsPages'}[family] + '.' + route['key'], {'therapy':'src/TherapyPage.tsx','surgery':'src/SurgeryPage.tsx','implant-prosthetics':'src/ImplantProstheticsPage.tsx'}[family]]
+        if route['key']=='microscope': source_keys += ['src/components/TherapyEvidenceSummary.tsx:TherapyEvidenceSummary','src/lib/entity-schema.ts:buildEntitySchema']
         nodes=graph(doc)
         entry={'url':route['canonical'],'artifact':route['artifact'],'title':texts(doc,'title')[0], 'h1':texts(doc,'h1')[0],
             'visible_answer':texts(doc,ident='service-answer'), 'scope':texts(doc,ident='service-scope'),
@@ -222,7 +228,7 @@ def review_package(root):
             'prices':[{'name':texts(n,cls='price-name'),'cost':texts(n,cls='price-cost'),'note':texts(n,cls='price-row-note')} for n in doc.all(cls='price-row')],
             'clinicians':[{'name':texts(n,'h3'),'role':texts(n,cls='doc-role'),'description':texts(n,cls='doc-description')} for n in doc.all(cls='doc')],
             'clinician_state':'DISPLAYED' if doc.all(cls='doc') else 'NO_CLINICIAN_DISPLAYED', 'team_copy':texts(doc,ident='team'),
-            'schema_service':[{'name':n['name'],'description':n['description']} for n in nodes if n.get('@type')=='Service'],
+            'schema_service':[{'name':n['name'],'description':n['description'], **({'provider':n['provider'],'areaServed':n['areaServed']} if route['key']=='microscope' else {})} for n in nodes if n.get('@type')=='Service'],
             'exact_visible_blocks':[{'tag':n.tag,'text':n.visible()} for n in doc.all() if n.tag in ['h1','h2','h3','p','li','summary','figcaption'] and n.visible()],
             'source_keys':source_keys,'copy_source_sha':git('log','-1','--format=%H','--','src/data','src/page-metadata.ts','src/components/TeamSection.tsx'),
             'copy_change_date':git('log','-1','--format=%cI','--','src/data','src/page-metadata.ts','src/components/TeamSection.tsx'),

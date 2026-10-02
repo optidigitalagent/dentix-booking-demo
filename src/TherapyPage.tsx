@@ -3,16 +3,18 @@ import clinicImage from "@/assets/about-2.jpg";
 import { SiteLayout } from "@/components/SiteLayout";
 import { TeamSection } from "@/components/TeamSection";
 import { ContactSection } from "@/components/ContactSection";
+import { TherapyEvidenceSummary } from "@/components/TherapyEvidenceSummary";
 import { BookingButton } from "@/components/booking/BookingContext";
 import { useManagedContent } from "@/hooks/use-managed-content";
 import { site } from "@/data/site";
-import { selectTherapyPrices, therapyPages, type TherapyRoute } from "@/data/therapy-pages";
+import { selectTherapyDoctors, selectTherapyPrices, therapyPages, type TherapyRoute } from "@/data/therapy-pages";
 import { siteHref } from "@/lib/site-href";
 
 export function TherapyPage({ route }: { route: TherapyRoute }) {
   const page = therapyPages[route];
-  const { priceBlocks, priceSource } = useManagedContent();
+  const { doctors, doctorsSource, priceBlocks, priceSource } = useManagedContent();
   const prices = selectTherapyPrices(route, priceBlocks);
+  const microscope = route === "microscope";
   return (
     <SiteLayout>
       <section className="price-hero therapy-hero" style={{ "--price-hero-image": `url(${clinicImage})` } as CSSProperties}>
@@ -24,18 +26,20 @@ export function TherapyPage({ route }: { route: TherapyRoute }) {
           </nav>
           <p className="eyebrow">{site.name} · {site.tagline}</p>
           <h1 className="hero-title">{page.h1}</h1>
-          <p className="service-intro" id="service-answer">{page.answer}</p>
+          {!microscope && <p className="service-intro" id="service-answer">{page.answer}</p>}
           <div className="hero-actions">
             <a className="btn" href={site.phonePrimaryHref}>{site.phonePrimary}</a>
             <BookingButton className="btn btn-ghost" requestedInterest={page.label}>Узгодити прийом</BookingButton>
           </div>
           <nav className="entity-links" aria-label="На цій сторінці">
-            <a href="#service-prices">Вартість послуг</a><a href="#team">Лікарі</a><a href="#related-services">Пов’язані послуги</a>
+            {microscope && <a href="#service-answer">Послуги</a>}<a href="#service-prices">Вартість послуг</a><a href="#team">Лікарі</a><a href="#service-questions">Питання</a><a href="#related-services">Пов’язані послуги</a>
           </nav>
         </div></div>
       </section>
 
-      <section className="section" id="service-scope">
+      {microscope && <TherapyEvidenceSummary page={page} doctors={selectTherapyDoctors(route, doctors)} doctorsSource={doctorsSource} prices={prices} priceSource={priceSource} />}
+
+      {!microscope && <section className="section" id="service-scope">
         <div className="wrap therapy-overview">
           <div>
             <span className="sec-kicker">Послуги DENTIX</span>
@@ -53,9 +57,9 @@ export function TherapyPage({ route }: { route: TherapyRoute }) {
             </ol>
           </div>
         </div>
-      </section>
+      </section>}
 
-      <section className="section therapy-prices" id="service-prices" data-content-source={priceSource}>
+      {!microscope && <section className="section therapy-prices" id="service-prices" data-content-source={priceSource}>
         <div className="wrap">
           <span className="sec-kicker">Відкритий прайс</span>
           <h2 className="sec-title">Вартість послуг</h2>
@@ -68,9 +72,9 @@ export function TherapyPage({ route }: { route: TherapyRoute }) {
           ))}</ul> : <p>Уточніть актуальну вартість цих послуг у клініці телефоном.</p>}
           <a className="price-booking-link" href={siteHref("/price.html")}>Повний прайс DENTIX →</a>
         </div>
-      </section>
+      </section>}
 
-      <TeamSection therapyRoute={route} />
+      {!microscope && <TeamSection therapyRoute={route} />}
 
       <section className="section" id="service-questions">
         <div className="wrap">

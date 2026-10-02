@@ -4776,7 +4776,17 @@ body:has(.lead-form :is(input, select, textarea):focus) .mobile-call-bar { displ
 .therapy-questions p { line-height: 1.8; margin-top: 14px; }
 .therapy-related { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
 .therapy-related .btn { white-space: normal; }
+.therapy-evidence-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 48px; margin-top: 40px; }
+.therapy-evidence-grid > section { min-width: 0; }
+.therapy-evidence-grid .sec-title { font-size: clamp(1.45rem, 2.5vw, 2rem); }
+.therapy-evidence-doctor { display: flex; align-items: center; gap: 18px; margin: 24px 0; }
+.therapy-evidence-doctor img { width: 88px; height: 104px; flex: none; object-fit: cover; border-radius: 12px; }
+.therapy-evidence-doctor h3 { margin: 0 0 8px; }
+.therapy-evidence-doctor p { margin: 0; }
+.therapy-evidence-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 28px; margin-top: 32px; }
+.therapy-evidence a { text-underline-offset: 4px; }
 @media (max-width: 767px) {
   .therapy-overview, .therapy-team-grid { grid-template-columns: 1fr; gap: 32px; }
+  .therapy-evidence-grid { grid-template-columns: 1fr; gap: 32px; }
   .therapy-price-list { padding: 12px 18px; }
 }

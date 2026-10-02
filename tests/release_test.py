@@ -3,39 +3,12 @@ import copy, importlib.util, json, re, tempfile, unittest, shutil
 from pathlib import Path
 spec=importlib.util.spec_from_file_location('release',Path(__file__).resolve().parents[1]/'scripts/release.py');release=importlib.util.module_from_spec(spec);spec.loader.exec_module(release)
 
-# Only the contact dialog changed in PR-09. Keep every other visible block in
-# the historical professional-review comparison, including service/doctor copy.
-REVIEWED_CONTACT_BLOCKS=[
-    {'tag':'p','text':'Зворотний зв’язок'},
-    {'tag':'h3','text':'Залишити заявку'},
-    {'tag':'p','text':'Перевіряємо доступність форми…'},
-]
-PR09_CONTACT_BLOCKS=[
-    {'tag':'p','text':'Зв’язок з адміністратором'},
-    {'tag':'h3','text':'Зв’язатися для запису'},
-    {'tag':'p','text':'Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови.'},
-    {'tag':'p','text':'Відкриття цього вікна чи перехід за посиланням не резервує час прийому.'},
-    {'tag':'p','text':'Не надсилайте медичні дані у повідомленнях.'},
-]
-
 class ReleaseTests(unittest.TestCase):
     def setUp(self): self.contract=release.read_json(release.OPS/'migration-contract.json')
-    def _review_page(self,page,contact_blocks):
-        result=copy.deepcopy(page)
-        blocks=result['exact_visible_blocks']
-        matches=[i for i in range(len(blocks)-len(contact_blocks)+1) if blocks[i:i+len(contact_blocks)]==contact_blocks]
-        self.assertEqual(len(matches),1,'Expected exactly one unchanged contact-dialog block')
-        i=matches[0]
-        result['exact_visible_blocks']=blocks[:i]+blocks[i+len(contact_blocks):]
-        # These source provenance values advance when the conversion UI changes.
-        result.pop('copy_source_sha')
-        result.pop('copy_change_date')
-        return result
     def _assert_professional_review(self,packet,reviewed):
         self.assertEqual(len(packet['pages']),len(reviewed['pages']))
         for current,baseline in zip(packet['pages'],reviewed['pages']):
-            self.assertEqual(self._review_page(current,PR09_CONTACT_BLOCKS),
-                             self._review_page(baseline,REVIEWED_CONTACT_BLOCKS))
+            self.assertEqual(current,baseline)
     def test_canonical_dispositions(self): self.assertEqual(release.validate_contract(self.contract)['hold'],0)
     def test_preservation_cannot_become_404_or_home(self):
         row=next(r for r in self.contract['rows'] if r['disposition']=='200_STATIC_PRESERVE_MEDIA')
@@ -82,6 +55,7 @@ class ReleaseTests(unittest.TestCase):
             ('prices',lambda p: p['pages'][10]['prices'][0]['cost'].__setitem__(0,'0 грн')),
             ('clinicians',lambda p: p['pages'][1]['clinicians'][0]['name'].__setitem__(0,'Changed clinician')),
             ('schema_service',lambda p: p['pages'][4]['schema_service'][0].update(description='Changed clinical Schema')),
+            ('microscope_provider',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['schema_service'][0].update(provider={'@id':'https://foreign.example/#doctor'})),
         ]
         for name,mutate in mutations:
             with self.subTest(field=name):
