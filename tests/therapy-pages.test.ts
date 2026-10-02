@@ -36,7 +36,10 @@ test("service graph and breadcrumb match visible route copy and selected managed
     const page = therapyPages[route], url = "https://dentix.ua/" + page.path;
     const graph = buildEntitySchema(route, clinic as any, team)["@graph"];
     const service = graph.find((node) => node["@type"] === "Service");
-    assert.deepEqual(service, { "@type": "Service", "@id": url + "#service", name: page.h1, url, description: page.answer, provider: { "@id": "https://dentix.ua/#dentist" } });
+    assert.deepEqual(service, { "@type": "Service", "@id": url + "#service", name: page.h1, url, description: page.answer,
+      provider: route === "microscope" ? [{ "@id": "https://dentix.ua/#dentist" }, { "@id": "https://dentix.ua/#person-a" }] : { "@id": "https://dentix.ua/#dentist" },
+      ...(route === "microscope" ? { areaServed: { "@type": "City", name: "Дніпро" } } : {}),
+    });
     assert.deepEqual(graph.filter((node) => node["@type"] === "Person").map((node) => node.name), selectTherapyDoctors(route, team).map(({ name }) => name));
     const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList")?.itemListElement as { position: number; name: string; item: string }[];
     assert.equal(crumbs.length, route === "therapy" ? 2 : 3);
@@ -45,6 +48,10 @@ test("service graph and breadcrumb match visible route copy and selected managed
     assert.doesNotMatch(JSON.stringify(graph), /Offer|priceRange|MedicalProcedure|medicalSpecialty|FAQPage|AggregateRating|Review|guarantee|successRate/);
     const changed = buildEntitySchema(route, clinic as any, [doctor("new", "Лікар-терапевт, ендодонтист, мікроскопіст")])["@graph"];
     assert.deepEqual(changed.filter((node) => node["@type"] === "Person").map((node) => node.name), ["Fixture new"]);
+    if (route === "microscope") {
+      const noDoctor = buildEntitySchema(route, clinic as any, team.map((person) => ({ ...person, role: "Лікар" })))["@graph"].find((node) => node["@type"] === "Service");
+      assert.deepEqual(noDoctor?.provider, { "@id": "https://dentix.ua/#dentist" });
+    }
   }
 });
 
@@ -68,10 +75,25 @@ test("real SSR renders fallback with a configured content endpoint and zero fetc
   globalThis.fetch = (() => { fetches++; throw new Error("SSR network forbidden"); }) as typeof fetch;
   try {
     const { render } = await server.ssrLoadModule("/src/entry-server.tsx");
+    const { doctors } = await server.ssrLoadModule("/src/data/doctors.ts");
     for (const route of Object.keys(therapyPages) as TherapyRoute[]) {
       const html = render(route);
       assert.ok(html.includes(therapyPages[route].h1));
       for (const row of selectTherapyPrices(route, priceBlocks)) assert.ok(html.includes(row.cost));
+      if (route === "microscope") {
+        assert.equal((html.match(/id="service-answer"/g) ?? []).length, 1);
+        for (const id of ["service-scope", "team", "service-prices", "service-questions"]) assert.ok(html.includes(`id="${id}"`));
+        for (const person of selectTherapyDoctors(route, doctors)) {
+          assert.ok(html.includes(person.name));
+          assert.ok(html.includes(person.role));
+          assert.ok(html.includes(person.alt));
+        }
+        for (const row of selectTherapyPrices(route, priceBlocks)) assert.equal(html.split(`class="price-name">${row.name}</span>`).length - 1, 1);
+        for (const path of ["terapevtychna-stomatolohiia/", "likuvannia-kariiesu/", "likari/", "price.html", "kontakty/"]) assert.ok(html.includes(path));
+        assert.ok(html.includes('>Записатися</button>'));
+        assert.ok(html.includes("Відкриття цього вікна чи перехід за посиланням не резервує час прийому."));
+        assert.ok(!html.includes("Даша Шаповаленко"));
+      }
     }
     assert.equal(fetches, 0);
   } finally {

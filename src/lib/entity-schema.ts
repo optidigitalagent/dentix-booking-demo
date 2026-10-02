@@ -53,7 +53,11 @@ export function buildEntitySchema(route: PatientRoute, site: Clinic, doctors: Do
   }
   if (servicePage) graph.push({
     "@type": "Service", "@id": url + "#service", name: servicePage.h1, url,
-    description: servicePage.answer, provider: reference(clinicId),
+    description: servicePage.answer,
+    provider: route === "microscope" && visibleDoctors.length
+      ? [reference(clinicId), ...visibleDoctors.map((doctor) => reference(personId(doctor)))]
+      : reference(clinicId),
+    ...(route === "microscope" ? { areaServed: { "@type": "City", name: city[2] } } : {}),
   });
   if (route !== "home") graph.push({
     "@type": "BreadcrumbList", "@id": url + "#breadcrumbs",
