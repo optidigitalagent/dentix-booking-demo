@@ -2,8 +2,40 @@
 import copy, importlib.util, json, re, tempfile, unittest, shutil
 from pathlib import Path
 spec=importlib.util.spec_from_file_location('release',Path(__file__).resolve().parents[1]/'scripts/release.py');release=importlib.util.module_from_spec(spec);spec.loader.exec_module(release)
+
+# Only the contact dialog changed in PR-09. Keep every other visible block in
+# the historical professional-review comparison, including service/doctor copy.
+REVIEWED_CONTACT_BLOCKS=[
+    {'tag':'p','text':'Зворотний зв’язок'},
+    {'tag':'h3','text':'Залишити заявку'},
+    {'tag':'p','text':'Перевіряємо доступність форми…'},
+]
+PR09_CONTACT_BLOCKS=[
+    {'tag':'p','text':'Зв’язок з адміністратором'},
+    {'tag':'h3','text':'Зв’язатися для запису'},
+    {'tag':'p','text':'Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови.'},
+    {'tag':'p','text':'Відкриття цього вікна чи перехід за посиланням не резервує час прийому.'},
+    {'tag':'p','text':'Не надсилайте медичні дані у повідомленнях.'},
+]
+
 class ReleaseTests(unittest.TestCase):
     def setUp(self): self.contract=release.read_json(release.OPS/'migration-contract.json')
+    def _review_page(self,page,contact_blocks):
+        result=copy.deepcopy(page)
+        blocks=result['exact_visible_blocks']
+        matches=[i for i in range(len(blocks)-len(contact_blocks)+1) if blocks[i:i+len(contact_blocks)]==contact_blocks]
+        self.assertEqual(len(matches),1,'Expected exactly one unchanged contact-dialog block')
+        i=matches[0]
+        result['exact_visible_blocks']=blocks[:i]+blocks[i+len(contact_blocks):]
+        # These source provenance values advance when the conversion UI changes.
+        result.pop('copy_source_sha')
+        result.pop('copy_change_date')
+        return result
+    def _assert_professional_review(self,packet,reviewed):
+        self.assertEqual(len(packet['pages']),len(reviewed['pages']))
+        for current,baseline in zip(packet['pages'],reviewed['pages']):
+            self.assertEqual(self._review_page(current,PR09_CONTACT_BLOCKS),
+                             self._review_page(baseline,REVIEWED_CONTACT_BLOCKS))
     def test_canonical_dispositions(self): self.assertEqual(release.validate_contract(self.contract)['hold'],0)
     def test_preservation_cannot_become_404_or_home(self):
         row=next(r for r in self.contract['rows'] if r['disposition']=='200_STATIC_PRESERVE_MEDIA')
@@ -36,13 +68,25 @@ class ReleaseTests(unittest.TestCase):
         first=release.verify_artifact(release.ROOT/'dist/production');second=release.verify_artifact(release.ROOT/'dist/production');self.assertEqual(first,second)
         packet=release.review_package(release.ROOT/'dist/production')
         reviewed=release.read_json(release.ROOT/'ops/review/professional-review.json')
-        # The review packet is a historical clinical-copy snapshot. PR-09 changes
-        # contact UI text, so compare only the clinical facts it actually reviewed.
-        clinical_keys=['url','title','h1','visible_answer','scope','questions','prices','clinicians','clinician_state','schema_service']
-        self.assertEqual([[p[key] for key in clinical_keys] for p in packet['pages']],[[p[key] for key in clinical_keys] for p in reviewed['pages']])
+        self._assert_professional_review(packet,reviewed)
         self.assertEqual(len(packet['pages']),12);self.assertEqual(sum(len(p['schema_service']) for p in packet['pages']),8)
         for p in packet['pages']:
             self.assertTrue(p['source_keys']);self.assertIsNone(p['reviewer_name']);self.assertIsNone(p['sign_off']);self.assertIsNone(p['decision'])
+    def test_professional_review_rejects_clinical_mutations(self):
+        packet=release.review_package(release.ROOT/'dist/production')
+        reviewed=release.read_json(release.ROOT/'ops/review/professional-review.json')
+        self._assert_professional_review(packet,reviewed)  # Legitimate conversion delta.
+        mutations=[
+            ('exact_visible_blocks',lambda p: p['pages'][4]['exact_visible_blocks'][0].update(text='Changed clinical heading')),
+            ('team_copy',lambda p: p['pages'][0]['team_copy'].__setitem__(0,'Changed doctor/team copy')),
+            ('prices',lambda p: p['pages'][10]['prices'][0]['cost'].__setitem__(0,'0 грн')),
+            ('clinicians',lambda p: p['pages'][1]['clinicians'][0]['name'].__setitem__(0,'Changed clinician')),
+            ('schema_service',lambda p: p['pages'][4]['schema_service'][0].update(description='Changed clinical Schema')),
+        ]
+        for name,mutate in mutations:
+            with self.subTest(field=name):
+                changed=copy.deepcopy(packet);mutate(changed)
+                with self.assertRaises(AssertionError):self._assert_professional_review(changed,reviewed)
     def test_corrupt_artifacts_are_rejected(self):
         with tempfile.TemporaryDirectory(prefix='dentix-release-test-') as temp:
             artifact=Path(temp)/'production';shutil.copytree(release.ROOT/'dist/production',artifact)
