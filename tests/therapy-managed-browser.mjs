@@ -89,8 +89,10 @@ try {
             assert.equal(node.name, await page.locator("h1").textContent());
             if (route === "microscope") {
               assert.deepEqual(node.areaServed, { "@type": "City", name: "Дніпро" });
-              const people = graph.filter((entry) => entry["@type"] === "Person").map((entry) => ({ "@id": entry["@id"] }));
-              assert.deepEqual(node.provider, people.length ? [{ "@id": "https://dentix.ua/#dentist" }, ...people] : { "@id": "https://dentix.ua/#dentist" });
+              const people = graph.filter((entry) => entry["@type"] === "Person");
+              assert.deepEqual(node.provider, { "@id": "https://dentix.ua/#dentist" });
+              assert.deepEqual(graph.find((entry) => entry["@type"] === "Dentist").employee, people.map((entry) => ({ "@id": entry["@id"] })));
+              assert.ok(people.every((entry) => entry.worksFor?.["@id"] === "https://dentix.ua/#dentist"));
             }
             assert.doesNotMatch(JSON.stringify(graph), /QA price|Offer|Review|FAQPage|MedicalProcedure/);
           } else assert.equal(await schema.count(), 0);

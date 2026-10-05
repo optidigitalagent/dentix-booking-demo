@@ -10,6 +10,10 @@ const clinic = Object.fromEntries([...source.matchAll(/^  (\w+): "([^"]*)",/gm)]
 clinic.logo = "/assets/logo.png";
 const doctor = (id: string, role: string) => ({ id, role, name: `Fixture ${id}`, photo: "/assets/doctor.webp", alt: "", objectPosition: "center" });
 const team = [doctor("a", "Лікар-терапевт, ендодонтист, мікроскопіст"), doctor("b", "Лікар-терапевт, гігієніст"), doctor("c", "ендодонтист"), doctor("d", "Лікар-ортодонт")];
+const assertQuestionLinkScope = (route: TherapyRoute, html: string) => {
+  const nav = html.match(/<nav class="entity-links" aria-label="На цій сторінці">([\s\S]*?)<\/nav>/)?.[1] ?? "";
+  assert.equal((nav.match(/<a href="#service-questions">Питання<\/a>/g) ?? []).length, route === "microscope" ? 1 : 0);
+};
 
 test("doctor selection uses current roles and requires both microscope roles", () => {
   assert.deepEqual(selectTherapyDoctors("therapy", team).map(({ id }) => id), ["a", "b"]);
@@ -37,10 +41,17 @@ test("service graph and breadcrumb match visible route copy and selected managed
     const graph = buildEntitySchema(route, clinic as any, team)["@graph"];
     const service = graph.find((node) => node["@type"] === "Service");
     assert.deepEqual(service, { "@type": "Service", "@id": url + "#service", name: page.h1, url, description: page.answer,
-      provider: route === "microscope" ? [{ "@id": "https://dentix.ua/#dentist" }, { "@id": "https://dentix.ua/#person-a" }] : { "@id": "https://dentix.ua/#dentist" },
+      provider: { "@id": "https://dentix.ua/#dentist" },
       ...(route === "microscope" ? { areaServed: { "@type": "City", name: "Дніпро" } } : {}),
     });
     assert.deepEqual(graph.filter((node) => node["@type"] === "Person").map((node) => node.name), selectTherapyDoctors(route, team).map(({ name }) => name));
+    if (route === "microscope") {
+      const clinicNode = graph.find((node) => node["@type"] === "Dentist");
+      const people = graph.filter((node) => node["@type"] === "Person");
+      assert.deepEqual(clinicNode?.employee, people.map((person) => ({ "@id": person["@id"] })));
+      assert.ok(people.every((person) => JSON.stringify(person.worksFor) === JSON.stringify({ "@id": "https://dentix.ua/#dentist" })));
+      assert.ok(people.every((person) => JSON.stringify(service?.provider) !== JSON.stringify({ "@id": person["@id"] })));
+    }
     const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList")?.itemListElement as { position: number; name: string; item: string }[];
     assert.equal(crumbs.length, route === "therapy" ? 2 : 3);
     assert.equal(crumbs.at(-1)?.name, page.label);
@@ -79,6 +90,14 @@ test("real SSR renders fallback with a configured content endpoint and zero fetc
     for (const route of Object.keys(therapyPages) as TherapyRoute[]) {
       const html = render(route);
       assert.ok(html.includes(therapyPages[route].h1));
+      assertQuestionLinkScope(route, html);
+      if (route !== "microscope") {
+        const mutated = html.replace('href="#related-services">Пов’язані послуги</a>', 'href="#service-questions">Питання</a><a href="#related-services">Пов’язані послуги</a>');
+        assert.throws(() => assertQuestionLinkScope(route, mutated), `${route} rejects a microscope-only nav link`);
+      } else {
+        const mutated = html.replace('<a href="#service-questions">Питання</a>', "");
+        assert.throws(() => assertQuestionLinkScope(route, mutated), "microscope route requires its question link");
+      }
       for (const row of selectTherapyPrices(route, priceBlocks)) assert.ok(html.includes(row.cost));
       if (route === "microscope") {
         assert.equal((html.match(/id="service-answer"/g) ?? []).length, 1);
@@ -93,6 +112,10 @@ test("real SSR renders fallback with a configured content endpoint and zero fetc
         assert.ok(html.includes('>Записатися</button>'));
         assert.ok(html.includes("Відкриття цього вікна чи перехід за посиланням не резервує час прийому."));
         assert.ok(!html.includes("Даша Шаповаленко"));
+        assert.ok(html.includes('href="#service-questions">Питання</a>'));
+      } else {
+        assert.ok(!html.includes('href="#service-questions">Питання</a>'));
+        assert.ok(!html.includes('class="section therapy-evidence"'));
       }
     }
     assert.equal(fetches, 0);

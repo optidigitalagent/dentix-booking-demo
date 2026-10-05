@@ -162,10 +162,12 @@ def verify_artifact(root):
             require(services[0]['name']==h1[0] and services[0]['description']==texts(doc,ident='service-answer')[0], 'Visible Service parity')
             require(attribute(doc,'section','id','service-prices','data-content-source')==['local-fallback'], 'Managed price fallback missing')
             if route['key']=='microscope':
-                people=[{'@id':n['@id']} for n in nodes if n.get('@type')=='Person']
-                provider=[{'@id':ORIGIN+'/#dentist'},*people] if people else {'@id':ORIGIN+'/#dentist'}
-                require(services[0].get('provider')==provider and services[0].get('areaServed')=={'@type':'City','name':'Дніпро'}, 'Microscope doctor/city Service parity')
-                require(len(doc.all(cls='doc'))==len(people), 'Microscope visible clinician parity')
+                people=[n for n in nodes if n.get('@type')=='Person']
+                clinic=next(n for n in nodes if n.get('@type')=='Dentist')
+                visible=[(texts(n,'h3'),texts(n,cls='doc-role')) for n in doc.all(cls='doc')]
+                require(services[0].get('provider')=={'@id':ORIGIN+'/#dentist'} and services[0].get('areaServed')=={'@type':'City','name':'Дніпро'}, 'Microscope clinic/city Service parity')
+                require(len(visible)==len(people) and all(([p.get('name')],[p.get('jobTitle')])==v and p.get('worksFor')=={'@id':ORIGIN+'/#dentist'} for p,v in zip(people,visible)), 'Microscope visible clinician/worksFor parity')
+                require(clinic.get('employee')==[{'@id':p['@id']} for p in people], 'Microscope clinic employee parity')
             if route['key'] in ['surgery','extraction','wisdom','implantation','prosthetics']:
                 require(not doc.all(cls='doc') and not any(n.get('@type')=='Person' for n in nodes), 'Unapproved clinician')
         titles.extend(title); descriptions.extend(desc); headings.extend(h1)
@@ -229,6 +231,8 @@ def review_package(root):
             'clinicians':[{'name':texts(n,'h3'),'role':texts(n,cls='doc-role'),'description':texts(n,cls='doc-description')} for n in doc.all(cls='doc')],
             'clinician_state':'DISPLAYED' if doc.all(cls='doc') else 'NO_CLINICIAN_DISPLAYED', 'team_copy':texts(doc,ident='team'),
             'schema_service':[{'name':n['name'],'description':n['description'], **({'provider':n['provider'],'areaServed':n['areaServed']} if route['key']=='microscope' else {})} for n in nodes if n.get('@type')=='Service'],
+            **({'schema_people':[{'@id':n['@id'],'name':n['name'],'jobTitle':n['jobTitle'],'worksFor':n['worksFor']} for n in nodes if n.get('@type')=='Person'],
+                'schema_clinic_employee':next(n for n in nodes if n.get('@type')=='Dentist')['employee']} if route['key']=='microscope' else {}),
             'exact_visible_blocks':[{'tag':n.tag,'text':n.visible()} for n in doc.all() if n.tag in ['h1','h2','h3','p','li','summary','figcaption'] and n.visible()],
             'source_keys':source_keys,'copy_source_sha':git('log','-1','--format=%H','--','src/data','src/page-metadata.ts','src/components/TeamSection.tsx'),
             'copy_change_date':git('log','-1','--format=%cI','--','src/data','src/page-metadata.ts','src/components/TeamSection.tsx'),

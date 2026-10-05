@@ -50,12 +50,18 @@ class ReleaseTests(unittest.TestCase):
         reviewed=release.read_json(release.ROOT/'ops/review/professional-review.json')
         self._assert_professional_review(packet,reviewed)  # Legitimate conversion delta.
         mutations=[
+            ('answer',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['visible_answer'].__setitem__(0,'Changed answer')),
+            ('scope',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['scope'].__setitem__(0,'Changed scope')),
             ('exact_visible_blocks',lambda p: p['pages'][4]['exact_visible_blocks'][0].update(text='Changed clinical heading')),
             ('team_copy',lambda p: p['pages'][0]['team_copy'].__setitem__(0,'Changed doctor/team copy')),
             ('prices',lambda p: p['pages'][10]['prices'][0]['cost'].__setitem__(0,'0 грн')),
             ('clinicians',lambda p: p['pages'][1]['clinicians'][0]['name'].__setitem__(0,'Changed clinician')),
             ('schema_service',lambda p: p['pages'][4]['schema_service'][0].update(description='Changed clinical Schema')),
             ('microscope_provider',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['schema_service'][0].update(provider={'@id':'https://foreign.example/#doctor'})),
+            ('doctor_as_service_provider',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['schema_service'][0].update(provider=[{'@id':'https://dentix.ua/#dentist'},{'@id':'https://dentix.ua/#person-albert-podolyansky'}])),
+            ('area_served',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['schema_service'][0].update(areaServed={'@type':'City','name':'Київ'})),
+            ('doctor_works_for',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['schema_people'][0].update(worksFor={'@id':'https://foreign.example/#dentist'})),
+            ('clinic_employee',lambda p: next(page for page in p['pages'] if page['url'].endswith('/lechenie-pod-mikroskopom/'))['schema_clinic_employee'].__setitem__(0,{'@id':'https://foreign.example/#person'})),
         ]
         for name,mutate in mutations:
             with self.subTest(field=name):

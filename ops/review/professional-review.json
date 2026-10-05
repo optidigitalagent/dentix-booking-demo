@@ -9,7 +9,7 @@
     "src/PatientDemo.tsx": "d2ab001cc56beae0acefb5ce1d074831ef5d594b57daaa306aeef47df8af5671",
     "src/PriceDemo.tsx": "f79fe6e187029c002b06864ae30a3ed2bfaf59554066acc6f0af46ccfa1393bb",
     "src/SurgeryPage.tsx": "33dccf9b653f5f089877af6f49a0efadebbb9faa6e172dc2f4912d94235698fe",
-    "src/TherapyPage.tsx": "4578006abc276bcfae32178147f45634aaab377231a7b92a82e11a9cbe535ca0",
+    "src/TherapyPage.tsx": "c216b0f468cea2579bdc7abd890941edf8a581fb2fed305086672d162c9eb0e3",
     "src/admin/AdminCrm.tsx": "dc504d2abf0ea77257e73d4af712a6ecbf8a22f21ec56679ffc1b133641884a9",
     "src/build-profile.ts": "11a3141679ba546b290264df3090ea181265f42730ae18d1ffcff22d0dd4d6ed",
     "src/components/AboutSection.tsx": "1d33c0c9cab4beba300a917363db47478bc0931a601180638ff9b34b2bc795fa",
@@ -62,7 +62,7 @@
     "src/lib/booking-types.ts": "85c077b9daef1bf84d57318066df006951c2dbf2873fa611209343639e1e079a",
     "src/lib/booking-validation.ts": "91db8c6f635722e51d4ad649e4fd469a013b272386458391fbeafae522a2670f",
     "src/lib/demo-booking-client.ts": "6e12242d43ca7ec5009dbfe2db8f32006d3e03efd2a1d1e6b699bf2ba6a23dba",
-    "src/lib/entity-schema.ts": "175e4a3bc859fe33f330b473be76d06dd34f0f951ffdf9d008d777c208b1cdee",
+    "src/lib/entity-schema.ts": "a94b60f1d9189c9b6bef648bd2a11723694f3760e76c6e70ddd70fa238695603",
     "src/lib/google-sheets-content.ts": "e63227a3d124c5e99b8962986d038b51a42eebe816f8c753f3c95b5a210f976a",
     "src/lib/intake-status.ts": "68c99ed02aed234f5266d4437b60b72597675f73101aebc40e85111bcc1a4172",
     "src/lib/site-href.ts": "73f2dccc390f01d7caa9866c29dcdd8e2f5a54fcc38a6cf794758a7ee32d72dd",
@@ -1946,18 +1946,28 @@
         {
           "name": "Лікування каналів під мікроскопом у Дніпрі",
           "description": "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста.",
-          "provider": [
-            {
-              "@id": "https://dentix.ua/#dentist"
-            },
-            {
-              "@id": "https://dentix.ua/#person-albert-podolyansky"
-            }
-          ],
+          "provider": {
+            "@id": "https://dentix.ua/#dentist"
+          },
           "areaServed": {
             "@type": "City",
             "name": "Дніпро"
           }
+        }
+      ],
+      "schema_people": [
+        {
+          "@id": "https://dentix.ua/#person-albert-podolyansky",
+          "name": "Подолянский Альберт Альбертович",
+          "jobTitle": "Лікар-терапевт, ендодонтист, мікроскопіст",
+          "worksFor": {
+            "@id": "https://dentix.ua/#dentist"
+          }
+        }
+      ],
+      "schema_clinic_employee": [
+        {
+          "@id": "https://dentix.ua/#person-albert-podolyansky"
         }
       ],
       "exact_visible_blocks": [

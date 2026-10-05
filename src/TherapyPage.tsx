@@ -32,7 +32,7 @@ export function TherapyPage({ route }: { route: TherapyRoute }) {
             <BookingButton className="btn btn-ghost" requestedInterest={page.label}>Узгодити прийом</BookingButton>
           </div>
           <nav className="entity-links" aria-label="На цій сторінці">
-            {microscope && <a href="#service-answer">Послуги</a>}<a href="#service-prices">Вартість послуг</a><a href="#team">Лікарі</a><a href="#service-questions">Питання</a><a href="#related-services">Пов’язані послуги</a>
+            {microscope && <a href="#service-answer">Послуги</a>}<a href="#service-prices">Вартість послуг</a><a href="#team">Лікарі</a>{microscope && <a href="#service-questions">Питання</a>}<a href="#related-services">Пов’язані послуги</a>
           </nav>
         </div></div>
       </section>
