@@ -7,9 +7,9 @@
     "src/ImplantProstheticsPage.tsx": "25f25b3df7a9ff8da961ac07d5a6ea9524d76c4442da27856b6ae0d6c12f071f",
     "src/PatientApp.tsx": "33bd5cabb18e942e8e3e9df8835f2973d4b5b54b05425c42d2322ad20d64d862",
     "src/PatientDemo.tsx": "d2ab001cc56beae0acefb5ce1d074831ef5d594b57daaa306aeef47df8af5671",
-    "src/PriceDemo.tsx": "27e05dce15e50225c27a30a6c80517fb763e546201bd2ef5b0b96e01275d3ce9",
-    "src/SurgeryPage.tsx": "148d2f47963d4023dacc13386d302baf10b95311d5b0a220c6f310cbaa4c6c26",
-    "src/TherapyPage.tsx": "10ea069361e9f2b9315979c55ab96406518bc7a89cca210661fa5a31f647b5c8",
+    "src/PriceDemo.tsx": "f79fe6e187029c002b06864ae30a3ed2bfaf59554066acc6f0af46ccfa1393bb",
+    "src/SurgeryPage.tsx": "33dccf9b653f5f089877af6f49a0efadebbb9faa6e172dc2f4912d94235698fe",
+    "src/TherapyPage.tsx": "c216b0f468cea2579bdc7abd890941edf8a581fb2fed305086672d162c9eb0e3",
     "src/admin/AdminCrm.tsx": "dc504d2abf0ea77257e73d4af712a6ecbf8a22f21ec56679ffc1b133641884a9",
     "src/build-profile.ts": "11a3141679ba546b290264df3090ea181265f42730ae18d1ffcff22d0dd4d6ed",
     "src/components/AboutSection.tsx": "1d33c0c9cab4beba300a917363db47478bc0931a601180638ff9b34b2bc795fa",
@@ -18,12 +18,12 @@
     "src/components/CasesSection.tsx": "e3f95557976ed9e1e22704d34134a0180b33744dd415bca3eb2ebf35bdce853f",
     "src/components/CertificatesSection.tsx": "50ae63727406876c8d5e0b18e8334ab3a81d33a3f1b75067ed215f24665dedaf",
     "src/components/ContactInfoSection.tsx": "90d4f8f4be495023b56caba51d23af29825abf6e5e283a7264f8f489f1b3eb12",
-    "src/components/ContactSection.tsx": "e5051afeb32d01ca62516dbb4b98b943e7c79e10c15e5198cea1be481b50fd99",
+    "src/components/ContactSection.tsx": "82debaaaea9b5c7749a69d162486be7d9f73935082bb6936fa0dfa47bbbaab69",
     "src/components/EntitySchema.tsx": "30d499d4051f7702587b0f84e48a0fd482aead33dd4b4558af7e946af8a62977",
     "src/components/FaqList.tsx": "d59072e53997b01f8ae467f396ef89dfbea64953fe425bffd585ec0e0d00b727",
-    "src/components/Footer.tsx": "1170945150cabdf08b08411f0d33d3c06180644aa54a9dc28fbcc603d6a1f39f",
-    "src/components/Header.tsx": "07c24b601859cc88d59a10cef9b9c4e595fb7b8dee0f4e9272015c774cc518b3",
-    "src/components/Hero.tsx": "f29e9815dc17e939bc2a8a3c874af47280ce1040bc9213a16c06e2401cf28d98",
+    "src/components/Footer.tsx": "888d7cc998cd28b9a2fb2e80647c932dbdc7127e2159e0abe2792bfe7b5be493",
+    "src/components/Header.tsx": "21b61c563dfb9ebd254e737e39e55244a05cb54cfbaa6d8e7509bd772c674611",
+    "src/components/Hero.tsx": "cf86c471c6dfd5be3c9e99fe6133007ced6e9466aac01f1f6ce3989d9bbf26a3",
     "src/components/HeroVideo.tsx": "76aed7f738cd170e4a87aa2dbc63ca19f810d1fcd14b644bb1bbecb084968cc4",
     "src/components/InfoCards.tsx": "86349c8f4779d5f38fc0e7698152a9d65de0bfbc38dc2dd2337f4ab038f91915",
     "src/components/LeadForm.tsx": "3b860bc3ace398e8c5d5aa10e124ac2fbe33d8589dedb61bd258dfc6f6afe827",
@@ -32,13 +32,16 @@
     "src/components/Reveal.tsx": "65668616d3c5c61afb86b0cf2ba72bac4702393fc6ce2b73c0e4501b7f2ddd46",
     "src/components/ReviewsSection.tsx": "bf613f8049d0c104d1a443434e1a2b10bb7a7a0ee647d9fa55497815efff56c8",
     "src/components/SectionHeading.tsx": "f90fb8d957afbecb4f10ad7768b9d82f33a82392c4fd650da19ddb0bb5650730",
-    "src/components/ServicesGrid.tsx": "9c12058221c80b8ddd083ee56a2990823777078c64bcc382c462b3d5a9d69a5f",
+    "src/components/ServicesGrid.tsx": "a22b7b2a74b8256a7df9c65d890564ac476bc77ed134a5d147b3ed38a75c4f15",
     "src/components/SiteLayout.tsx": "7302d264329019563f7f25bded9a4fc3d4d8fb5e2cc2a3a4ee62b697b804eb84",
     "src/components/StatsRow.tsx": "8fb68ddf760222de48ad84a501d78343e5fce2547cae5c681c309a541ad73603",
     "src/components/StickyCallButton.tsx": "52b1632be5f6bdef353632e37fb69742e8e8711786b6300f629e0d1f36fcf79c",
-    "src/components/TeamSection.tsx": "f77a4245b2eb288705ac1ee99c5b7f53141eeb89501679aeb629366d6862333e",
-    "src/components/booking/BookingContext.tsx": "28aaf5f56f765ac4527e4b957e7d460e5551b64b6a0fefcc52b8bae6aa0c6b9b",
-    "src/components/booking/BookingDrawer.tsx": "38f3ce772b62d901abb0404837d1bfa52bf948f7ce25dc8572f655138f547f50",
+    "src/components/TeamSection.tsx": "4941a953ffa21c6f29615fc618c2444ee9951e998d4b9dae1fcd4fd8f070fb00",
+    "src/components/TherapyEvidenceSummary.tsx": "0d2e5fe6d9466f72e497f97b95a943aa10cff014cd7885bebfcaaf90d25a0183",
+    "src/components/booking/BookingContext.tsx": "f2bc9570e4dfa907bb88a249d6950c199b4d87cf0b543ca625721125886e25d7",
+    "src/components/booking/BookingDrawer.tsx": "e5cae51ca039c1a60cd3fec7d956238ae39945e5d3d70da8fb920bcb47817f67",
+    "src/components/booking/ContactActions.tsx": "4765a7d425649d07d7e793135cb537769e54836e6d76a5edd758e2d20efb1715",
+    "src/components/booking/ContactBridgeDrawer.tsx": "adc27ec7a162c7c5ad976055d9283183fefeaa74e453c29a4a9bcc828455cb36",
     "src/components/booking/useBookingViewport.ts": "7ee9ff27ba08c788df964481ec34f2b8e64bf6f97489708f82a4d779c6af3d0c",
     "src/data/about.ts": "4aad4a57ef0366dc61055ff57305cfb8938e7ac48bf8dd76a36400b1236ca4d5",
     "src/data/cases.ts": "0cdd59f40dccd98faf25be1c3a6a4757cef48184f288ce400124a0231ac7665d",
@@ -49,7 +52,7 @@
     "src/data/prices.ts": "67ffe48d8dcabd9decea184b9ed49caf4bed2e89035fc16b2e0038dc6130a8cf",
     "src/data/reviews.ts": "291c50cdcd9031cac1b73f59638907d93fc9a0daa3eebe20f85b4c35ed917b4f",
     "src/data/services.ts": "229be6b77a2431c79e5ffcd95a8a7f7f82e3725f2dc547a17b90fb2579368464",
-    "src/data/site.ts": "87a3e832433bd3058c328a7d75e6506b12f5e09e4386f5ad24257af5ae1d696d",
+    "src/data/site.ts": "2fc7c1f5922840bf4fcbfd4d9c34416105a9e96d01b8ab114100846fb58b37aa",
     "src/data/surgery-pages.ts": "13c235e1b2fafa932bd167f332718c8b7da2a4251a8fff44f948c955350bb58a",
     "src/data/therapy-pages.ts": "d60f1131b97f04fabb35f3ea694cccb2fa9e316d799ab09fbdf2eaf0b6681869",
     "src/entry-admin.tsx": "6356ed4cdf67adae2431f386c9dd87ba0c30631a7968c6ba1017f5590fe51bdb",
@@ -59,7 +62,7 @@
     "src/lib/booking-types.ts": "85c077b9daef1bf84d57318066df006951c2dbf2873fa611209343639e1e079a",
     "src/lib/booking-validation.ts": "91db8c6f635722e51d4ad649e4fd469a013b272386458391fbeafae522a2670f",
     "src/lib/demo-booking-client.ts": "6e12242d43ca7ec5009dbfe2db8f32006d3e03efd2a1d1e6b699bf2ba6a23dba",
-    "src/lib/entity-schema.ts": "6ea728b29167684212bda0eadd517c2ffe7073e8e93442d95534977390b33785",
+    "src/lib/entity-schema.ts": "a94b60f1d9189c9b6bef648bd2a11723694f3760e76c6e70ddd70fa238695603",
     "src/lib/google-sheets-content.ts": "e63227a3d124c5e99b8962986d038b51a42eebe816f8c753f3c95b5a210f976a",
     "src/lib/intake-status.ts": "68c99ed02aed234f5266d4437b60b72597675f73101aebc40e85111bcc1a4172",
     "src/lib/site-href.ts": "73f2dccc390f01d7caa9866c29dcdd8e2f5a54fcc38a6cf794758a7ee32d72dd",
@@ -368,15 +371,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "h2",
@@ -429,8 +440,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -570,15 +581,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -595,8 +614,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -693,15 +712,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -718,8 +745,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -1120,15 +1147,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -1145,8 +1180,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -1458,15 +1493,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -1485,8 +1528,8 @@
         "src/data/therapy-pages.ts:therapyPages.therapy",
         "src/TherapyPage.tsx"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -1751,15 +1794,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -1778,8 +1829,8 @@
         "src/data/therapy-pages.ts:therapyPages.caries",
         "src/TherapyPage.tsx"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -1801,7 +1852,7 @@
         "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста."
       ],
       "scope": [
-        "Послуги DENTIXКанали та мікроскопЛікування каналівЛікування під мікроскопомПерелікування кореневих каналів під мікроскопомЯк узгодити план лікуванняКонсультація та огляд. Прийом узгоджується за попереднім записом телефоном.Діагностика. План лікування складають після огляду й діагностики.Індивідуальний план. Його склад підтверджує клініка.Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+        "Послуги DENTIXКанали та мікроскопУ DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста.Лікування каналівЛікування під мікроскопомПерелікування кореневих каналів під мікроскопомЕндодонтист, мікроскопіст DENTIXПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістУсі лікарі DENTIX →Вартість послугПозиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка після огляду й діагностики.Консультація стоматологаБезкоштовноПрицільний рентген200 грнЛікування каналіввід 1 000 грнЛікування під мікроскопомвід 5 000 грнПерелікування кореневих каналів під мікроскопомвід 5 000 грнПовний прайс DENTIX →ЗаписатисяКонтакти та графік роботи →"
       ],
       "questions": [
         {
@@ -1889,12 +1940,34 @@
       ],
       "clinician_state": "DISPLAYED",
       "team_copy": [
-        "КомандаЕндодонтист, мікроскопіст DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Подолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістОбрати лікаря"
+        "Ендодонтист, мікроскопіст DENTIXПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістУсі лікарі DENTIX →"
       ],
       "schema_service": [
         {
           "name": "Лікування каналів під мікроскопом у Дніпрі",
-          "description": "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста."
+          "description": "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста.",
+          "provider": {
+            "@id": "https://dentix.ua/#dentist"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Дніпро"
+          }
+        }
+      ],
+      "schema_people": [
+        {
+          "@id": "https://dentix.ua/#person-albert-podolyansky",
+          "name": "Подолянский Альберт Альбертович",
+          "jobTitle": "Лікар-терапевт, ендодонтист, мікроскопіст",
+          "worksFor": {
+            "@id": "https://dentix.ua/#dentist"
+          }
+        }
+      ],
+      "schema_clinic_employee": [
+        {
+          "@id": "https://dentix.ua/#person-albert-podolyansky"
         }
       ],
       "exact_visible_blocks": [
@@ -1907,12 +1980,12 @@
           "text": "Лікування каналів під мікроскопом у Дніпрі"
         },
         {
-          "tag": "p",
-          "text": "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста."
-        },
-        {
           "tag": "h2",
           "text": "Канали та мікроскоп"
+        },
+        {
+          "tag": "p",
+          "text": "У DENTIX у Дніпрі доступні лікування каналів, лікування під мікроскопом і перелікування кореневих каналів під мікроскопом. Тут зібрані ці послуги, їхні позиції прайсу та лікар із роллю ендодонтиста й мікроскопіста."
         },
         {
           "tag": "li",
@@ -1928,23 +2001,15 @@
         },
         {
           "tag": "h2",
-          "text": "Як узгодити план лікування"
+          "text": "Ендодонтист, мікроскопіст DENTIX"
         },
         {
-          "tag": "li",
-          "text": "Консультація та огляд. Прийом узгоджується за попереднім записом телефоном."
+          "tag": "h3",
+          "text": "Подолянский Альберт Альбертович"
         },
         {
-          "tag": "li",
-          "text": "Діагностика. План лікування складають після огляду й діагностики."
-        },
-        {
-          "tag": "li",
-          "text": "Індивідуальний план. Його склад підтверджує клініка."
-        },
-        {
-          "tag": "li",
-          "text": "Обсяг і вартість. Остаточну вартість послуг уточнюйте у клініці."
+          "tag": "p",
+          "text": "Лікар-терапевт, ендодонтист, мікроскопіст"
         },
         {
           "tag": "h2",
@@ -1952,7 +2017,7 @@
         },
         {
           "tag": "p",
-          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка."
+          "text": "Позиції з поточного прайсу DENTIX. Остаточну вартість і склад індивідуального плану підтверджує клініка після огляду й діагностики."
         },
         {
           "tag": "li",
@@ -1973,22 +2038,6 @@
         {
           "tag": "li",
           "text": "Перелікування кореневих каналів під мікроскопомвід 5 000 грн"
-        },
-        {
-          "tag": "h2",
-          "text": "Ендодонтист, мікроскопіст DENTIX"
-        },
-        {
-          "tag": "p",
-          "text": "Прийом ведуть лікарі клініки за відповідними напрямками лікування."
-        },
-        {
-          "tag": "h3",
-          "text": "Подолянский Альберт Альбертович"
-        },
-        {
-          "tag": "p",
-          "text": "Лікар-терапевт, ендодонтист, мікроскопіст"
         },
         {
           "tag": "h2",
@@ -2044,15 +2093,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -2069,10 +2126,12 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection",
         "src/data/therapy-pages.ts:therapyPages.microscope",
-        "src/TherapyPage.tsx"
+        "src/TherapyPage.tsx",
+        "src/components/TherapyEvidenceSummary.tsx:TherapyEvidenceSummary",
+        "src/lib/entity-schema.ts:buildEntitySchema"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -2323,15 +2382,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -2350,8 +2417,8 @@
         "src/data/surgery-pages.ts:surgeryPages.surgery",
         "src/SurgeryPage.tsx"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -2593,15 +2660,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -2620,8 +2695,8 @@
         "src/data/surgery-pages.ts:surgeryPages.extraction",
         "src/SurgeryPage.tsx"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -2851,15 +2926,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -2878,8 +2961,8 @@
         "src/data/surgery-pages.ts:surgeryPages.wisdom",
         "src/SurgeryPage.tsx"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -3104,15 +3187,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -3131,8 +3222,8 @@
         "src/data/implant-prosthetics-pages.ts:implantProstheticsPages.implantation",
         "src/ImplantProstheticsPage.tsx"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -3357,15 +3448,23 @@
         },
         {
           "tag": "p",
-          "text": "Зворотний зв’язок"
+          "text": "Зв’язок з адміністратором"
         },
         {
           "tag": "h3",
-          "text": "Залишити заявку"
+          "text": "Зв’язатися для запису"
         },
         {
           "tag": "p",
-          "text": "Перевіряємо доступність форми…"
+          "text": "Оберіть зручний спосіб зв’язку з адміністратором. Візит буде підтверджено після розмови."
+        },
+        {
+          "tag": "p",
+          "text": "Відкриття цього вікна чи перехід за посиланням не резервує час прийому."
+        },
+        {
+          "tag": "p",
+          "text": "Не надсилайте медичні дані у повідомленнях."
         },
         {
           "tag": "p",
@@ -3384,8 +3483,8 @@
         "src/data/implant-prosthetics-pages.ts:implantProstheticsPages.prosthetics",
         "src/ImplantProstheticsPage.tsx"
       ],
-      "copy_source_sha": "37def83fdd4f4ad272e13e855b3352dfa7cedbff",
-      "copy_change_date": "2026-09-14T14:56:34+03:00",
+      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
+      "copy_change_date": "2026-10-01T17:38:36+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",

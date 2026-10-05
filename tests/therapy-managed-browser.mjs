@@ -87,6 +87,13 @@ try {
             const node = graph.find((node) => node["@type"] === "Service");
             assert.equal(node.description, await page.locator("#service-answer").textContent());
             assert.equal(node.name, await page.locator("h1").textContent());
+            if (route === "microscope") {
+              assert.deepEqual(node.areaServed, { "@type": "City", name: "Дніпро" });
+              const people = graph.filter((entry) => entry["@type"] === "Person");
+              assert.deepEqual(node.provider, { "@id": "https://dentix.ua/#dentist" });
+              assert.deepEqual(graph.find((entry) => entry["@type"] === "Dentist").employee, people.map((entry) => ({ "@id": entry["@id"] })));
+              assert.ok(people.every((entry) => entry.worksFor?.["@id"] === "https://dentix.ua/#dentist"));
+            }
             assert.doesNotMatch(JSON.stringify(graph), /QA price|Offer|Review|FAQPage|MedicalProcedure/);
           } else assert.equal(await schema.count(), 0);
           assert.deepEqual(errors, []);

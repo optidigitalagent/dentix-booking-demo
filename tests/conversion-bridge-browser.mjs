@@ -55,7 +55,7 @@ try {
               if (service) return service.querySelector('h3')?.textContent?.trim();
               const price = element.closest('.price-block');
               if (price) return price.querySelector('.sec-kicker')?.textContent?.trim();
-              if (element.closest('.hero-actions')) return routeLabel;
+              if (element.closest('.hero-actions, .therapy-evidence-actions')) return routeLabel;
               return null;
             }, routeInterest[route.key] ?? null);
             await trigger.scrollIntoViewIfNeeded();
