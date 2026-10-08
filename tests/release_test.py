@@ -75,6 +75,10 @@ class ReleaseTests(unittest.TestCase):
                 home.write_text(bad)
                 with self.assertRaises(ValueError):release.verify_artifact(artifact)
             home.write_text(original)
+            implant=artifact/'implantatsiya/index.html';approved=implant.read_text()
+            implant.write_text(approved.replace('Сергієнко Дмитро Андрійович','Непідтверджений лікар'))
+            with self.assertRaisesRegex(ValueError,'Unapproved clinician'):release.verify_artifact(artifact)
+            implant.write_text(approved)
             (artifact/'extra.html').write_text(original)
             with self.assertRaises(ValueError):release.verify_artifact(artifact)
     def test_review_prices_and_matching_clinicians(self):

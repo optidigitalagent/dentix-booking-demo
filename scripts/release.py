@@ -169,7 +169,11 @@ def verify_artifact(root):
                 require(len(visible)==len(people) and all(([p.get('name')],[p.get('jobTitle')])==v and p.get('worksFor')=={'@id':ORIGIN+'/#dentist'} for p,v in zip(people,visible)), 'Microscope visible clinician/worksFor parity')
                 require(clinic.get('employee')==[{'@id':p['@id']} for p in people], 'Microscope clinic employee parity')
             if route['key'] in ['surgery','extraction','wisdom','implantation','prosthetics']:
-                require(not doc.all(cls='doc') and not any(n.get('@type')=='Person' for n in nodes), 'Unapproved clinician')
+                approved = [] if route['key']=='prosthetics' else [('Сергієнко Дмитро Андрійович','Стоматолог-хірург, імплантолог')]
+                visible = [(texts(n,'h3'),texts(n,cls='doc-role')) for n in doc.all(cls='doc')]
+                people = [n for n in nodes if n.get('@type')=='Person']
+                require(visible==[([name],[role]) for name,role in approved] and [(p.get('name'),p.get('jobTitle')) for p in people]==approved, 'Unapproved clinician')
+                require(all(p.get('worksFor')=={'@id':ORIGIN+'/#dentist'} for p in people), 'Clinician worksFor parity')
         titles.extend(title); descriptions.extend(desc); headings.extend(h1)
     require(all(len(set(values))==12 for values in [titles,descriptions,headings]), 'Nonunique head')
     locs=[n.text for n in ET.parse(root/'sitemap.xml').getroot().iter() if n.tag.endswith('}loc')]

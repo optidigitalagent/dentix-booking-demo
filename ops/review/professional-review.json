@@ -46,14 +46,14 @@
     "src/data/about.ts": "4aad4a57ef0366dc61055ff57305cfb8938e7ac48bf8dd76a36400b1236ca4d5",
     "src/data/cases.ts": "0cdd59f40dccd98faf25be1c3a6a4757cef48184f288ce400124a0231ac7665d",
     "src/data/certificates.ts": "bfed6cbb7151e8b3faec2fa33c8b245f5341b49c9cc637b748abcb73bff48e8c",
-    "src/data/doctors.ts": "fea45cec3a66530ad1417e19b35e02869a11ff5f6b0c3561f8d665b73493e890",
+    "src/data/doctors.ts": "78fe957ae7efef9a349b6b79438ba86717fd6bdccececa3247577cdf56efb191",
     "src/data/implant-prosthetics-pages.ts": "482c016fe1cb900e661a83fbc932d4ad7b0d971976bae498ae1a3e9aa637e323",
     "src/data/navigation.ts": "28e93bec7e142abd62e4ccd559037239962e7db09971f16be12f31137617287c",
     "src/data/prices.ts": "67ffe48d8dcabd9decea184b9ed49caf4bed2e89035fc16b2e0038dc6130a8cf",
     "src/data/reviews.ts": "291c50cdcd9031cac1b73f59638907d93fc9a0daa3eebe20f85b4c35ed917b4f",
     "src/data/services.ts": "229be6b77a2431c79e5ffcd95a8a7f7f82e3725f2dc547a17b90fb2579368464",
     "src/data/site.ts": "2fc7c1f5922840bf4fcbfd4d9c34416105a9e96d01b8ab114100846fb58b37aa",
-    "src/data/surgery-pages.ts": "13c235e1b2fafa932bd167f332718c8b7da2a4251a8fff44f948c955350bb58a",
+    "src/data/surgery-pages.ts": "5ae577830ce1834e94b9abb8e98634bc9d4bc9d1705c52620b281facb1633577",
     "src/data/therapy-pages.ts": "d60f1131b97f04fabb35f3ea694cccb2fa9e316d799ab09fbdf2eaf0b6681869",
     "src/entry-admin.tsx": "6356ed4cdf67adae2431f386c9dd87ba0c30631a7968c6ba1017f5590fe51bdb",
     "src/entry-server.tsx": "c2716bf0b5a9eb32fb511500355fcc058d4640c458118768fa950534ea8a3d6b",
@@ -117,11 +117,20 @@
             "Лікар-терапевт, гігієніст"
           ],
           "description": []
+        },
+        {
+          "name": [
+            "Сергієнко Дмитро Андрійович"
+          ],
+          "role": [
+            "Стоматолог-хірург, імплантолог"
+          ],
+          "description": []
         }
       ],
       "clinician_state": "DISPLAYED",
       "team_copy": [
-        "КомандаЛікарі DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Стасюк Станіслав ІгоровичЗасновник клініки та головний лікарОбрати лікаряГрисяк Лаура ВіталіївнаЛікар-ортодонт, гнатологОбрати лікаряПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістЛікування каналів під мікроскопомОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністТерапевтична стоматологіяОбрати лікаря"
+        "КомандаЛікарі DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Стасюк Станіслав ІгоровичЗасновник клініки та головний лікарОбрати лікаряГрисяк Лаура ВіталіївнаЛікар-ортодонт, гнатологОбрати лікаряПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістЛікування каналів під мікроскопомОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністТерапевтична стоматологіяОбрати лікаряСергієнко Дмитро АндрійовичСтоматолог-хірург, імплантологОбрати лікаря"
       ],
       "schema_service": [],
       "exact_visible_blocks": [
@@ -310,6 +319,14 @@
           "text": "Лікар-терапевт, гігієніст"
         },
         {
+          "tag": "h3",
+          "text": "Сергієнко Дмитро Андрійович"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматолог-хірург, імплантолог"
+        },
+        {
           "tag": "h2",
           "text": "Навчання та кваліфікація"
         },
@@ -440,8 +457,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -499,11 +516,20 @@
             "Лікар-терапевт, гігієніст"
           ],
           "description": []
+        },
+        {
+          "name": [
+            "Сергієнко Дмитро Андрійович"
+          ],
+          "role": [
+            "Стоматолог-хірург, імплантолог"
+          ],
+          "description": []
         }
       ],
       "clinician_state": "DISPLAYED",
       "team_copy": [
-        "КомандаЛікарі DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Стасюк Станіслав ІгоровичЗасновник клініки та головний лікарОбрати лікаряГрисяк Лаура ВіталіївнаЛікар-ортодонт, гнатологОбрати лікаряПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістЛікування каналів під мікроскопомОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністТерапевтична стоматологіяОбрати лікаря"
+        "КомандаЛікарі DENTIXПрийом ведуть лікарі клініки за відповідними напрямками лікування.Стасюк Станіслав ІгоровичЗасновник клініки та головний лікарОбрати лікаряГрисяк Лаура ВіталіївнаЛікар-ортодонт, гнатологОбрати лікаряПодолянский Альберт АльбертовичЛікар-терапевт, ендодонтист, мікроскопістЛікування каналів під мікроскопомОбрати лікаряГамаза Олена АнатоліївнаЛікар-терапевт, гігієністТерапевтична стоматологіяОбрати лікаряСергієнко Дмитро АндрійовичСтоматолог-хірург, імплантологОбрати лікаря"
       ],
       "schema_service": [],
       "exact_visible_blocks": [
@@ -560,6 +586,14 @@
           "text": "Лікар-терапевт, гігієніст"
         },
         {
+          "tag": "h3",
+          "text": "Сергієнко Дмитро Андрійович"
+        },
+        {
+          "tag": "p",
+          "text": "Стоматолог-хірург, імплантолог"
+        },
+        {
           "tag": "h2",
           "text": "Заплануйте візит до DENTIX"
         },
@@ -614,8 +648,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -745,8 +779,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -1180,8 +1214,8 @@
         "src/data/doctors.ts:doctors",
         "src/components/TeamSection.tsx:TeamSection"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -1528,8 +1562,8 @@
         "src/data/therapy-pages.ts:therapyPages.therapy",
         "src/TherapyPage.tsx"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -1829,8 +1863,8 @@
         "src/data/therapy-pages.ts:therapyPages.caries",
         "src/TherapyPage.tsx"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -2130,8 +2164,8 @@
         "src/components/TherapyEvidenceSummary.tsx:TherapyEvidenceSummary",
         "src/lib/entity-schema.ts:buildEntitySchema"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -2228,10 +2262,20 @@
           "note": []
         }
       ],
-      "clinicians": [],
-      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "clinicians": [
+        {
+          "name": [
+            "Сергієнко Дмитро Андрійович"
+          ],
+          "role": [
+            "Стоматолог-хірург, імплантолог"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
       "team_copy": [
-        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Сергієнко Дмитро АндрійовичСтоматолог-хірург, імплантологОбрати лікаря"
       ],
       "schema_service": [
         {
@@ -2325,8 +2369,12 @@
           "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
         },
         {
+          "tag": "h3",
+          "text": "Сергієнко Дмитро Андрійович"
+        },
+        {
           "tag": "p",
-          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+          "text": "Стоматолог-хірург, імплантолог"
         },
         {
           "tag": "h2",
@@ -2417,8 +2465,8 @@
         "src/data/surgery-pages.ts:surgeryPages.surgery",
         "src/SurgeryPage.tsx"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -2506,10 +2554,20 @@
           "note": []
         }
       ],
-      "clinicians": [],
-      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "clinicians": [
+        {
+          "name": [
+            "Сергієнко Дмитро Андрійович"
+          ],
+          "role": [
+            "Стоматолог-хірург, імплантолог"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
       "team_copy": [
-        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Сергієнко Дмитро АндрійовичСтоматолог-хірург, імплантологОбрати лікаря"
       ],
       "schema_service": [
         {
@@ -2603,8 +2661,12 @@
           "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
         },
         {
+          "tag": "h3",
+          "text": "Сергієнко Дмитро Андрійович"
+        },
+        {
           "tag": "p",
-          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+          "text": "Стоматолог-хірург, імплантолог"
         },
         {
           "tag": "h2",
@@ -2695,8 +2757,8 @@
         "src/data/surgery-pages.ts:surgeryPages.extraction",
         "src/SurgeryPage.tsx"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -2784,10 +2846,20 @@
           "note": []
         }
       ],
-      "clinicians": [],
-      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "clinicians": [
+        {
+          "name": [
+            "Сергієнко Дмитро Андрійович"
+          ],
+          "role": [
+            "Стоматолог-хірург, імплантолог"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
       "team_copy": [
-        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Сергієнко Дмитро АндрійовичСтоматолог-хірург, імплантологОбрати лікаря"
       ],
       "schema_service": [
         {
@@ -2869,8 +2941,12 @@
           "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
         },
         {
+          "tag": "h3",
+          "text": "Сергієнко Дмитро Андрійович"
+        },
+        {
           "tag": "p",
-          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+          "text": "Стоматолог-хірург, імплантолог"
         },
         {
           "tag": "h2",
@@ -2961,8 +3037,8 @@
         "src/data/surgery-pages.ts:surgeryPages.wisdom",
         "src/SurgeryPage.tsx"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -3053,10 +3129,20 @@
           ]
         }
       ],
-      "clinicians": [],
-      "clinician_state": "NO_CLINICIAN_DISPLAYED",
+      "clinicians": [
+        {
+          "name": [
+            "Сергієнко Дмитро Андрійович"
+          ],
+          "role": [
+            "Стоматолог-хірург, імплантолог"
+          ],
+          "description": []
+        }
+      ],
+      "clinician_state": "DISPLAYED",
       "team_copy": [
-        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Уточніть лікаря цього напрямку у клініці телефоном."
+        "КомандаЛікар напрямкуІнформацію про лікаря та прийом уточнюйте у клініці телефоном.Сергієнко Дмитро АндрійовичСтоматолог-хірург, імплантологОбрати лікаря"
       ],
       "schema_service": [
         {
@@ -3138,8 +3224,12 @@
           "text": "Інформацію про лікаря та прийом уточнюйте у клініці телефоном."
         },
         {
+          "tag": "h3",
+          "text": "Сергієнко Дмитро Андрійович"
+        },
+        {
           "tag": "p",
-          "text": "Уточніть лікаря цього напрямку у клініці телефоном."
+          "text": "Стоматолог-хірург, імплантолог"
         },
         {
           "tag": "h2",
@@ -3222,8 +3312,8 @@
         "src/data/implant-prosthetics-pages.ts:implantProstheticsPages.implantation",
         "src/ImplantProstheticsPage.tsx"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
@@ -3483,8 +3573,8 @@
         "src/data/implant-prosthetics-pages.ts:implantProstheticsPages.prosthetics",
         "src/ImplantProstheticsPage.tsx"
       ],
-      "copy_source_sha": "81cad9f2ca41771c37fb7f525df362629c82e22e",
-      "copy_change_date": "2026-10-01T17:38:36+03:00",
+      "copy_source_sha": "4d85beff1e12823981c2cc77ec453e2fa387fe83",
+      "copy_change_date": "2026-10-08T22:34:29+03:00",
       "decision": null,
       "allowed_decisions": [
         "APPROVE",
