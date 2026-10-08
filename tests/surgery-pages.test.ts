@@ -9,11 +9,12 @@ const source = fs.readFileSync("src/data/site.ts", "utf8");
 const clinic = Object.fromEntries([...source.matchAll(/^  (\w+): "([^"]*)",/gm)].map((match) => [match[1], match[2]]));
 clinic.logo = "/assets/logo.png";
 const doctor = (id: string, role: string) => ({ id, role, name: `Fixture ${id}`, photo: "/assets/doctor.webp", alt: "", objectPosition: "center" });
-const approvedRoles = [...fs.readFileSync("src/data/doctors.ts", "utf8").matchAll(/role: "([^"]+)"/g)].map((match, i) => doctor(String(i), match[1]));
+const approvedDoctors = [...fs.readFileSync("src/data/doctors.ts", "utf8").matchAll(/id: "([^"]+)",\s+name: "([^"]+)",\s+role: "([^"]+)"/g)].map((match) => ({ ...doctor(match[1], match[3]), name: match[2] }));
 
-test("approved fallback has no surgeon; only the exact visible surgeon role token matches", () => {
-  assert.equal(approvedRoles.length, 4);
-  assert.deepEqual(selectSurgeryDoctors(approvedRoles), []);
+test("approved fallback appends the supplied surgeon; only the exact visible surgeon role token matches", () => {
+  assert.deepEqual(approvedDoctors.map(({ id }) => id), ["stanislav-stasiuk", "laura-hrysiak", "albert-podolyansky", "olena-hamaza", "dmytro-serhiienko"]);
+  assert.deepEqual(selectSurgeryDoctors(approvedDoctors).map(({ id, name, role }) => ({ id, name, role })), [{ id: "dmytro-serhiienko", name: "Сергієнко Дмитро Андрійович", role: "Стоматолог-хірург, імплантолог" }]);
+  assert.deepEqual(selectSurgeryDoctors(approvedDoctors.slice(0, 4)), []);
   const team = [doctor("a", "Лікар-хірург"), doctor("b", "стоматолог, хірург"), doctor("c", "нейрохірург"), doctor("d", "помічник хірурга"), doctor("e", "хірургія"), doctor("f", "хірург")];
   assert.deepEqual(selectSurgeryDoctors(team).map(({ id }) => id), ["a", "b", "f"]);
   assert.deepEqual(selectSurgeryDoctors([]), []);
@@ -43,21 +44,21 @@ test("surgery uses exact shared managed rows without implantation or removed-row
   for (const file of ["src/data/surgery-pages.ts", "src/SurgeryPage.tsx"]) assert.doesNotMatch(fs.readFileSync(file, "utf8"), /\d[\d ]*\s*грн|cost\s*:/);
 });
 
-test("surgery schema has clinic provider, visible service parity, correct parent and no inferred Person", () => {
+test("surgery schema has clinic provider, visible service parity, correct parent and only matching people", () => {
   for (const route of Object.keys(surgeryPages) as SurgeryRoute[]) {
     const page = surgeryPages[route], url = "https://dentix.ua/" + page.path;
-    const graph = buildEntitySchema(route, clinic as any, approvedRoles)["@graph"];
-    assert.deepEqual(graph.filter((node) => node["@type"] === "Person"), []);
+    const graph = buildEntitySchema(route, clinic as any, approvedDoctors)["@graph"];
+    assert.deepEqual(graph.filter((node) => node["@type"] === "Person").map((node) => [node["@id"], node.name, node.jobTitle]), [["https://dentix.ua/#person-dmytro-serhiienko", "Сергієнко Дмитро Андрійович", "Стоматолог-хірург, імплантолог"]]);
     assert.deepEqual(graph.find((node) => node["@type"] === "Service"), { "@type": "Service", "@id": url + "#service", name: page.h1, url, description: page.answer, provider: { "@id": "https://dentix.ua/#dentist" } });
-    assert.deepEqual(graph.map((node) => node["@type"]), ["WebSite", "WebPage", "Dentist", "Service", "BreadcrumbList"]);
+    assert.deepEqual(graph.map((node) => node["@type"]), ["WebSite", "WebPage", "Dentist", "Person", "Service", "BreadcrumbList"]);
     const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList")?.itemListElement as { position: number; name: string; item: string }[];
     assert.equal(crumbs.length, route === "surgery" ? 2 : 3);
     if (route !== "surgery") assert.equal(crumbs[1].item, "https://dentix.ua/khirurhichna-stomatolohiia/");
     assert.equal(crumbs.at(-1)?.name, page.label);
     assert.equal(crumbs.at(-1)?.item, url);
     assert.doesNotMatch(JSON.stringify(graph), /Offer|priceRange|MedicalProcedure|medicalSpecialty|FAQPage|AggregateRating|Review|guarantee|successRate|anesthesia|recovery/);
-    const changed = buildEntitySchema(route, clinic as any, [...approvedRoles, doctor("new", "Лікар-хірург")])["@graph"];
-    assert.deepEqual(changed.filter((node) => node["@type"] === "Person").map((node) => [node.name, node.jobTitle]), [["Fixture new", "Лікар-хірург"]]);
+    const changed = buildEntitySchema(route, clinic as any, [...approvedDoctors, doctor("new", "Лікар-хірург")])["@graph"];
+    assert.deepEqual(changed.filter((node) => node["@type"] === "Person").map((node) => [node.name, node.jobTitle]), [["Сергієнко Дмитро Андрійович", "Стоматолог-хірург, імплантолог"], ["Fixture new", "Лікар-хірург"]]);
     assert.deepEqual(buildEntitySchema(route, clinic as any, [doctor("new", "Лікар-терапевт")])["@graph"].filter((node) => node["@type"] === "Person"), []);
   }
 });
@@ -72,7 +73,7 @@ test("distinct surgery scopes and copy exclude clinical guidance and implantatio
   }
 });
 
-test("real surgery SSR exposes fallback prices/contact with zero content requests or surgeon cards", async () => {
+test("real surgery SSR exposes the supplied surgeon and fallback prices/contact with zero content requests", async () => {
   const { createServer } = await import("vite");
   const previous = process.env.VITE_DENTIX_CONTENT_API_URL;
   const originalFetch = globalThis.fetch;
@@ -86,8 +87,11 @@ test("real surgery SSR exposes fallback prices/contact with zero content request
       const html = render(route);
       assert.ok(html.includes(surgeryPages[route].h1));
       for (const row of selectSurgeryPrices(route, priceBlocks)) assert.ok(html.includes(row.cost));
-      assert.ok(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."));
-      assert.doesNotMatch(html, /class="doc-role"|#person-|Стасюк|Подолянский|Грисяк|Гамаза/);
+      assert.equal((html.match(/class="doc-role"/g) ?? []).length, 1);
+      assert.ok(html.includes("Сергієнко Дмитро Андрійович"));
+      assert.ok(html.includes("Стоматолог-хірург, імплантолог"));
+      assert.ok(html.includes("dmytro-serhiienko.webp"));
+      assert.doesNotMatch(html, /Уточніть лікаря цього напрямку у клініці телефоном\.|Стасюк|Подолянский|Грисяк|Гамаза/);
       assert.equal(html.includes('id="complex-extraction"'), route === "extraction");
     }
     assert.equal(fetches, 0);

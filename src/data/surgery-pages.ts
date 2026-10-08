@@ -17,7 +17,7 @@ type SurgeryPage = {
 
 // PR-04B approved service labels and organizational copy only. Expanded
 // clinical copy requires qualified review before production. Managed content
-// owns all prices and people; the approved fallback has no surgeon.
+// owns all prices and people; the approved fallback includes a surgeon.
 export const surgeryPages: Record<SurgeryRoute, SurgeryPage> = {
   surgery: {
     path: "khirurhichna-stomatolohiia/",

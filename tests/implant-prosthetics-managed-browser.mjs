@@ -82,7 +82,9 @@ try {
             assert.ok(await page.getByText("Уточніть лікаря цього напрямку у клініці телефоном.").isVisible());
           } else {
             assert.deepEqual(await page.locator("#service-prices .price-cost").allTextContents(), selectImplantProstheticsPrices(route, priceBlocks).map((row) => row.cost));
-            assert.equal(await page.locator("#team .doc").count(), 0);
+            assert.deepEqual(await page.locator("#team h3").allTextContents(), route === "implantation" ? ["Сергієнко Дмитро Андрійович"] : []);
+            assert.deepEqual(await page.locator("#team .doc-role").allTextContents(), route === "implantation" ? ["Стоматолог-хірург, імплантолог"] : []);
+            assert.equal(await page.getByText("Уточніть лікаря цього напрямку у клініці телефоном.").count(), route === "prosthetics" ? 1 : 0);
           }
           const schema = page.locator('script[type="application/ld+json"]');
           if (target === "production") {

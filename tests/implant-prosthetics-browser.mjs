@@ -41,8 +41,9 @@ for (const target of ["preview", "production"]) {
               assert.equal(state["#service-answer"], service.answer);
               assert.deepEqual(await page.locator("#service-prices .price-name").allTextContents(), selectImplantProstheticsPrices(route, priceBlocks).map((row) => row.name));
               assert.deepEqual(await page.locator("#service-prices .price-cost").allTextContents(), selectImplantProstheticsPrices(route, priceBlocks).map((row) => row.cost));
-              assert.equal(await page.locator("#team .doc").count(), 0);
-              assert.ok(state["#team"].includes("Уточніть лікаря цього напрямку у клініці телефоном."));
+              assert.deepEqual(await page.locator("#team h3").allTextContents(), route === "implantation" ? ["Сергієнко Дмитро Андрійович"] : []);
+              assert.deepEqual(await page.locator("#team .doc-role").allTextContents(), route === "implantation" ? ["Стоматолог-хірург, імплантолог"] : []);
+              assert.equal(state["#team"].includes("Уточніть лікаря цього напрямку у клініці телефоном."), route === "prosthetics");
               assert.equal(await page.locator('script[type="application/ld+json"]').count(), target === "production" ? 1 : 0);
               const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
               assert.ok(overflow <= 1);
@@ -52,7 +53,7 @@ for (const target of ["preview", "production"]) {
                 }
               }
               assert.deepEqual(errors, []); assert.deepEqual(violations, []);
-              results.push({ target, engine, route, width, javaScriptEnabled, critical_regions: state, exact_prices: true, no_clinician: true, overflow, errors, pass: true });
+              results.push({ target, engine, route, width, javaScriptEnabled, critical_regions: state, exact_prices: true, no_clinician: route === "prosthetics", overflow, errors, pass: true });
             } finally { await context.close(); }
           }
           console.log(`${target} ${engine} ${route} ${width} no-JS/hydrated: PASS`);

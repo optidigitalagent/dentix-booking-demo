@@ -85,7 +85,7 @@ for (const target of ["preview", "production"]) {
         assert.deepEqual(clinic.address, { "@type": "PostalAddress", streetAddress: "вул. Калинова, 28", postalCode: "49000", addressLocality: "Дніпро", addressCountry: "UA" });
         assert.deepEqual(clinic.openingHoursSpecification.map((day) => [day.opens, day.closes]), [["09:00", "20:00"], ["09:00", "18:00"], ["00:00", "00:00"]]);
         const people = graph.filter((node) => node["@type"] === "Person");
-        assert.equal(people.length, ["index.html", "likari/index.html"].includes(file) ? 4 : file.startsWith("lechenie-") ? 1 : /^(?:terapevtychna-|likuvannia-)/.test(file) ? 2 : 0);
+        assert.equal(people.length, ["index.html", "likari/index.html"].includes(file) ? 5 : /^(?:lechenie-|khirurhichna-|vydalennia-|implantatsiya\/)/.test(file) ? 1 : /^(?:terapevtychna-|likuvannia-)/.test(file) ? 2 : 0);
         for (const person of people) {
           assert.ok(text.includes(person.name)); assert.ok(text.includes(person.jobTitle));
           assert.deepEqual(Object.keys(person).sort(), ["@type", "@id", "name", "jobTitle", "worksFor", "image"].sort());
@@ -111,14 +111,16 @@ for (const target of ["preview", "production"]) {
     });
   }
 
-  test(`${target}: surgery copy, exact prices, no-surgeon fallback and contextual links`, () => {
+  test(`${target}: surgery copy, exact prices, supplied surgeon and contextual links`, () => {
     for (const [route, page] of Object.entries(surgeryPages)) {
       const html = read(target, page.path + "index.html");
       const prices = [...html.matchAll(/<li class="price-row">([\s\S]*?)<\/li>/g)].map((match) => plain(match[1]).trim());
       assert.deepEqual(prices, selectSurgeryPrices(route, priceBlocks).map((row) => [row.name, row.note, row.cost].filter(Boolean).join(" ")));
       assert.ok(plain(html).includes(page.answer));
-      assert.doesNotMatch(html, /class="doc-role"|#person-|Стасюк|Подолянский|Грисяк|Гамаза/);
-      assert.ok(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."));
+      assert.equal((html.match(/class="doc-role"/g) ?? []).length, 1);
+      assert.ok(html.includes("Сергієнко Дмитро Андрійович"));
+      assert.ok(html.includes("Стоматолог-хірург, імплантолог"));
+      assert.doesNotMatch(html, /Уточніть лікаря цього напрямку у клініці телефоном\.|Стасюк|Подолянский|Грисяк|Гамаза/);
       assert.equal(html.includes('id="complex-extraction"'), route === "extraction");
       for (const related of page.related) assert.ok(html.includes(`href="${profile.base}${surgeryPages[related].path}"`));
       assert.ok(read(target, "price.html").includes(`href="${profile.base}${page.path}"`));
@@ -128,9 +130,9 @@ for (const target of ["preview", "production"]) {
         const service = graph.find((node) => node["@type"] === "Service");
         assert.equal(service.name, page.h1);
         assert.equal(service.description, page.answer);
-        assert.equal(graph.filter((node) => node["@type"] === "Person").length, 0);
+        assert.deepEqual(graph.filter((node) => node["@type"] === "Person").map((node) => [node.name, node.jobTitle]), [["Сергієнко Дмитро Андрійович", "Стоматолог-хірург, імплантолог"]]);
       }
-      record("surgery_content_assertions", { target, route, prices, named_surgeons: 0, complex_section: route === "extraction", bounded_copy: true, pass: true });
+      record("surgery_content_assertions", { target, route, prices, named_surgeons: 1, complex_section: route === "extraction", bounded_copy: true, pass: true });
     }
     assert.ok(read(target, "index.html").includes(`href="${profile.base}khirurhichna-stomatolohiia/"`));
     for (const unsupported of ["skladne-vydalennia-zuba/", "implantatsiia/", "all-on-4/"]) {
@@ -138,7 +140,7 @@ for (const target of ["preview", "production"]) {
       for (const file of patientFiles) assert.ok(!read(target, file).includes(`href="${profile.base}${unsupported}"`));
     }
   });
-  test(`${target}: preserved implant/prosthetics routes, separate prices, bounded copy and absent clinicians`, () => {
+  test(`${target}: preserved implant/prosthetics routes, separate prices, bounded copy and matching clinicians`, () => {
     for (const [route, page] of Object.entries(implantProstheticsPages)) {
       const html = read(target, page.path + "index.html");
       const rows = [...html.matchAll(/<li class="price-row">([\s\S]*?)<\/li>/g)].map((match) => plain(match[1]).trim());
@@ -148,21 +150,24 @@ for (const target of ["preview", "production"]) {
       assert.equal(rows.some((row) => row.startsWith("Імплантація All-on-4 (Корея) ")), route === "implantation");
       assert.equal((plain(html).match(/Під ключ\./g) ?? []).length, 0);
       assert.ok(plain(html).includes(page.answer));
-      assert.doesNotMatch(html, /class="doc-role"|#person-|Стасюк|Подолянский|Грисяк|Гамаза/);
-      assert.ok(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."));
+      assert.equal((html.match(/class="doc-role"/g) ?? []).length, route === "implantation" ? 1 : 0);
+      assert.equal(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."), route === "prosthetics");
+      for (const value of ["Сергієнко Дмитро Андрійович", "Стоматолог-хірург, імплантолог"]) assert.equal(html.includes(value), route === "implantation");
+      assert.doesNotMatch(html, /Стасюк|Подолянский|Грисяк|Гамаза/);
       assert.doesNotMatch(plain(html.split('id="contact"')[0]), /безболіс|гарант|анестез|відновлен|симптом|протипоказ|триваліст|ускладнен|прижив|навантаж|кістков|етапи|3D|100%/i);
       const related = route === "implantation" ? ["protezirovanie/", "vydalennia-zuba/"] : ["implantatsiya/"];
       for (const path of related) assert.ok(html.includes(`href="${profile.base}${path}"`));
       for (const source of ["index.html", "price.html"]) assert.ok(read(target, source).includes(`href="${profile.base}${page.path}"`));
       if (production) {
         const graph = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])["@graph"];
-        assert.deepEqual(graph.map((node) => node["@type"]), ["WebSite", "WebPage", "Dentist", "Service", "BreadcrumbList"]);
+        assert.deepEqual(graph.map((node) => node["@type"]), ["WebSite", "WebPage", "Dentist", ...(route === "implantation" ? ["Person"] : []), "Service", "BreadcrumbList"]);
+        assert.deepEqual(graph.filter((node) => node["@type"] === "Person").map((node) => [node.name, node.jobTitle]), route === "implantation" ? [["Сергієнко Дмитро Андрійович", "Стоматолог-хірург, імплантолог"]] : []);
         const service = graph.find((node) => node["@type"] === "Service");
         assert.equal(service.name, page.h1); assert.equal(service.description, page.answer);
         assert.deepEqual(service.provider, { "@id": "https://dentix.ua/#dentist" });
         assert.doesNotMatch(JSON.stringify(graph), /Product|Offer|price|FAQPage|Review|MedicalProcedure|medicalSpecialty|Під ключ/i);
       }
-      record("implant_prosthetics_content_assertions", { target, route, prices: rows, named_clinicians: 0, price_separation: true, turnkey_note_only: true, bounded_copy: true, pass: true });
+      record("implant_prosthetics_content_assertions", { target, route, prices: rows, named_clinicians: route === "implantation" ? 1 : 0, price_separation: true, turnkey_note_only: true, bounded_copy: true, pass: true });
     }
     assert.equal(services.length, 6);
     assert.equal(services.find((service) => service.title === "Хірургія").href, "/khirurhichna-stomatolohiia/");
@@ -181,8 +186,9 @@ for (const target of ["preview", "production"]) {
       for (const route of ["", "likari/", "kontakty/", "price.html"]) assert.ok(html.includes(`href="${profile.base}${route}"`));
     }
     const doctors = read(target, "likari/index.html");
-    assert.equal((doctors.match(/class="doc-role"/g) ?? []).length, 4);
-    for (const name of ["Стасюк Станіслав Ігорович", "Грисяк Лаура Віталіївна", "Подолянский Альберт Альбертович", "Гамаза Олена Анатоліївна"]) assert.ok(plain(doctors).includes(name));
+    assert.equal((doctors.match(/class="doc-role"/g) ?? []).length, 5);
+    const team = doctors.match(/<section\b[^>]*id="team"[^>]*>([\s\S]*?)<\/section>/)[1];
+    assert.deepEqual([...team.matchAll(/<h3>(.*?)<\/h3>/g)].map((match) => plain(match[1])), ["Стасюк Станіслав Ігорович", "Грисяк Лаура Віталіївна", "Подолянский Альберт Альбертович", "Гамаза Олена Анатоліївна", "Сергієнко Дмитро Андрійович"]);
     const contacts = plain(read(target, "kontakty/index.html"));
     assert.ok(!contacts.includes("dentix1@outlook.com"));
     for (const number of ["380679854050", "380509124452"]) assert.ok(read(target, "kontakty/index.html").includes(`href="viber://chat?number=%2B${number}"`));

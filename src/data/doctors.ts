@@ -1,4 +1,5 @@
 import albertPortrait from "@/assets/dentix-content/doctors/albert-podolyansky.webp";
+import dmytroPortrait from "@/assets/dentix-content/doctors/dmytro-serhiienko.webp";
 import lauraPortrait from "@/assets/dentix-content/doctors/laura-hrysiak.webp";
 import olenaPortrait from "@/assets/dentix-content/doctors/olena-hamaza.webp";
 import stanislavPortrait from "@/assets/dentix-content/doctors/stanislav-stasiuk.webp";
@@ -44,6 +45,14 @@ export const doctors: Doctor[] = [
     role: "Лікар-терапевт, гігієніст",
     photo: olenaPortrait,
     alt: "Гамаза Олена Анатоліївна, лікар-терапевт і гігієніст DENTIX",
+    objectPosition: "center top",
+  },
+  {
+    id: "dmytro-serhiienko",
+    name: "Сергієнко Дмитро Андрійович",
+    role: "Стоматолог-хірург, імплантолог",
+    photo: dmytroPortrait,
+    alt: "Сергієнко Дмитро Андрійович, стоматолог-хірург та імплантолог DENTIX",
     objectPosition: "center top",
   },
 ];

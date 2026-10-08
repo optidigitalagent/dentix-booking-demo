@@ -81,7 +81,8 @@ try {
             assert.ok(await page.getByText("Уточніть лікаря цього напрямку у клініці телефоном.").isVisible());
           } else {
             assert.deepEqual(await page.locator("#service-prices .price-cost").allTextContents(), selectSurgeryPrices(route, priceBlocks).map((row) => row.cost));
-            assert.equal(await page.locator("#team .doc").count(), 0);
+            assert.deepEqual(await page.locator("#team h3").allTextContents(), ["Сергієнко Дмитро Андрійович"]);
+            assert.deepEqual(await page.locator("#team .doc-role").allTextContents(), ["Стоматолог-хірург, імплантолог"]);
           }
           const schema = page.locator('script[type="application/ld+json"]');
           if (target === "production") {

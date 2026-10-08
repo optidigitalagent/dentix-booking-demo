@@ -9,13 +9,14 @@ const source = fs.readFileSync("src/data/site.ts", "utf8");
 const clinic = Object.fromEntries([...source.matchAll(/^  (\w+): "([^"]*)",/gm)].map((match) => [match[1], match[2]]));
 clinic.logo = "/assets/logo.png";
 const doctor = (id: string, role: string) => ({ id, role, name: `Fixture ${id}`, photo: "/assets/doctor.webp", alt: "", objectPosition: "center" });
-const approvedRoles = [...fs.readFileSync("src/data/doctors.ts", "utf8").matchAll(/role: "([^"]+)"/g)].map((match, i) => doctor(String(i), match[1]));
+const approvedDoctors = [...fs.readFileSync("src/data/doctors.ts", "utf8").matchAll(/id: "([^"]+)",\s+name: "([^"]+)",\s+role: "([^"]+)"/g)].map((match) => ({ ...doctor(match[1], match[3]), name: match[2] }));
 const routes = Object.keys(implantProstheticsPages) as ImplantProstheticsRoute[];
 
-test("no approved implantologist or orthopedist; exact hyphen/comma tokens only", () => {
-  assert.equal(approvedRoles.length, 4);
+test("approved implantologist matches implantation only; exact hyphen/comma tokens only", () => {
+  assert.equal(approvedDoctors.length, 5);
   for (const route of routes) {
-    assert.deepEqual(selectImplantProstheticsDoctors(route, approvedRoles), []);
+    assert.deepEqual(selectImplantProstheticsDoctors(route, approvedDoctors).map(({ id }) => id), route === "implantation" ? ["dmytro-serhiienko"] : []);
+    assert.deepEqual(selectImplantProstheticsDoctors(route, approvedDoctors.slice(0, 4)), []);
     const role = route === "implantation" ? "імплантолог" : "ортопед";
     const team = [doctor("a", "Лікар-" + role), doctor("b", "стоматолог, " + role), doctor("c", "стоматолог, " + role + ", хірург"), doctor("d", role), doctor("e", role + "ія"), doctor("f", "помічник " + role + "а"), doctor("g", "нейро" + role), doctor("h", "Лікар-ортодонт"), doctor("i", "Лікар-хірург"), doctor("j", "Засновник клініки та головний лікар"), doctor("k", "qa_" + role), doctor("l", role + "2")];
     assert.deepEqual(selectImplantProstheticsDoctors(route, team).map(({ id }) => id), ["a", "b", "c", "d"]);
@@ -43,20 +44,21 @@ test("shared managed prices reflect client corrections and group implant prosthe
   for (const file of ["src/data/implant-prosthetics-pages.ts", "src/ImplantProstheticsPage.tsx"]) assert.doesNotMatch(fs.readFileSync(file, "utf8"), /\d[\d ]*\s*грн|cost\s*:/);
 });
 
-test("service graphs have exact visible parity, clinic provider and zero fallback Person", () => {
+test("service graphs have exact visible parity, clinic provider and only the matching implantologist", () => {
   for (const route of routes) {
     const page = implantProstheticsPages[route], url = "https://dentix.ua/" + page.path;
-    const graph = buildEntitySchema(route, clinic as any, approvedRoles)["@graph"];
-    assert.deepEqual(graph.map((node) => node["@type"]), ["WebSite", "WebPage", "Dentist", "Service", "BreadcrumbList"]);
+    const graph = buildEntitySchema(route, clinic as any, approvedDoctors)["@graph"];
+    assert.deepEqual(graph.map((node) => node["@type"]), ["WebSite", "WebPage", "Dentist", ...(route === "implantation" ? ["Person"] : []), "Service", "BreadcrumbList"]);
+    assert.deepEqual(graph.filter((node) => node["@type"] === "Person").map((node) => [node["@id"], node.name, node.jobTitle]), route === "implantation" ? [["https://dentix.ua/#person-dmytro-serhiienko", "Сергієнко Дмитро Андрійович", "Стоматолог-хірург, імплантолог"]] : []);
     assert.deepEqual(graph.find((node) => node["@type"] === "Service"), { "@type": "Service", "@id": url + "#service", name: page.h1, url, description: page.answer, provider: { "@id": "https://dentix.ua/#dentist" } });
     const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList")?.itemListElement as { position: number; name: string; item: string }[];
     assert.deepEqual(crumbs.map(({ position, name, item }) => [position, name, item]), [[1, "Головна", "https://dentix.ua/"], [2, page.label, url]]);
     assert.doesNotMatch(JSON.stringify(graph), /Product|Offer|priceRange|MedicalProcedure|medicalSpecialty|FAQPage|AggregateRating|Review|guarantee|successRate|anesthesia|recovery|Під ключ/);
     const role = route === "implantation" ? "Лікар-імплантолог" : "Лікар-ортопед";
-    const team = [...approvedRoles, doctor("new", role), doctor("orthodontist", "Лікар-ортодонт")];
+    const team = [...approvedDoctors, doctor("new", role), doctor("orthodontist", "Лікар-ортодонт")];
     const changed = buildEntitySchema(route, clinic as any, team)["@graph"];
     assert.deepEqual(changed.filter((node) => node["@type"] === "Person").map((node) => [node.name, node.jobTitle]), selectImplantProstheticsDoctors(route, team).map((d) => [d.name, d.role]));
-    assert.equal(changed.filter((node) => node["@type"] === "Person").length, 1);
+    assert.equal(changed.filter((node) => node["@type"] === "Person").length, route === "implantation" ? 2 : 1);
   }
 });
 
@@ -84,8 +86,10 @@ test("real implant/prosthetics SSR has approved fallback and zero content reques
       const html = render(route);
       assert.ok(html.includes(implantProstheticsPages[route].h1));
       for (const row of selectImplantProstheticsPrices(route, priceBlocks)) assert.ok(html.includes(row.cost));
-      assert.ok(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."));
-      assert.doesNotMatch(html, /class="doc-role"|#person-|Стасюк|Подолянский|Грисяк|Гамаза/);
+      assert.equal((html.match(/class="doc-role"/g) ?? []).length, route === "implantation" ? 1 : 0);
+      assert.equal(html.includes("Уточніть лікаря цього напрямку у клініці телефоном."), route === "prosthetics");
+      for (const value of ["Сергієнко Дмитро Андрійович", "Стоматолог-хірург, імплантолог", "dmytro-serhiienko.webp"]) assert.equal(html.includes(value), route === "implantation");
+      assert.doesNotMatch(html, /Стасюк|Подолянский|Грисяк|Гамаза/);
     }
     assert.equal(fetches, 0);
   } finally {

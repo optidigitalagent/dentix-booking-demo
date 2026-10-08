@@ -77,12 +77,12 @@ class ReleaseTests(unittest.TestCase):
             home.write_text(original)
             (artifact/'extra.html').write_text(original)
             with self.assertRaises(ValueError):release.verify_artifact(artifact)
-    def test_review_prices_and_missing_clinicians(self):
+    def test_review_prices_and_matching_clinicians(self):
         pages=release.read_json(release.ROOT/'ops/review/professional-review.json')['pages']
         implant=next(p for p in pages if p['url'].endswith('/implantatsiya/'));prosthetics=next(p for p in pages if p['url'].endswith('/protezirovanie/'))
         self.assertIn(['Імплант'],[r['name'] for r in implant['prices']]);self.assertIn(['Імплантація All-on-4 (Корея)'],[r['name'] for r in implant['prices']]);self.assertNotIn(['Імплантація All-on-4 (Корея)'],[r['name'] for r in prosthetics['prices']])
         self.assertIn(['У вартість входять імпланти та протезування на імплантах.'],[r['note'] for r in implant['prices']]);self.assertNotIn(['Під ключ.'],[r['note'] for r in prosthetics['prices']])
-        self.assertEqual(implant['clinicians'],[]);self.assertEqual(prosthetics['clinicians'],[])
+        self.assertEqual(implant['clinicians'],[{'name':['Сергієнко Дмитро Андрійович'],'role':['Стоматолог-хірург, імплантолог'],'description':[]}]);self.assertEqual(prosthetics['clinicians'],[])
     def test_environment_inventory_and_disabled_candidate(self):
         env=release.read_json(release.OPS/'environment.json');names={r['name'] for r in env['variables']};candidate={r['name']:r['candidate_value'] for r in env['variables']}
         for p in (release.ROOT/'src').rglob('*'):
