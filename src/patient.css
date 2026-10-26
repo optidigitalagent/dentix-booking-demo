@@ -2074,6 +2074,23 @@ h3 {
   overflow: hidden;
   background: var(--bg-secondary);
 }
+.booking-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0 24px 14px;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+.booking-steps li { display: inline-flex; align-items: center; gap: 5px; }
+.booking-steps li[aria-current="step"] { color: var(--text-primary); font-weight: 700; }
+.booking-steps li > span { font-variant-numeric: tabular-nums; }
+.booking-contact-alternative { margin-top: 20px; }
+.booking-contact-alternative summary { cursor: pointer; color: var(--text-primary); font-size: 14px; }
+.booking-contact-alternative[open] summary { margin-bottom: 16px; }
 .booking-progress span {
   display: block;
   height: 100%;

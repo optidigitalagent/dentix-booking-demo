@@ -11,7 +11,6 @@ import { LeadForm } from "../LeadForm";
 import { getIntakeStatus, type IntakeStatus } from "@/lib/intake-status";
 import { useBookingViewport } from "./useBookingViewport";
 import { useBooking } from "./BookingContext";
-import { ContactBridgeDrawer } from "./ContactBridgeDrawer";
 import { ContactActions } from "./ContactActions";
 
 const stepLabels = ["Послуга", "Лікар", "Дата і час", "Ваші дані", "Перевірка"];
@@ -19,7 +18,7 @@ const stepLabels = ["Послуга", "Лікар", "Дата і час", "Ва�
 export function BookingDrawer() {
   const { isOpen } = useBooking();
   if (!isOpen) return null;
-  return bookingClient.enabled ? <LiveBookingDrawer /> : <ContactBridgeDrawer />;
+  return <LiveBookingDrawer />;
 }
 
 function LiveBookingDrawer() {
@@ -73,7 +72,7 @@ function LiveBookingDrawer() {
       .then(async (status) => {
         if (!active) return;
         setReadiness(status);
-        if (status.timed.enabled && status.timed.policyUrl) {
+        if (bookingClient.enabled && status.timed.enabled && status.timed.policyUrl) {
           const value = await bookingClient.getCatalog();
           if (active && !value.testOnly && value.mode === "LIVE_REQUESTS_READY" &&
               value.services.some((service) => value.doctorServices.some((link) =>
@@ -204,7 +203,7 @@ function LiveBookingDrawer() {
         <header className="booking-head">
           <div>
             <p className="booking-kicker">DENTIX · запит на запис</p>
-            <h2 id="booking-title">{confirmation ? "Запит отримано" : callbackView || (!catalog && !loading) ? readiness?.lead.enabled && readiness.lead.policyUrl ? "Залишити заявку" : "Зв’язатися для запису" : stepLabels[step]}</h2>
+            <h2 id="booking-title">{confirmation ? "Запит отримано" : callbackView ? readiness?.lead.enabled && readiness.lead.policyUrl ? "Залишити заявку" : "Зв’язатися для запису" : !catalog && !loading ? "Онлайн-запис" : stepLabels[step]}</h2>
           </div>
           <button ref={closeRef} className="booking-icon-button" onClick={closeBooking} aria-label="Закрити">
             <X size={20} />
@@ -212,17 +211,27 @@ function LiveBookingDrawer() {
         </header>
 
 
-        {!confirmation && catalog && !callbackView ? (
-          <div className="booking-progress" aria-label={`Крок ${step + 1} з ${stepLabels.length}`}>
-            <span style={{ width: `${((step + 1) / stepLabels.length) * 100}%` }} />
-          </div>
+        {!confirmation && !callbackView ? (
+          <>
+            <ol className="booking-steps" aria-label="Кроки онлайн-запису">
+              {stepLabels.map((label, index) => <li key={label} aria-current={index === step ? "step" : undefined}><span>{index + 1}</span>{label}</li>)}
+            </ol>
+            <div className="booking-progress" aria-label={`Крок ${step + 1} з ${stepLabels.length}`}>
+              <span style={{ width: `${((step + 1) / stepLabels.length) * 100}%` }} />
+            </div>
+          </>
         ) : null}
 
         <div className="booking-body">
           {loading && !catalog ? <p className="booking-state">Завантажуємо безпечний запис…</p> : null}
           {error ? <div className="booking-error" role="alert">{error}</div> : null}
 
-          {!loading && !catalog ? <section className="booking-fallback">{readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Залиште заявку — адміністратор уточнить послугу та зручний час.</p><p className="booking-privacy-note">Заявка не резервує час прийому.</p><LeadForm key={seed.requestedInterest ?? "general"} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={seed.requestedInterest} /></> : <ContactActions requestedInterest={seed.requestedInterest} />}</section> : null}
+          {!loading && !catalog ? <section className="booking-fallback" aria-labelledby="booking-unavailable-title">
+            <h3 id="booking-unavailable-title">Онлайн-запис тимчасово недоступний</h3>
+            <p className="booking-state" role="status">Зараз обрати час онлайн неможливо. Для запису зв’яжіться з адміністратором. Час не зарезервовано.</p>
+            {readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Можна залишити заявку без вибору часу — адміністратор зателефонує.</p><LeadForm key={seed.requestedInterest ?? "general"} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={seed.requestedInterest} /></> : <p className="booking-privacy-note">Введення та надсилання персональних даних наразі закрито.</p>}
+            <details className="booking-contact-alternative"><summary>Інші способи запису: телефон, Viber, Instagram</summary><ContactActions requestedInterest={seed.requestedInterest} /></details>
+          </section> : null}
           {!confirmation && callbackView ? <section className="booking-fallback">{readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Адміністратор зателефонує, щоб уточнити деталі. Заявка не резервує час і не підтверджує процедуру.</p><LeadForm key={serviceId} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={service?.name} /></> : <ContactActions requestedInterest={service?.name} />}<button className="booking-secondary" onClick={() => { setLeadFallback(false); setStep(0); }}><ChevronLeft size={18} /> До вибору послуги</button></section> : null}
           {confirmation ? (
             <section className="booking-confirmation">
@@ -323,7 +332,7 @@ function LiveBookingDrawer() {
           ) : null}
         </div>
 
-        {!confirmation && catalog && !callbackView ? (
+        {!confirmation && !callbackView ? (
           <footer className="booking-footer">
             <button className="booking-secondary" disabled={step === 0 || loading} onClick={() => setStep((value) => Math.max(0, value - 1))}>
               <ChevronLeft size={18} /> Назад
