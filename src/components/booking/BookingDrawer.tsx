@@ -11,13 +11,13 @@ import { LeadForm } from "../LeadForm";
 import { getIntakeStatus, type IntakeStatus } from "@/lib/intake-status";
 import { useBookingViewport } from "./useBookingViewport";
 import { useBooking } from "./BookingContext";
-import { site } from "@/data/site";
 import { ContactBridgeDrawer } from "./ContactBridgeDrawer";
+import { ContactActions } from "./ContactActions";
 
 const stepLabels = ["Послуга", "Лікар", "Дата і час", "Ваші дані", "Перевірка"];
 
 export function BookingDrawer() {
-  return site.bookingFormReady === true ? <LiveBookingDrawer /> : <ContactBridgeDrawer />;
+  return bookingClient.enabled ? <LiveBookingDrawer /> : <ContactBridgeDrawer />;
 }
 
 function LiveBookingDrawer() {
@@ -73,7 +73,9 @@ function LiveBookingDrawer() {
         setReadiness(status);
         if (status.timed.enabled && status.timed.policyUrl) {
           const value = await bookingClient.getCatalog();
-          if (active && !value.testOnly && value.mode === "LIVE_REQUESTS_READY" && value.services.length) {
+          if (active && !value.testOnly && value.mode === "LIVE_REQUESTS_READY" &&
+              value.services.some((service) => value.doctorServices.some((link) =>
+                link.active && link.service_id === service.id && value.doctors.some((doctor) => doctor.id === link.doctor_id)))) {
             setCatalog(value);
           }
         }
@@ -200,7 +202,7 @@ function LiveBookingDrawer() {
         <header className="booking-head">
           <div>
             <p className="booking-kicker">DENTIX · запит на запис</p>
-            <h2 id="booking-title">{confirmation ? "Запит отримано" : callbackView || (!catalog && !loading) ? "Залишити заявку" : stepLabels[step]}</h2>
+            <h2 id="booking-title">{confirmation ? "Запит отримано" : callbackView || (!catalog && !loading) ? readiness?.lead.enabled && readiness.lead.policyUrl ? "Залишити заявку" : "Зв’язатися для запису" : stepLabels[step]}</h2>
           </div>
           <button ref={closeRef} className="booking-icon-button" onClick={closeBooking} aria-label="Закрити">
             <X size={20} />
@@ -218,8 +220,8 @@ function LiveBookingDrawer() {
           {loading && !catalog ? <p className="booking-state">Завантажуємо безпечний запис…</p> : null}
           {error ? <div className="booking-error" role="alert">{error}</div> : null}
 
-          {!loading && !catalog ? <section className="booking-fallback">{seed.requestedInterest ? <p>Цікавить: <strong>{seed.requestedInterest}</strong>.</p> : null}<p>Залиште заявку — адміністратор уточнить послугу та зручний час.</p><p className="booking-privacy-note">Заявка не резервує час прийому.</p><LeadForm key={seed.requestedInterest ?? "general"} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={seed.requestedInterest} /></section> : null}
-          {!confirmation && callbackView ? <section className="booking-fallback">{service ? <p>Цікавить: <strong>{service.name}</strong>.</p> : null}<p>Адміністратор зателефонує, щоб уточнити деталі. Заявка не резервує час і не підтверджує процедуру.</p><LeadForm key={serviceId} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={service?.name} /><button className="booking-secondary" onClick={() => { setLeadFallback(false); setStep(0); }}><ChevronLeft size={18} /> До вибору послуги</button></section> : null}
+          {!loading && !catalog ? <section className="booking-fallback">{readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Залиште заявку — адміністратор уточнить послугу та зручний час.</p><p className="booking-privacy-note">Заявка не резервує час прийому.</p><LeadForm key={seed.requestedInterest ?? "general"} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={seed.requestedInterest} /></> : <ContactActions requestedInterest={seed.requestedInterest} />}</section> : null}
+          {!confirmation && callbackView ? <section className="booking-fallback">{readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Адміністратор зателефонує, щоб уточнити деталі. Заявка не резервує час і не підтверджує процедуру.</p><LeadForm key={serviceId} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={service?.name} /></> : <ContactActions requestedInterest={service?.name} />}<button className="booking-secondary" onClick={() => { setLeadFallback(false); setStep(0); }}><ChevronLeft size={18} /> До вибору послуги</button></section> : null}
           {confirmation ? (
             <section className="booking-confirmation">
               <span className="booking-success-mark"><Check size={28} /></span>
@@ -251,7 +253,7 @@ function LiveBookingDrawer() {
             </div>
           ) : null}
 
-          {!confirmation && catalog && !callbackView && step === 0 ? <section className="booking-fallback">{service && !configuredService ? <p className="booking-privacy-note">Точний час для цієї послуги ще не доступний. Оберіть іншу послугу або залиште окрему заявку без резервування часу.</p> : null}<button className="booking-secondary" onClick={() => setLeadFallback(true)}>Залишити окрему заявку без вибору часу</button></section> : null}
+          {!confirmation && catalog && !callbackView && step === 0 ? <section className="booking-fallback">{service && !configuredService ? <p className="booking-privacy-note">Точний час для цієї послуги ще не доступний. Оберіть іншу послугу або зв’яжіться з адміністратором без резервування часу.</p> : null}<button className="booking-secondary" onClick={() => setLeadFallback(true)}>{readiness?.lead.enabled && readiness.lead.policyUrl ? "Залишити окрему заявку без вибору часу" : "Зв’язатися без вибору часу"}</button></section> : null}
 
           {!confirmation && catalog && !callbackView && step === 1 ? (
             <div className="booking-options">

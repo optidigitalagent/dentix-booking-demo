@@ -67,7 +67,7 @@ export function ContactInfoSection() {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
                 <a className="map-link" href={site.mapLink} target="_blank" rel="noreferrer">
-                  Відкрити на мапі <span aria-hidden="true">→</span>
+                  Відкрити на мапі · {site.address}, м. Дніпро <span aria-hidden="true">→</span>
                 </a>
               </>
             ) : (
