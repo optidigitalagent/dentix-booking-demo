@@ -17,6 +17,8 @@ import { ContactActions } from "./ContactActions";
 const stepLabels = ["Послуга", "Лікар", "Дата і час", "Ваші дані", "Перевірка"];
 
 export function BookingDrawer() {
+  const { isOpen } = useBooking();
+  if (!isOpen) return null;
   return bookingClient.enabled ? <LiveBookingDrawer /> : <ContactBridgeDrawer />;
 }
 
@@ -37,7 +39,7 @@ function LiveBookingDrawer() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [confirmation, setConfirmation] = useState<BookingConfirmation | null>(null);
   const idempotencyRef = useRef(crypto.randomUUID());

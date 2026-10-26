@@ -28,6 +28,7 @@ export async function checkLeadSourceEntryPoints({ browser, output }) {
       for (const file of ["likari/", "kontakty/", "price.html", "terapevtychna-stomatolohiia/", "likuvannia-kariiesu/", "lechenie-pod-mikroskopom/", "khirurhichna-stomatolohiia/", "vydalennia-zuba/", "vydalennia-zuba-mudrosti/", "implantatsiya/", "protezirovanie/"]) assets.set(base + file, assets.get(base + "index.html"));
       const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".png": "image/png", ".webp": "image/webp", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon" };
       for (const file of ["", "likari/", "kontakty/", "price.html", "terapevtychna-stomatolohiia/", "likuvannia-kariiesu/", "lechenie-pod-mikroskopom/", "khirurhichna-stomatolohiia/", "vydalennia-zuba/", "vydalennia-zuba-mudrosti/", "implantatsiya/", "protezirovanie/"]) for (const catalogReady of [false, true]) {
+        const requestsBefore = requests.length;
         const context = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 390, height: 900 } });
         try {
           const violations = [];
@@ -88,18 +89,20 @@ export async function checkLeadSourceEntryPoints({ browser, output }) {
           await dialog.getByRole("heading", { name: "Зв’язатися для запису" }).waitFor();
           assert.equal(await dialog.locator("form, input, textarea, select").count(), 0);
           assert.equal(await dialog.locator('[data-contact-channel]').count(), 6);
-          assert.deepEqual(requests, [], "Disabled mode must ignore even a ready API fixture");
+          assert.deepEqual(requests.slice(requestsBefore).map((request) => request.path), catalogReady
+            ? ["/__qa/booking/intake-status", "/__qa/booking/catalog"]
+            : ["/__qa/booking/intake-status"], "Readiness must be checked, but an unconfigured catalog must remain contact-only");
           assert.deepEqual(violations, []);
           assert.deepEqual(errors, []);
           assert.deepEqual(consoleErrors, []);
-          results.push({ target, route: file || "home", remote_ready_fixture: catalogReady, contact: true, entry: "ContactBridgeDrawer", fail_closed: true, form_submissions: 0, errors, consoleErrors, pass: true });
-          console.log(`${target} ${file || "home"} ${catalogReady ? "ready" : "unavailable"} disabled intake: PASS`);
+          results.push({ target, route: file || "home", remote_ready_fixture: catalogReady, contact: true, entry: "LiveBookingDrawer/ContactActions", fail_closed: true, form_submissions: 0, errors, consoleErrors, pass: true });
+          console.log(`${target} ${file || "home"} ${catalogReady ? "unconfigured" : "unavailable"} intake fallback: PASS`);
         } finally { await context.close(); }
       }
     }
     assert.equal(results.length, 48);
   } finally {
     for (const key of keys) { if (previous[key] === undefined) delete process.env[key]; else process.env[key] = previous[key]; }
-    await fs.writeFile(path.join(output, "lead_source_entry_points.json"), JSON.stringify({ observed_at: new Date().toISOString(), fixture_scope: "Real source; in-memory builds; remote readiness fixtures ignored in disabled mode; no request or personal data submitted", results, requests, pass: results.length === 48 && requests.length === 0 }, null, 2) + "\n");
+    await fs.writeFile(path.join(output, "lead_source_entry_points.json"), JSON.stringify({ observed_at: new Date().toISOString(), fixture_scope: "Real source; in-memory builds; readiness GET fixtures only; no request or personal data submitted", results, requests, pass: results.length === 48 && requests.every((request) => request.method === "GET") }, null, 2) + "\n");
   }
 }
