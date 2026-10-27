@@ -5,7 +5,6 @@ export const site = {
   tagline: "Стоматологічна клініка",
   logo: dentixLogoMark,
   contactDataReady: true,
-  bookingFormReady: false,
   phonePrimary: "+380 67 985 40 50",
   phonePrimaryHref: "tel:+380679854050",
   phoneSecondary: "+380 50 912 44 52",
