@@ -8,6 +8,8 @@ import type {
 import { BookingApiError } from "./booking-types";
 import { bookingEndpoint, resolveBookingConfig } from "./booking-config";
 
+const qa = import.meta.env["VITE_DENTIX_BOOKING_QA"] === "true";
+
 const config = resolveBookingConfig({
   VITE_DENTIX_BOOKING_API_URL: import.meta.env["VITE_DENTIX_BOOKING_API_URL"],
   VITE_DENTIX_BOOKING_ENABLED: import.meta.env["VITE_DENTIX_BOOKING_ENABLED"],
@@ -16,8 +18,10 @@ const config = resolveBookingConfig({
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(bookingEndpoint(config, path), {
     ...init,
+    ...(qa ? { credentials: "same-origin" as const } : {}),
     headers: {
       Accept: "application/json",
+      ...(qa ? { "X-Dentix-QA": "true" } : {}),
       ...(init?.body ? { "Content-Type": "application/json" } : {}),
       ...init?.headers,
     },
@@ -38,6 +42,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const bookingClient = {
   enabled: config.enabled,
+  qa,
   mode: config.enabled ? ("test-ready" as const) : ("disabled" as const),
   async getCatalog() {
     const data = await request<{

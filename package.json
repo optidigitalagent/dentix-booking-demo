@@ -12,7 +12,8 @@
     "preview:production": "node --experimental-strip-types ./scripts/serve-artifact.mjs production 4182",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "test:artifacts": "node --experimental-strip-types --test tests/artifacts.test.mjs",
-    "test:browser": "node --experimental-strip-types tests/technical-browser.mjs"
+    "test:browser": "node --experimental-strip-types tests/technical-browser.mjs",
+    "build:booking-qa": "node ./node_modules/typescript/bin/tsc --noEmit && node ./node_modules/vite/bin/vite.js build --config vite.booking-qa.config.ts"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",

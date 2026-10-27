@@ -42,6 +42,8 @@ function LiveBookingDrawer() {
   const [error, setError] = useState("");
   const [confirmation, setConfirmation] = useState<BookingConfirmation | null>(null);
   const idempotencyRef = useRef(crypto.randomUUID());
+  const submittingRef = useRef(false);
+  const qaReady = bookingClient.qa && readiness?.qa?.enabled === true && readiness.qa.safety === "CAPTURE_TELEGRAM_ISOLATED_CALENDAR_V1";
 
   useEffect(() => {
     if (!isOpen) return;
@@ -72,9 +74,10 @@ function LiveBookingDrawer() {
       .then(async (status) => {
         if (!active) return;
         setReadiness(status);
-        if (bookingClient.enabled && status.timed.enabled && status.timed.policyUrl) {
+        const authorizedQa = bookingClient.qa && status.qa?.enabled === true && status.qa.safety === "CAPTURE_TELEGRAM_ISOLATED_CALENDAR_V1";
+        if (bookingClient.enabled && (authorizedQa || (status.timed.enabled && status.timed.policyUrl))) {
           const value = await bookingClient.getCatalog();
-          if (active && !value.testOnly && value.mode === "LIVE_REQUESTS_READY" &&
+          if (active && (authorizedQa ? value.testOnly && value.mode === "TEST_READY" : !value.testOnly && value.mode === "LIVE_REQUESTS_READY") &&
               value.services.some((service) => value.doctorServices.some((link) =>
                 link.active && link.service_id === service.id && value.doctors.some((doctor) => doctor.id === link.doctor_id)))) {
             setCatalog(value);
@@ -161,7 +164,8 @@ function LiveBookingDrawer() {
     (step === 4 && Boolean(mapping && selectedSlot));
 
   async function submit() {
-    if (!service || !doctor || !mapping || !selectedSlot || !startsAt || !consent || !readiness?.timed.enabled || !readiness.timed.policyUrl) return;
+    if (submittingRef.current || !service || !doctor || !mapping || !selectedSlot || !startsAt || !consent || !(qaReady || (readiness?.timed.enabled && readiness.timed.policyUrl))) return;
+    submittingRef.current = true;
     setLoading(true);
     setError("");
     try {
@@ -184,6 +188,7 @@ function LiveBookingDrawer() {
       }
       setError(reason instanceof Error ? reason.message : "Не вдалося створити запис.");
     } finally {
+      submittingRef.current = false;
       setLoading(false);
     }
   }
@@ -223,6 +228,7 @@ function LiveBookingDrawer() {
         ) : null}
 
         <div className="booking-body">
+          {bookingClient.qa ? <p className="booking-privacy-note" role="status">TEST_READY · лише синтетичні дані. Telegram клініці не надсилається. Це технічна перевірка, не публічний запис.</p> : null}
           {loading && !catalog ? <p className="booking-state">Завантажуємо безпечний запис…</p> : null}
           {error ? <div className="booking-error" role="alert">{error}</div> : null}
 
@@ -311,7 +317,7 @@ function LiveBookingDrawer() {
               <label><span>Телефон *</span><input type="tel" required maxLength={30} value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="tel" inputMode="tel" placeholder="+380 __ ___ __ __" /></label>
               <label className="booking-consent">
                 <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-                <span>Погоджуюся на обробку контактних даних для створення та адміністрування запису. {readiness?.timed.policyUrl ? <a href={readiness.timed.policyUrl} target="_blank" rel="noreferrer">Політика конфіденційності</a> : null}</span>
+                <span>{bookingClient.qa ? "Підтверджую використання лише вигаданих даних для технічної перевірки." : "Погоджуюся на обробку контактних даних для створення та адміністрування запису."} {readiness?.timed.policyUrl ? <a href={readiness.timed.policyUrl} target="_blank" rel="noreferrer">Політика конфіденційності</a> : null}</span>
               </label>
               <p className="booking-privacy-note"><LockKeyhole size={14} /> Діагноз, медична історія й документи тут не збираються.</p>
             </div>

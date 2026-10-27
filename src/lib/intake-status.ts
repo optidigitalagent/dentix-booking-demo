@@ -1,4 +1,5 @@
 export type IntakeStatus = {
+  qa?: { enabled: boolean; safety: "CAPTURE_TELEGRAM_ISOLATED_CALENDAR_V1" };
   lead: { enabled: boolean; mode: "LIVE" | "UNAVAILABLE"; policyUrl: string | null; consentVersion: string };
   timed: { enabled: boolean; mode: "LIVE" | "UNAVAILABLE"; policyUrl: string | null; consentVersion: string };
 };
@@ -8,7 +9,7 @@ export async function getIntakeStatus(): Promise<IntakeStatus> {
   const leadUrl = import.meta.env.VITE_DENTIX_LEADS_API_URL?.trim();
   const base = bookingUrl || leadUrl?.replace(/\/leads\/?$/, "/booking");
   if (!base) throw new Error("Форма ще не активована. Зателефонуйте до клініки.");
-  const response = await fetch(`${base}/intake-status`, { headers: { Accept: "application/json" }, cache: "no-store" });
+  const response = await fetch(`${base}/intake-status`, { headers: { Accept: "application/json", ...(import.meta.env["VITE_DENTIX_BOOKING_QA"] === "true" ? { "X-Dentix-QA": "true" } : {}) }, credentials: "same-origin", cache: "no-store" });
   const payload = await response.json();
   if (!response.ok || !payload.data) throw new Error("Не вдалося перевірити доступність форми. Спробуйте пізніше або зателефонуйте.");
   return payload.data as IntakeStatus;
