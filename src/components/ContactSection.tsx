@@ -3,6 +3,7 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { BookingButton } from "./booking/BookingContext";
 import { ContactActions } from "./booking/ContactActions";
+import { LeadForm } from "./LeadForm";
 
 const contactSlots = [
   { label: "Телефони", value: `${site.phonePrimary} · ${site.phoneSecondary}` },
@@ -59,12 +60,14 @@ export function ContactSection({ lede = "Зв’яжіться з клініко
           <Reveal as="div" className="contact-panel" delay={90}>
             <div className="contact-panel-head">
               <div>
-                <p className="contact-panel-kicker">Онлайн-запис</p>
-                <h3>Записатися до DENTIX</h3>
+                <p className="contact-panel-kicker">Зворотний зв’язок</p>
+                <h3>Залишити заявку</h3>
               </div>
               <span className="contact-panel-status">без медичних даних</span>
             </div>
-            <BookingButton className="btn btn-block">Записатися</BookingButton>
+            <p>Без вибору часу — адміністратор зателефонує та допоможе підібрати лікаря. Заявка не резервує прийом.</p>
+            <LeadForm sourceSite={__DENTIX_LEAD_SOURCE__} />
+            <BookingButton className="btn btn-block">Обрати час онлайн</BookingButton>
             <details className="booking-contact-alternative">
               <summary>Інші способи запису: телефон, Viber, Instagram</summary>
               <ContactActions />

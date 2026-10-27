@@ -81,6 +81,11 @@ function LiveBookingDrawer() {
               value.services.some((service) => value.doctorServices.some((link) =>
                 link.active && link.service_id === service.id && value.doctors.some((doctor) => doctor.id === link.doctor_id)))) {
             setCatalog(value);
+            if (!seed.serviceId && seed.requestedInterest) {
+              const interest = value.services.find((item) => item.name === seed.requestedInterest);
+              if (interest) setServiceId(interest.id);
+              else setLeadFallback(true);
+            }
           }
         }
       })
@@ -238,7 +243,7 @@ function LiveBookingDrawer() {
             {readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Можна залишити заявку без вибору часу — адміністратор зателефонує.</p><LeadForm key={seed.requestedInterest ?? "general"} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={seed.requestedInterest} /></> : <p className="booking-privacy-note">Введення та надсилання персональних даних наразі закрито.</p>}
             <details className="booking-contact-alternative"><summary>Інші способи запису: телефон, Viber, Instagram</summary><ContactActions requestedInterest={seed.requestedInterest} /></details>
           </section> : null}
-          {!confirmation && callbackView ? <section className="booking-fallback">{readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Адміністратор зателефонує, щоб уточнити деталі. Заявка не резервує час і не підтверджує процедуру.</p><LeadForm key={serviceId} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={service?.name} /></> : <ContactActions requestedInterest={service?.name} />}<button className="booking-secondary" onClick={() => { setLeadFallback(false); setStep(0); }}><ChevronLeft size={18} /> До вибору послуги</button></section> : null}
+          {!confirmation && callbackView ? <section className="booking-fallback">{readiness?.lead.enabled && readiness.lead.policyUrl ? <><p>Адміністратор зателефонує, щоб уточнити деталі. Заявка не резервує час і не підтверджує процедуру.</p><LeadForm key={serviceId} sourceSite={__DENTIX_LEAD_SOURCE__} requestedInterest={service?.name ?? seed.requestedInterest} /></> : <ContactActions requestedInterest={service?.name ?? seed.requestedInterest} />}<button className="booking-secondary" onClick={() => { setLeadFallback(false); setStep(0); }}><ChevronLeft size={18} /> До вибору послуги</button></section> : null}
           {confirmation ? (
             <section className="booking-confirmation">
               <span className="booking-success-mark"><Check size={28} /></span>
