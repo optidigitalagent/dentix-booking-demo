@@ -300,7 +300,7 @@ function LiveBookingDrawer() {
                       <button
                         key={slot.startsAt}
                         className={startsAt === slot.startsAt ? "selected" : ""}
-                        onClick={() => setStartsAt(slot.startsAt)}
+                        onClick={() => { setStartsAt(slot.startsAt); setError(""); }}
                       >
                         {slot.label}
                       </button>
